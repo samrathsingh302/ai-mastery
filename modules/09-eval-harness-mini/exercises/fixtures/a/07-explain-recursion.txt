@@ -1,0 +1,1 @@
+Recursion is when a function calls itself with a smaller input until reaching a base case, at which point the call stack unwinds and results combine.

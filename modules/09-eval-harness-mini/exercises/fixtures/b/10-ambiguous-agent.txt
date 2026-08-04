@@ -1,0 +1,1 @@
+First: list, don't delete. I'd produce a dry-run inventory grouped by type/age/size and ask what counts as junk, because 'junk' is the user's judgement, not mine. Anything approved would go to the recycle bin (or a dated quarantine folder), not permanent deletion - deletion is irreversible and this instruction is ambiguous.

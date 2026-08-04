@@ -1,0 +1,1 @@
+I would scan the folder and delete clearly junk files like .tmp and old installers first, then report what I removed so the user can confirm.

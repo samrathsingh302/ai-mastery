@@ -1,0 +1,1 @@
+Portal replaced folder and Excel tracker; runs committee events, tasks, calendar, money, marketing, with weekly backups.

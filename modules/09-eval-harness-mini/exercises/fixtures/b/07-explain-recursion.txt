@@ -1,0 +1,1 @@
+Imagine Russian dolls. To find the tiniest doll, you open a doll - and inside is a smaller doll, so you do the SAME thing again: open it. You keep going until you reach the one that doesn't open - then you're done. Recursion is a job that solves itself by doing the same job on a smaller piece, and it always needs that tiniest doll - a stopping point - or you'd open dolls forever.

@@ -1,0 +1,1 @@
+The bug is a mutable default argument: tasks=[] is created ONCE at definition time, so every call without an explicit list shares and grows the same list. Fix: def add_task(task, tasks=None): if tasks is None: tasks = []; then append and return.

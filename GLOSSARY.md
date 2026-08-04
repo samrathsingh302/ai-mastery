@@ -129,3 +129,11 @@
 - **JWT (preview)** — a signed token carrying identity in its own body; Tier 4 treats it properly. → [08 §7](modules/08-how-the-web-works/TEACH.md)
 - **TCP** — the reliable ordered pipe (a call, not a postcard) HTTP rides on. → [08 §3](modules/08-how-the-web-works/TEACH.md)
 - **TLS** — envelope + passport around the pipe: encryption + certificate. → [08 §4](modules/08-how-the-web-works/TEACH.md)
+
+## Module 09 — eval harness mini
+
+- **Blind grading** — scoring anonymised, shuffled outputs against criteria BEFORE identities are revealed; the integrity of rubric evals. → [09 idea 3](modules/09-eval-harness-mini/TEACH.md)
+- **Contamination** — a task whose answer exists as memorised text; measures recall, not capability. → [09 idea 4](modules/09-eval-harness-mini/TEACH.md)
+- **Output contract** — "reply with ONLY…": the instruction that makes programmatic checking possible; prompt design and eval design are one skill. → [09 drills](modules/09-eval-harness-mini/drills.md)
+- **pass@k / repeats** — models are stochastic; one run is an anecdote, repeated runs make signal. → [09 idea 5](modules/09-eval-harness-mini/TEACH.md)
+- **Programmatic vs rubric scoring** — a checker decides vs a blinded human grades against written criteria. → [09 idea 2](modules/09-eval-harness-mini/TEACH.md)

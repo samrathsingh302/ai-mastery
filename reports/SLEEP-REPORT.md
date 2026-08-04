@@ -89,3 +89,13 @@ Heads-up: `guides/PUBLIC-SITE-UPDATES.md:7` still names the old vercel.app URL �
 project asks you to fix-or-flag it (your repo, your call). Ships: the dated fixture, a 12-question
 hashed checker (tested 12/12), a narrated full-trace project, and a 9-hop page-load journey
 interactive carrying the real captured values.
+
+## Iteration 10 — step 9: the eval harness mini (04/08/2026, ~11:15)
+A WORKING harness, not a description: 10 tasks (6 programmatic — exact/code-tests/regex-cases/
+contains-all — + 4 rubric), run_eval.py drives your claude CLI in print mode (subscription, no
+API key; models are flags, nothing pinned), grade.py does per-task blind shuffling and only
+reveals after scores lock. Verified end-to-end offline tonight; the dry-run fixtures are designed
+to teach: a 9–9 DEAD HEAT with opposite profiles — model A followed output contracts exactly,
+model B explained beautifully but ignored "reply with ONLY…" four times. Which one you want
+depends on the job — that's per-family reading, the module's whole point. Your live run (project)
+adds 4 self-designed tasks and ends in findings.md with the n=1 humility written down.
