@@ -137,3 +137,12 @@
 - **Output contract** — "reply with ONLY…": the instruction that makes programmatic checking possible; prompt design and eval design are one skill. → [09 drills](modules/09-eval-harness-mini/drills.md)
 - **pass@k / repeats** — models are stochastic; one run is an anecdote, repeated runs make signal. → [09 idea 5](modules/09-eval-harness-mini/TEACH.md)
 - **Programmatic vs rubric scoring** — a checker decides vs a blinded human grades against written criteria. → [09 idea 2](modules/09-eval-harness-mini/TEACH.md)
+
+## Module 10 — AI-security taster 🔐
+
+- **Capability narrowing** — removing the ability to do the harmful thing at all; with human gates, the only defence that survives a smart attacker. → [10 §4](modules/10-ai-security-taster/TEACH.md)
+- **Excessive agency (LLM06)** — a component whose capability exceeds its contract (his bridge worker, ledger 108). → [10 §3](modules/10-ai-security-taster/TEACH.md)
+- **Indirect prompt injection** — the payload sits in a document/email/repo file the agent reads, not in what the user typed. → [10 §1](modules/10-ai-security-taster/TEACH.md)
+- **Lethal trifecta** — private data + untrusted content + external comms; all three = one poisoned document can exfiltrate (Willison, 16/06/2025). → [10 §2](modules/10-ai-security-taster/TEACH.md)
+- **OWASP LLM Top 10** — the shared vocabulary for LLM app risks (2025 list: LLM01 injection … LLM10 unbounded consumption). → [10 §2](modules/10-ai-security-taster/TEACH.md)
+- **Prompt injection** — text read as data gets obeyed as instructions; the mixing is the vulnerability, filters are mitigation. → [10 §1](modules/10-ai-security-taster/TEACH.md)

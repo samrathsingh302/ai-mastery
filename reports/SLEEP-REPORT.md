@@ -99,3 +99,14 @@ to teach: a 9–9 DEAD HEAT with opposite profiles — model A followed output c
 model B explained beautifully but ignored "reply with ONLY…" four times. Which one you want
 depends on the job — that's per-family reading, the module's whole point. Your live run (project)
 adds 4 self-designed tasks and ends in findings.md with the n=1 humility written down.
+
+## Iteration 11 — step 10: AI-security taster + cyber hook (04/08/2026, ~11:50)
+Built on YOUR live configuration, not generic advice: bypassPermissions confirmed, 4 hooks, 7
+agents, 27 skills, and **4 unattended Claude scheduled tasks all Ready** (AutoUpdate, Doctrine-
+Mirror, Vault-Daily-Backup, BridgeWorker). Verified the OWASP LLM Top 10 (2025) and Willison's
+lethal trifecta (16/06/2025) fresh, then mapped both onto your estate — with ledger item 108's
+bridge worker as the worked LLM06 excessive-agency case (capability beyond contract, unattended,
+no attacker required). The trifecta lab lets you toggle legs and loads your five REAL session
+shapes; the estate session + Gmail is the one that lights up red — that's the finding worth
+sleeping on. Project = a proper threat model of your own stack (read-only), which is the
+CV-worthy artefact the plan's C2 tier wants. Cyber interleave modules 13–16 hook here, free-first.
