@@ -28,3 +28,13 @@ TODAY), study-cockpit.html (timed Dojo/Study/AI-free/Weekly modes + streak count
 skill drafted (installing it = your call, ledger 107). Surprise: **Anki was already installed** on
 this machine — ledger 105 narrowed to "open it + optional sync + first import". Toolchain verified
 9/9 green (Python 3.14.5, git 2.54, VS Code 1.129). FSRS numbers pre-decided: 0.90 · 10 new/day.
+
+## Iteration 4 — step 3: CS50P accelerated (04/08/2026, ~02:50)
+The big one: a 10-rung Python-from-zero ladder mirroring CS50P weeks 0–9 (structure verified live),
+psets-first with my notes as coach + per-rung walls/rescues, and the git-survival sidebar so your
+work is versioned from day one. Ships 10 exercise files with a check.py harness that self-verifies
+(--solutions mode ran 34/34 green — and en route it caught a bug in MY OWN test data: I'd
+miscounted the vowels in "Leeds University"; the harness working as designed, on its author),
+the repo-census AI-free project (your first real CLI tool, on your actual repos\), a predict-then-
+step code tracer (5 traces incl. the aliasing surprise), 34 Anki cards. Rung 5's exercise is
+flipped: implementations given, YOU write the test that catches the planted bug.

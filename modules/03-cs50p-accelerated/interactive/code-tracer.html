@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code tracer — watch Python think (module 03)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --chip:#eef2ff; --hl:#fff3c4; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --chip:#232a3d; --hl:#4a4420; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:860px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  select{padding:.5rem; border-radius:.5rem; border:1px solid var(--line);
+    background:var(--card); color:var(--ink); font-size:.95rem; margin-bottom:.8rem; max-width:100%}
+  .grid{display:grid; grid-template-columns:1.3fr 1fr; gap:.8rem}
+  @media (max-width:700px){ .grid{grid-template-columns:1fr} }
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem; padding:.9rem}
+  pre{margin:0; font:13px/1.7 ui-monospace,Consolas,monospace; overflow-x:auto}
+  .ln{display:block; padding:0 .4rem; border-radius:.3rem; white-space:pre}
+  .ln.now{background:var(--hl); font-weight:600}
+  h3{margin:.1rem 0 .5rem; font-size:.95rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+  table{width:100%; border-collapse:collapse; font:13px ui-monospace,Consolas,monospace}
+  td{padding:.25rem .4rem; border-bottom:1px solid var(--line)}
+  td:first-child{color:var(--muted); width:40%}
+  .out{font:13px/1.6 ui-monospace,Consolas,monospace; min-height:3em; white-space:pre-wrap}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.8rem; min-height:3.2em}
+  .controls{display:flex; gap:.5rem; margin-top:.8rem; align-items:center}
+  button{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+  .predict{margin-top:.6rem; font-size:.9rem; color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Code tracer — watch Python think</h1>
+  <p class="sub">One instruction at a time: which line runs, what the names hold, what prints.
+  Before each ▶ step, PREDICT: which line next, and what changes? Wrong prediction = gold —
+  that's the mental model updating.</p>
+  <select id="pick" onchange="load()"></select>
+  <div class="grid">
+    <div class="card"><h3>Code</h3><pre id="code"></pre></div>
+    <div>
+      <div class="card"><h3>Names → values</h3><table id="vars"></table></div>
+      <div class="card" style="margin-top:.8rem"><h3>Output</h3><div class="out" id="out"></div></div>
+    </div>
+  </div>
+  <div class="why" id="why"></div>
+  <div class="controls">
+    <button class="ghost" onclick="reset()">⟲ Restart</button>
+    <button id="stepBtn" onclick="step()">▶ Step</button>
+    <span class="step" id="stepn"></span>
+  </div>
+</div>
+<script>
+"use strict";
+/* Each trace: code lines + steps [line(1-based), vars snapshot, output-so-far, why] */
+const TRACES = [
+ {name:"1 · Labels move, jars don't (assignment)",
+  code:["spend = 10", "budget = spend", "spend = 25", "print(spend, budget)"],
+  steps:[
+   [1, {spend:"10"}, "", "Line 1: the label `spend` is stuck on a new jar holding 10."],
+   [2, {spend:"10", budget:"10"}, "", "Line 2: `budget = spend` copies WHERE THE LABEL POINTS — budget now labels the same value 10. No link between the names is remembered."],
+   [3, {spend:"25", budget:"10"}, "", "Line 3: reassignment MOVES the `spend` label to a new jar (25). `budget` still labels 10 — changing spend later never touches it."],
+   [4, {spend:"25", budget:"10"}, "25 10\n", "Line 4: print shows the values the labels currently point at."]]},
+ {name:"2 · The fork: first true branch wins",
+  code:["hours = 15", "if hours >= 25:", "    lane = \"holiday\"", "elif hours >= 15:",
+        "    lane = \"normal\"", "elif hours >= 7:", "    lane = \"crunch\"", "print(lane)"],
+  steps:[
+   [1, {hours:"15"}, "", "Set up: hours labels 15."],
+   [2, {hours:"15"}, "", "`15 >= 25`? False — this branch is skipped entirely; Python moves to the elif."],
+   [4, {hours:"15"}, "", "`15 >= 15`? True — THIS branch runs, and the rest of the chain is abandoned unread."],
+   [5, {hours:"15", lane:"\"normal\""}, "", "The winning branch's body runs: lane = \"normal\". Note line 6's `15 >= 7` is ALSO true — but it's never even asked. Order matters."],
+   [8, {hours:"15", lane:"\"normal\""}, "normal\n", "The chain is over; print shows the survivor."]]},
+ {name:"3 · The accumulator (loops)",
+  code:["sets = [(100, 5), (110, 3)]", "total = 0", "for weight, reps in sets:",
+        "    total += weight * reps", "print(total)"],
+  steps:[
+   [1, {sets:"[(100,5),(110,3)]"}, "", "The collection to visit."],
+   [2, {sets:"[(100,5),(110,3)]", total:"0"}, "", "Start the accumulator at 0 BEFORE the loop — inside, and it resets every lap (a classic planted-bug spot)."],
+   [3, {sets:"…", total:"0", weight:"100", reps:"5"}, "", "Lap 1 begins: the first pair is UNPACKED — weight=100, reps=5."],
+   [4, {sets:"…", total:"500", weight:"100", reps:"5"}, "", "Fold it in: total = 0 + 100*5 = 500."],
+   [3, {sets:"…", total:"500", weight:"110", reps:"3"}, "", "Back to the for line — next pair: weight=110, reps=3. The loop line runs once per item."],
+   [4, {sets:"…", total:"830", weight:"110", reps:"3"}, "", "Fold: 500 + 330 = 830."],
+   [5, {sets:"…", total:"830", weight:"110", reps:"3"}, "830\n", "Collection exhausted → loop ends → the accumulated answer."]]},
+ {name:"4 · A function call is a side-trip (scope)",
+  code:["def price_with_vat(price):", "    result = price * 1.2", "    return result",
+        "total = price_with_vat(10)", "print(total)"],
+  steps:[
+   [1, {}, "", "`def` only DEFINES — nothing inside runs yet. Python just remembers the recipe and moves on."],
+   [4, {}, "", "The call: Python pauses this line, jumps INTO the function with price=10."],
+   [2, {"price (inside)":"10", "result (inside)":"12.0"}, "", "Inside: price and result exist ONLY in here — a private workbench that will be cleared."],
+   [3, {"price (inside)":"10", "result (inside)":"12.0"}, "", "return hands 12.0 back to whoever called — and the workbench is binned (price/result cease to exist)."],
+   [4, {total:"12.0"}, "", "The paused line resumes: the call-expression is replaced by the returned value; total labels 12.0."],
+   [5, {total:"12.0"}, "12.0\n", "Had line 3 been `print(result)` with no return, total would be None — return vs print, the #1 wall."]]},
+ {name:"5 · Two labels, ONE jar (list aliasing)",
+  code:["a = [1, 2]", "b = a", "b.append(3)", "print(a)"],
+  steps:[
+   [1, {a:"[1, 2]"}, "", "a labels a list jar."],
+   [2, {a:"[1, 2]", b:"[1, 2] (same jar!)"}, "", "b = a sticks a SECOND label on the SAME jar — no copy is made. (Same rule as trace 1 — but now the jar's contents can be changed…)"],
+   [3, {a:"[1, 2, 3]", b:"[1, 2, 3] (same jar)"}, "", ".append MUTATES the jar's contents. Both labels see it — because there is only one jar."],
+   [4, {a:"[1, 2, 3]", b:"[1, 2, 3]"}, "[1, 2, 3]\n", "Printing a shows the surprise. Want an independent copy? b = a.copy() (or list(a)). Ints/strs never surprise you this way because they can't be mutated — lists/dicts can."]]},
+];
+let ti=0, si=-1;
+const $=id=>document.getElementById(id);
+const pick=$("pick");
+TRACES.forEach((t,i)=>{ const o=document.createElement("option"); o.value=i; o.textContent=t.name;
+  pick.appendChild(o); });
+function load(){ ti=+pick.value; si=-1; render(); }
+function reset(){ si=-1; render(); }
+function step(){ if(si < TRACES[ti].steps.length-1){ si++; render(); } }
+function render(){
+  const t=TRACES[ti];
+  $("code").innerHTML=t.code.map((l,i)=>{
+    const now = si>=0 && t.steps[si][0]===i+1;
+    return `<span class="ln${now?" now":""}">${String(i+1).padStart(2)} │ ${l.replace(/</g,"&lt;")}</span>`;
+  }).join("");
+  const vars = si>=0 ? t.steps[si][1] : {};
+  $("vars").innerHTML=Object.keys(vars).length
+    ? Object.entries(vars).map(([k,v])=>`<tr><td>${k}</td><td>${String(v).replace(/</g,"&lt;")}</td></tr>`).join("")
+    : `<tr><td colspan="2" style="color:var(--muted)">— nothing yet —</td></tr>`;
+  $("out").textContent = si>=0 ? t.steps[si][2] : "";
+  $("why").innerHTML = si>=0 ? t.steps[si][3]
+    : "<b>Predict first:</b> which line runs first, and what will exist afterwards? Then ▶ Step.";
+  $("stepn").textContent = si>=0 ? `step ${si+1} / ${t.steps.length}` : `${t.steps.length} steps`;
+  $("stepBtn").disabled = si >= t.steps.length-1;
+}
+load();
+</script>
+</body>
+</html>
