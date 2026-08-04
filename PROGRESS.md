@@ -4,7 +4,7 @@ Rule: the loop does the FIRST unticked step, completely, then ticks it with one 
 (module path + what it contains). Never skip; never reorder; steps after 12 come from
 PLAN-MASTER.md once step 0 has written it.
 
-- [ ] 0. Red-team the plan → PLAN-MASTER.md (numbered master order, cyber light-interleave placed) + reports/red-team-findings.md
+- [x] 0. Red-team the plan → PLAN-MASTER.md (numbered master order, cyber light-interleave placed) + reports/red-team-findings.md — ✅ 04/08/2026: PLAN-MASTER.md = 33-step ladder (fast track 1–12 fixed; cyber as SECONDARY steps 13–16 hooked after 5/6/8/10, free-first; remainders 17–32 deduped); findings = 0 critical / 4 medium / 5 low / 3 info (Deep Dive 3h31m verified); ledger items 105–107 filed
 - [ ] 1. Module: the video canon, taught directly (companion notes make the videos optional)
 - [ ] 2. Module: the tutor setup (START-HERE ritual, Anki, tutor contract, dojo — operational, not descriptive)
 - [ ] 3. Module: CS50P accelerated (Python from zero, baby-rule ladder, exercises + self-checks)
