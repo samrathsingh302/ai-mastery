@@ -75,6 +75,16 @@ carried provenance from the 06/07/2026 sweeps**, not re-verified tonight. Module
 resource fact they themselves assert (MISSION research-first law); tonight's one load-bearing
 verification was M1.
 
+### M1-ADDENDUM (04/08/2026, module 01 research — supersedes M1's totals)
+
+Full canon verified per-video: Fireship mind-virus **4:46** · Fireship not-suck **~5:47** (plan
+said 16m — wrong) · Karpathy **3:31:00** (plan said 2h — wrong) · Ebbelaar **19:29** (plan said
+~1h — wrong; real title "How I'd Learn AI Engineering in 2026 (Complete Roadmap)", 29/10/2025) ·
+Tech With Tim: the plan's title **doesn't exist** — real nearest is **"Learning to code has
+changed"** (02/02/2026, 13:19), which argues exactly the intended thesis. Net: canon ≈ **4h14m**
+at 1× — the plan's ~4h TOTAL was roughly right, but three of five line items were wrong, in both
+directions. Morning Notion edits (optional): the three runtime cells + the TWT title swap.
+
 ## Cyber interleave placement (the required step-0 output)
 
 | Interleave | Hook — study after | Why this hook |

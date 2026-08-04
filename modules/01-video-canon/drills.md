@@ -1,0 +1,45 @@
+# Drills — module 01 (spaced-repetition fodder)
+
+**Use:** quick-fire self-quiz now, then Anki import (ledger item 105 installs Anki; until then,
+cover the right column and read down the left). Import: File → Import → paste the tab-separated
+block below into a `.txt` file → field separator = Tab. **Curate first** — the plan's rule is
+AI drafts, YOU choose; delete any card you wouldn't defend.
+
+## Anki-importable block (tab-separated: Front ⇥ Back)
+
+What is an LLM, in one sentence?	A model whose one trick is predicting the next token of text, grown from internet-scale data — not a database, not a mind.
+What is a token?	The chunk-of-text unit (word/part-word/punctuation → ID number) that models actually read and write — never letters.
+Why are LLMs bad at counting letters in a word?	They see tokens (chunks), not letters — the letters are hidden inside the bricks.
+Parameters/weights are…	The millions–billions of learned numbers that ARE the model ("a mixing desk with a billion sliders").
+Training vs inference?	Training = tuning the parameters on data (slow, expensive). Inference = using the tuned model to generate (every chat).
+What does pretraining produce?	A BASE model — an internet-document simulator that continues text; it doesn't answer, it continues.
+The "lossy zip" intuition is…	Parameters compress the internet lossily: near-exact recall of oft-repeated text, vague recollection of everything else.
+What turns a base model into an assistant?	Supervised fine-tuning (SFT): training on labeller-written ideal conversations until it imitates the ideal helpful assistant.
+When you chat with an assistant model you are really talking to…	A statistical simulation of a helpful human labeller following guidelines.
+Why do LLMs hallucinate?	Confident-answer style (from SFT) applied where the weights hold only vague recollection — likelihood fills the gap, no concept of truth.
+Two patches for hallucination?	Train "I don't know" on probed blind spots; tool use/retrieval that pastes real sources into the context.
+Context window vs weights?	Context = working memory (open book on the desk, reliable). Weights = vague recollection (things half-remembered from school).
+Why does "think step by step" work mechanically?	Compute per emitted token is fixed and shallow; spreading reasoning over many tokens buys more total computation.
+What is jagged intelligence?	Swiss-cheese capability: PhD-level on some tasks, failing 9.11-vs-9.9 on others — so calibrate trust per task, never per model.
+Where does RL-with-verification work best and why?	Maths and code — answers can be checked automatically, giving a reliable reward signal at scale.
+What did DeepSeek-R1 demonstrate?	RL alone can make a model discover its own longer, self-correcting chains of thought ("aha" moments nobody wrote).
+Why is AlphaGo's move 37 relevant to LLMs?	Imitation caps you at human level; RL against the real goal can exceed it — the hope behind reasoning models.
+What is RLHF, in one sentence?	RL for uncheckable domains: humans compare outputs → a reward model learns their preferences → the model is optimised to please it, briefly.
+Why is RLHF run only briefly?	The reward model is a gameable simulation of preference — over-optimise and you get adversarial junk it loves and humans hate.
+The mechanical root of sycophancy?	Models are optimised to be PREFERRED, and agreeing with a confident user tends to be preferred — preferred ≠ true.
+Kernighan's Law and its consequence for AI code?	Debugging is twice as hard as writing — so code at the edge of your comprehension is undebuggable by you; never ship what you couldn't write.
+What is vibe coding and when is it rational?	Prompting AI for code without really reading it; rational for prototypes/small scope in stacks you could write yourself — comprehension is the safety line.
+Three principles behind "vibe coding that doesn't suck"?	Feed the model current true context; let it see real errors; wire automatic verification around it.
+What is MCP (plain words)?	Model Context Protocol — a standard plug connecting an AI tool to outside systems (docs, errors, infra) so it works from live truth.
+What is an API (plain words)?	A programme-to-programme doorway: your code sends a request, the service sends back an answer.
+What is RAG (plain words)?	Retrieval-augmented generation: fetch relevant documents first, paste them into the context, answer open-book.
+What is an agent (plain words)?	An LLM given tools and a loop so it can act (search, run code, edit files), not just answer.
+What is an eval (plain words)?	Written-down tests for AI behaviour: fixed tasks + a scoring method, so changes get measured, not vibed.
+Ebbelaar's six AI-engineer stages?	Foundations (Python/Git/API) → system design → production backends → RAG → monitoring & evals → deployment.
+The canon's two house laws?	"There is no ChatGPT in the interview" and "never let AI write code you couldn't write yourself."
+
+## Quick-fire round (no cards — say the answers aloud, 60 seconds)
+
+1. Stage that explains hallucination? 2. Stage that explains sycophancy? 3. Stage that explains
+strawberry-r's? 4. Open-book beats ___? 5. Trust is calibrated per ___, never per ___.
+*(A2/SFT · A3/RLHF · A1/tokenisation · memory(weights) · task-type, model)*
