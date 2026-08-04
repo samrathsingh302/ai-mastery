@@ -108,3 +108,11 @@
 - **Vertical slice** — one real user action traced through every layer, file:line per hop; the highest-value dig pass. → [06 method](modules/06-repo-archaeology/TEACH.md)
 - **Watchdog** — a separate process that restarts a killed one (a process can't resurrect itself). → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
 - **Windows service** — a background program run by the OS from boot, no window, as a system account. → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+
+## Module 07 — data taster
+
+- **DataFrame / Series** — a table / one typed labelled column of it. → [07 mental model](modules/07-data-taster-hevy/TEACH.md)
+- **groupby (split-apply-combine)** — split rows into groups → apply a function per group → combine into a new table; the idea under all analytics. → [07 step 2](modules/07-data-taster-hevy/TEACH.md)
+- **Rolling window** — a statistic over the last N points (`rolling(4).max()`); flat rolling max = plateau. → [07 step 4](modules/07-data-taster-hevy/TEACH.md)
+- **Tidy data** — one row per observation (here: per set); questions become filters/groups. → [07 step 1](modules/07-data-taster-hevy/TEACH.md)
+- **Venv (virtual environment)** — a private Python + packages per project ("own toolbox"); delete the folder to undo. → [07 the venv](modules/07-data-taster-hevy/TEACH.md)

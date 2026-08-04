@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split–apply–combine — watch groupby think (module 07)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --chip:#eef2ff;
+    --g1:#dbeafe; --g2:#dcfce7; --g3:#fef3c7; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --chip:#232a3d;
+      --g1:#1e3a5f; --g2:#1d3f2d; --g3:#4a3c14; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:720px; margin:0 auto}
+  h1{font-size:1.25rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  .code{font:13.5px ui-monospace,Consolas,monospace; background:var(--chip);
+    border-radius:.4rem; padding:.4rem .6rem; display:inline-block}
+  table{border-collapse:collapse; font:13px ui-monospace,Consolas,monospace; margin:.5rem 0}
+  td,th{border:1px solid var(--line); padding:.3rem .55rem; text-align:left}
+  th{color:var(--muted); font-weight:600; font-size:.78rem; text-transform:uppercase}
+  tr.h{transition:background .3s}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.5rem; min-height:3em}
+  .controls{display:flex; gap:.5rem; margin-top:.6rem; align-items:center}
+  button{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+  .tables{display:flex; gap:1rem; flex-wrap:wrap; align-items:flex-start}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Split → apply → combine</h1>
+  <p class="sub">The one idea under all analytics. Six sets from the sample file; watch
+  <span class="code">df.groupby("exercise")["volume"].sum()</span> happen.</p>
+  <div class="card">
+    <div class="tables">
+      <div><b style="font-size:.85rem">df (one row per set)</b><table id="src"></table></div>
+      <div id="outwrap" style="display:none"><b style="font-size:.85rem">result</b><table id="out"></table></div>
+    </div>
+    <div class="why" id="why"></div>
+    <div class="controls">
+      <button class="ghost" onclick="reset()">⟲ Restart</button>
+      <button id="stepBtn" onclick="step()">▶ Step</button>
+      <span class="step" id="stepn"></span>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+const ROWS = [
+ ["Bench Press","normal",60,8,480],
+ ["Deadlift","normal",100,5,500],
+ ["Bench Press","normal",65,6,390],
+ ["Lat Pulldown","normal",55,10,550],
+ ["Deadlift","normal",110,3,330],
+ ["Lat Pulldown","normal",60,8,480],
+];
+const GROUPS = {"Bench Press":"--g1","Deadlift":"--g2","Lat Pulldown":"--g3"};
+const STEPS = [
+ {w:"The raw tidy table: one row per SET (module 07's flatten output). No colours yet — pandas hasn't been told what matters.", c:0},
+ {w:"SPLIT: groupby(\"exercise\") assigns every row to a group by its key. Nothing moves — rows just get membership (colours). Three groups exist now.", c:1},
+ {w:"APPLY: within each group, take the [\"volume\"] column and .sum() it. Bench: 480+390=870 · Deadlift: 500+330=830 · Lat Pulldown: 550+480=1030. One number per group.", c:2},
+ {w:"COMBINE: the per-group answers become a new Series — index = group keys, values = sums. sort_values(ascending=False) would order it 1030, 870, 830. Every groupby you ever write is these three beats.", c:3},
+];
+let si=-1;
+const $=id=>document.getElementById(id);
+function render(){
+  const stage = si<0?0:STEPS[si].c;
+  $("src").innerHTML = "<tr><th>exercise</th><th>weight</th><th>reps</th><th>volume</th></tr>" +
+    ROWS.map(r=>{
+      const bg = stage>=1 ? `style="background:var(${GROUPS[r[0]]})"` : "";
+      return `<tr class="h" ${bg}><td>${r[0]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${stage>=2?"<b>"+r[4]+"</b>":r[4]}</td></tr>`;
+    }).join("");
+  if(stage>=3){
+    $("outwrap").style.display="block";
+    $("out").innerHTML = "<tr><th>exercise</th><th>volume</th></tr>" +
+      [["Lat Pulldown",1030],["Bench Press",870],["Deadlift",830]].map(([k,v],i)=>
+        `<tr style="background:var(${GROUPS[k]})"><td>${k}</td><td><b>${v}</b></td></tr>`).join("");
+  } else { $("outwrap").style.display="none"; }
+  $("why").textContent = si<0 ? "Press ▶ — and predict: how many groups will SPLIT make?" : STEPS[si].w;
+  $("stepn").textContent = si<0 ? `${STEPS.length} steps` : `step ${si+1} / ${STEPS.length}`;
+  $("stepBtn").disabled = si>=STEPS.length-1;
+}
+function step(){ if(si<STEPS.length-1){ si++; render(); } }
+function reset(){ si=-1; render(); }
+render();
+</script>
+</body>
+</html>

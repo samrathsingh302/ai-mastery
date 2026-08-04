@@ -67,3 +67,15 @@ zero TODOs), and monk-mode's block slice (verb dispatch → AtomicHosts → HMAC
 10-second fail-closed enforcement tick → watchdog). The ConfigIntegrity walkthrough (HMAC-SHA256
 + PBKDF2 600k, DPAPI key, tamper-evidence-over-confidentiality) doubles as module 14's crypto
 hook. Interactive: both REAL slices as predict-then-step hop traces. Repos untouched.
+
+## Iteration 8 — step 7: pandas on YOUR Hevy data (04/08/2026, ~10:15)
+Found the real thing: 294 workouts in repos\hevy-brain\data\workouts.json (API JSON, richer than
+the CSV the plan assumed) — the module teaches against that exact schema, with a synthetic sample
+in the same shape so exercises self-check. pandas wasn't installed globally, so the venv IS the
+opening lesson. Honesty note for breakfast: my first check.py expectations were hand-mathed wrong
+(24 rows not 25; Bench top on 3140, not Deadlift); caught by my own recompute, then machine-
+verified 9/9 in a clean venv — the red-team habit earning its keep on its author, twice in one
+night. Project: four questions on the real 294 (top lifts, progression, plateaus via rolling max,
+consistency), each ending in one honest sentence + one training decision. Also: the /study-session
+skill draft has appeared in the session skill list (project-local discovery) — ledger 107 (global
+install) still yours.
