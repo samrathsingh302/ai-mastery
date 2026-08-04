@@ -16,10 +16,16 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 
+# Windows ships claude as a .cmd shim; resolve the real path once so we can keep
+# the module-04 law (args as a LIST, no shell=True).
+CLAUDE = shutil.which("claude")
+
 
 def ask(model, prompt):
-    r = subprocess.run(["claude", "-p", prompt, "--model", model],
-                       capture_output=True, text=True, timeout=300, shell=True)
+    if not CLAUDE:
+        return "[CLI ERROR] claude not found on PATH"
+    r = subprocess.run([CLAUDE, "-p", prompt, "--model", model],
+                       capture_output=True, text=True, timeout=300)
     if r.returncode != 0:
         return f"[CLI ERROR rc={r.returncode}] {r.stderr.strip()[:300]}"
     return r.stdout.strip()
