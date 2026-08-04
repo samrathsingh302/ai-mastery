@@ -170,3 +170,13 @@
 - **Honesty clause** — log every AI-free breach with what and how long; a quantified breach is data, a hidden one corrupts the baseline. → [12 rules](modules/12-first-ai-free-build/TEACH.md)
 - **Outage score** — "% of my productivity surviving a week without Anthropic"; the plan's headline instrument, dated and trended. → [12 baseline](modules/12-first-ai-free-build/TEACH.md)
 - **Wall protocol (unassisted)** — read the error bottom-up · minimal repro · inspect real values · one hypothesis at a time · 45 min → log and return tomorrow. → [12 rules](modules/12-first-ai-free-build/TEACH.md)
+
+## Module 13 🔐 — shell + Bandit *(secondary track)*
+
+- **find vs grep** — which FILES (name/type/time/size) vs which LINES (content); picking the right question picks the tool. → [13 A5](modules/13-cyb-shell-bandit/TEACH.md)
+- **Globbing** — wildcard name matching: `*` any, `?` one, `**` any depth. → [13 A3](modules/13-cyb-shell-bandit/TEACH.md)
+- **Permissions (rwx)** — owner/group/others triples; `-rw-r--r--` = only the owner writes. → [13 A6](modules/13-cyb-shell-bandit/TEACH.md)
+- **Pipe (`|`)** — one command's output becomes the next one's input; the Unix philosophy in one character. → [13 A4](modules/13-cyb-shell-bandit/TEACH.md)
+- **Redirection (`>`, `>>`, `2>&1`)** — replace a file, append to it, and send errors where output goes. → [13 A4](modules/13-cyb-shell-bandit/TEACH.md)
+- **SSH** — an encrypted remote terminal; keys beat passwords, and the fingerprint prompt is identity continuity. → [13 A7](modules/13-cyb-shell-bandit/TEACH.md)
+- **`sort | uniq -c`** — the counting idiom; uniq only collapses ADJACENT duplicates, so the sort is load-bearing. → [13 A4](modules/13-cyb-shell-bandit/TEACH.md)

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pipeline builder — read a shell one-liner like a sentence (module 13)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --bad:#c23838; --chip:#eef2ff;
+    --term:#0e1117; --termink:#d7e0f0; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --bad:#ff7b7b; --chip:#232a3d;
+      --term:#0b0e14; --termink:#d7e0f0; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:800px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .tabs{display:flex; gap:.5rem; margin-bottom:.8rem}
+  .tabs button{flex:1; padding:.55rem; border:1px solid var(--line); background:var(--card);
+    color:var(--ink); border-radius:.6rem; font-size:.95rem; cursor:pointer}
+  .tabs button.on{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  .cmd{font:13.5px ui-monospace,Consolas,monospace; background:var(--term); color:var(--termink);
+    border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:pre}
+  .stage{display:inline-block; padding:.1rem .3rem; border-radius:.3rem; cursor:pointer}
+  .stage.on{background:var(--accent); color:var(--accent-ink)}
+  .stage.done{opacity:.55}
+  .pipe{color:var(--muted)}
+  .out{font:13px ui-monospace,Consolas,monospace; background:var(--term); color:var(--termink);
+    border-radius:.5rem; padding:.7rem .9rem; margin-top:.6rem; white-space:pre; overflow-x:auto;
+    max-height:14em; overflow-y:auto}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.6rem; min-height:3.4em}
+  .controls{display:flex; gap:.5rem; margin-top:.7rem; align-items:center}
+  button.b{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button.b:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+  .q{font-weight:600; margin:.2rem 0 .6rem}
+  .opts{display:grid; gap:.45rem}
+  .opts button{text-align:left; padding:.55rem .8rem; border:1px solid var(--line);
+    background:var(--bg); color:var(--ink); border-radius:.6rem; cursor:pointer;
+    font:13px ui-monospace,Consolas,monospace}
+  .opts button:disabled{opacity:.9; cursor:default}
+  .opts button.right{border-color:var(--good); box-shadow:inset 0 0 0 1px var(--good)}
+  .opts button.wrong{border-color:var(--bad); box-shadow:inset 0 0 0 1px var(--bad)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pipeline builder</h1>
+  <p class="sub">A shell one-liner is a sentence. Step through it stage by stage and watch
+  the data change shape — then prove you can read one cold.</p>
+  <div class="tabs">
+    <button id="t0" class="on" onclick="tab(0)">Step through</button>
+    <button id="t1" onclick="tab(1)">Read it cold (quiz)</button>
+  </div>
+
+  <div id="p0">
+    <div class="card">
+      <div class="cmd" id="cmd"></div>
+      <div class="out" id="out"></div>
+      <div class="why" id="why"></div>
+      <div class="controls">
+        <button class="b ghost" onclick="si=-1;render()">⟲ Restart</button>
+        <button class="b" id="next" onclick="if(si<ST.length-1){si++;render()}">▶ Next stage</button>
+        <span class="step" id="stepn"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="p1" style="display:none"><div class="card" id="quiz"></div></div>
+</div>
+<script>
+"use strict";
+const ST=[
+ {c:"find . -type f -name '*.*'", why:"Stage 1 — FIND: walk the tree from here, keep only regular files (-type f) whose name contains a dot. Output is one path per line. Everything downstream is just text now.",
+  out:"./logs/app.log\n./logs/worker.log\n./logs/archive/old.log\n./notes/readme.md\n./notes/todo.md\n./notes/haystack.txt\n./notes/big.dat"},
+ {c:"sed 's/.*\\.//'", why:"Stage 2 — SED: substitute 'everything up to and including the last dot' with nothing. Greedy .* eats as much as it can, so only the extension survives. Paths became extensions.",
+  out:"log\nlog\nlog\nmd\nmd\ntxt\ndat"},
+ {c:"sort", why:"Stage 3 — SORT: alphabetical, so identical lines become ADJACENT. This exists purely to set up the next stage — uniq only sees neighbours, and forgetting this sort is the classic beginner bug.",
+  out:"dat\nlog\nlog\nlog\nmd\nmd\ntxt"},
+ {c:"uniq -c", why:"Stage 4 — UNIQ -c: collapse runs of identical adjacent lines into one line, prefixed with how many there were. Counting achieved without a single loop.",
+  out:"      1 dat\n      3 log\n      2 md\n      1 txt"},
+ {c:"sort -rn", why:"Stage 5 — SORT -rn: sort again, this time numerically (-n, so 10 beats 9) and reversed (-r, biggest first). Note the same tool used twice for two different jobs — that's the Unix philosophy paying off.",
+  out:"      3 log\n      2 md\n      1 txt\n      1 dat"},
+ {c:"head -3", why:"Stage 6 — HEAD: keep the first 3 lines. Full sentence: 'find files → strip to extensions → sort → count runs → order by count → show the top 3.' You now read that as one thought, which is the whole skill.",
+  out:"      3 log\n      2 md\n      1 txt"},
+];
+let si=-1;
+const $=id=>document.getElementById(id);
+function render(){
+  $("cmd").innerHTML=ST.map((s,i)=>
+    `<span class="stage ${i===si?"on":i<si?"done":""}" onclick="si=${i};render()">${s.c
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;")}</span>`).join('<span class="pipe"> | </span>');
+  $("out").textContent = si<0 ? "(press ▶ to run the first stage)" : ST[si].out;
+  $("why").textContent = si<0
+    ? "Before each stage, predict: what will the lines LOOK like after this tool touches them?"
+    : ST[si].why;
+  $("stepn").textContent = si<0 ? `${ST.length} stages` : `stage ${si+1} / ${ST.length}`;
+  $("next").disabled = si>=ST.length-1;
+}
+const QS=[
+ {q:"Which pipeline counts how many .log lines mention ERROR?",
+  o:["grep -rh ERROR --include='*.log' . | wc -l",
+     "find . -name '*.log' | wc -l",
+     "grep -rl ERROR . | sort | uniq",
+     "cat *.log > errors.txt"],
+  a:0, x:"grep -r searches recursively, -h hides filenames so only matching LINES come out, and wc -l counts them. Option 2 counts files, option 3 lists filenames, option 4 overwrites a file and counts nothing."},
+ {q:"You run `uniq -c` on unsorted input. What goes wrong?",
+  o:["Nothing — uniq sorts internally",
+     "It only collapses ADJACENT duplicates, so scattered repeats are counted separately",
+     "It errors and exits non-zero",
+     "It deletes the duplicates from the file"],
+  a:1, x:"uniq is a streaming tool with no memory of what it saw earlier — it compares each line to the previous one only. That's why `sort | uniq -c` is the idiom, and why forgetting the sort silently gives wrong counts."},
+ {q:"What does `2>&1` do?",
+  o:["Runs the command twice",
+     "Sends error output to the same place as normal output",
+     "Redirects to file descriptor 21",
+     "Suppresses all output"],
+  a:1, x:"Streams are numbered: 1 = stdout, 2 = stderr. `2>&1` says 'send stream 2 wherever stream 1 is currently going' — so a pipe or a log file captures errors too, instead of them escaping to the terminal."},
+ {q:"`ls -l` shows `-rw-r--r--`. Who can WRITE this file?",
+  o:["Everyone","Owner and group","Only the owner","Nobody"],
+  a:2, x:"Read it in three triples after the type character: owner rw-, group r--, others r--. Only the owner has w. This exact reading is half of Bandit's early puzzles."},
+ {q:"A file is literally named `-oddly-named`. Why does `cat -oddly-named` fail?",
+  o:["The name is illegal on Linux",
+     "cat reads it as FLAGS because it starts with a dash",
+     "You need sudo",
+     "cat can't read hidden files"],
+  a:1, x:"Anything starting with - looks like an option. Fixes: `cat ./-oddly-named` (give it a path) or `cat -- -oddly-named` (-- means 'no more flags'). Bandit teaches this by ambush — now it won't."},
+ {q:"Which finds .py files modified in the last week?",
+  o:["grep -r '*.py' --since 7d .",
+     "find . -name '*.py' -newermt '-7 days'",
+     "ls -lR *.py | head -7",
+     "find . -type f | grep py | sort -rn"],
+  a:1, x:"find selects by metadata (name, type, time, size, permissions); grep selects by CONTENT. Knowing which question you're asking — 'which files?' vs 'which lines?' — picks the tool for you every time."},
+];
+let qi=0, qs=0;
+function quiz(){
+  const h=$("quiz");
+  if(qi>=QS.length){
+    h.innerHTML=`<div class="q">Score: ${qs} / ${QS.length}</div>
+      <p>${qs>=5?"You can read a pipeline cold. Go play Bandit — same skills, with puzzles."
+        :"Step through the pipeline tab again, then retry — reading is the whole module."}</p>
+      <div class="controls"><button class="b" onclick="qi=0;qs=0;quiz()">Again</button></div>`;
+    return;
+  }
+  const q=QS[qi];
+  h.innerHTML=`<div class="q">Q${qi+1}. ${q.q}</div><div class="opts" id="o"></div><div id="x"></div>`;
+  q.o.forEach((o,i)=>{ const b=document.createElement("button"); b.textContent=o;
+    b.onclick=()=>ans(i,b); $("o").appendChild(b); });
+}
+function ans(i,btn){
+  const q=QS[qi], os=[...$("o").children];
+  os.forEach(b=>b.disabled=true); os[q.a].classList.add("right");
+  if(i===q.a) qs++; else btn.classList.add("wrong");
+  $("x").innerHTML=`<div class="why">${i===q.a?"<b>Right.</b> ":"<b>Not quite.</b> "}${q.x}</div>
+    <div class="controls"><button class="b" onclick="qi++;quiz()">
+    ${qi+1>=QS.length?"See score":"Next →"}</button></div>`;
+}
+function tab(i){ $("p0").style.display=i?"none":"block"; $("p1").style.display=i?"block":"none";
+  $("t0").classList.toggle("on",!i); $("t1").classList.toggle("on",!!i); if(i) quiz(); }
+render();
+</script>
+</body>
+</html>

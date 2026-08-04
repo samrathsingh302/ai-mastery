@@ -134,3 +134,14 @@ email, what worries you) with model answers and a 9+/12 pass mark — the gap my
 flagged as ownerless (G4), now closed. The acceptance harness is proven BOTH ways: 8/8 against a
 throwaway correct tool, 6/8 against a deliberately broken one — then I deleted both references so
 the build stays yours to make. Steps 1–12 are done; the ladder continues at module 13 (cyber).
+
+## Iteration 14 — step 13 🔐: shell fluency + Bandit (04/08/2026, ~13:40)
+First SECONDARY module, clearly marked D-lane and hooked after module 05 — if it ever competes
+with an A-lane item, A wins. Teaches the shell as a *language* (that `find | sed | sort | uniq -c
+| sort -rn | head` one-liner is stepped through stage by stage in the interactive, then quizzed
+cold), then sends you to OverTheWire Bandit — verified live tonight, connection line included,
+no-walkthrough rules. The shell gym builds a deterministic sandbox and I cross-checked every
+expected answer by running the REAL commands (8/8). Found and fixed a genuine bug in my own
+exercise: the quiz tells you to `cd` into the sandbox, so a rebuild hits a Windows file-lock —
+I hit it myself, and the harness now rewrites in place instead of crashing. Project: read your
+own four scheduled tasks + the bridge worker's git line, flag by flag, read-only.
