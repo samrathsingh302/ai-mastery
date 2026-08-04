@@ -69,3 +69,14 @@
 - **Unit test / assert** — a small program that checks one behaviour of another, forever. → [03 rung 5](modules/03-cs50p-accelerated/TEACH.md)
 - **Variable** — a name stuck on a value; reassignment moves the label, not the jar. → [03 rung 0](modules/03-cs50p-accelerated/TEACH.md)
 - **with open(...)** — the safe file idiom: closes the file for you, even on errors. → [03 rung 6](modules/03-cs50p-accelerated/TEACH.md)
+
+## Module 04 — automate the boring stuff
+
+- **Dry-run** — the mode that only PRINTS what a script would do; run it first, always. → [04 safety laws](modules/04-automate-boring-stuff/TEACH.md)
+- **Idempotent** — safe to run twice: the second run finds nothing to do ("light switch, not kettle lever"). → [04 safety laws](modules/04-automate-boring-stuff/TEACH.md)
+- **JSON** — text format for nested data (dicts/lists/numbers/strings); the lingua franca of APIs and exports. → [04 mission 4](modules/04-automate-boring-stuff/TEACH.md)
+- **pathlib / Path** — paths as objects: join with /, `.rglob` walks trees, `.read_text` reads. → [04 mission 1](modules/04-automate-boring-stuff/TEACH.md)
+- **Quarantine** — where automation "deletes" to: a dated folder a human empties later; `os.remove` is banned here. → [04 safety laws](modules/04-automate-boring-stuff/TEACH.md)
+- **shutil** — the move/copy/zip toolbox (`copy2`, `move`, `make_archive`). → [04 mission 2](modules/04-automate-boring-stuff/TEACH.md)
+- **subprocess** — your script running another program and reading its output; args as a LIST, never a glued string. → [04 mission 5](modules/04-automate-boring-stuff/TEACH.md)
+- **Task Scheduler** — Windows' cron: a trigger + an action + a working directory; how your Claude auto-update task runs. → [04 mission 5](modules/04-automate-boring-stuff/TEACH.md)

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regex playground — your patterns, live (module 04)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --bad:#c23838; --chip:#eef2ff; --mark:#ffe08a; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --bad:#ff7b7b; --chip:#232a3d; --mark:#5a4d1a; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:820px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  label{display:block; font-size:.85rem; color:var(--muted); margin-bottom:.25rem}
+  input, textarea{width:100%; font:14px/1.6 ui-monospace,Consolas,monospace;
+    background:var(--bg); color:var(--ink); border:1px solid var(--line); border-radius:.5rem;
+    padding:.55rem .7rem}
+  textarea{min-height:7em; resize:vertical}
+  .status{font-size:.9rem; margin:.4rem 0 0; min-height:1.4em}
+  .status.ok{color:var(--good)} .status.err{color:var(--bad)}
+  .view{font:14px/1.8 ui-monospace,Consolas,monospace; white-space:pre-wrap; word-break:break-word;
+    background:var(--bg); border:1px solid var(--line); border-radius:.5rem; padding:.6rem .7rem}
+  mark{background:var(--mark); color:inherit; border-radius:.2rem; padding:0 .05rem}
+  .explain{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.9rem; margin-top:.6rem}
+  .explain code{font:12.5px ui-monospace,Consolas,monospace}
+  .chips{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.6rem}
+  .chips button{padding:.35rem .7rem; border:1px solid var(--line); border-radius:1rem;
+    background:var(--card); color:var(--ink); font-size:.85rem; cursor:pointer}
+  .chips button:hover{border-color:var(--accent)}
+  table{width:100%; border-collapse:collapse; font-size:.88rem; margin-top:.4rem}
+  td,th{padding:.3rem .4rem; border-bottom:1px solid var(--line); text-align:left}
+  th{color:var(--muted); font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Regex playground</h1>
+  <p class="sub">Type a pattern, watch it match live, read it back in plain words. JS regex here
+  ≈ Python's for everything this module uses (in Python, wrap patterns in r"…").</p>
+
+  <div class="card">
+    <div class="chips" id="chips"></div>
+    <label>Pattern</label>
+    <input id="pat" spellcheck="false" autocomplete="off">
+    <div class="status" id="status"></div>
+    <div class="explain" id="explain"></div>
+  </div>
+
+  <div class="card">
+    <label>Test text (edit freely)</label>
+    <textarea id="text" spellcheck="false"></textarea>
+    <label style="margin-top:.6rem">Matches highlighted</label>
+    <div class="view" id="view"></div>
+    <table id="groups"></table>
+  </div>
+</div>
+<script>
+"use strict";
+const PRESETS = [
+ {n:"handoff filenames", p:"(\\d{4})-(\\d{2})-(\\d{2})-(\\d{4})-([\\w-]+)\\.md",
+  t:"2026-08-04-0053-auto-catchup.md\n2026-07-15-2210-close.md\nnotes.md\n2026-08-04-0053-bad name.md"},
+ {n:"dd/mm/yyyy dates", p:"\\b\\d{2}/\\d{2}/\\d{4}\\b",
+  t:"due 07/08/2026, resat 12/09/2026 — but not 7/8/26 or 123/45/67890"},
+ {n:"[[wiki-links]]", p:"\\[\\[([^\\]]+)\\]\\]",
+  t:"see [[dev/index]] and [[MODELS]] but not [single] brackets"},
+ {n:"emails → usernames", p:"([\\w.]+)@[\\w.]+",
+  t:"mail samrath@leeds.ac.uk or admin@psoc.org; not @alone"},
+ {n:"ledger item headers", p:"^- \\[ \\] (\\d+)\\.",
+  t:"- [ ] 105. Install Anki\n- [x] 78. Submitted\n- [ ] 106. THM decision"},
+];
+const DICT = [
+ [/^\\d$/,"a digit 0–9"], [/^\\w$/,"a word character (letter, digit, _)"],
+ [/^\\b$/,"a word boundary (edge of a word)"], [/^\\s$/,"whitespace"],
+ [/^\.$/,"ANY character (escape as \\. for a literal dot)"], [/^\\\.$/,"a literal dot"],
+ [/^\+$/,"one or more of the previous thing"], [/^\*$/,"zero or more of the previous thing"],
+ [/^\?$/,"the previous thing is optional"], [/^\^$/,"start (of text, or of line with the m flag)"],
+ [/^\$$/,"end"], [/^\\\[$/,"a literal ["], [/^\\\]$/,"a literal ]"],
+];
+const $=id=>document.getElementById(id);
+function tokenise(p){
+  const out=[]; let i=0;
+  while(i<p.length){
+    const c=p[i];
+    if(c==="\\"){ out.push(p.slice(i,i+2)); i+=2; continue; }
+    if(c==="{"){ const j=p.indexOf("}",i); out.push(p.slice(i,j+1)); i=j+1; continue; }
+    if(c==="["){ let j=i+1; if(p[j]==="^") j++; while(j<p.length && p[j]!=="]"){ if(p[j]==="\\") j++; j++; }
+      out.push(p.slice(i,j+1)); i=j+1; continue; }
+    out.push(c); i++;
+  }
+  return out;
+}
+function describe(p){
+  let parts=[], depth=0;
+  for(const t of tokenise(p)){
+    if(t==="(") { depth++; parts.push("— capture group "+depth+" opens ("); continue; }
+    if(t===")"){ parts.push(") group closes —"); continue; }
+    if(t.startsWith("{")) { parts.push("exactly "+t.replace(/[{}]/g,"")+" of the previous"); continue; }
+    if(t.startsWith("[^")) { parts.push("any char EXCEPT "+t.slice(2,-1)); continue; }
+    if(t.startsWith("[")) { parts.push("one of: "+t.slice(1,-1)); continue; }
+    const d=DICT.find(([re])=>re.test(t));
+    parts.push(d? d[1] : (t.length===1? "literal '"+t+"'" : "'"+t+"'"));
+  }
+  return parts.join(" · ");
+}
+function esc(s){ return s.replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+function run(){
+  const p=$("pat").value, text=$("text").value;
+  let re;
+  try{ re=new RegExp(p,"gm"); $("status").textContent="valid pattern"; $("status").className="status ok"; }
+  catch(e){ $("status").textContent=e.message; $("status").className="status err";
+    $("view").innerHTML=esc(text); $("groups").innerHTML=""; $("explain").textContent=""; return; }
+  $("explain").innerHTML="<b>In plain words:</b> "+esc(describe(p));
+  let html="", last=0, rows=[], m, n=0;
+  while((m=re.exec(text))!==null && n<500){
+    n++;
+    if(m[0]===""){ re.lastIndex++; continue; }
+    html+=esc(text.slice(last,m.index))+"<mark>"+esc(m[0])+"</mark>";
+    last=m.index+m[0].length;
+    rows.push(m);
+  }
+  html+=esc(text.slice(last));
+  $("view").innerHTML=html || "<span style='color:var(--muted)'>—</span>";
+  $("groups").innerHTML = rows.length
+    ? "<tr><th>#</th><th>match</th><th>groups</th></tr>"+rows.map((m,i)=>
+        `<tr><td>${i+1}</td><td>${esc(m[0])}</td><td>${m.slice(1).map((g,j)=>g===undefined?"":`${j+1}: ${esc(g)}`).filter(Boolean).join(" · ")}</td></tr>`).join("")
+    : "";
+}
+PRESETS.forEach(pr=>{ const b=document.createElement("button"); b.textContent=pr.n;
+  b.onclick=()=>{ $("pat").value=pr.p; $("text").value=pr.t; run(); }; $("chips").appendChild(b); });
+$("pat").addEventListener("input",run); $("text").addEventListener("input",run);
+$("pat").value=PRESETS[0].p; $("text").value=PRESETS[0].t; run();
+</script>
+</body>
+</html>

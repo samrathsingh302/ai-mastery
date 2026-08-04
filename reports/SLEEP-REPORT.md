@@ -38,3 +38,13 @@ miscounted the vowels in "Leeds University"; the harness working as designed, on
 the repo-census AI-free project (your first real CLI tool, on your actual repos\), a predict-then-
 step code tracer (5 traces incl. the aliasing surprise), 34 Anki cards. Rung 5's exercise is
 flipped: implementations given, YOU write the test that catches the planted bug.
+
+## Iteration 5 — step 4: Automate the Boring Stuff, applied (04/08/2026, ~03:20)
+Five missions from ATBS 3rd ed (May 2025, free online — chapter mapping verified) aimed straight
+at your estate: pathlib on repos\, a dry-run-first organiser, regex on YOUR naming schemes
+(handoff filenames, ledger dates, wiki-links), Hevy-CSV→JSON plumbing, and subprocess + Task
+Scheduler demystified via your own Claude-CLI-AutoUpdate task. Four safety laws lead the module
+(dry-run · quarantine-never-delete · sandbox · idempotent) — the exercises literally cannot touch
+real files (check.py builds temp trees; self-verified 5/5). Project: vault-janitor, a read-only
+report on OneDrive dev that REUSES his tested exercise functions — composition as the lesson.
+Plus a live regex playground that translates patterns into plain words.
