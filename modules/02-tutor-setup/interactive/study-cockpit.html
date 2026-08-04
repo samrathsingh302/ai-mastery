@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study cockpit — timers for the ritual (module 02)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --chip:#eef2ff; --warn:#8a6d1a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --chip:#232a3d; --warn:#e6c65c; }
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:680px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0}
+  .sub{color:var(--muted); font-size:.92rem; margin:0 0 1rem}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:1rem 1.1rem; margin-bottom:.8rem}
+  .modes{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.5rem}
+  .modes button{padding:.8rem .6rem; border:1px solid var(--line); border-radius:.7rem;
+    background:var(--bg); color:var(--ink); cursor:pointer; font-size:.95rem}
+  .modes button b{display:block; font-size:1rem}
+  .modes button small{color:var(--muted)}
+  .timer{font-size:3.2rem; font-weight:700; text-align:center; font-variant-numeric:tabular-nums;
+    margin:.2rem 0}
+  .stepname{text-align:center; font-size:1.15rem; font-weight:600; min-height:1.5em}
+  .stepdesc{text-align:center; color:var(--muted); font-size:.92rem; min-height:2.4em; margin:.2rem 0 .6rem}
+  .controls{display:flex; gap:.5rem; justify-content:center; margin-bottom:.6rem}
+  .controls button{padding:.5rem 1.2rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; font-size:1rem; cursor:pointer}
+  .controls button.ghost{background:var(--chip); color:var(--ink)}
+  ol.steps{margin:.4rem 0 0; padding-left:1.3rem; font-size:.92rem}
+  ol.steps li{margin:.2rem 0; color:var(--muted)}
+  ol.steps li.now{color:var(--ink); font-weight:600}
+  ol.steps li.done{text-decoration:line-through; opacity:.6}
+  .bar{height:8px; background:var(--line); border-radius:4px; overflow:hidden; margin:.6rem 0}
+  .bar div{height:100%; background:var(--accent); width:0; transition:width 1s linear}
+  .streak{display:flex; justify-content:space-between; align-items:center; font-size:.95rem}
+  .streak b{font-size:1.3rem}
+  .endcheck label{display:block; margin:.35rem 0; cursor:pointer}
+  .journal{width:100%; font:.9rem/1.4 ui-monospace,Consolas,monospace; background:var(--bg);
+    color:var(--ink); border:1px solid var(--line); border-radius:.5rem; padding:.6rem; margin-top:.5rem}
+  .hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Study cockpit</h1>
+  <p class="sub">Pick a mode — the timers make the decisions. Leave this tab open; it chimes.</p>
+
+  <div class="card streak">
+    <span>Streak (any completed session counts, dojo included)</span>
+    <span><b id="streak">0</b> days · last: <span id="last">never</span></span>
+  </div>
+
+  <div class="card" id="picker">
+    <div class="modes">
+      <button onclick="start('dojo')"><b>🥋 Dojo</b><small>20 min · daily</small></button>
+      <button onclick="start('study')"><b>📚 Study block</b><small>90 min · lane A</small></button>
+      <button onclick="start('aifree')"><b>🔌 AI-free block</b><small>60 min · the 20%</small></button>
+      <button onclick="start('weekly')"><b>📈 Weekly review</b><small>15 min · Sundays</small></button>
+    </div>
+  </div>
+
+  <div class="card hide" id="runner">
+    <div class="stepname" id="stepname"></div>
+    <div class="stepdesc" id="stepdesc"></div>
+    <div class="timer" id="clock">00:00</div>
+    <div class="bar"><div id="stepbar"></div></div>
+    <div class="controls">
+      <button id="pauseBtn" onclick="togglePause()">Pause</button>
+      <button class="ghost" onclick="nextStep(true)">Skip step →</button>
+      <button class="ghost" onclick="abandon()">Abandon</button>
+    </div>
+    <ol class="steps" id="steplist"></ol>
+  </div>
+
+  <div class="card hide" id="finish">
+    <h2 style="margin:.1rem 0 .5rem; font-size:1.15rem">Session done — the closing ritual</h2>
+    <div class="endcheck" id="endcheck"></div>
+    <p style="color:var(--muted); font-size:.9rem">Copy your journal line (edit the blanks):</p>
+    <textarea class="journal" id="jline" rows="2" spellcheck="false"></textarea>
+    <div class="controls" style="margin-top:.7rem">
+      <button onclick="complete()">Mark session complete ✓</button>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+const MODES = {
+  dojo: { name:"Dojo", steps:[
+    ["Get material","Tutor move #6 (bug hunt at your level) — or pick an AI-free alternate from dojo.md",2],
+    ["Hunt","Predict → trace line-by-line on paper → ONE hypothesis at a time. No shotgunning.",13],
+    ["Commit & reveal","Write your answers FIRST, then ask for the reveal. Root cause in one sentence each.",3],
+    ["Score & card","Journal line (found/total · level · mins) + one Anki card per miss.",2]],
+    check:["All bugs attempted with written answers before reveal","Misses drafted as cards","Journal line copied"],
+    j:"dd/mm — dojo L_ · _/3 found · __ min · misses→cards: _" },
+  study: { name:"Study block", steps:[
+    ["Contract","Paste tutor-contract.md (or /study-session). State module + mode.",2],
+    ["The map","Teach-me-the-map on today's topic (move #1). No depth yet.",15],
+    ["Depth + checks","Work the material. Every ~10 min: an explain-back or close-window-rebuild.",55],
+    ["Quiz","5 questions, no notes. Take the harsh grades.",10],
+    ["Cards + journal","3–8 cards drafted → YOU curate → import. One journal line.",8]],
+    check:["Contract active from message one","≥1 explain-back and ≥1 close-window-rebuild done","Quiz taken (no notes), score recorded","Cards curated (≥1 culled/edited) and imported"],
+    j:"dd/mm — module __ · learned: __________ · struggle: ____ (__ min) · AI-free? N · quiz _/5 · cards: _" },
+  aifree: { name:"AI-free block", steps:[
+    ["Pick the work","One audit-stocked issue (dojo.md list) or current module exercise. Claude CLOSED.",5],
+    ["Work","Docs + brain only. Struggle is the product. Note every wall you hit.",50],
+    ["Journal","Log what you did unaided + walls hit (they become tutor topics tomorrow).",5]],
+    check:["Zero AI the whole block (be honest)","Walls noted as tomorrow's tutor topics","Counts logged toward the 20% tally"],
+    j:"dd/mm — AI-FREE · worked on: __________ · walls: __________ · __ min toward quota" },
+  weekly: { name:"Weekly review", steps:[
+    ["Outage test","One number: % productivity surviving a week-long Anthropic outage. Trend must rise.",5],
+    ["Quota check","AI-free hours vs 20% target. Short → schedule the next AI-free block now.",5],
+    ["Anki hygiene","Reviews painful? Cap 20/day, bulk-suspend guilt-free, prune bad cards.",5]],
+    check:["Outage % written in journal weekly block","AI-free tally reconciled","Anki queue left healthy"],
+    j:"WEEK OF dd/mm — outage __% (prev __%) · AI-free __h/__h · priority next week: __________" },
+};
+let mode=null, si=0, left=0, total=0, tick=null, paused=false;
+const $=id=>document.getElementById(id);
+function fmt(s){ return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+function beep(n=2){ try{ const a=new (window.AudioContext||window.webkitAudioContext)();
+  for(let i=0;i<n;i++){ const o=a.createOscillator(), g=a.createGain();
+    o.connect(g); g.connect(a.destination); o.frequency.value=880;
+    const t=a.currentTime+i*0.35; g.gain.setValueAtTime(0.001,t);
+    g.gain.exponentialRampToValueAtTime(0.2,t+0.05); g.gain.exponentialRampToValueAtTime(0.001,t+0.3);
+    o.start(t); o.stop(t+0.32);} }catch(e){} }
+function start(m){ mode=MODES[m]; si=0; $("picker").classList.add("hide");
+  $("finish").classList.add("hide"); $("runner").classList.remove("hide"); runStep(); }
+function runStep(){ const st=mode.steps[si]; left=st[2]*60; total=left; paused=false;
+  $("pauseBtn").textContent="Pause";
+  $("stepname").textContent=`Step ${si+1}/${mode.steps.length} — ${st[0]}`;
+  $("stepdesc").textContent=st[1];
+  $("steplist").innerHTML=mode.steps.map((s,i)=>
+    `<li class="${i<si?"done":i===si?"now":""}">${s[0]} (${s[2]}m)</li>`).join("");
+  clearInterval(tick); tick=setInterval(()=>{ if(paused) return;
+    left--; render(); if(left<=0){ beep(2); nextStep(false); } },1000); render(); }
+function render(){ $("clock").textContent=fmt(Math.max(0,left));
+  $("stepbar").style.width=(100*(1-left/total))+"%"; }
+function togglePause(){ paused=!paused; $("pauseBtn").textContent=paused?"Resume":"Pause"; }
+function nextStep(manual){ si++; if(si>=mode.steps.length){ finish(); } else { runStep(); } }
+function abandon(){ clearInterval(tick); $("runner").classList.add("hide");
+  $("picker").classList.remove("hide"); }
+function finish(){ clearInterval(tick); beep(3); $("runner").classList.add("hide");
+  $("finish").classList.remove("hide");
+  $("endcheck").innerHTML=mode.check.map((c,i)=>
+    `<label><input type="checkbox"> ${c}</label>`).join("");
+  $("jline").value=mode.j; }
+function complete(){ const today=new Date().toDateString();
+  const s=JSON.parse(localStorage.getItem("cockpit")||"{}");
+  if(s.last!==today){ const y=new Date(Date.now()-864e5).toDateString();
+    s.streak=(s.last===y?(s.streak||0):0)+1; s.last=today; }
+  localStorage.setItem("cockpit",JSON.stringify(s)); loadStreak();
+  $("finish").classList.add("hide"); $("picker").classList.remove("hide"); }
+function loadStreak(){ const s=JSON.parse(localStorage.getItem("cockpit")||"{}");
+  $("streak").textContent=s.streak||0; $("last").textContent=s.last?s.last.slice(0,10):"never";
+  if(s.last){ const y=new Date(Date.now()-864e5).toDateString();
+    if(s.last!==new Date().toDateString() && s.last!==y){ $("streak").textContent="0 (lapsed — one dojo restarts it)"; } } }
+loadStreak();
+</script>
+</body>
+</html>

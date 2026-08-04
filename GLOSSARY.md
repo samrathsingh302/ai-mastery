@@ -37,3 +37,12 @@
 - **Tokenisation** — converting text into tokens (byte-pair encoding: common chunks get their own ID). → [01 A1](modules/01-video-canon/TEACH.md)
 - **Training** — the slow phase where parameters get tuned on data. → [01 A0](modules/01-video-canon/TEACH.md)
 - **Vibe coding** — accepting AI-written code without really reading it; safe in proportion to your ability to verify. → [01 Part B](modules/01-video-canon/TEACH.md)
+
+## Module 02 — the tutor setup
+
+- **Active recall** — answering from memory instead of re-reading; the best-evidenced study technique; what the contract's quizzes/explain-backs force. → [02 Piece 1](modules/02-tutor-setup/TEACH.md)
+- **Dojo** — the daily 20-minute planted-bug hunt run with the root-cause method; levels L0–L4. → [02 dojo.md](modules/02-tutor-setup/dojo.md)
+- **FSRS** — Anki's built-in modern scheduler; learns your forgetting curve and sets each card's next review. → [02 Piece 2](modules/02-tutor-setup/TEACH.md)
+- **Illusion of knowing** — feeling you could do what you only watched being done; the failure the tutor contract exists to block. → [02 Piece 1](modules/02-tutor-setup/TEACH.md)
+- **Spaced repetition** — reviewing just before you'd forget, at stretching intervals ("water the plant the day the soil dries"). → [02 Piece 2](modules/02-tutor-setup/TEACH.md)
+- **Tutor contract** — the 10-rule paste block that makes Claude a tutor, not a solver. → [02 tutor-contract.md](modules/02-tutor-setup/tutor-contract.md)

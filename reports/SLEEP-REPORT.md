@@ -20,3 +20,11 @@ Fireship #2 is 5:47 not 16m, Ebbelaar is 19:29 not ~1h, and the Tech With Tim ti
 accidentally right. Ships: explain-back + rebuild-from-memory + misconception-hunt exercises with a
 tested hashed-answer check.py, the barbell-audit-v0 project (your baseline outage score), a
 pipeline-explorer + 12-question escalating quiz HTML, 30 Anki cards, 30 glossary terms.
+
+## Iteration 3 — step 2: the tutor setup, operational (04/08/2026, ~02:05)
+The machine exists: START-HERE.md (zero-decision daily loop) + journal.md at repo root, contract
+card with 8 paste-ready tutor moves, dojo protocol (L0–L4 — L0 needs no Python so the habit starts
+TODAY), study-cockpit.html (timed Dojo/Study/AI-free/Weekly modes + streak counter), /study-session
+skill drafted (installing it = your call, ledger 107). Surprise: **Anki was already installed** on
+this machine — ledger 105 narrowed to "open it + optional sync + first import". Toolchain verified
+9/9 green (Python 3.14.5, git 2.54, VS Code 1.129). FSRS numbers pre-decided: 0.90 · 10 new/day.
