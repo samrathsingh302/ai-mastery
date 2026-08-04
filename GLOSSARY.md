@@ -80,3 +80,17 @@
 - **shutil** — the move/copy/zip toolbox (`copy2`, `move`, `make_archive`). → [04 mission 2](modules/04-automate-boring-stuff/TEACH.md)
 - **subprocess** — your script running another program and reading its output; args as a LIST, never a glued string. → [04 mission 5](modules/04-automate-boring-stuff/TEACH.md)
 - **Task Scheduler** — Windows' cron: a trigger + an action + a working directory; how your Claude auto-update task runs. → [04 mission 5](modules/04-automate-boring-stuff/TEACH.md)
+
+## Module 05 — git properly
+
+- **Branch** — a movable sticky note on one commit; creating one copies nothing. → [05 five sentences](modules/05-git-properly/TEACH.md)
+- **Commit** — a full snapshot + parent pointer(s) + message; never a diff. → [05 five sentences](modules/05-git-properly/TEACH.md)
+- **Fast-forward** — a merge with nothing to merge: the sticky note just slides forward; no merge commit. → [05 branching](modules/05-git-properly/TEACH.md)
+- **fetch vs pull** — update your copy of the remote's graph vs fetch-and-merge into your branch. → [05 drills](modules/05-git-properly/drills.md)
+- **HEAD** — where you're standing; committing moves the note you stand on. → [05 five sentences](modules/05-git-properly/TEACH.md)
+- **Merge commit** — a snapshot with TWO parents, tying two histories together. → [05 branching](modules/05-git-properly/TEACH.md)
+- **Rebase** — replaying commits as new snapshots on another tip: straight line, new IDs, originals abandoned; never on shared commits. → [05 branching](modules/05-git-properly/TEACH.md)
+- **Reflog** — the ~90-day journal of everywhere HEAD has been; the "I'm lost" safety net. → [05 undo toolbox](modules/05-git-properly/TEACH.md)
+- **Remote / origin** — another copy of the graph (your GitHub) with its own sticky notes. → [05 five sentences](modules/05-git-properly/TEACH.md)
+- **Revert** — the shared-safe undo: an anti-commit that cancels changes without rewriting history. → [05 undo toolbox](modules/05-git-properly/TEACH.md)
+- **Staging area / index** — the loading dock: what the next snapshot will contain. → [05 three places](modules/05-git-properly/TEACH.md)

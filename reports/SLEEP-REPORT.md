@@ -48,3 +48,13 @@ Scheduler demystified via your own Claude-CLI-AutoUpdate task. Four safety laws 
 real files (check.py builds temp trees; self-verified 5/5). Project: vault-janitor, a read-only
 report on OneDrive dev that REUSES his tested exercise functions — composition as the lesson.
 Plus a live regex playground that translates patterns into plain words.
+
+## Iteration 6 — step 5: Git properly (04/08/2026, ~04:00)
+Git as five sentences (snapshots · graph · sticky-note branches · HEAD · remotes-as-copies),
+the undo toolbox with the shared-vs-local rule, and YOUR estate's git doctrine narrated — why
+dev/brain have no remotes, why their .git lives outside OneDrive, what session-close pushes and
+why. Best material of the iteration: last night's atlas bridge-worker incident (ledger 108, the
+auto-`pull --rebase` that flattened a merge commit) is now the module's merge-vs-rebase case
+study — your own estate teaching you git. The history-gym exercise grades the GRAPH the learner
+builds (I built the reference playground myself: 6/6, then deleted it so it stays yours to do);
+the visualiser steps through merge vs rebase vs revert/reset on an SVG DAG.

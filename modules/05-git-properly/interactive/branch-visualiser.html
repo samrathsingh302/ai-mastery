@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Branch visualiser — sticky notes on a graph (module 05)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --chip:#eef2ff;
+    --node:#8892b0; --nodehl:#2f6df6; --ghost:#c9cede; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --chip:#232a3d;
+      --node:#5b6478; --nodehl:#6d9bff; --ghost:#3a4157; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:760px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  select{padding:.5rem; border-radius:.5rem; border:1px solid var(--line);
+    background:var(--card); color:var(--ink); font-size:.95rem; margin-bottom:.8rem; max-width:100%}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  .cmd{font:14px ui-monospace,Consolas,monospace; background:var(--chip);
+    border-radius:.4rem; padding:.35rem .6rem; display:inline-block; min-height:1.6em}
+  svg{width:100%; height:auto; display:block}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.6rem; min-height:3em}
+  .controls{display:flex; gap:.5rem; margin-top:.6rem; align-items:center}
+  button{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Branch visualiser</h1>
+  <p class="sub">Circles = commits (snapshots). Arrows point at PARENTS. Coloured pills =
+  sticky notes (branches); the ⭐ pill is HEAD. Predict the next picture before stepping.</p>
+  <select id="pick" onchange="load()"></select>
+  <div class="card">
+    <div class="cmd" id="cmd">—</div>
+    <svg id="svg" viewBox="0 0 700 240"></svg>
+    <div class="why" id="why"></div>
+    <div class="controls">
+      <button class="ghost" onclick="reset()">⟲ Restart</button>
+      <button id="stepBtn" onclick="step()">▶ Step</button>
+      <span class="step" id="stepn"></span>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+/* node: [id, x, row(0=main lane,1=branch lane), parents[], ghost?] · label: [name, nodeId, isHead] */
+const S = [
+ {name:"1 · Commits are a chain", steps:[
+  {c:"git init && git commit -m start", n:[["A",80,0,[]]], l:[["main","A",1]],
+   w:"One snapshot, A. The sticky note `main` sits on it; HEAD (⭐) is standing on main."},
+  {c:'git commit -m "second"', n:[["A",80,0,[]],["B",200,0,["A"]]], l:[["main","B",1]],
+   w:"New snapshot B points back at its parent A. The `main` note MOVED to B — commits move the note you're standing on."},
+  {c:'git commit -m "third"', n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]]], l:[["main","C",1]],
+   w:"Same again. History is the chain of parent arrows; branches are just labels riding the tip."}]},
+ {name:"2 · Branch + diverge", steps:[
+  {c:"(start: three commits)", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]]], l:[["main","C",1]],
+   w:"The setup from scenario 1."},
+  {c:"git branch feature", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]]], l:[["main","C",1],["feature","C",0]],
+   w:"A NEW sticky note on the SAME commit. Nothing was copied. Two labels, one snapshot."},
+  {c:"git switch feature && git commit", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"]]],
+   l:[["main","C",0],["feature","D",1]],
+   w:"HEAD stood on feature, so the commit moved FEATURE's note to new snapshot D. main stayed on C."},
+  {c:"git switch main && git commit", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"]],["E",440,0,["C"]]],
+   l:[["main","E",1],["feature","D",0]],
+   w:"Now main moved too: TWO arrows leave C. This is divergence — the fork in history the gym's step 4 builds."}]},
+ {name:"3 · Merge (two parents)", steps:[
+  {c:"(start: diverged, on main)", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"]],["E",440,0,["C"]]],
+   l:[["main","E",1],["feature","D",0]],
+   w:"Scenario 2's ending."},
+  {c:"git merge feature", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"]],["E",440,0,["C"]],["M",560,0,["E","D"]]],
+   l:[["main","M",1],["feature","D",0]],
+   w:"The merge commit M has TWO parent arrows (E and D) — it ties the lines together. History shows what truly happened. feature's note didn't move; it can be deleted without losing D."}]},
+ {name:"4 · Rebase (replayed copies)", steps:[
+  {c:"(same diverged start, on feature)", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"]],["E",440,0,["C"]]],
+   l:[["main","E",0],["feature","D",1]],
+   w:"Same fork — but this time we'll rebase instead of merge."},
+  {c:"git rebase main", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"],1],["E",440,0,["C"]],["D'",560,0,["E"]]],
+   l:[["main","E",0],["feature","D'",1]],
+   w:"D was REPLAYED on top of E as a NEW snapshot D′ (new ID). The line is straight — and old D (faded) is abandoned, findable only via reflog. This exact move, run automatically every 5 minutes, is what flattened the atlas merge commit (ledger 108)."},
+  {c:"git switch main && git merge feature", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["D",440,1,["C"],1],["E",440,0,["C"]],["D'",560,0,["E"]]],
+   l:[["main","D'",1],["feature","D'",0]],
+   w:"Now the merge is a FAST-FORWARD: main's note just slides to D′. No merge commit is born — tidy line, but the fork's story is gone. Merge keeps truth; rebase keeps tidiness. Choose knowingly."}]},
+ {name:"5 · Revert vs reset", steps:[
+  {c:"(start: A—B—C, C is bad)", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]]], l:[["main","C",1]],
+   w:"C is a mistake. Two undo philosophies:"},
+  {c:"git revert C", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"]],["C̄",440,0,["C"]]], l:[["main","C̄",1]],
+   w:"Revert ADDS an anti-commit C̄ that cancels C's changes. History keeps both — nothing rewritten — safe even if C was pushed. (The gym's step 7.)"},
+  {c:"(instead) git reset --hard B", n:[["A",80,0,[]],["B",200,0,["A"]],["C",320,0,["B"],1]], l:[["main","B",1]],
+   w:"Reset MOVES the note back to B; C (faded) becomes unreachable — history rewritten. Fine while private; forbidden once shared. reflog still knows C for ~90 days."}]},
+];
+let ti=0, si=0;
+const $=id=>document.getElementById(id);
+const pick=$("pick");
+S.forEach((s,i)=>{ const o=document.createElement("option"); o.value=i; o.textContent=s.name; pick.appendChild(o); });
+function load(){ ti=+pick.value; si=0; render(); }
+function reset(){ si=0; render(); }
+function step(){ if(si<S[ti].steps.length-1){ si++; render(); } }
+function render(){
+  const st=S[ti].steps[si], Y=[150,70];
+  const pos=Object.fromEntries(st.n.map(n=>[n[0],[n[1],Y[n[2]]]]));
+  let g="";
+  for(const n of st.n) for(const p of n[3]){
+    const [x1,y1]=pos[n[0]], [x2,y2]=pos[p];
+    g+=`<line x1="${x1-18}" y1="${y1+(y2-y1)*0.15}" x2="${x2+22}" y2="${y2-(y2-y1)*0.15}"
+         stroke="var(--${n[4]?'ghost':'node'})" stroke-width="2.2" marker-end="url(#arr)"/>`;
+  }
+  for(const n of st.n){
+    const [x,y]=pos[n[0]];
+    g+=`<circle cx="${x}" cy="${y}" r="17" fill="var(--card)"
+         stroke="var(--${n[4]?'ghost':'node'})" stroke-width="2.5"/>
+        <text x="${x}" y="${y+5}" text-anchor="middle" font-size="13" font-weight="600"
+         fill="var(--${n[4]?'ghost':'ink'})" font-family="ui-monospace,Consolas">${n[0]}</text>`;
+  }
+  const at={};
+  for(const [name,node,head] of st.l){
+    const [x,y]=pos[node]; const k=node+""; at[k]=(at[k]||0)+1;
+    const yy = y - 32 - (at[k]-1)*24;
+    const label=(head?"⭐ ":"")+name, w=label.length*7.4+14;
+    g+=`<rect x="${x-w/2}" y="${yy-12}" rx="8" width="${w}" height="20"
+         fill="${head?'var(--nodehl)':'var(--chip)'}" opacity="0.95"/>
+        <text x="${x}" y="${yy+2}" text-anchor="middle" font-size="11.5" font-weight="600"
+         fill="${head?'var(--accent-ink)':'var(--ink)'}">${label}</text>`;
+  }
+  $("svg").innerHTML=`<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5"
+    markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z"
+    fill="var(--node)"/></marker></defs>`+g;
+  $("cmd").textContent=st.c; $("why").textContent=st.w;
+  $("stepn").textContent=`step ${si+1} / ${S[ti].steps.length}`;
+  $("stepBtn").disabled = si>=S[ti].steps.length-1;
+}
+load();
+</script>
+</body>
+</html>
