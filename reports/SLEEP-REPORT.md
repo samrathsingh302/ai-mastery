@@ -58,3 +58,12 @@ auto-`pull --rebase` that flattened a merge commit) is now the module's merge-vs
 study — your own estate teaching you git. The history-gym exercise grades the GRAPH the learner
 builds (I built the reference playground myself: 6/6, then deleted it so it stays yours to do);
 the visualiser steps through merge vs rebase vs revert/reset on an SVG DAG.
+
+## Iteration 7 — step 6: repo archaeology ×2 (04/08/2026, ~04:40)
+A researcher surveyed both flagships read-only (file:line evidence), and the module turns that
+into guided digs: the 6-pass method, psoc-portal's add-task slice (proxy.ts gate → server action
+re-checking auth → supabase insert → migration 0001 → revalidate; 45 migrations, ~170 test files,
+zero TODOs), and monk-mode's block slice (verb dispatch → AtomicHosts → HMAC-sealed config →
+10-second fail-closed enforcement tick → watchdog). The ConfigIntegrity walkthrough (HMAC-SHA256
++ PBKDF2 600k, DPAPI key, tamper-evidence-over-confidentiality) doubles as module 14's crypto
+hook. Interactive: both REAL slices as predict-then-step hop traces. Repos untouched.

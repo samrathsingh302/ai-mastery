@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trace the request — your two flagships, hop by hop (module 06)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --chip:#eef2ff; --hl:#fff3c4; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --chip:#232a3d; --hl:#4a4420; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:780px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .tabs{display:flex; gap:.5rem; margin-bottom:.8rem}
+  .tabs button{flex:1; padding:.55rem; border:1px solid var(--line); background:var(--card);
+    color:var(--ink); border-radius:.6rem; font-size:.95rem; cursor:pointer}
+  .tabs button.on{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  .scenario{font-weight:600; margin-bottom:.6rem}
+  .hops{list-style:none; margin:0; padding:0}
+  .hops li{display:flex; gap:.7rem; padding:.5rem .6rem; border-radius:.5rem; margin:.15rem 0;
+    opacity:.35; transition:opacity .2s, background .2s}
+  .hops li.seen{opacity:.75}
+  .hops li.now{opacity:1; background:var(--hl)}
+  .n{flex:0 0 1.6rem; height:1.6rem; border-radius:50%; background:var(--chip); display:flex;
+    align-items:center; justify-content:center; font-size:.85rem; font-weight:700}
+  .hops li.now .n{background:var(--accent); color:var(--accent-ink)}
+  .layer{font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em}
+  .file{font:12.5px ui-monospace,Consolas,monospace; word-break:break-all}
+  .what{font-size:.92rem}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.6rem; min-height:3.4em}
+  .controls{display:flex; gap:.5rem; margin-top:.7rem; align-items:center}
+  button.b{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button.b:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Trace the request</h1>
+  <p class="sub">Your two real vertical slices (surveyed 04/08/2026). Before each step,
+  PREDICT the next hop aloud — file and job. Then verify in the actual repo: every path is
+  real.</p>
+  <div class="tabs">
+    <button id="t0" class="on" onclick="pick(0)">psoc-portal · add a task</button>
+    <button id="t1" onclick="pick(1)">monk-mode · start a block</button>
+  </div>
+  <div class="card">
+    <div class="scenario" id="scen"></div>
+    <ul class="hops" id="hops"></ul>
+    <div class="why" id="why"></div>
+    <div class="controls">
+      <button class="b ghost" onclick="reset()">⟲ Restart</button>
+      <button class="b" id="stepBtn" onclick="step()">▶ Next hop</button>
+      <span class="step" id="stepn"></span>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+const T = [
+ {scen:"A committee member fills the add-task form on /tasks and presses submit.",
+  hops:[
+   ["GATE","app/src/proxy.ts:5","Every request hits the 31-line middleware auth gate first",
+    "Nothing in the portal renders for a stranger — proxy() checks the session before ANY route runs. Front door before floor plan: read this file first in any dig."],
+   ["PAGE","app/src/app/(portal)/tasks/page.tsx:31","Server component fetches tasks, assignees, profiles",
+    "This React runs ON THE SERVER — the browser receives finished HTML plus the interactive islands. Data access happens where the secrets are."],
+   ["FORM","(portal)/tasks/add-task-form.tsx:32","Client component collects input; submits via useActionState",
+    "The browser-side half: clicks, typing, optimistic UI. It owns no truth — it just asks the server nicely."],
+   ["ACTION","(portal)/tasks/actions.ts:101 addTask()","Server action RE-CHECKS auth, parses + validates the form",
+    "The trust boundary. The page already checked auth — but a crafted request can call this action directly, so it checks AGAIN. Servers never trust the browser."],
+   ["INSERT","actions.ts:48 insertTaskWithAssignees()","supabase.from(\"tasks\").insert(...) writes the rows",
+    "Business logic hands the data to Postgres via Supabase. Note what you DON'T see: hand-written SQL strings — the client builds them, typed."],
+   ["TABLE","supabase/migrations/0001_initial_schema.sql:74","public.tasks — where the table was born",
+    "The migration files are the schema's git history: 45 numbered SQL steps from empty DB to today. Nothing about the data model is folklore."],
+   ["REFRESH","actions.ts:122 revalidateTasks()","Cache invalidated; redirect(\"/tasks\")",
+    "Next.js caches rendered pages; revalidate says 'that page is now stale'. Forgetting this line is the classic 'it saved but the list didn't change' bug."],
+   ["RENDER","(portal)/tasks/task-list.tsx","The list re-reads fresh rows — the member sees their task",
+    "Full circle: gate → page → form → action → DB → cache → pixels. Seven hops you can now name from memory — that's what 'knowing the architecture' means."]]},
+ {scen:"You run: monkmode block --sites x.com --for 2h",
+  hops:[
+   ["DISPATCH","MonkMode/Program.vb:47 Main() → :64","The verb table routes \"block\" to its handler",
+    "A CLI is a dispatch table over verbs — the same shape as a web router, without HTTP. Compare hop 1 across the two tabs."],
+   ["PARSE","Program.vb:156 DoBlock()","Setup gate, flag parsing, preset expansion (social/video lists)",
+    "Input handling before consequences — same discipline as psoc's form validation, different world."],
+   ["HOSTS","Program.vb:321 → AtomicHosts.vb","The hosts-file block is written ATOMICALLY",
+    "Write the whole new file to a temp path, then swap. A crash mid-write leaves the old intact — no half-written system file, ever. 119 lines; read them all."],
+   ["SEAL","Program.vb:342","Config encrypted + HMAC-stamped; one-time partner code minted",
+    "The crown jewel moment: every protected field (end time, flags, partner hash) is serialised in fixed order and stamped with HMAC-SHA256. The partner code itself is stored ONLY as a PBKDF2 hash — 600k iterations, random salt: verifiable, never recoverable."],
+   ["ENFORCE","MonkMode_srv/Service1.vb:716 timer_Elapsed","Every 10s the service re-verifies and re-applies",
+    "The enforcer never trusts its own disk state: MAC-verify FIRST, then ClassifyHeartbeat (:1338) decides Hold vs Lift. Any verification failure → the block stays fully active. Fail-closed."],
+   ["GUARD","MM_guard/Guardian.vb · MM_notify","Killed service? Restarted. You? Toasted.",
+    "A process can't resurrect itself, so a second SYSTEM process watches the first. Six hops: CLI → parse → hosts → seal → enforce → guard. Now say the whole slice out loud, tab closed."]]}
+];
+let ti=0, si=-1;
+const $=id=>document.getElementById(id);
+function pick(i){ ti=i; si=-1; $("t0").classList.toggle("on",i===0);
+  $("t1").classList.toggle("on",i===1); render(); }
+function reset(){ si=-1; render(); }
+function step(){ if(si<T[ti].hops.length-1){ si++; render(); } }
+function render(){
+  const t=T[ti];
+  $("scen").textContent=t.scen;
+  $("hops").innerHTML=t.hops.map((h,i)=>
+    `<li class="${i<si?"seen":i===si?"now":""}"><span class="n">${i+1}</span>
+      <span><span class="layer">${h[0]}</span><br><span class="file">${h[1]}</span><br>
+      <span class="what">${h[2]}</span></span></li>`).join("");
+  $("why").textContent = si>=0 ? t.hops[si][3]
+    : "Predict hop 1 before stepping: what meets the request/command first?";
+  $("stepn").textContent = si>=0 ? `hop ${si+1} / ${t.hops.length}` : `${t.hops.length} hops`;
+  $("stepBtn").disabled = si>=t.hops.length-1;
+}
+render();
+</script>
+</body>
+</html>

@@ -94,3 +94,17 @@
 - **Remote / origin** — another copy of the graph (your GitHub) with its own sticky notes. → [05 five sentences](modules/05-git-properly/TEACH.md)
 - **Revert** — the shared-safe undo: an anti-commit that cancels changes without rewriting history. → [05 undo toolbox](modules/05-git-properly/TEACH.md)
 - **Staging area / index** — the loading dock: what the next snapshot will contain. → [05 three places](modules/05-git-properly/TEACH.md)
+
+## Module 06 — repo archaeology
+
+- **Atomic write** — write a temp file completely, then swap it in; no half-written file can exist (AtomicHosts). → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+- **Entry point** — where execution starts: mains, route roots, service starts, scheduled tasks. → [06 method](modules/06-repo-archaeology/TEACH.md)
+- **Fail-closed** — on any doubt, choose the SAFE state (monk-mode: keep blocking). → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+- **HMAC (preview)** — a keyed signature over data: no key, no valid stamp for modified content; full treatment in module 14. → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+- **Middleware** — code every request passes before routes (psoc's proxy.ts auth gate). → [06 dig 1](modules/06-repo-archaeology/TEACH.md)
+- **Migration** — a numbered SQL file changing the DB's shape; the sequence is the schema's version history. → [06 dig 1](modules/06-repo-archaeology/TEACH.md)
+- **PBKDF2 (preview)** — a deliberately slow salted one-way hash; verifiable, never recoverable (monk-mode's partner code). → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+- **Server action / server component** — form-called function running server-side (re-checks auth — browsers are never trusted) / React rendered on the server. → [06 dig 1](modules/06-repo-archaeology/TEACH.md)
+- **Vertical slice** — one real user action traced through every layer, file:line per hop; the highest-value dig pass. → [06 method](modules/06-repo-archaeology/TEACH.md)
+- **Watchdog** — a separate process that restarts a killed one (a process can't resurrect itself). → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
+- **Windows service** — a background program run by the OS from boot, no window, as a system account. → [06 dig 2](modules/06-repo-archaeology/TEACH.md)
