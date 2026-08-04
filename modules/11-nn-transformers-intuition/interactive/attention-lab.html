@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attention lab — turn the dials, watch the maths (module 11)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --chip:#eef2ff; --bar:#2f6df6; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --chip:#232a3d; --bar:#6d9bff; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:800px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .tabs{display:flex; gap:.5rem; margin-bottom:.8rem}
+  .tabs button{flex:1; padding:.55rem; border:1px solid var(--line); background:var(--card);
+    color:var(--ink); border-radius:.6rem; font-size:.95rem; cursor:pointer}
+  .tabs button.on{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  label{font-size:.85rem; color:var(--muted)}
+  input[type=range]{width:100%}
+  table{width:100%; border-collapse:collapse; font:13px ui-monospace,Consolas,monospace; margin:.4rem 0}
+  td,th{padding:.3rem .45rem; border-bottom:1px solid var(--line); text-align:left}
+  th{color:var(--muted); font-size:.75rem; text-transform:uppercase}
+  .bar{height:14px; background:var(--bar); border-radius:3px; display:inline-block; vertical-align:middle}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.6rem}
+  .row{display:grid; grid-template-columns:1fr 1fr; gap:.8rem}
+  @media (max-width:640px){ .row{grid-template-columns:1fr} }
+  .big{font:15px ui-monospace,Consolas,monospace; font-weight:700}
+  .chk{display:flex; align-items:center; gap:.4rem; margin:.4rem 0; font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Attention lab</h1>
+  <p class="sub">The same arithmetic you did on paper — now with dials. Change something,
+  predict the effect, then look.</p>
+  <div class="tabs">
+    <button id="t0" class="on" onclick="tab(0)">Attention head</button>
+    <button id="t1" onclick="tab(1)">Temperature</button>
+  </div>
+
+  <div id="p0">
+    <div class="card">
+      <div class="row">
+        <div>
+          <label>Query token (whose turn it is to look around)</label>
+          <select id="qsel" onchange="draw()" style="width:100%;padding:.4rem;border-radius:.5rem;
+            border:1px solid var(--line);background:var(--bg);color:var(--ink)">
+            <option value="0">token 1 — Q [1, 0]</option>
+            <option value="1" selected>token 2 — Q [0, 1]</option>
+            <option value="2">token 3 — Q [1, 1]</option>
+          </select>
+          <div class="chk"><input type="checkbox" id="mask" onchange="draw()">
+            <label for="mask">causal mask (can't see the future)</label></div>
+          <div class="chk"><input type="checkbox" id="scale" checked onchange="draw()">
+            <label for="scale">divide by √d (scaling)</label></div>
+        </div>
+        <div>
+          <label>Token 3's key K₃ — drag to make it compete</label>
+          <div style="font:12px ui-monospace">K₃ = [<span id="k3a">1.0</span>, <span id="k3b">1.0</span>]</div>
+          <input type="range" id="k3a_r" min="-3" max="3" step="0.25" value="1" oninput="draw()">
+          <input type="range" id="k3b_r" min="-3" max="3" step="0.25" value="1" oninput="draw()">
+        </div>
+      </div>
+      <table id="tbl"></table>
+      <div class="big" id="out"></div>
+      <div class="why" id="why0"></div>
+    </div>
+  </div>
+
+  <div id="p1" style="display:none">
+    <div class="card">
+      <label>Temperature: <b id="tval">1.00</b></label>
+      <input type="range" id="temp" min="0.05" max="3" step="0.05" value="1" oninput="draw()">
+      <table id="ttbl"></table>
+      <div class="why" id="why1"></div>
+    </div>
+  </div>
+</div>
+<script>
+"use strict";
+const Q=[[1,0],[0,1],[1,1]], K=[[1,0],[0,1],[1,1]], V=[[2,0],[0,4],[1,1]];
+const NAMES=["token 1","token 2","token 3"];
+const LOGITS=[["the",2.0],["a",1.0],["banana",0.1]];
+const $=id=>document.getElementById(id);
+function softmax(xs){ const m=Math.max(...xs), e=xs.map(x=>Math.exp(x-m)), s=e.reduce((a,b)=>a+b,0);
+  return e.map(x=>x/s); }
+function tab(i){ $("p0").style.display=i?"none":"block"; $("p1").style.display=i?"block":"none";
+  $("t0").classList.toggle("on",!i); $("t1").classList.toggle("on",!!i); draw(); }
+function draw(){
+  // --- attention ---
+  const qi=+$("qsel").value, masked=$("mask").checked, scaled=$("scale").checked;
+  const k3=[+$("k3a_r").value, +$("k3b_r").value];
+  $("k3a").textContent=k3[0].toFixed(2); $("k3b").textContent=k3[1].toFixed(2);
+  const Ks=[K[0],K[1],k3];
+  const div = scaled ? Math.sqrt(2) : 1;
+  let idx=[0,1,2].filter(i=> !masked || i<=qi);
+  const scores=idx.map(i=> (Q[qi][0]*Ks[i][0]+Q[qi][1]*Ks[i][1])/div);
+  const w=softmax(scores);
+  const out=[0,1].map(j=> idx.reduce((acc,i,n)=> acc + w[n]*V[i][j], 0));
+  $("tbl").innerHTML="<tr><th>attends to</th><th>score</th><th>weight</th><th></th><th>V</th></tr>"+
+    idx.map((i,n)=>`<tr><td>${NAMES[i]}</td><td>${scores[n].toFixed(4)}</td>
+      <td>${w[n].toFixed(4)}</td><td style="width:40%"><span class="bar"
+      style="width:${(w[n]*100).toFixed(1)}%"></span></td><td>[${V[i]}]</td></tr>`).join("")+
+    (masked && idx.length<3 ? `<tr><td colspan="5" style="color:var(--muted)">token 3 masked — future tokens contribute nothing</td></tr>`:"");
+  $("out").textContent=`output vector = [${out[0].toFixed(4)}, ${out[1].toFixed(4)}]`;
+  let note;
+  if(!scaled) note="Scaling OFF: with d=2 the difference is small — but imagine d=12,288, where raw dot products get huge and softmax collapses to a hard max (one weight ≈1, gradients ≈0). That's why √d exists.";
+  else if(masked && qi<2) note="Masked: the query can only average over itself and earlier tokens. This is what makes next-token training honest — no peeking at the answer.";
+  else if(Math.abs(k3[0]-1)>0.01||Math.abs(k3[1]-1)>0.01) note="You changed what token 3 OFFERS (its key). Attention weights follow the match between this query and each key — meaning is not fixed, it's negotiated per query.";
+  else note="Default setup — same numbers as ex02 Part A. Try: mask on (see what token 2 loses), or drag K₃ so token 3 wins the query's attention.";
+  $("why0").textContent=note;
+
+  // --- temperature ---
+  const T=+$("temp").value; $("tval").textContent=T.toFixed(2);
+  const p=softmax(LOGITS.map(l=>l[1]/T));
+  $("ttbl").innerHTML="<tr><th>token</th><th>logit</th><th>probability</th><th></th></tr>"+
+    LOGITS.map((l,i)=>`<tr><td>"${l[0]}"</td><td>${l[1].toFixed(1)}</td>
+      <td>${p[i].toFixed(4)}</td><td style="width:45%"><span class="bar"
+      style="width:${(p[i]*100).toFixed(1)}%"></span></td></tr>`).join("");
+  $("why1").textContent = T<0.4
+    ? "Near-greedy: the top token takes almost everything. Repeatable — and prone to loops and blandness in long generations."
+    : T>1.6 ? "Flattened: 'banana' is now a live possibility. More surprising, less coherent — and note it did NOT make the model more knowledgeable, only more adventurous."
+    : "Around T=1 you're sampling the model's actual distribution. Evals (module 09) want this low so runs are comparable; brainstorming wants it high.";
+}
+draw();
+</script>
+</body>
+</html>

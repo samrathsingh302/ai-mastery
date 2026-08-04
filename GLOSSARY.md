@@ -146,3 +146,20 @@
 - **Lethal trifecta** — private data + untrusted content + external comms; all three = one poisoned document can exfiltrate (Willison, 16/06/2025). → [10 §2](modules/10-ai-security-taster/TEACH.md)
 - **OWASP LLM Top 10** — the shared vocabulary for LLM app risks (2025 list: LLM01 injection … LLM10 unbounded consumption). → [10 §2](modules/10-ai-security-taster/TEACH.md)
 - **Prompt injection** — text read as data gets obeyed as instructions; the mixing is the vulnerability, filters are mitigation. → [10 §1](modules/10-ai-security-taster/TEACH.md)
+
+## Module 11 — neural nets + transformers
+
+- **Activation function** — the squash (ReLU: max(0,x); sigmoid: 0…1) that stops stacked layers collapsing into one straight line. → [11 A1](modules/11-nn-transformers-intuition/TEACH.md)
+- **Attention (Q/K/V)** — every token scores every other (Q·K/√d), softmaxes into weights, and takes a weighted average of their values. → [11 B2](modules/11-nn-transformers-intuition/TEACH.md)
+- **Backpropagation** — efficient blame-assignment backwards through layers (repeated chain rule); computes the gradients descent then uses. → [11 A4](modules/11-nn-transformers-intuition/TEACH.md)
+- **Causal masking** — future tokens scored −∞ so a generating model can't peek at the answer. → [11 B2](modules/11-nn-transformers-intuition/TEACH.md)
+- **Embedding** — a token as a vector in a learned meaning space; position information is added on top. → [11 B1](modules/11-nn-transformers-intuition/TEACH.md)
+- **Gradient descent / learning rate** — step downhill on the loss surface / how big each step is. → [11 A3](modules/11-nn-transformers-intuition/TEACH.md)
+- **Logits** — raw scores before softmax turns them into probabilities. → [11 ex03](modules/11-nn-transformers-intuition/exercises/ex03-temperature.md)
+- **MLP layers** — the plain feed-forward stacks between attention blocks; where facts appear to be stored (~2/3 of parameters). → [11 B3](modules/11-nn-transformers-intuition/TEACH.md)
+- **Multi-head attention** — many attention operations in parallel with different projections, concatenated and mixed. → [11 B2](modules/11-nn-transformers-intuition/TEACH.md)
+- **Neuron** — squash(weighted sum + bias): a weighted vote with a personal bias. → [11 A1](modules/11-nn-transformers-intuition/TEACH.md)
+- **Softmax** — turns a list of scores into probabilities summing to 1, exaggerating the leader. → [11 B2](modules/11-nn-transformers-intuition/TEACH.md)
+- **Superposition** — more concepts than neurons: concepts as overlapping directions, which is why single neurons rarely mean one clean thing. → [11 B3](modules/11-nn-transformers-intuition/TEACH.md)
+- **Temperature** — divides logits before softmax: low sharpens/repeats, high flattens/surprises; changes wandering, not knowledge. → [11 B4](modules/11-nn-transformers-intuition/TEACH.md)
+- **Transformer** — the architecture: embeddings → [attention → MLP] ×N → unembedding → softmax → sample. → [11 B4](modules/11-nn-transformers-intuition/TEACH.md)

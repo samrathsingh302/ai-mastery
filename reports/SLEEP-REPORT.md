@@ -110,3 +110,13 @@ no attacker required). The trifecta lab lets you toggle legs and loads your five
 shapes; the estate session + Gmail is the one that lights up red — that's the finding worth
 sleeping on. Project = a proper threat model of your own stack (read-only), which is the
 CV-worthy artefact the plan's C2 tier wants. Cyber interleave modules 13–16 hook here, free-first.
+
+## Iteration 12 — step 11: neural nets + transformers intuition (04/08/2026, ~12:25)
+The mechanism under module 01, taught so you can COMPUTE it: three by-hand exercises (a forward
+pass, one attention head — masked and unmasked, and the temperature dial), every expected answer
+computed numerically before writing, checker tested 12/12. Plan correction: the 3Blue1Brown
+series **ends at chapter 7, not 8** — ch.5–7 are the transformer ones (Apr–Aug 2024); I've put
+verified runtimes in the module and flagged the two I could only single-source. Two extra verified
+free interactives: bbycroft.net/llm (fly through a 3D GPT) and Transformer Explainer (runs a real
+GPT-2 in-browser). My own attention lab lets you drag token 3's key until it wins the query, and
+toggle masking/scaling to see why √d exists. Module 01's laws are now mechanical, not folklore.
