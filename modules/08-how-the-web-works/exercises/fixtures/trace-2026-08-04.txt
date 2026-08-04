@@ -1,0 +1,45 @@
+CAPTURED LIVE 04/08/2026 ~16:55 UTC — curl 8.19.0 + nslookup, this machine.
+(Re-run every command yourself; values like Age/X-Vercel-Id/dates WILL differ — that's data.)
+
+=== nslookup psoc-portal.vercel.app ===
+Name:    psoc-portal.vercel.app
+Addresses:  64.29.17.67
+            216.198.79.67
+
+=== curl.exe -sSI https://psoc-portal.vercel.app/ ===
+HTTP/1.1 308 Permanent Redirect
+Cache-Control: public, max-age=0, must-revalidate
+Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://*.supabase.in wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+Content-Type: text/plain
+Date: Tue, 04 Aug 2026 16:55:43 GMT
+Location: https://www.leedspunjabisociety.com/
+Permissions-Policy: camera=(), microphone=(), geolocation=(), browsing-topics=()
+Referrer-Policy: strict-origin-when-cross-origin
+Refresh: 0;url=https://www.leedspunjabisociety.com/
+Server: Vercel
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Vercel-Id: sfo1::ktn4s-1785862542917-c6a2340e70cf
+
+=== nslookup www.leedspunjabisociety.com ===
+Name:    www.leedspunjabisociety.com
+Addresses:  2606:4700:3034::ac43:b7da
+            2606:4700:3036::6815:12e1
+            172.67.183.218
+            104.21.18.225
+
+=== curl.exe -sSI https://www.leedspunjabisociety.com/ ===
+HTTP/1.1 200 OK
+Date: Tue, 04 Aug 2026 16:55:55 GMT
+Content-Type: text/html; charset=utf-8
+Connection: keep-alive
+Age: 6282
+Cache-Control: public, max-age=0, must-revalidate
+content-security-policy-report-only: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self' https://*.supabase.co https://*.supabase.in wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+Report-To: {"group":"cf-nel", ... "url":"https://a.nel.cloudflare.com/report/v4?..."}
+permissions-policy: camera=(), microphone=(), geolocation=(), browsing-topics=()
+referrer-policy: strict-origin-when-cross-origin
+
+=== curl.exe -sS -o NUL -w "status=%{http_code} redirect=%{redirect_url}" https://www.leedspunjabisociety.com/dashboard  (logged out) ===
+status=307 redirect=https://www.leedspunjabisociety.com/login time_total=0.169626s

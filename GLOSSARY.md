@@ -116,3 +116,16 @@
 - **Rolling window** — a statistic over the last N points (`rolling(4).max()`); flat rolling max = plateau. → [07 step 4](modules/07-data-taster-hevy/TEACH.md)
 - **Tidy data** — one row per observation (here: per set); questions become filters/groups. → [07 step 1](modules/07-data-taster-hevy/TEACH.md)
 - **Venv (virtual environment)** — a private Python + packages per project ("own toolbox"); delete the folder to undo. → [07 the venv](modules/07-data-taster-hevy/TEACH.md)
+
+## Module 08 — how the web works
+
+- **CDN / edge cache** — cache servers near users answering for the origin; the Age header is the tell. → [08 §8](modules/08-how-the-web-works/TEACH.md)
+- **Certificate** — the passport in TLS: proof you reached the real site, vouched by a trusted authority. → [08 §4](modules/08-how-the-web-works/TEACH.md)
+- **Cookie (session)** — the wristband the browser re-presents per request; HttpOnly/Secure/SameSite are its armour. → [08 §7](modules/08-how-the-web-works/TEACH.md)
+- **DNS** — the phone book: names → IP addresses. → [08 §2](modules/08-how-the-web-works/TEACH.md)
+- **HSTS** — the header committing browsers to HTTPS-only for max-age (2 years on his site). → [08 §4](modules/08-how-the-web-works/TEACH.md)
+- **HTTP status families** — 2xx worked · 3xx elsewhere · 4xx you erred · 5xx server erred; 307/308 keep the method. → [08 §5](modules/08-how-the-web-works/TEACH.md)
+- **IP address / port** — a machine's numeric address / a numbered door on it (443 = HTTPS). → [08 §2–3](modules/08-how-the-web-works/TEACH.md)
+- **JWT (preview)** — a signed token carrying identity in its own body; Tier 4 treats it properly. → [08 §7](modules/08-how-the-web-works/TEACH.md)
+- **TCP** — the reliable ordered pipe (a call, not a postcard) HTTP rides on. → [08 §3](modules/08-how-the-web-works/TEACH.md)
+- **TLS** — envelope + passport around the pipe: encryption + certificate. → [08 §4](modules/08-how-the-web-works/TEACH.md)

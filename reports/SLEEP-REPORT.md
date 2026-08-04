@@ -79,3 +79,13 @@ night. Project: four questions on the real 294 (top lifts, progression, plateaus
 consistency), each ending in one honest sentence + one training decision. Also: the /study-session
 skill draft has appeared in the session skill list (project-local discovery) — ledger 107 (global
 install) still yours.
+
+## Iteration 9 — step 8: how the web works, on YOUR wire (04/08/2026, ~10:45)
+Built from live captures against the real site — and the wire had news: psoc-portal.vercel.app
+now 308-redirects to **www.leedspunjabisociety.com**, which is served by **Cloudflare in front of
+Vercel** (Age: 6282 = an edge-cache hit; cf-nel telemetry header). The module-06 arc completes on
+the wire: /dashboard logged out answers 307→/login in 0.17s — proxy.ts observed from outside.
+Heads-up: `guides/PUBLIC-SITE-UPDATES.md:7` still names the old vercel.app URL — stale doc, the
+project asks you to fix-or-flag it (your repo, your call). Ships: the dated fixture, a 12-question
+hashed checker (tested 12/12), a narrated full-trace project, and a 9-hop page-load journey
+interactive carrying the real captured values.
