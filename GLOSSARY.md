@@ -163,3 +163,10 @@
 - **Superposition** — more concepts than neurons: concepts as overlapping directions, which is why single neurons rarely mean one clean thing. → [11 B3](modules/11-nn-transformers-intuition/TEACH.md)
 - **Temperature** — divides logits before softmax: low sharpens/repeats, high flattens/surprises; changes wandering, not knowledge. → [11 B4](modules/11-nn-transformers-intuition/TEACH.md)
 - **Transformer** — the architecture: embeddings → [attention → MLP] ×N → unembedding → softmax → sample. → [11 B4](modules/11-nn-transformers-intuition/TEACH.md)
+
+## Module 12 — first AI-free build
+
+- **Exit code** — a program's non-zero signal that something failed; an interface other programs read, unlike a traceback. → [12 spec](modules/12-first-ai-free-build/TEACH.md)
+- **Honesty clause** — log every AI-free breach with what and how long; a quantified breach is data, a hidden one corrupts the baseline. → [12 rules](modules/12-first-ai-free-build/TEACH.md)
+- **Outage score** — "% of my productivity surviving a week without Anthropic"; the plan's headline instrument, dated and trended. → [12 baseline](modules/12-first-ai-free-build/TEACH.md)
+- **Wall protocol (unassisted)** — read the error bottom-up · minimal repro · inspect real values · one hypothesis at a time · 45 min → log and return tomorrow. → [12 rules](modules/12-first-ai-free-build/TEACH.md)

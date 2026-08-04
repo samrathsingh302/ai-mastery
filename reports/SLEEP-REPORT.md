@@ -120,3 +120,17 @@ verified runtimes in the module and flagged the two I could only single-source. 
 free interactives: bbycroft.net/llm (fly through a 3D GPT) and Transformer Explainer (runs a real
 GPT-2 in-browser). My own attention lab lets you drag token 3's key until it wins the query, and
 toggle masking/scaling to see why √d exists. Module 01's laws are now mechanical, not folklore.
+**Noticed at 10:17:** your `m01-cards.txt` (31 cards, correct `#separator:Tab` header) — you've
+started module 02's Anki exercise. It got swept into my step-11 commit, so it's version-controlled
+now; move or delete it freely, nothing depends on where it lives.
+
+## Iteration 13 — step 12: the first AI-free build ★ FAST TRACK COMPLETE (04/08/2026, ~13:00)
+The exam. You build `studylog` (a real study tracker you'll actually use daily) with zero AI —
+autocomplete off, docs and paper only — grade it against a 7-criterion rubric you copy out
+BEFORE writing code, and only then may a tutor session grade you harshly. Ships the fast-track
+**exit interview sim**: 6 cold questions (walk me through psoc-portal · the mutable-default bug ·
+read this traceback · how does an LLM work · why did it confidently lie · you gave an agent your
+email, what worries you) with model answers and a 9+/12 pass mark — the gap my step-0 red team
+flagged as ownerless (G4), now closed. The acceptance harness is proven BOTH ways: 8/8 against a
+throwaway correct tool, 6/8 against a deliberately broken one — then I deleted both references so
+the build stays yours to make. Steps 1–12 are done; the ladder continues at module 13 (cyber).
