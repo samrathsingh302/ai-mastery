@@ -11,6 +11,9 @@ in TEACH.md is scored by you, not by this.
 
 Run it only AFTER your own grading pass.
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import json
 import os
 import subprocess

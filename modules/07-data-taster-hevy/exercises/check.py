@@ -6,6 +6,9 @@ synthetic numbers).
 
 Needs pandas (TEACH.md venv section). Without it, this prints a friendly TODO and exits.
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import importlib.util
 import sys
 from pathlib import Path

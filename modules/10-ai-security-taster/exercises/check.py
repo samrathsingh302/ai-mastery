@@ -5,6 +5,9 @@ Run: python check.py — for each scenario give the OWASP number (1-10) and the
 trifecta legs present (any of P=private data, U=untrusted content, E=external
 comms; type NONE for none). Controls are free-text — compare with solutions/.
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ANSWERS = {
     1: (1, "PUE", "Indirect prompt injection: issue text obeyed as instruction. "
                   "Private data (keys) + untrusted content (issue) + push = complete trifecta."),

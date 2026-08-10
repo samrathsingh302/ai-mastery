@@ -6,6 +6,9 @@ Verifies the learning machine's parts. TODO lines are yours to do (they match
 ledger items); PASS lines need nothing. Always exits 0 — this is a checklist,
 not a gate.
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os
 import shutil
 import subprocess

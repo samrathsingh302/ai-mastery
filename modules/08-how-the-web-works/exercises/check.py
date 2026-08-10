@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Self-checker for ex01-read-the-wire.md (module 08). Answers stored as hashes.
 Run: python check.py — answer T/F or A/B/C/D per question."""
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import hashlib
 
 SALT = "ai-mastery-m08"

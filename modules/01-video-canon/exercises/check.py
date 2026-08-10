@@ -5,6 +5,9 @@ Run:  python check.py
 Answer T or F to each statement. Answers are stored as hashes, so reading
 this file won't spoil you. Full explanations: solutions/ex03-answers.md
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import hashlib
 
 SALT = "ai-mastery-m01"

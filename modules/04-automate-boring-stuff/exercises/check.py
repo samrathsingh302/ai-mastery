@@ -6,6 +6,9 @@ is tested there, never on real files (safety law 3).
   python check.py ex03         -> one exercise
   python check.py --solutions  -> harness self-verify against reference solutions
 """
+import sys as _sys  # keep the tick/cross marks printable on a cp1252 console
+if hasattr(_sys.stdout, "reconfigure"):
+    _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import importlib.util
 import subprocess
 import sys
