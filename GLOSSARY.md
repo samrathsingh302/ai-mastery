@@ -180,3 +180,19 @@
 - **Redirection (`>`, `>>`, `2>&1`)** — replace a file, append to it, and send errors where output goes. → [13 A4](modules/13-cyb-shell-bandit/TEACH.md)
 - **SSH** — an encrypted remote terminal; keys beat passwords, and the fingerprint prompt is identity continuity. → [13 A7](modules/13-cyb-shell-bandit/TEACH.md)
 - **`sort | uniq -c`** — the counting idiom; uniq only collapses ADJACENT duplicates, so the sort is load-bearing. → [13 A4](modules/13-cyb-shell-bandit/TEACH.md)
+
+## Module 14 🔐 — crypto by example *(secondary track)*
+
+- **Avalanche effect** — change one letter of the input and the entire digest is unrecognisable; why a hash detects any edit at all. → [14 §1](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Canonicalisation** — turning data into ONE exact string before signing it: same fields, same order, same formatting, every time. → [14 §5](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Collision resistance** — finding two inputs with the same fingerprint is infeasible; one of the three properties that make a hash usable. → [14 §1](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Constant-time comparison** — compare every byte with no early exit (`FixedTimeEquals`, `hmac.compare_digest`), so the timing carries no information. → [14 §6](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **DPAPI** — Windows encrypting data so only this machine can decrypt it; a safe bolted to the building, useless against someone who has the building. → [14 §8](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Fail-open** — if the check breaks, allow; the opposite of fail-closed (module 06), and how convenience wins while security dies. → [14 §7](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Hash function** — any input → a fixed-size fingerprint: one-way, deterministic, collision-resistant. A smoothie you cannot un-blend. → [14 §1](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Key derivation function (KDF)** — a deliberately SLOW salted hash for secrets humans handle; the slowness is the defence, not a cost. → [14 §3](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **MAC (message authentication code)** — a signature over data only a key-holder can produce or verify; a wax seal whose stamp only you own. → [14 §4](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Rainbow table** — a precomputed fingerprint→input lookup that cracks everyone at once; exactly what a per-item salt destroys. → [14 §2](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Salt** — random data mixed in before hashing and stored alongside; makes each item's offline search independent. → [14 §2](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Tamper-evidence vs confidentiality** — proving nothing was changed vs hiding what it says; naming which one you need is what stops crypto becoming decoration. → [14 §8](modules/14-cyb-crypto-monkmode/TEACH.md)
+- **Timing side-channel** — learning a secret from how long an operation takes; `==` exits early, so a closer guess is rejected slower. → [14 §6](modules/14-cyb-crypto-monkmode/TEACH.md)

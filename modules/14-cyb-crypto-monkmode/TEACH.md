@@ -69,8 +69,8 @@ wax seal whose stamp only you own — anyone can see the seal, nobody else can f
 **Unicode (UTF-16LE) bytes**, Base64-encoded, keyed with a 32-byte per-block random key.
 
 > Encoding is not a detail: the same text HMAC'd as UTF-16LE and as UTF-8 gives **completely
-> different** MACs (you'll prove this in exercise 2). Cross-language reimplementations break
-> here constantly — a spec-fidelity lesson wearing a crypto costume.
+> different** MACs (you'll prove this in exercise 1, `ex01_primitives.py`). Cross-language
+> reimplementations break here constantly — a spec-fidelity lesson wearing a crypto costume.
 
 ## 5 · Canonicalisation: the subtle one, and the best lesson in the file
 
@@ -89,8 +89,8 @@ order. Two design decisions hide in that:
 2. **The delimiters matter.** Naively gluing fields (`"Until=" + until + "Committed=" + c`)
    is forgeable: values containing the separator can smuggle in a fake field, so two
    *different* field-sets produce the *same* string and therefore the same valid MAC.
-   Exercise 3 makes you build that collision by hand — it's the most instructive ten minutes
-   in this module.
+   Exercise 2 (`ex02_canonical.py`, `forge_naive`) makes you build that collision by hand —
+   it's the most instructive ten minutes in this module.
 
 **The general law:** *sign a form that can only be read one way.* Ambiguity in the signed
 representation is a hole regardless of how strong the cipher is.
@@ -105,7 +105,7 @@ analogy: guessing a safe's combination from how far the dial turns before it cli
 
 **monk-mode's actual choice:** `CryptographicOperations.FixedTimeEquals` over the raw bytes —
 always compares everything, no early exit. Python's equivalent is `hmac.compare_digest`, and
-you'll use it in exercise 2.
+you'll use it in exercise 1 (`ex01_primitives.py`, `safe_equals`).
 
 ## 7 · Fail-closed verification (the whole scheme's spine)
 
@@ -146,6 +146,6 @@ and why a deliberately weak cipher can be a correct decision when the threat is 
   `ConfigMacIsValid` (FixedTimeEquals, returns False never throws), PD3 constants
   (`PartnerKdfIterations = 600000`, `PartnerSaltBytes = 16`, `PartnerHashBytes = 32`),
   `PartnerCodeAlphabet` (32 chars, Crockford-style), DPAPI protect/unprotect.
-- `monk-mode\CLAUDE.md:23` — the standing "documented-weak by design" note on Simple3Des.
+- `monk-mode\CLAUDE.md:22` — the standing "documented-weak by design" note on Simple3Des.
 - Timing (0.39 s for 600k iterations) and every expected value in the exercises: measured and
   computed on this machine tonight.

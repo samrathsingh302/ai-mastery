@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canonical forge — sign a form that can only be read one way (module 14)</title>
+<style>
+  :root{ --bg:#f6f7fb; --card:#fff; --ink:#1c2130; --muted:#5b6478; --line:#dfe3ee;
+    --accent:#2f6df6; --accent-ink:#fff; --good:#188554; --bad:#c23838; --chip:#eef2ff;
+    --term:#0e1117; --termink:#d7e0f0; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12141c; --card:#1b1f2b; --ink:#e8ebf4; --muted:#9aa3b8; --line:#2c3245;
+      --accent:#6d9bff; --accent-ink:#0d1322; --good:#4ecb8d; --bad:#ff7b7b; --chip:#232a3d;
+      --term:#0b0e14; --termink:#d7e0f0; } }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; padding:1.2rem}
+  .wrap{max-width:800px; margin:0 auto}
+  h1{font-size:1.3rem; margin:.2rem 0} .sub{color:var(--muted); font-size:.9rem; margin:0 0 1rem}
+  .tabs{display:flex; gap:.5rem; margin-bottom:.8rem}
+  .tabs button{flex:1; padding:.55rem; border:1px solid var(--line); background:var(--card);
+    color:var(--ink); border-radius:.6rem; font-size:.95rem; cursor:pointer}
+  .tabs button.on{background:var(--accent); color:var(--accent-ink); border-color:var(--accent); font-weight:600}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:.8rem;
+    padding:.9rem 1rem; margin-bottom:.8rem}
+  .cmd{font:13.5px ui-monospace,Consolas,monospace; background:var(--term); color:var(--termink);
+    border-radius:.5rem; padding:.7rem .9rem; overflow-x:auto; white-space:nowrap}
+  .stage{display:inline-block; padding:.1rem .3rem; border-radius:.3rem; cursor:pointer}
+  .stage.on{background:var(--accent); color:var(--accent-ink)}
+  .stage.done{opacity:.55}
+  .pipe{color:var(--muted)}
+  .out{font:13px ui-monospace,Consolas,monospace; background:var(--term); color:var(--termink);
+    border-radius:.5rem; padding:.7rem .9rem; margin-top:.6rem; white-space:pre; overflow-x:auto;
+    max-height:22em; overflow-y:auto}
+  .why{background:var(--chip); border-left:3px solid var(--accent); border-radius:.4rem;
+    padding:.6rem .8rem; font-size:.92rem; margin-top:.6rem; min-height:3.4em}
+  .why.bad{border-left-color:var(--bad)}
+  .why.good{border-left-color:var(--good)}
+  .controls{display:flex; gap:.5rem; margin-top:.7rem; align-items:center}
+  button.b{padding:.5rem 1rem; border:0; border-radius:.6rem; background:var(--accent);
+    color:var(--accent-ink); font-weight:600; cursor:pointer; font-size:.95rem}
+  button.ghost{background:var(--chip); color:var(--ink)}
+  button.b:disabled{opacity:.4; cursor:default}
+  .step{color:var(--muted); font-size:.9rem; margin-left:auto}
+  .q{font-weight:600; margin:.2rem 0 .6rem}
+  .opts{display:grid; gap:.45rem}
+  .opts button{text-align:left; padding:.55rem .8rem; border:1px solid var(--line);
+    background:var(--bg); color:var(--ink); border-radius:.6rem; cursor:pointer;
+    font:13px ui-monospace,Consolas,monospace}
+  .opts button:disabled{opacity:.9; cursor:default}
+  .opts button.right{border-color:var(--good); box-shadow:inset 0 0 0 1px var(--good)}
+  .opts button.wrong{border-color:var(--bad); box-shadow:inset 0 0 0 1px var(--bad)}
+  .foot{color:var(--muted); font-size:.82rem; margin-top:.4rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Canonical forge</h1>
+  <p class="sub">Before you can sign a config you must turn it into one exact string. Watch the
+  real 15-line canonical get built and stamped — then watch the same fields, glued instead of
+  delimited, hand an attacker a second meaning for one valid MAC.</p>
+  <div class="tabs">
+    <button id="t0" class="on" onclick="tab(0)">Step through</button>
+    <button id="t1" onclick="tab(1)">Read it cold (quiz)</button>
+  </div>
+
+  <div id="p0">
+    <div class="card">
+      <div class="cmd" id="cmd"></div>
+      <div class="out" id="out"></div>
+      <div class="why" id="why"></div>
+      <div class="controls">
+        <button class="b ghost" onclick="si=-1;render()">⟲ Restart</button>
+        <button class="b" id="next" onclick="if(si&lt;ST.length-1){si++;render()}">▶ Next stage</button>
+        <span class="step" id="stepn"></span>
+      </div>
+      <p class="foot">Every MAC below was computed on this machine with Python's
+      <code>hmac</code>, keyed with the same fixed 32-byte demo key, and hardcoded. Nothing
+      here needs a network.</p>
+    </div>
+  </div>
+
+  <div id="p1" style="display:none"><div class="card" id="quiz"></div></div>
+</div>
+<script>
+"use strict";
+
+/* Values: computed on this machine, 12/08/2026, with the 32-byte demo key
+   b"monk-mode-demo-key-32-bytes!!!!!". Field names and their ORDER are read from
+   ConfigIntegrity.vb BuildCanonical (schema v9). */
+const CANON =
+ "v9\n" +
+ "Until=2026-08-19 07:00:00\n" +
+ "HighWater=2026-08-12 21:14:03\n" +
+ "CoolOffUntil=\n" +
+ "ProcessList=steam.exe,discord.exe\n" +
+ "CustomSites=reddit.com,youtube.com\n" +
+ "Now=2026-08-12 21:14:03\n" +
+ "PartnerSalt=AAECAwQFBgcICQoLDA0ODw==\n" +
+ "PartnerHash=lTDwKDpnJQVfhjTuXy9E9IG62iQwaROWUdf0JEqbh1I=\n" +
+ "PartnerUnlockedAt=\n" +
+ "Committed=yes\n" +
+ "ScheduleSpec=\n" +
+ "ScheduleActiveUntil=\n" +
+ "CoolOffDuration=10800\n" +
+ "AllSessionKill=yes\n";
+const NAIVE = "v9Until=2026-08-19 07:00:00HighWater=2026-08-12 21:14:03CoolOffUntil="
+  + "ProcessList=steam.exe,discord.exeCustomSites=reddit.com,youtube.comNow=2026-08-12 21:14:03"
+  + "PartnerSalt=AAECAwQFBgcICQoLDA0ODw==PartnerHash=lTDwKDpnJQVfhjTuXy9E9IG62iQwaROWUdf0JEqbh1I="
+  + "PartnerUnlockedAt=Committed=yesScheduleSpec=ScheduleActiveUntil=CoolOffDuration=10800"
+  + "AllSessionKill=yes";
+const MAC_CANON  = "iw0e3L7DQ6tyDYW32cDRk6QnLGVAVeV8C1dcMXL0DgA=";
+const MAC_CANON8 = "1GM8cvXuSKGdN1vfL2EP5NwjJjJQB3i/o2299zPOojk=";
+const MAC_NAIVE  = "jplnIefFKP2xp1grvCreS49sHnz9a01dv7rsdoz/ehQ=";
+const MAC_FORGED = "H8xMc/BwW6iCt+lc3eN1sMidcGTFHEvwOUPsL01zGoE=";
+
+const ST=[
+ {c:"read 14 fields", tone:"",
+  why:"Stage 1 — THE VALUES. These are the protected fields, decrypted, exactly as every party (CLI writer, service, guardian, notifier) holds them. Blank means blank: \"\" and \"null\" pass through as-is, because the point is a stable reproducible input, not interpretation. Nothing is signed yet — right now any of these is a raw ini edit away from being anything.",
+  out:"Until               2026-08-19 07:00:00\nHighWater           2026-08-12 21:14:03\nCoolOffUntil        (blank)\nProcessList         steam.exe,discord.exe\nCustomSites         reddit.com,youtube.com\nNow                 2026-08-12 21:14:03\nPartnerSalt         AAECAwQFBgcICQoLDA0ODw==\nPartnerHash         lTDwKDpnJQVfhjTuXy9E9IG62iQwaROWUdf0JEqbh1I=\nPartnerUnlockedAt   (blank)\nCommitted           yes\nScheduleSpec        (blank)\nScheduleActiveUntil (blank)\nCoolOffDuration     10800\nAllSessionKill      yes"},
+
+ {c:"BuildCanonical()", tone:"good",
+  why:"Stage 2 — CANONICALISE. One exact string: a bare schema tag first (v9 — in the code, not the file, so a doctored old config can't re-declare its own version), then one Name=value line per field in a FIXED order, each ended by \\n. 15 lines, 369 characters. Two questions decide everything from here: is every field you care about IN this string, and can this string be read only one way?",
+  out:CANON + "\n[15 lines, 369 characters]"},
+
+ {c:"HMAC-SHA256 → Base64", tone:"good",
+  why:"Stage 3 — STAMP IT. HMAC-SHA256 over the canonical's UTF-16LE bytes (.NET's Encoding.Unicode — NOT UTF-8), keyed with the 32-byte per-block key, Base64-encoded. Note the second line: the identical text encoded as UTF-8 gives a completely unrelated MAC. Nothing warns you; a reimplementation just silently fails to verify forever.",
+  out:"canonical, UTF-16LE  ->  " + MAC_CANON + "\ncanonical, UTF-8     ->  " + MAC_CANON8 +
+      "\n\nSame text. Same key. Same algorithm.\nDifferent encoding -> nothing in common."},
+
+ {c:"the naive glue", tone:"bad",
+  why:"Stage 4 — THE TEMPTING SHORTCUT. Same 14 fields, same order — but concatenated with no delimiter at all: \"Until=\" + until + \"HighWater=\" + hw + … It still looks structured, it still MACs cleanly, and it is now one long run of bytes in which nothing marks where a value ends. Read the tail: CoolOffDuration=10800AllSessionKill=yes.",
+  out:NAIVE + "\n\nMAC (naive, UTF-16LE) -> " + MAC_NAIVE},
+
+ {c:"the forgery", tone:"bad",
+  why:"Stage 5 — ONE MAC, TWO MEANINGS. The attacker drops AllSessionKill as a field and hides its whole text inside CoolOffDuration's value: CoolOffDuration=\"10800AllSessionKill=yes\". Thirteen fields now instead of fourteen — and the glued bytes are IDENTICAL, so the honest MAC still verifies. A reader parsing fields finds no AllSessionKill line; default a missing flag to permissive and the armed all-session block quietly becomes session-0-only. That is ConfigIntegrity.vb's own D2c comment coming true: run a blocked app in a second logged-in session.",
+  out:"honest fields (14)  ->  " + MAC_NAIVE + "\nforged fields (13)  ->  " + MAC_NAIVE +
+      "\n\nIDENTICAL. The MAC was never broken —\nthe STRING was ambiguous, so the MAC signed both readings."},
+
+ {c:"canonical rejects it", tone:"good",
+  why:"Stage 6 — WHY THE NEWLINE IS LOAD-BEARING. Run the same forged field-set through BuildCanonical and the delimiter ends the value: CoolOffDuration=10800AllSessionKill=yes becomes ONE line, and the 15th line is simply gone. 14 lines, not 15 — a different string, a different MAC, and the stored MAC no longer matches. ConfigMacIsValid returns False (never throws), the readers treat MAC-invalid as STILL ACTIVE, and the block stands. Fail closed: on doubt, choose the safe state. Sign a form that can only be read one way.",
+  out:"honest canonical (15 lines) -> " + MAC_CANON + "\nforged canonical (14 lines) -> " + MAC_FORGED +
+      "\n\nstored MAC = " + MAC_CANON + "\nFixedTimeEquals(recomputed, stored) -> False\n\n=> ConfigMacIsValid = False  ->  block STANDS"},
+];
+
+let si=-1;
+const $=id=>document.getElementById(id);
+function render(){
+  $("cmd").innerHTML=ST.map((s,i)=>
+    `<span class="stage ${i===si?"on":i<si?"done":""}" onclick="si=${i};render()">${s.c
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;")}</span>`).join('<span class="pipe"> → </span>');
+  $("out").textContent = si<0 ? "(press ▶ to build the canonical, one stage at a time)" : ST[si].out;
+  $("why").textContent = si<0
+    ? "Before each stage, predict: after this step, what could an attacker still change without the MAC noticing?"
+    : ST[si].why;
+  $("why").className = "why " + (si<0 ? "" : ST[si].tone);
+  $("stepn").textContent = si<0 ? `${ST.length} stages` : `stage ${si+1} / ${ST.length}`;
+  $("next").disabled = si>=ST.length-1;
+}
+
+const QS=[
+ {q:"You port ComputeConfigMac to Python and every MAC fails to verify. First suspect?",
+  o:["The key was truncated to 16 bytes",
+     "The text encoding — .NET's Encoding.Unicode is UTF-16LE, not UTF-8",
+     "SHA-256 differs between .NET and Python",
+     "Base64 padding"],
+  a:1, x:"HMAC-SHA256 is HMAC-SHA256 everywhere; what differs is the BYTES you feed it. Encoding.Unicode means UTF-16LE, so encoding the same canonical as UTF-8 gives a completely unrelated MAC with no error to warn you. A spec-fidelity bug wearing a crypto costume."},
+ {q:"Every partner code gets its OWN random 16-byte salt. What does that actually buy?",
+  o:["It makes the KDF slower per guess",
+     "It hides the code from the person who owns the disk",
+     "It makes each block's offline search independent, so no precomputed table cracks many at once",
+     "It stops the hash being stored in plaintext"],
+  a:2, x:"That is ConfigIntegrity.vb's own wording: 'the per-code salt makes each block's offline search independent and rainbow-tables useless'. The salt is not secret and does not slow anything down — it destroys the ATTACKER'S ECONOMY OF SCALE. The 600,000 iterations are what buys per-guess cost."},
+ {q:"600,000 PBKDF2 iterations cost about 0.39 s. Why is that the point rather than a cost?",
+  o:["It gives the CPU time to clear its cache between guesses",
+     "You pay it once per check; an attacker pays it per GUESS across a 2^50 space",
+     "Slow hashes produce longer, stronger outputs",
+     "It stops the code being brute-forced online"],
+  a:1, x:"The whole defence is asymmetry. 0.39 s is invisible when you check one submitted code; multiplied across an offline search of a 10-character, 32-symbol alphabet it is ruinous. The hash sits on the attacker's own disk, so a slow KDF is load-bearing, not hygiene."},
+ {q:"The config already has a SHA-256 hash over its fields. Why add a key and make it an HMAC?",
+  o:["A hash can be reversed; an HMAC cannot",
+     "HMAC is faster on large files",
+     "Anyone can recompute a plain hash after editing, so it detects corruption but not FORGERY",
+     "It lets the readers decrypt the config"],
+  a:2, x:"A bare hash proves nothing against an attacker who can just hash their edited version too. The key is what makes the stamp unforgeable: only a key-holder can produce or verify it. Hash = did this change by accident? MAC = did someone who holds the key authorise this?"},
+ {q:"Why is comparing two MACs with `==` a real vulnerability, not pedantry?",
+  o:["`==` can throw on different lengths",
+     "It returns True for equal-looking Base64 that decodes differently",
+     "It stops at the first differing byte, so a closer guess is rejected fractionally slower — and that leaks the MAC byte by byte",
+     "`==` compares references, not values"],
+  a:2, x:"That is a timing side-channel: the secret escapes through the clock, never through the output. FixedTimeEquals (Python: hmac.compare_digest) always compares everything with no early exit, so every wrong guess costs exactly the same and the timing carries no information."},
+ {q:"The config cipher, Simple3Des, is documented-weak by design. Why can that be CORRECT?",
+  o:["3DES is still unbroken in practice",
+     "The threat is tampering, not secrecy — confidentiality of a file the user already owns buys almost nothing, and the HMAC layer does the real work",
+     "Nobody has the passphrase",
+     "It is fast enough for a config file"],
+  a:1, x:"Name your threat model, then spend your strength where the threat is. The user owns the machine and the file, so hiding its contents from them buys nothing; keeping the block STANDING under an edit is everything, and that is tamper-evidence. The honest part is that the code SAYS it is weak. Crypto misused as decoration is worse than none — it buys false confidence."},
+];
+let qi=0, qs=0;
+function quiz(){
+  const h=$("quiz");
+  if(qi>=QS.length){
+    h.innerHTML=`<div class="q">Score: ${qs} / ${QS.length}</div>
+      <p>${qs>=5?"You can read a real scheme cold. Now go and do project 14 — audit one on this machine and say where each defence sits."
+        :"Step through the forge again, then retry. The stage that decides everything is 5 -> 6: same fields, one ambiguous string, two meanings."}</p>
+      <div class="controls"><button class="b" onclick="qi=0;qs=0;quiz()">Again</button></div>`;
+    return;
+  }
+  const q=QS[qi];
+  h.innerHTML=`<div class="q">Q${qi+1}. ${q.q}</div><div class="opts" id="o"></div><div id="x"></div>`;
+  q.o.forEach((o,i)=>{ const b=document.createElement("button"); b.textContent=o;
+    b.onclick=()=>ans(i,b); $("o").appendChild(b); });
+}
+function ans(i,btn){
+  const q=QS[qi], os=[...$("o").children];
+  os.forEach(b=>b.disabled=true); os[q.a].classList.add("right");
+  if(i===q.a) qs++; else btn.classList.add("wrong");
+  $("x").innerHTML=`<div class="why">${i===q.a?"<b>Right.</b> ":"<b>Not quite.</b> "}${q.x}</div>
+    <div class="controls"><button class="b" onclick="qi++;quiz()">
+    ${qi+1>=QS.length?"See score":"Next →"}</button></div>`;
+}
+function tab(i){ $("p0").style.display=i?"none":"block"; $("p1").style.display=i?"block":"none";
+  $("t0").classList.toggle("on",!i); $("t1").classList.toggle("on",!!i); if(i) quiz(); }
+render();
+</script>
+</body>
+</html>

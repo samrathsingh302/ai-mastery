@@ -20,7 +20,15 @@ def hmac_sha256_b64(key_bytes, text, encoding="utf-16-le"):
 
 def pbkdf2_b64(code, salt_bytes, iterations=600000, length=32):
     """monk-mode's ComputePartnerHash, in Python: PBKDF2-HMAC-SHA256 over code
-    (UTF-8) with salt_bytes, `iterations` rounds, `length` bytes out, Base64."""
+    encoded UTF-16LE with salt_bytes, `iterations` rounds, `length` bytes out,
+    Base64. UTF-16LE again, not UTF-8 — `PartnerKdf` feeds it
+    `Encoding.Unicode.GetBytes(...)`, the same house encoding as the MAC, and its
+    own comment calls it that. Getting this wrong produces a hash that will never
+    match and never explains why.
+
+    (The real function normalises the code first — uppercase, drop separators,
+    Crockford I/L->1 and O->0 — so relay variants agree. This exercise takes the
+    code already normalised; the encoding is the lesson here.)"""
     raise NotImplementedError("your code here")
 
 

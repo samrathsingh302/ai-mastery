@@ -1,3 +1,5 @@
 __pycache__/
 .venv/
 videos/
+# subagent working memory — machine-local, not course content
+.claude/agent-memory/

@@ -10,17 +10,23 @@ def build_naive(fields):
 
 
 def forge_naive():
-    # The honest config: the block ends on the 5th, and it is committed.
-    a = [("Until", "2026-08-05"), ("Committed", "yes")]
-    # The attacker's config: the block runs to 2027 — smuggled INSIDE Until's value,
-    # so the real Committed field can be emptied. Both glue to the identical string.
-    b = [("Until", "2027-01-01Committed=yesUntil=2026-08-05"), ("Committed", "")]
+    # The honest config: a blocked-sites list, and the all-session kill ARMED.
+    a = [("CustomSites", "reddit.com"), ("AllSessionKill", "yes")]
+    # The attacker's config: ONE field. CustomSites' free text swallows the whole
+    # "AllSessionKill=yes" that follows it, so the glued bytes are identical while
+    # the field-set no longer CONTAINS AllSessionKill at all.
+    b = [("CustomSites", "reddit.comAllSessionKill=yes")]
     return a, b
 
 
-# build_naive(a) == build_naive(b) == "Until=2026-08-05Committed=yes"
-#   ...but a parser reading b's FIELDS sees Until=2027-01-01 — a year-long block
-#   flipped by a value that ate its neighbour. One MAC, two meanings.
-# build_canonical(a) != build_canonical(b): the newline delimiter makes the two
-#   field-sets impossible to confuse, which is exactly why monk-mode emits
-#   "Name=value\n" per line instead of gluing.
+# build_naive(a) == build_naive(b) == "CustomSites=reddit.comAllSessionKill=yes"
+#   — one MAC, two meanings. A parser reading b's FIELDS finds no AllSessionKill
+#   line; default it to permissive and the armed all-session block silently
+#   becomes session-0-only, which is exactly the attack ConfigIntegrity.vb's own
+#   D2c comment names: "run a blocked app in a second logged-in session".
+# The lever is the FIELD COUNT: with the same names and the same count, a trailing
+#   "Name=" always survives to break the collision. Eating a whole field is what
+#   makes the two sets differ in a way an attacker wants.
+# build_canonical(a) != build_canonical(b): the newline delimiter ends every value,
+#   so no value can reach into its neighbour — two lines can never be mistaken for
+#   one. That is why monk-mode emits "Name=value\n" per line instead of gluing.

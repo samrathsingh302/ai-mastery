@@ -29,8 +29,9 @@ def forge_naive():
     IDENTICAL naive string — i.e. the same MAC would validate both.
 
     Constraint that makes it a real attack, not a trick: the two lists must differ
-    in a way an attacker would WANT — e.g. the second has a different value for a
-    security-relevant field, smuggled through a neighbouring field's value.
+    in a way an attacker would WANT — e.g. a security-relevant field ends up
+    missing (or changed) in the second, swallowed by a neighbouring field's value.
+    The lists do NOT have to be the same length; that freedom is the whole attack.
 
     Return: (fields_a, fields_b) where build_naive(a) == build_naive(b) and a != b.
     (Then check: does build_canonical still differ for them? That's the fix working.)"""

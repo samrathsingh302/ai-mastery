@@ -14,8 +14,8 @@ def hmac_sha256_b64(key_bytes, text, encoding="utf-16-le"):
 
 
 def pbkdf2_b64(code, salt_bytes, iterations=600000, length=32):
-    dk = hashlib.pbkdf2_hmac("sha256", code.encode("utf-8"), salt_bytes,
-                             iterations, length)
+    dk = hashlib.pbkdf2_hmac("sha256", code.encode("utf-16-le"), salt_bytes,
+                             iterations, length)      # Encoding.Unicode, not UTF-8
     return base64.b64encode(dk).decode("ascii")
 
 
