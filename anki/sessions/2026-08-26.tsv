@@ -1,7 +1,12 @@
-# Session misses 26/08/2026 — module 03 rungs 0–1. Format: Question¶{{c1::direct answer}}<TAB>Extra(explanation)<TAB>tags. Card law: anki/CARD-RULES.md
-In Python, what does "2" + 2 do?¶{{c1::TypeError}}	+ adds (both numbers) or glues (both strings) — it never mixes number and text.	session::2026-08-26 python
-In Python, what does a function return if no return statement ever runs?¶{{c1::None}}	Print-instead-of-return is the classic cause.	session::2026-08-26 python
-In Python, how do you check a string contains at least one digit?¶{{c1::any(ch.isdigit() for ch in pw)}}	pw.isdigit() asks "is the WHOLE string digits?" — the wrong question.	session::2026-08-26 python
-In Python, what does any(...) take and give back?¶Takes {{c1::a stream of booleans}}, gives {{c1::one: True if at least one is True}}	Without it you have many answers and no verdict.	session::2026-08-26 python
-In Python, what does 2 + 2.5 evaluate to?¶{{c1::4.5, a float}}	Numbers mix freely (int gets promoted); only number-meets-TEXT errors.	session::2026-08-26 python
-Your fix is right but the checker still fails — what is the first thing to check?¶{{c1::Is the file SAVED?}}	The checker runs what's on disk. VS Code: ● on the tab = unsaved.	session::2026-08-26 python
+# Session cards 26/08/2026 — AUTHORED BY SAMRATH (typed in-session; scribe cleaned typos only).
+# Replaces the purged session-drafted batch (in git history). Format: Question¶{{c1::direct answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
+Python: what error does 2 + "2" give?¶{{c1::TypeError}}		session::2026-08-26 python
+Python: why does 2 + "2" give a TypeError?¶{{c1::+ adds numbers or concatenates strings, so it is unable to mix them}}	Numbers mix with numbers freely — 2 + 2.5 works fine.	session::2026-08-26 python
+Python: what is returned when you don't return a value?¶{{c1::None}}	Every call hands something back; if no return runs, that something is None.	session::2026-08-26 python
+Python: when you write print instead of return in a function, what do you get?¶{{c1::None}}	print only shows output; the function itself hands nothing to the caller.	session::2026-08-26 python
+Python: what is the difference between return and print?¶{{c1::return hands a value to the caller that is usable, storable and testable, whereas print paints pixels for the human}}	The print version returns None.	session::2026-08-26 python
+Python: what does any() do?¶{{c1::takes a stream of booleans and gives back one}}	Many answers in, one verdict out.	session::2026-08-26 python
+Python: when is any() True?¶{{c1::when at least one boolean is True}}		session::2026-08-26 python
+Python: why do you use any(ch.isdigit() for ch in pw) and not pw.isdigit() to check if there is a digit in pw (a password)?¶{{c1::because pw.isdigit() checks if the whole string is a digit, whereas the other checks per character}}		session::2026-08-26 python
+Python: what does 2 + 2.5 return, and what type?¶{{c1::4.5}} · {{c1::float}}	The int gets promoted; numbers mix freely.	session::2026-08-26 python
+VS Code: the fix is right but the checker still fails — what could be the issue?¶{{c1::the file isn't saved}}	The checker runs what's on disk; ● on the tab = unsaved.	session::2026-08-26 method

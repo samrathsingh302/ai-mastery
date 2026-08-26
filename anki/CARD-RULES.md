@@ -1,9 +1,12 @@
 # CARD-RULES.md — Samrath's own card-making reference
 
-> OWNERSHIP RULING (26/08/2026 evening, final): **Samrath makes ALL his own Anki cards;
-> Claude sessions NEVER make, draft, or import cards.** Sessions end with card NOTES
-> (facts worth carding + recommended count) in chat and `anki/notes/`; this document is
-> the style reference SAMRATH uses when turning those notes into cards.
+> OWNERSHIP RULING (26/08/2026 evening; scribe amendment same night): **Samrath AUTHORS
+> all his own Anki cards — Claude sessions never draft or invent card content.** At session
+> end: the session presents card NOTES (facts worth carding + recommended count) in chat and
+> `anki/notes/`; Samrath TYPES his cards in the terminal in his own words; the session acts
+> as SCRIBE ONLY (fixes spelling/typos, applies this document's format mechanics — never
+> rephrases or "improves" his wording) and imports them via `tools/anki_import.py`. This
+> document is SAMRATH'S style reference for the cards he writes.
 > Sources: SuperMemo's Twenty Rules (supermemo.com/en/blog/twenty-rules-of-formulating-knowledge)
 > + Andy Matuschak's prompt-writing guide (andymatuschak.org/prompts) + Samrath's own rules.
 > Reddit r/Anki was unreachable from the session that built this (26/08/2026); these two are
