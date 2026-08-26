@@ -1,25 +1,25 @@
-# Module 13 — shell + Bandit. Format: Question¶{{c1::complete answer}}<TAB>tags. Back Extra stays empty. Card law: anki/CARD-RULES.md
-What is the shell's sentence structure?¶{{c1::command --flags arguments — verb, adverbs, objects (ls -la /etc = "list, long and all, /etc")}}	ai-mastery::m13 shell
-Where is the shell's dictionary?¶{{c1::man CMD}} · {{c1::CMD --help}} · {{c1::help BUILTIN}} — {{c1::reading it beats guessing}}	ai-mastery::m13 shell
-In the shell, what do pwd, cd -, and cd ~ do?¶{{c1::Where am I}} · {{c1::back to the previous directory}} · {{c1::home}}	ai-mastery::m13 shell
-What does tail -f do, and when do you use it?¶{{c1::Follows a growing file live — the command you'll use most on real logs}}	ai-mastery::m13 shell
-In shell paths, what are . / .. / ~ / - ?¶{{c1::Here}} · {{c1::parent}} · {{c1::home}} · {{c1::previous directory}}	ai-mastery::m13 shell
-In shell globbing, what do * ? and ** match?¶{{c1::Any characters}} · {{c1::exactly one character}} · {{c1::any depth (modern shells)}}	ai-mastery::m13 shell
-What does a shell pipe | do?¶{{c1::Sends one command's output into the next command's input — a conveyor of small single-purpose machines}}	ai-mastery::m13 shell
-In the shell, what does 2>&1 mean?¶{{c1::Send stderr (2) wherever stdout (1) currently goes — so pipes and log files capture errors too}}	ai-mastery::m13 shell
-Why must sort come before uniq -c?¶{{c1::uniq only collapses ADJACENT duplicates, it has no memory of earlier lines — unsorted input silently gives wrong counts}}	ai-mastery::m13 shell
-What does sort -rn do?¶{{c1::Sorts numerically (-n), reversed (-r) — biggest first}}	ai-mastery::m13 shell
-Which question does find answer, and which does grep?¶find = {{c1::"which FILES?" (name/type/time/size/permissions)}} · grep = {{c1::"which LINES?" (content)}}	ai-mastery::m13 shell
-What do grep's flags -r -n -i -l -c -v do?¶{{c1::Recursive}} · {{c1::line numbers}} · {{c1::case-insensitive}} · {{c1::filenames only}} · {{c1::counts}} · {{c1::invert the match}}	ai-mastery::m13 shell
-What does xargs do?¶{{c1::Feeds a list of items into another command: find . -name '*.log' | xargs wc -l}}	ai-mastery::m13 shell
-Read the permission string -rw-r--r-- aloud.¶{{c1::Type, then owner rw-, group r--, others r-- → only the owner can write}}	ai-mastery::m13 shell
-What does chmod 600 secret.txt mean?¶{{c1::Owner read+write; group and others nothing}}	ai-mastery::m13 shell
-Why does cat -oddly-named fail, and what are the two fixes?¶{{c1::It looks like flags — fixed by cat ./-oddly-named or cat -- -oddly-named}}	ai-mastery::m13 shell
-What is SSH, in one sentence?¶{{c1::An encrypted remote terminal — you type here, it runs there (ssh user@host -p PORT)}}	ai-mastery::m13 shell
-What is SSH's first-connect fingerprint prompt for?¶{{c1::The server proving its identity/continuity — accept once, be suspicious if it ever changes unexpectedly}}	ai-mastery::m13 security
-What is the Bandit connection line?¶{{c1::ssh bandit0@bandit.labs.overthewire.org -p 2220 (level-0 password: bandit0)}}	ai-mastery::m13 shell
-What is the house rule for Bandit?¶{{c1::No walkthroughs — 30 min struggle, then man pages, then concept-only hints; every walkthrough read is a rep not done}}	ai-mastery::m13 method
-Shell translation: what are bash's ls / cat / grep in PowerShell?¶{{c1::Get-ChildItem · Get-Content · Select-String}}	ai-mastery::m13 shell
-Shell translation: bash reads an env var as $VAR — how does PowerShell read it?¶{{c1::$env:VAR}}	ai-mastery::m13 shell
-Shell translation: what is bash's /dev/null in PowerShell?¶{{c1::$null}}	ai-mastery::m13 shell
-What does "labs are the curriculum" mean?¶{{c1::Cyber videos are on-ramps; hands-on labs (Bandit, PortSwigger, DVWA) are where competence forms}}	ai-mastery::m13 method
+# Module 13 — shell + Bandit. Format: Question¶{{c1::direct answer}}<TAB>Extra(explanation)<TAB>tags. Card law: anki/CARD-RULES.md
+What is the shell's sentence structure?¶{{c1::command --flags arguments}}	Verb, adverbs, objects: ls -la /etc = "list, long and all, /etc".	ai-mastery::m13 shell
+Where is the shell's dictionary?¶{{c1::man CMD}} · {{c1::CMD --help}} · {{c1::help BUILTIN}}	Reading it beats guessing — that IS the skill.	ai-mastery::m13 shell
+In the shell, what do pwd, cd -, and cd ~ do?¶{{c1::Where am I}} · {{c1::back to the previous directory}} · {{c1::home}}		ai-mastery::m13 shell
+What does tail -f do, and when do you use it?¶{{c1::Follows a growing file live}}	The command you'll use most on real logs.	ai-mastery::m13 shell
+In shell paths, what are . / .. / ~ / - ?¶{{c1::Here}} · {{c1::parent}} · {{c1::home}} · {{c1::previous directory}}		ai-mastery::m13 shell
+In shell globbing, what do * ? and ** match?¶{{c1::Any characters}} · {{c1::exactly one character}} · {{c1::any depth}}	** works in modern shells.	ai-mastery::m13 shell
+What does a shell pipe | do?¶{{c1::Sends one command's output into the next command's input}}	A conveyor of small single-purpose machines.	ai-mastery::m13 shell
+In the shell, what does 2>&1 mean?¶{{c1::Send stderr (2) wherever stdout (1) currently goes}}	So pipes and log files capture errors too.	ai-mastery::m13 shell
+Why must sort come before uniq -c?¶{{c1::uniq only collapses ADJACENT duplicates}}	It has no memory of earlier lines — unsorted input silently gives wrong counts.	ai-mastery::m13 shell
+What does sort -rn do?¶{{c1::Sorts numerically (-n), reversed (-r) — biggest first}}		ai-mastery::m13 shell
+Which question does find answer, and which does grep?¶find = {{c1::"which FILES?"}} · grep = {{c1::"which LINES?"}}	find: name/type/time/size/permissions; grep: content.	ai-mastery::m13 shell
+What do grep's flags -r -n -i -l -c -v do?¶{{c1::Recursive}} · {{c1::line numbers}} · {{c1::case-insensitive}} · {{c1::filenames only}} · {{c1::counts}} · {{c1::invert the match}}		ai-mastery::m13 shell
+What does xargs do?¶{{c1::Feeds a list of items into another command}}	find . -name '*.log' | xargs wc -l	ai-mastery::m13 shell
+Read the permission string -rw-r--r-- aloud.¶{{c1::Owner rw-, group r--, others r-- → only the owner can write}}	The first character is the type.	ai-mastery::m13 shell
+What does chmod 600 secret.txt mean?¶{{c1::Owner read+write; group and others nothing}}		ai-mastery::m13 shell
+Why does cat -oddly-named fail, and what are the two fixes?¶{{c1::It looks like flags}} — {{c1::cat ./-oddly-named}} or {{c1::cat -- -oddly-named}}		ai-mastery::m13 shell
+What is SSH, in one sentence?¶{{c1::An encrypted remote terminal — you type here, it runs there}}	ssh user@host -p PORT	ai-mastery::m13 shell
+What is SSH's first-connect fingerprint prompt for?¶{{c1::The server proving its identity/continuity}}	Accept once; be suspicious if it ever changes unexpectedly.	ai-mastery::m13 security
+What is the Bandit connection line?¶{{c1::ssh bandit0@bandit.labs.overthewire.org -p 2220}}	Level-0 password: bandit0.	ai-mastery::m13 shell
+What is the house rule for Bandit?¶{{c1::No walkthroughs — 30 min struggle, then man pages, then concept-only hints}}	Every walkthrough read is a rep not done.	ai-mastery::m13 method
+Shell translation: what are bash's ls / cat / grep in PowerShell?¶{{c1::Get-ChildItem · Get-Content · Select-String}}		ai-mastery::m13 shell
+Shell translation: bash reads an env var as $VAR — how does PowerShell read it?¶{{c1::$env:VAR}}		ai-mastery::m13 shell
+Shell translation: what is bash's /dev/null in PowerShell?¶{{c1::$null}}		ai-mastery::m13 shell
+What does "labs are the curriculum" mean?¶{{c1::Cyber videos are on-ramps; hands-on labs are where competence forms}}	Bandit, PortSwigger, DVWA.	ai-mastery::m13 method

@@ -1,25 +1,25 @@
-# Module 11 — NN + transformers intuition. Format: Question¶{{c1::complete answer}}<TAB>tags. Back Extra stays empty. Card law: anki/CARD-RULES.md
-What does one neuron compute?¶{{c1::squash(weighted sum of inputs + bias) — a weighted vote with a personal bias, then a squash}}	ai-mastery::m11 transformers
-In a neural net, what is a weight vs a bias?¶Weight = {{c1::how much an input matters to this neuron}}; bias = {{c1::the neuron's built-in eagerness}} — {{c1::both learned numbers}}	ai-mastery::m11 transformers
-Why do activation functions exist?¶{{c1::Without them a stack of layers collapses to one straight-line function — depth would buy nothing}}	ai-mastery::m11 transformers
-What is ReLU, in one line?¶{{c1::max(0, x) — a one-way valve: negatives become 0, positives pass through}}	ai-mastery::m11 transformers
-What is a dead ReLU?¶{{c1::A neuron outputting 0 for every input — no gradient flows back, so it stops learning entirely}}	ai-mastery::m11 transformers
-What is loss (cost) in training?¶{{c1::One number saying how wrong this prediction was — the only thing optimisation pushes down}}	ai-mastery::m11 transformers
-What is the gradient-descent analogy?¶{{c1::A foggy hillside: feel which way is downhill, take a small step, repeat}}	ai-mastery::m11 transformers
-What happens with a learning rate too big vs too small?¶{{c1::Leaps over the valley and bounces}} vs {{c1::crawls forever}} — {{c1::most "training didn't work" starts here}}	ai-mastery::m11 transformers
-What is backpropagation?¶{{c1::Efficient blame-assignment: responsibility passed backwards layer by layer — the chain rule, applied repeatedly}}	ai-mastery::m11 transformers
-What is backprop vs gradient descent?¶Backprop {{c1::computes the gradients (bookkeeping)}}; gradient descent {{c1::uses them to step}}	ai-mastery::m11 transformers
-What is an embedding?¶{{c1::A token turned into a vector in learned meaning-space — nearby vectors, related meanings}}	ai-mastery::m11 transformers
-Why do transformers add positional information?¶{{c1::Otherwise the model sees a bag of words — "dog bites man" and "man bites dog" would be identical}}	ai-mastery::m11 transformers
-In attention, what are Query, Key and Value?¶Query = {{c1::what I'm looking for}} · Key = {{c1::what I offer}} · Value = {{c1::what I hand over if picked}}	ai-mastery::m11 transformers
-What are the four steps of the attention recipe?¶{{c1::Score Q·K for every token}} → {{c1::divide by √d}} → {{c1::softmax into weights}} → {{c1::weighted average of the V vectors}}	ai-mastery::m11 transformers
-In attention, why divide the scores by √d?¶{{c1::Long vectors make dot products huge — softmax becomes a hard max and gradients vanish; scaling keeps it soft and trainable}}	ai-mastery::m11 transformers
-What is causal masking, and why?¶{{c1::Future tokens get score −∞ (weight 0) — a generating model must predict the next token WITHOUT seeing it, or it learns to cheat}}	ai-mastery::m11 transformers
-What is multi-head attention?¶{{c1::Many attention operations in parallel with different learned projections, concatenated and mixed — several readers of one sentence, pooling notes}}	ai-mastery::m11 transformers
-In a transformer, what do attention and the MLP layers each do?¶Attention {{c1::MOVES information between tokens}}; the MLPs {{c1::store and retrieve facts — about two-thirds of the parameters}}	ai-mastery::m11 transformers
-What is superposition in neural nets?¶{{c1::More concepts than neurons — each concept is a DIRECTION and directions overlap, so a single neuron rarely means one clean thing}}	ai-mastery::m11 transformers
-What is the transformer's full stack, in order?¶{{c1::Tokens}} → {{c1::embeddings + position}} → {{c1::[attention → MLP] ×N}} → {{c1::unembedding}} → {{c1::softmax}} → {{c1::sample, repeat}}	ai-mastery::m11 transformers
-What does temperature do in sampling?¶{{c1::Divides logits before softmax — low = sharper/repeatable, high = flatter/more surprising; it changes wandering, not knowledge}}	ai-mastery::m11 transformers
-What is greedy decoding's failure mode?¶{{c1::Always taking the top token — loops, blandness, and it hides the model's uncertainty}}	ai-mastery::m11 transformers
-"Models need tokens to think" — what does that mean mechanically?¶{{c1::Each generated token is one full pass through the whole stack — more tokens = more total computation spent}}	ai-mastery::m11 transformers
-Why does context beat weights for accuracy?¶{{c1::Attention reads the exact tokens present; weights are the lossy vague-recollection store}}	ai-mastery::m11 transformers
+# Module 11 — NN + transformers intuition. Format: Question¶{{c1::direct answer}}<TAB>Extra(explanation)<TAB>tags. Card law: anki/CARD-RULES.md
+What does one neuron compute?¶{{c1::squash(weighted sum of inputs + bias)}}	A weighted vote with a personal bias, then a squash.	ai-mastery::m11 transformers
+In a neural net, what is a weight vs a bias?¶Weight = {{c1::how much an input matters to this neuron}}; bias = {{c1::the neuron's built-in eagerness}}	Both are learned numbers.	ai-mastery::m11 transformers
+Why do activation functions exist?¶{{c1::Without them a stack of layers collapses to one straight-line function}}	Depth would buy nothing.	ai-mastery::m11 transformers
+What is ReLU, in one line?¶{{c1::max(0, x)}}	A one-way valve: negatives become 0, positives pass through.	ai-mastery::m11 transformers
+What is a dead ReLU?¶{{c1::A neuron outputting 0 for every input}}	No gradient flows back through it, so it stops learning entirely.	ai-mastery::m11 transformers
+What is loss (cost) in training?¶{{c1::One number saying how wrong this prediction was}}	The only thing optimisation pushes down.	ai-mastery::m11 transformers
+What is the gradient-descent analogy?¶{{c1::A foggy hillside: feel downhill, take a small step, repeat}}		ai-mastery::m11 transformers
+What happens with a learning rate too big vs too small?¶{{c1::Leaps over the valley and bounces}} vs {{c1::crawls forever}}	Most "training didn't work" starts here.	ai-mastery::m11 transformers
+What is backpropagation?¶{{c1::Efficient blame-assignment: responsibility passed backwards layer by layer}}	The chain rule, applied repeatedly from the output.	ai-mastery::m11 transformers
+What is backprop vs gradient descent?¶Backprop {{c1::computes the gradients}}; gradient descent {{c1::uses them to step}}	Bookkeeping vs stepping — different jobs.	ai-mastery::m11 transformers
+What is an embedding?¶{{c1::A token turned into a vector in learned meaning-space}}	Nearby vectors, related meanings.	ai-mastery::m11 transformers
+Why do transformers add positional information?¶{{c1::Otherwise the model sees a bag of words}}	"Dog bites man" and "man bites dog" would be identical.	ai-mastery::m11 transformers
+In attention, what are Query, Key and Value?¶Query = {{c1::what I'm looking for}} · Key = {{c1::what I offer}} · Value = {{c1::what I hand over if picked}}		ai-mastery::m11 transformers
+What are the four steps of the attention recipe?¶{{c1::Score Q·K for every token}} → {{c1::divide by √d}} → {{c1::softmax into weights}} → {{c1::weighted average of the V vectors}}		ai-mastery::m11 transformers
+In attention, why divide the scores by √d?¶{{c1::Long vectors make dot products huge — softmax becomes a hard max and gradients vanish}}	Scaling keeps it soft and trainable.	ai-mastery::m11 transformers
+What is causal masking, and why?¶{{c1::Future tokens get score −∞ (weight 0)}}	A generating model must predict the next token WITHOUT seeing it, or it learns to cheat.	ai-mastery::m11 transformers
+What is multi-head attention?¶{{c1::Many attention operations in parallel with different learned projections, concatenated and mixed}}	Several readers of one sentence, pooling notes.	ai-mastery::m11 transformers
+In a transformer, what do attention and the MLP layers each do?¶Attention {{c1::MOVES information between tokens}}; the MLPs {{c1::store and retrieve facts}}	MLPs hold about two-thirds of the parameters (3B1B ch.7).	ai-mastery::m11 transformers
+What is superposition in neural nets?¶{{c1::More concepts than neurons — each concept is a DIRECTION, and directions overlap}}	So a single neuron rarely means one clean thing.	ai-mastery::m11 transformers
+What is the transformer's full stack, in order?¶{{c1::Tokens}} → {{c1::embeddings + position}} → {{c1::[attention → MLP] ×N}} → {{c1::unembedding}} → {{c1::softmax}} → {{c1::sample, repeat}}		ai-mastery::m11 transformers
+What does temperature do in sampling?¶{{c1::Divides logits before softmax — low = sharper, high = flatter}}	It changes wandering, not knowledge.	ai-mastery::m11 transformers
+What is greedy decoding's failure mode?¶{{c1::Loops, blandness, hidden uncertainty}}	Always taking the top token.	ai-mastery::m11 transformers
+"Models need tokens to think" — what does that mean mechanically?¶{{c1::Each generated token is one full pass through the whole stack}}	More tokens = more total computation spent.	ai-mastery::m11 transformers
+Why does context beat weights for accuracy?¶{{c1::Attention reads the exact tokens present; weights are the lossy vague-recollection store}}	Module 01's law, now mechanical.	ai-mastery::m11 transformers

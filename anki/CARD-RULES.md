@@ -24,11 +24,14 @@
    {{c1::collision-resistant}}". The importer hard-fails any c2+.
 4. **Too big → split into more notes.** One idea per note. If a card teaches two things,
    it is two cards.
-5. **No filler words — but the answer is COMPLETE (his final ruling, 26/08/2026).**
-   The clozed answer carries everything worth knowing: the fact, its why/hook/example,
-   folded into the blank. **Back Extra stays EMPTY — never used** (the earlier
-   extra-info-in-Back-Extra rule is revoked). Answer-leaking examples therefore live
-   INSIDE the cloze, never visible on the question side.
+5. **The cloze = ONLY the direct answer; Back Extra = the explanation (his final ruling,
+   26/08/2026, superseding both earlier versions).** The blank holds exactly what answers
+   the question as asked — "In Python, what does "2" + 2 do?" → {{c1::TypeError}} — and
+   NOTHING more. Everything that explains, illustrates, or contextualises the answer
+   without directly answering the question (the why, the hook, the example, the gotcha)
+   goes in Back Extra, which shows on the flip. Test per card: "does this phrase answer
+   the question, or explain the answer?" Answer → cloze; explanation → Extra. Extra must
+   never contain the answer itself; the cloze must never contain explanation.
 6. **The question must STAND ON ITS OWN (his correction, 26/08/2026).** A random person with
    the knowledge must be able to answer from the visible text alone — name the domain and the
    subject explicitly, phrase it as a real question or a complete sentence. `"2" + 2 → ?`
@@ -60,9 +63,9 @@ Run each drafted card through all seven, in character as the knowledgeable stran
 4. **No open lists**: "name three differences/examples of X" with no canonical set is
    banned — there are always dozens. Split into specific single-fact cards instead.
 5. **No answer leakage**: examples, contrasts, or restatements that give the answer away
-   go INSIDE the cloze, never in the visible text ("dog bites man = man bites dog"
+   go in Back Extra, never in the visible question text ("dog bites man = man bites dog"
    was the answer; sha256("hello")/("hellp") was the answer). Visible context orients;
-   it never answers.
+   it never answers — Extra rewards the flip with the explanation.
 6. **Dedup before import**: check the fact isn't already carded (module drill files first —
    a session miss-card restating an existing drill card is deleted, the drill card is
    enough; the importer only catches EXACT text duplicates, so this check is manual).
@@ -103,9 +106,9 @@ Run each drafted card through all seven, in character as the knowledgeable stran
 ## Mechanics (this repo)
 
 - Source of truth: `anki/cards/mNN-<slug>.tsv` (module drills) + `anki/sessions/YYYY-MM-DD.tsv`
-  (per-session miss cards). Format: `Question¶{{c1::complete answer}}<TAB>tags` —
-  tags space-separated and always LAST, cloze markup ({{c1::…}} only) after the ¶,
-  never before it. The importer's 3-column form exists but Back Extra stays empty by law.
+  (per-session miss cards). Format: `Question¶{{c1::direct answer}}<TAB>Extra<TAB>tags`
+  (Extra column = the explanation; may be empty) — tags space-separated and always LAST,
+  cloze markup ({{c1::…}} only) after the ¶, never before it.
 - Import: `python tools/anki_import.py <file> --deck "AI Mastery::NN <name>"` (AnkiConnect;
   cloze model; duplicate-safe on Text).
 - Tags: `ai-mastery::mNN` per module + ONE topic tag (`python` `git` `web` `shell` `crypto`

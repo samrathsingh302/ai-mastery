@@ -1,20 +1,20 @@
-# Module 08 — how the web works. Format: Question¶{{c1::complete answer}}<TAB>tags. Back Extra stays empty. Card law: anki/CARD-RULES.md
-What is the page-load journey, in order?¶{{c1::URL}} → {{c1::DNS}} → {{c1::TCP}} → {{c1::TLS}} → {{c1::HTTP request}} → {{c1::edge/gate/origin}} → {{c1::response}} → {{c1::render}} — repeated per asset	ai-mastery::m08 web
-What is the anatomy of a URL?¶{{c1::scheme://host/path?query — protocol · machine-by-name · thing-there · options}}	ai-mastery::m08 web
-What does DNS do?¶{{c1::Turns names into numeric IP addresses (the phone book) — nslookup does it by hand}}	ai-mastery::m08 web
-Whose IPs answer for www.leedspunjabisociety.com?¶{{c1::Cloudflare's (104.21.x / 172.67.x) — the edge, not the Vercel origin}}	ai-mastery::m08 web
-What is TCP, in one sentence?¶{{c1::A reliable, ordered, two-way pipe to a numbered port (443 for HTTPS) — a phone call, not a postcard}}	ai-mastery::m08 web
-What two things does TLS give you?¶{{c1::Secrecy (encryption)}} + {{c1::identity (a certificate vouched by a trusted authority)}}	ai-mastery::m08 web
-What does HSTS commit a browser to?¶{{c1::HTTPS-only for max-age seconds (2 years on your site; preload = baked into browsers)}}	ai-mastery::m08 web
-What are the HTTP status families?¶2xx {{c1::worked}} · 3xx {{c1::go elsewhere}} · 4xx {{c1::you erred}} · 5xx {{c1::server erred}}	ai-mastery::m08 web
-What do HTTP 307/308 promise that 301/302 don't?¶{{c1::The method won't change on the redirect — a POST stays a POST}}	ai-mastery::m08 web
-What are your site's two real redirects, and why do they differ?¶vercel.app → {{c1::308 permanent (address moved for good)}}; /dashboard logged-out → {{c1::307 temporary (log in and it serves)}}	ai-mastery::m08 web
-What is the HTTP Age header the tell of?¶{{c1::A cache served you — seconds the copy sat on the edge shelf; the origin never woke}}	ai-mastery::m08 web
-What are the session cookie's three protective flags?¶{{c1::HttpOnly (scripts can't read it)}} · {{c1::Secure (HTTPS only)}} · {{c1::SameSite (other sites can't ride it)}}	ai-mastery::m08 security
-Why re-check auth AFTER the proxy gate?¶{{c1::Forged requests skip gates — the check beside the data is the one they can't skip}}	ai-mastery::m08 security
-What is a CDN?¶{{c1::Cache servers near users answering for the origin — vending machines stocked from one warehouse}}	ai-mastery::m08 web
-What is your site's serving chain?¶{{c1::Cloudflare (DNS + edge cache) in front of Vercel (the Next.js origin)}}	ai-mastery::m08 web
-Which one header revealed your site's backend?¶{{c1::CSP connect-src *.supabase.co — plus its live websocket wss://}}	ai-mastery::m08 security
-What does X-Frame-Options: DENY defend against?¶{{c1::Clickjacking — nobody may iframe the site (CSP frame-ancestors 'none' is the modern twin)}}	ai-mastery::m08 security
-What do curl's -I, -L and -v flags do?¶{{c1::Headers only (HEAD)}} · {{c1::follow redirects}} · {{c1::narrate the whole conversation}}	ai-mastery::m08 shell
-The docs said vercel.app but the wire said the custom domain — what is the lesson?¶{{c1::Trust the wire over the docs — docs drift, evidence doesn't}}	ai-mastery::m08 method
+# Module 08 — how the web works. Format: Question¶{{c1::direct answer}}<TAB>Extra(explanation)<TAB>tags. Card law: anki/CARD-RULES.md
+What is the page-load journey, in order?¶{{c1::URL}} → {{c1::DNS}} → {{c1::TCP}} → {{c1::TLS}} → {{c1::HTTP request}} → {{c1::edge/gate/origin}} → {{c1::response}} → {{c1::render}}	Repeated per asset.	ai-mastery::m08 web
+What is the anatomy of a URL?¶{{c1::scheme://host/path?query}}	Protocol · machine-by-name · thing-there · options.	ai-mastery::m08 web
+What does DNS do?¶{{c1::Turns names into numeric IP addresses}}	The phone book; nslookup does it by hand.	ai-mastery::m08 web
+Whose IPs answer for www.leedspunjabisociety.com?¶{{c1::Cloudflare's — the edge, not the Vercel origin}}	104.21.x / 172.67.x ranges.	ai-mastery::m08 web
+What is TCP, in one sentence?¶{{c1::A reliable, ordered, two-way pipe to a numbered port}}	443 for HTTPS — a phone call, not a postcard.	ai-mastery::m08 web
+What two things does TLS give you?¶{{c1::Secrecy (encryption)}} + {{c1::identity (certificate)}}	The certificate is vouched by a trusted authority.	ai-mastery::m08 web
+What does HSTS commit a browser to?¶{{c1::HTTPS-only for max-age seconds}}	2 years on your site; preload = baked into browsers.	ai-mastery::m08 web
+What are the HTTP status families?¶2xx {{c1::worked}} · 3xx {{c1::go elsewhere}} · 4xx {{c1::you erred}} · 5xx {{c1::server erred}}		ai-mastery::m08 web
+What do HTTP 307/308 promise that 301/302 don't?¶{{c1::The method won't change on the redirect}}	A POST stays a POST.	ai-mastery::m08 web
+What are your site's two real redirects, and why do they differ?¶vercel.app → {{c1::308 permanent}}; /dashboard logged-out → {{c1::307 temporary}}	Address moved for good vs log-in-and-it-serves-again.	ai-mastery::m08 web
+What is the HTTP Age header the tell of?¶{{c1::A cache served you}}	Seconds the copy sat on the edge shelf — the origin never woke.	ai-mastery::m08 web
+What are the session cookie's three protective flags?¶{{c1::HttpOnly}} · {{c1::Secure}} · {{c1::SameSite}}	Scripts can't read it · HTTPS only · other sites can't ride it.	ai-mastery::m08 security
+Why re-check auth AFTER the proxy gate?¶{{c1::Forged requests skip gates}}	The check beside the data is the one they can't skip.	ai-mastery::m08 security
+What is a CDN?¶{{c1::Cache servers near users answering for the origin}}	Vending machines stocked from one warehouse.	ai-mastery::m08 web
+What is your site's serving chain?¶{{c1::Cloudflare (DNS + edge cache) in front of Vercel (the Next.js origin)}}		ai-mastery::m08 web
+Which one header revealed your site's backend?¶{{c1::CSP connect-src *.supabase.co}}	Plus its live websocket wss://.	ai-mastery::m08 security
+What does X-Frame-Options: DENY defend against?¶{{c1::Clickjacking}}	Nobody may iframe the site; CSP frame-ancestors 'none' is the modern twin.	ai-mastery::m08 security
+What do curl's -I, -L and -v flags do?¶{{c1::Headers only (HEAD)}} · {{c1::follow redirects}} · {{c1::narrate the whole conversation}}		ai-mastery::m08 shell
+The docs said vercel.app but the wire said the custom domain — what is the lesson?¶{{c1::Trust the wire over the docs}}	Docs drift; evidence doesn't.	ai-mastery::m08 method

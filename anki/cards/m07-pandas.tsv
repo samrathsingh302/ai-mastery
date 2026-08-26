@@ -1,18 +1,18 @@
-# Module 07 — data taster (Hevy). Format: Question¶{{c1::complete answer}}<TAB>tags. Back Extra stays empty. Card law: anki/CARD-RULES.md
-What is a Python virtual environment?¶{{c1::A private Python + packages inside the project folder — projects can't break each other; delete the folder, it's gone}}	ai-mastery::m07 python
-What are the three venv commands?¶{{c1::py -m venv .venv}} · {{c1::.venv\Scripts\activate}} · {{c1::pip install THINGS}}	ai-mastery::m07 python
-In pandas, what is a DataFrame vs a Series?¶{{c1::A table}} vs {{c1::one typed, labelled column of it}}	ai-mastery::m07 pandas
-What is the pandas reflex after every data load?¶{{c1::df.head()}} · {{c1::df.shape}} · {{c1::df.dtypes}} · {{c1::df.describe()}} — inspect before trusting	ai-mastery::m07 pandas
-What does tidy data mean?¶{{c1::One row per observation — every question becomes filter/group over rows}}	ai-mastery::m07 pandas
-Why do you almost never loop in pandas?¶{{c1::You operate column-at-a-time: df["volume"] = df["weight_kg"] * df["reps"] multiplies whole columns}}	ai-mastery::m07 pandas
-In pandas, how do you convert ISO date strings to real datetimes?¶{{c1::df["date"] = pd.to_datetime(df["date"])}}	ai-mastery::m07 pandas
-What is split-apply-combine in pandas?¶{{c1::Split rows into groups → apply per group → combine: df.groupby("exercise")["volume"].sum()}}	ai-mastery::m07 pandas
-In pandas, how do you filter rows for one exercise?¶{{c1::A boolean mask: df[df["exercise"] == "Bench Press (Barbell)"]}}	ai-mastery::m07 pandas
-In pandas, how do you sort a groupby result descending?¶{{c1::.sort_values(ascending=False)}}	ai-mastery::m07 pandas
-In pandas, how do you get an ISO week key from a date column?¶{{c1::df["date"].dt.isocalendar() → year + "-W" + zero-padded week}}	ai-mastery::m07 pandas
-What is the Epley estimated-1RM formula?¶{{c1::weight × (1 + reps/30) — computed per set, take the max}}	ai-mastery::m07 pandas
-How do you detect a training plateau with pandas?¶{{c1::A rolling window: series.rolling(4).max() flat for weeks}}	ai-mastery::m07 pandas
-What is minimum viable matplotlib?¶{{c1::series.plot(kind="bar", title=...)}} · {{c1::plt.tight_layout()}} · {{c1::plt.savefig("name.png")}}	ai-mastery::m07 pandas
-Why copy the data file before analysing?¶{{c1::Read-only law on live repos — and a fresh-copy re-run proving same results is your reproducibility check}}	ai-mastery::m07 method
-"Include warm-ups in volume?" is what kind of question?¶{{c1::A tidying DECISION — either answer is fine, but it must be written down}}	ai-mastery::m07 method
-What is module 07's point in four words?¶{{c1::Data → honest sentence → decision}}	ai-mastery::m07 method
+# Module 07 — data taster (Hevy). Format: Question¶{{c1::direct answer}}<TAB>Extra(explanation)<TAB>tags. Card law: anki/CARD-RULES.md
+What is a Python virtual environment?¶{{c1::A private Python + packages inside the project folder}}	Projects can't break each other; delete the folder, it's gone.	ai-mastery::m07 python
+What are the three venv commands?¶{{c1::py -m venv .venv}} · {{c1::.venv\Scripts\activate}} · {{c1::pip install THINGS}}		ai-mastery::m07 python
+In pandas, what is a DataFrame vs a Series?¶{{c1::A table}} vs {{c1::one typed, labelled column of it}}		ai-mastery::m07 pandas
+What is the pandas reflex after every data load?¶{{c1::df.head()}} · {{c1::df.shape}} · {{c1::df.dtypes}} · {{c1::df.describe()}}	Inspect before trusting.	ai-mastery::m07 pandas
+What does tidy data mean?¶{{c1::One row per observation}}	Every question becomes filter/group over rows — one row per SET in the Hevy data.	ai-mastery::m07 pandas
+Why do you almost never loop in pandas?¶{{c1::You operate column-at-a-time}}	df["volume"] = df["weight_kg"] * df["reps"] multiplies whole columns at once.	ai-mastery::m07 pandas
+In pandas, how do you convert ISO date strings to real datetimes?¶{{c1::df["date"] = pd.to_datetime(df["date"])}}		ai-mastery::m07 pandas
+What is split-apply-combine in pandas?¶{{c1::df.groupby("exercise")["volume"].sum()}}	Split rows into groups → apply a function per group → combine the results.	ai-mastery::m07 pandas
+In pandas, how do you filter rows for one exercise?¶{{c1::df[df["exercise"] == "Bench Press (Barbell)"]}}	A boolean mask.	ai-mastery::m07 pandas
+In pandas, how do you sort a groupby result descending?¶{{c1::.sort_values(ascending=False)}}		ai-mastery::m07 pandas
+In pandas, how do you get an ISO week key from a date column?¶{{c1::df["date"].dt.isocalendar()}}	Build year + "-W" + zero-padded week from it.	ai-mastery::m07 pandas
+What is the Epley estimated-1RM formula?¶{{c1::weight × (1 + reps/30)}}	Computed per set; take the max.	ai-mastery::m07 pandas
+How do you detect a training plateau with pandas?¶{{c1::series.rolling(4).max() flat for weeks}}	A rolling window over the weekly best.	ai-mastery::m07 pandas
+What is minimum viable matplotlib?¶{{c1::series.plot(kind="bar", title=...)}} · {{c1::plt.tight_layout()}} · {{c1::plt.savefig("name.png")}}		ai-mastery::m07 pandas
+Why copy the data file before analysing?¶{{c1::Read-only law on live repos}}	And a fresh-copy re-run proving same results is your reproducibility check.	ai-mastery::m07 method
+"Include warm-ups in volume?" is what kind of question?¶{{c1::A tidying DECISION}}	Either answer is fine, but it must be written down.	ai-mastery::m07 method
+What is module 07's point in four words?¶{{c1::Data → honest sentence → decision}}		ai-mastery::m07 method
