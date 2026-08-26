@@ -1,0 +1,31 @@
+# Module 01 — video canon. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+What is an LLM? {{c1::A next-token predictor}} grown from internet-scale text.	ai-mastery::m01 ml
+What is a token? {{c1::The chunk-of-text unit (word-part → ID) models read and write}} — never letters.	ai-mastery::m01 ml
+LLMs are bad at counting letters because {{c1::they see tokens, not letters}}.	ai-mastery::m01 ml
+Parameters/weights are {{c1::the learned numbers that ARE the model}}.	ai-mastery::m01 ml
+Training = {{c1::tuning the parameters}} (slow, costly); inference = {{c2::using the tuned model to generate}}.	ai-mastery::m01 ml
+Pretraining produces a {{c1::BASE model}} — it {{c2::continues text, doesn't answer}}.	ai-mastery::m01 ml
+"Lossy zip": parameters {{c1::compress the internet lossily}} — exact on oft-repeated text, vague elsewhere.	ai-mastery::m01 ml
+Base model → assistant via {{c1::supervised fine-tuning (SFT)}} on {{c2::labeller-written ideal conversations}}.	ai-mastery::m01 ml
+Chatting with an assistant model = talking to {{c1::a statistical simulation of a helpful labeller}}.	ai-mastery::m01 ml
+LLMs hallucinate because {{c1::confident SFT style covers vague recollection}} — likelihood fills the gap.	ai-mastery::m01 ml
+Hallucination patches: {{c1::train "I don't know" on probed blind spots}} · {{c2::tools/retrieval pasting real sources into context}}.	ai-mastery::m01 ml
+Context window = {{c1::working memory, reliable}}; weights = {{c2::vague recollection}}.	ai-mastery::m01 ml
+"Think step by step" works because {{c1::compute per token is fixed}} — more tokens = more total computation.	ai-mastery::m01 ml
+Jagged intelligence: {{c1::PhD-level on some tasks, failing trivial ones}} — calibrate trust {{c2::per task}}.	ai-mastery::m01 ml
+RL-with-verification thrives in {{c1::maths and code}} because {{c2::auto-checkable answers give reward at scale}}.	ai-mastery::m01 ml
+DeepSeek-R1 showed {{c1::RL alone discovers longer, self-correcting chains of thought}}.	ai-mastery::m01 ml
+AlphaGo move 37's lesson: {{c1::imitation caps at human level; RL against the real goal can exceed it}}.	ai-mastery::m01 ml
+RLHF: humans compare outputs → {{c1::a reward model learns preferences}} → model optimised {{c2::to please it, briefly}}.	ai-mastery::m01 ml
+RLHF runs briefly because {{c1::the reward model is gameable}} — over-optimise → adversarial junk.	ai-mastery::m01 ml
+Sycophancy's root: models optimised to be {{c1::PREFERRED}}, and {{c2::preferred ≠ true}}.	ai-mastery::m01 ml
+Kernighan's Law: debugging is {{c1::twice as hard as writing}} → never ship code {{c2::you couldn't write yourself}}.	ai-mastery::m01 method
+Vibe coding is rational only for {{c1::prototypes/small scope in stacks you could write yourself}}.	ai-mastery::m01 method
+Vibe coding that doesn't suck: {{c1::feed current true context}} · {{c2::let it see real errors}} · {{c3::automatic verification around it}}.	ai-mastery::m01 method
+MCP = {{c1::a standard plug connecting an AI tool to outside systems}}.	ai-mastery::m01 ml
+API = {{c1::a programme-to-programme doorway: request in, answer back}}.	ai-mastery::m01 ml
+RAG = {{c1::fetch relevant documents, paste into context, answer open-book}}.	ai-mastery::m01 ml
+An agent = {{c1::an LLM with tools and a loop so it can act}}.	ai-mastery::m01 ml
+An eval = {{c1::fixed tasks + a scoring method}} — measured, not vibed.	ai-mastery::m01 evals
+Ebbelaar's six stages: {{c1::foundations}} → {{c2::system design}} → {{c3::production backends}} → {{c4::RAG}} → {{c5::monitoring & evals}} → {{c6::deployment}}.	ai-mastery::m01 ml
+House laws: {{c1::no ChatGPT in the interview}} · {{c2::never let AI write code you couldn't write}}.	ai-mastery::m01 method

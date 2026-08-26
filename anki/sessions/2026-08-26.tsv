@@ -1,9 +1,9 @@
-# Session misses — 26/08/2026, module 03 rungs 0–1 (imported by tools/anki_import.py)
-What does "2" + 2 do in Python?	TypeError — number-meets-text always errors. + adds (both numbers) or glues (both strings); it never mixes.
-What does a function return if no return statement ever runs?	None — every call hands back something; no return hit → None. (print instead of return is the classic cause.)
-return vs print?	return hands a value back (usable, storable, testable); print only paints pixels. The print version returns None.
-Phrase for "string contains at least one digit"?	any(ch.isdigit() for ch in pw) — pw.isdigit() asks "is the WHOLE string digits?", the wrong question.
-What does any(...) take and give back?	Takes a stream of booleans, gives one: True if at least one is True. Without it you have many answers and no verdict.
-Which branch of an if/elif chain runs?	The FIRST true one, top to bottom — the rest are skipped even if also true. Narrowest/highest test first.
-2 + 2.5 → ?	4.5, a float — numbers mix freely (int gets promoted); only number-meets-TEXT errors.
-Fix is right but the checker still fails — first check?	Is the file SAVED? The checker runs what's on disk. VS Code: ● on the tab = unsaved.
+# Session misses 26/08/2026 — module 03 rungs 0–1. Rewritten to cloze same day per CARD-RULES.md.
+Python: "2" + 2 → {{c1::TypeError}} — + adds or glues, it never {{c2::mixes number and text}}.	session::2026-08-26 python
+A function where no return statement runs gives back {{c1::None}} — print-instead-of-return is the classic cause.	session::2026-08-26 python
+return {{c1::hands a value back — usable, testable}}; print {{c2::paints pixels and returns None}}.	session::2026-08-26 python
+"String contains at least one digit": {{c1::any(ch.isdigit() for ch in pw)}} — pw.isdigit() asks {{c2::is the WHOLE string digits?}}.	session::2026-08-26 python
+any(...) takes {{c1::a stream of booleans}}, gives back {{c2::True if at least one is True}}.	session::2026-08-26 python
+An if/elif chain runs {{c1::the FIRST true branch, top to bottom}} — the rest skipped even if also true.	session::2026-08-26 python
+Python: 2 + 2.5 → {{c1::4.5, a float}} — numbers mix freely; only {{c2::number-meets-TEXT}} errors.	session::2026-08-26 python
+Fix is right but the checker still fails — first check: {{c1::is the file SAVED? (VS Code: ● on the tab)}}.	session::2026-08-26 python

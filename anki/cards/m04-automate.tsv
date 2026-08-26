@@ -1,0 +1,19 @@
+# Module 04 — automate the boring stuff. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+File-automation safety laws: {{c1::dry-run first}} · {{c2::quarantine, never delete}} · {{c3::practise in a sandbox}} · {{c4::idempotent}}.	ai-mastery::m04 automation
+Idempotent = {{c1::running twice changes nothing the second time}}.	ai-mastery::m04 automation
+pathlib join: {{c1::repo / "PROGRESS.md"}} — never {{c2::glue path strings with +}}.	ai-mastery::m04 python
+.glob = {{c1::this folder only}}; .rglob = {{c2::whole tree below}}.	ai-mastery::m04 python
+Copy with timestamps {{c1::shutil.copy2}} · move {{c2::shutil.move}} · zip {{c3::shutil.make_archive(name, "zip", folder)}}	ai-mastery::m04 python
+Collect list(p.iterdir()) before moving because {{c1::never mutate a folder while iterating it}}.	ai-mastery::m04 automation
+Name-collision idiom: {{c1::stem-1.suffix, stem-2.suffix… until free}}.	ai-mastery::m04 python
+re.compile buys {{c1::a named, reusable, once-built pattern}}.	ai-mastery::m04 python
+Regex named group: {{c1::(?P<year>\d{4})}} → read with {{c2::m.group("year")}}	ai-mastery::m04 python
+Match [[wiki-links]]: {{c1::r"\[\[([^\]]+)\]\]"}} — negated class beats {{c2::greedy .*}}.	ai-mastery::m04 python
+csv.DictReader: rows as {{c1::dicts keyed by the header}}; values ALWAYS {{c2::strings}}.	ai-mastery::m04 python
+JSON = {{c1::text format for nested dicts/lists/strings/numbers}}.	ai-mastery::m04 python
+json.loads {{c1::text → objects}}; json.dumps {{c2::objects → text}}.	ai-mastery::m04 python
+Windows file gotchas: {{c1::encoding="utf-8" on open}} · {{c2::newline="" when WRITING csv}}.	ai-mastery::m04 python
+subprocess.run law: pass {{c1::a LIST of args, never a glued shell string}} — gluing breeds injection.	ai-mastery::m04 security
+Subprocess results: {{c1::r.returncode (0 = success)}} · {{c2::r.stdout}} · {{c3::r.stderr}}.	ai-mastery::m04 python
+Task Scheduler demystified: {{c1::trigger + action + working directory}}.	ai-mastery::m04 automation
+Inspect a scheduled task: {{c1::schtasks /query /tn "NAME" /v /fo LIST}}	ai-mastery::m04 shell

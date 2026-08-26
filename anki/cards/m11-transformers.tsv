@@ -1,0 +1,25 @@
+# Module 11 — NN + transformers intuition. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+One neuron computes {{c1::squash(weighted sum of inputs + bias)}}.	ai-mastery::m11 transformers
+Weight = {{c1::how much an input matters}}; bias = {{c2::the neuron's built-in eagerness}}.	ai-mastery::m11 transformers
+Without activation functions {{c1::stacked layers collapse to one straight-line function}} — depth buys nothing.	ai-mastery::m11 transformers
+ReLU = {{c1::max(0, x)}} — a one-way valve.	ai-mastery::m11 transformers
+Dead ReLU = {{c1::outputs 0 for every input — no gradient flows, learning stops}}.	ai-mastery::m11 transformers
+Loss = {{c1::one number: how wrong this prediction was}} — the only thing optimisation pushes down.	ai-mastery::m11 transformers
+Gradient descent analogy: {{c1::foggy hillside — feel downhill, small step, repeat}}.	ai-mastery::m11 transformers
+Learning rate too big {{c1::leaps over the valley and bounces}}; too small {{c2::crawls forever}}.	ai-mastery::m11 transformers
+Backprop = {{c1::blame passed backwards layer by layer — the chain rule, repeatedly}}.	ai-mastery::m11 transformers
+Backprop {{c1::computes the gradients}}; gradient descent {{c2::uses them to step}}.	ai-mastery::m11 transformers
+An embedding = {{c1::a token turned into a vector in learned meaning-space}} — nearby vectors, related meanings.	ai-mastery::m11 transformers
+Positional information exists because otherwise {{c1::the model sees a bag of words}} — "dog bites man" = "man bites dog".	ai-mastery::m11 transformers
+Query = {{c1::what I'm looking for}} · Key = {{c2::what I offer}} · Value = {{c3::what I hand over if picked}}.	ai-mastery::m11 transformers
+Attention recipe: {{c1::score Q·K per token}} → {{c2::divide by √d}} → {{c3::softmax to weights}} → {{c4::weighted average of V}}.	ai-mastery::m11 transformers
+Divide by √d because {{c1::huge dot products make softmax a hard max and gradients vanish}}.	ai-mastery::m11 transformers
+Causal masking: future tokens get {{c1::score −∞ (weight 0)}} so the model {{c2::can't cheat by seeing the next token}}.	ai-mastery::m11 transformers
+Multi-head attention = {{c1::parallel attentions with different learned projections, concatenated and mixed}}.	ai-mastery::m11 transformers
+Attention {{c1::MOVES information between tokens}}; the MLPs {{c2::store and retrieve facts (~two-thirds of parameters)}}.	ai-mastery::m11 transformers
+Superposition = {{c1::concepts as overlapping DIRECTIONS — more concepts than neurons}}.	ai-mastery::m11 transformers
+The full stack: {{c1::tokens → embeddings + position → [attention → MLP] ×N → unembedding → softmax → sample → repeat}}.	ai-mastery::m11 transformers
+Temperature {{c1::divides logits before softmax}}: low = {{c2::sharper/repeatable}}, high = {{c3::flatter/surprising}}.	ai-mastery::m11 transformers
+Greedy decoding fails by {{c1::loops, blandness, and hiding the model's uncertainty}}.	ai-mastery::m11 transformers
+"Models need tokens to think": each generated token = {{c1::one full pass through the whole stack}}.	ai-mastery::m11 transformers
+Context beats weights because {{c1::attention reads the exact tokens present; weights are lossy recollection}}.	ai-mastery::m11 transformers

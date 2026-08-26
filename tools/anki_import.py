@@ -1,26 +1,31 @@
-"""Push tab-separated cards straight into the running Anki via AnkiConnect (add-on 2055492159).
+"""Push cloze cards straight into the running Anki via AnkiConnect (add-on 2055492159).
 
     python tools/anki_import.py <cards.tsv> [--deck "AI Mastery::00 session misses"]
 
-Input: one card per line, `Front<TAB>Back` (same format as the module drills.md files);
-blank lines and lines starting with # are skipped. The deck is created if missing.
-Duplicates (same Front already in the deck) are skipped, not doubled — safe to re-run.
-Anki must be OPEN; if the port is dead this fails loudly rather than half-importing.
+Input: one note per line, `Text<TAB>tags` — Text uses Anki cloze markup ({{c1::...}}),
+tags are space-separated and optional; blank lines and lines starting with # are skipped.
+Card style law: anki/CARD-RULES.md — read it before drafting cards. Every line MUST
+contain at least one cloze; a line without one fails the whole import loudly (no
+half-imports). Note type = Anki's built-in Cloze (default formatting, per Samrath's rule).
+The deck is created if missing. Duplicates (same Text in the deck) are skipped, not
+doubled — safe to re-run. Anki must be OPEN; a dead port fails loudly.
 
-Written 26/08/2026 at Samrath's instruction: /study-session imports its quiz-miss cards
-itself — he only opens Anki and reviews.
+Written 26/08/2026 at Samrath's instruction; rewritten same day for the cloze-only
+card law (was Front<TAB>Back basic cards).
 """
 
 import argparse
 import json
 import pathlib
+import re
 import sys
 import urllib.error
 import urllib.request
 
 API = "http://127.0.0.1:8765"
-MODEL = "AI Mastery basic"          # ships with the ai-mastery.apkg deck build
+MODEL = "Cloze"                     # Anki's built-in note type — default formatting by law
 DEFAULT_DECK = "AI Mastery::00 session misses"
+CLOZE_RE = re.compile(r"\{\{c\d+::")
 
 
 def call(action: str, **params):
@@ -35,17 +40,18 @@ def call(action: str, **params):
     return resp["result"]
 
 
-def parse_cards(path: pathlib.Path) -> list[tuple[str, str]]:
+def parse_cards(path: pathlib.Path) -> list[tuple[str, list[str]]]:
     cards = []
     for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         if not line.strip() or line.lstrip().startswith("#"):
             continue
-        if "\t" not in line:
-            sys.exit(f"{path.name}:{n}: no tab separator — every card line is Front<TAB>Back")
-        front, _, back = line.partition("\t")
-        if not front.strip() or not back.strip():
-            sys.exit(f"{path.name}:{n}: empty front or back")
-        cards.append((front.strip(), back.strip()))
+        text, _, tags = line.partition("\t")
+        text = text.strip()
+        if not text:
+            sys.exit(f"{path.name}:{n}: empty card text")
+        if not CLOZE_RE.search(text):
+            sys.exit(f"{path.name}:{n}: no cloze marker — every card is cloze, see anki/CARD-RULES.md")
+        cards.append((text, tags.split()))
     if not cards:
         sys.exit(f"{path.name}: no cards found")
     return cards
@@ -63,10 +69,11 @@ def main() -> None:
         {
             "deckName": args.deck,
             "modelName": MODEL,
-            "fields": {"Front": front, "Back": back},
+            "fields": {"Text": text, "Back Extra": ""},
+            "tags": tags,
             "options": {"allowDuplicate": False, "duplicateScope": "deck"},
         }
-        for front, back in cards
+        for text, tags in cards
     ]
     result = call("addNotes", notes=notes)
     added = sum(1 for r in result if r is not None)

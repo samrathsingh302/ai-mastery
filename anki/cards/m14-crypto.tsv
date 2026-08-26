@@ -1,0 +1,27 @@
+# Module 14 — crypto on monk-mode. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+Hash function properties: {{c1::one-way}} · {{c2::deterministic}} · {{c3::collision-resistant}}.	ai-mastery::m14 crypto
+Avalanche effect: {{c1::one changed letter rewrites the whole digest}} — sha256("hello") vs sha256("hellp") share nothing.	ai-mastery::m14 crypto
+Passwords are HASHED, not encrypted, because {{c1::the system only needs to CHECK, never read back}} — encryption is reversible by design.	ai-mastery::m14 crypto
+A salt = {{c1::random data mixed in before hashing, stored alongside}}; it defeats {{c2::rainbow tables}}.	ai-mastery::m14 crypto
+A rainbow table = {{c1::a precomputed fingerprint→input lookup}} — works only because {{c2::unsalted hashes are identical for everyone}}.	ai-mastery::m14 crypto
+monk-mode's salt: {{c1::16 bytes}} · {{c2::fresh per code}} · from {{c3::a CSPRNG}} — makes each offline search independent.	ai-mastery::m14 crypto
+A KDF = {{c1::a deliberately slow, salted hash for secrets humans handle}} — fast hashing is {{c2::the ATTACKER's friend}}.	ai-mastery::m14 crypto
+monk-mode's KDF exactly: {{c1::PBKDF2-HMAC-SHA256}} · {{c2::600,000 iterations}} · {{c3::16-byte salt, 32-byte output}} — pinned by unit tests.	ai-mastery::m14 crypto
+The 600k-iteration asymmetry: you pay {{c1::once per check (~0.39 s)}}; the attacker pays {{c2::per guess}}.	ai-mastery::m14 crypto
+A MAC adds {{c1::a key}} over a plain hash: {{c2::anyone can hash; only the key holder can stamp}} — a wax seal.	ai-mastery::m14 crypto
+HMAC = {{c1::the standard construction for building a MAC out of a hash function}}.	ai-mastery::m14 crypto
+ComputeConfigMac: {{c1::HMAC-SHA256}} over {{c2::the canonical string's UTF-16LE bytes}}, {{c3::Base64-encoded}}, keyed with {{c4::a 32-byte per-block random key}}.	ai-mastery::m14 crypto
+The encoding trap: {{c1::UTF-16LE and UTF-8 give COMPLETELY different MACs}} — .NET Encoding.Unicode means {{c2::UTF-16LE}}.	ai-mastery::m14 crypto
+Canonicalisation = {{c1::ONE exact string before signing — same fields, same order, same formatting}}. No canonical form, no meaningful signature.	ai-mastery::m14 crypto
+monk-mode's canonical shape: {{c1::Name=value one per line, \n-terminated, fixed order, from DECRYPTED values}}.	ai-mastery::m14 crypto
+A field OUTSIDE the canonical is {{c1::freely editable — the MAC still verifies}}. Coverage is the protection.	ai-mastery::m14 crypto
+Omitting AllSessionKill from the canonical would allow {{c1::flipping an armed all-session block back to session-0-only}}.	ai-mastery::m14 crypto
+Gluing fields ("Until=" + u + "Committed=" + c) is forgeable because {{c1::a value can contain the separator and swallow its neighbour}} — one MAC, {{c2::two meanings}}.	ai-mastery::m14 crypto
+The §5 law: {{c1::sign a form that can only be read one way}} — ambiguity in the signed representation is a hole.	ai-mastery::m14 crypto
+A timing side-channel = {{c1::learning a secret from how LONG an operation takes}} — == {{c2::stops at the first differing byte}}, so closer guesses reject slower.	ai-mastery::m14 crypto
+Constant-time compare: .NET {{c1::CryptographicOperations.FixedTimeEquals}} · Python {{c2::hmac.compare_digest}}.	ai-mastery::m14 crypto
+Fail-closed = {{c1::check breaks → DENY}}; fail-open = {{c2::check breaks → allow}} — how convenience wins and security dies.	ai-mastery::m14 security
+ConfigMacIsValid on a blank/malformed MAC: {{c1::returns False, never throws — the block stays standing}}.	ai-mastery::m14 crypto
+DPAPI machine scope: {{c1::only THIS machine can decrypt the HMAC key}}; useless against {{c2::someone who has the machine}}.	ai-mastery::m14 crypto
+Simple3Des weak-by-design is still correct because {{c1::the threat is TAMPERING, not secrecy — the HMAC layer does the real work}}.	ai-mastery::m14 crypto
+Module 14's design law: {{c1::name your threat model, then spend strength where the threat is}} — crypto as decoration buys false confidence.	ai-mastery::m14 crypto

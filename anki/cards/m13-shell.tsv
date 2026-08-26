@@ -1,0 +1,23 @@
+# Module 13 — shell + Bandit. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+Shell sentence structure: {{c1::command --flags arguments}} — verb, adverbs, objects.	ai-mastery::m13 shell
+The shell's dictionary: {{c1::man CMD}} · {{c2::CMD --help}} · {{c3::help BUILTIN}} — reading beats guessing.	ai-mastery::m13 shell
+pwd = {{c1::where am I}} · cd - = {{c2::previous directory}} · cd ~ = {{c3::home}}.	ai-mastery::m13 shell
+tail -f {{c1::follows a growing file live}} — the real-logs command.	ai-mastery::m13 shell
+Path symbols: . {{c1::here}} · .. {{c2::parent}} · ~ {{c3::home}} · - {{c4::previous}}.	ai-mastery::m13 shell
+Globs: * {{c1::any characters}} · ? {{c2::exactly one character}} · ** {{c3::any depth}}.	ai-mastery::m13 shell
+A pipe | {{c1::sends one command's output into the next command's input}}.	ai-mastery::m13 shell
+2>&1 = {{c1::send stderr (2) wherever stdout (1) currently goes}}.	ai-mastery::m13 shell
+sort must come before uniq -c because {{c1::uniq only collapses ADJACENT duplicates}} — unsorted = silently wrong counts.	ai-mastery::m13 shell
+sort -rn = {{c1::numeric, reversed — biggest first}}.	ai-mastery::m13 shell
+find answers {{c1::"which FILES?"}}; grep answers {{c2::"which LINES?"}}.	ai-mastery::m13 shell
+grep flags: -r {{c1::recursive}} · -n {{c2::line numbers}} · -i {{c3::case-insensitive}} · -l {{c4::filenames only}} · -c {{c5::counts}} · -v {{c6::invert}}.	ai-mastery::m13 shell
+xargs {{c1::feeds a list of items into another command}}: find . -name '*.log' | xargs wc -l	ai-mastery::m13 shell
+-rw-r--r-- reads: {{c1::owner rw, group r, others r — only the owner can write}}.	ai-mastery::m13 shell
+chmod 600 = {{c1::owner read+write; group and others nothing}}.	ai-mastery::m13 shell
+cat -oddly-named fails because {{c1::it looks like flags}}; fixes: {{c2::cat ./-oddly-named}} or {{c3::cat -- -oddly-named}}.	ai-mastery::m13 shell
+SSH = {{c1::an encrypted remote terminal — type here, runs there}}.	ai-mastery::m13 shell
+The first-connect fingerprint prompt is {{c1::the server proving identity/continuity}} — suspicious if {{c2::it ever changes unexpectedly}}.	ai-mastery::m13 security
+Bandit connection line: {{c1::ssh bandit0@bandit.labs.overthewire.org -p 2220}} (password bandit0).	ai-mastery::m13 shell
+Bandit house rule: {{c1::no walkthroughs — 30 min struggle, then man pages, then concept-only hints}}.	ai-mastery::m13 method
+bash vs PowerShell: {{c1::ls/cat/grep vs Get-ChildItem/Get-Content/Select-String}} · {{c2::$VAR vs $env:VAR}} · {{c3::/dev/null vs $null}}.	ai-mastery::m13 shell
+"Labs are the curriculum" means {{c1::videos are on-ramps; hands-on labs are where competence forms}}.	ai-mastery::m13 method

@@ -1,0 +1,12 @@
+# Module 12 — first AI-free build. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+# NB: the outage-test card lives in m02 only (duplicate dropped in the 26/08 cloze rewrite).
+AI-free forbids {{c1::Claude, autocomplete, AI search, concept chats, pasting errors in}}; allows {{c2::docs, own notes, help(), REPL, paper}}.	ai-mastery::m12 method
+Unassisted wall protocol: {{c1::re-read the error bottom-up}} · {{c2::smallest reproduction}} · {{c3::inspect real values}} · {{c4::one written hypothesis at a time}} · {{c5::45 min stuck → log it, return tomorrow}}.	ai-mastery::m12 method
+Honesty clause: {{c1::log every breach — what and how long}}; a hidden breach corrupts the baseline forever.	ai-mastery::m12 method
+Grade BEFORE showing anyone because {{c1::grading first forces criteria; after invites rationalising}}.	ai-mastery::m12 method
+A test is worth having if {{c1::it would CATCH a real break}} — prove it by {{c2::breaking the code on purpose}}.	ai-mastery::m12 python
+Errors must exit non-zero because {{c1::exit codes are how programs detect failure — a traceback is not an interface}}.	ai-mastery::m12 python
+The exit test: {{c1::a cold 30-minute interview sim}}, pass mark {{c2::9+/12}}.	ai-mastery::m12 method
+A low sim score means {{c1::the gaps were found — misses become drills and cards; re-sit in a fortnight}}.	ai-mastery::m12 method
+A tool you USE teaches {{c1::design}}; one you don't taught only {{c2::syntax}}.	ai-mastery::m12 method
+Module 12's most valuable artefact: {{c1::a wall you crossed alone}}.	ai-mastery::m12 method

@@ -1,0 +1,18 @@
+# Module 06 — repo archaeology. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+Archaeology passes, in order: {{c1::signs}} · {{c2::map}} · {{c3::doors}} · {{c4::one vertical slice}} · {{c5::crown jewels}} · {{c6::verdict}}.	ai-mastery::m06 method
+One vertical slice beats skimming because {{c1::one true end-to-end trace teaches the architecture}}.	ai-mastery::m06 method
+Entry point = {{c1::where execution starts}} — mains, routes, service starts, scheduled tasks.	ai-mastery::m06 method
+psoc-portal: every request first hits {{c1::app/src/proxy.ts — the middleware auth gate}}.	ai-mastery::m06 web
+A server action {{c1::runs on the server from a form call}} and {{c2::re-checks auth — the browser is never trusted}}.	ai-mastery::m06 web
+A migration = {{c1::a numbered SQL file changing the DB's shape}} — the sequence is the schema's history.	ai-mastery::m06 web
+Server component {{c1::runs on the server, ships HTML}}; client component {{c2::runs in the browser, handles interaction}}.	ai-mastery::m06 web
+A Windows service = {{c1::a background program the OS runs from boot, no window}}.	ai-mastery::m06 method
+monk-mode's watchdog is a separate program because {{c1::a killed process can't resurrect itself}}.	ai-mastery::m06 security
+monk-mode's 10-second tick: {{c1::read config}} → {{c2::verify HMAC}} → {{c3::classify heartbeat}} → {{c4::Hold/Lift}} → {{c5::re-apply block + kills}}.	ai-mastery::m06 security
+Fail-closed = {{c1::on any doubt, choose the SAFE state}} — monk-mode keeps blocking.	ai-mastery::m06 security
+Atomic-write pattern: {{c1::write a temp file completely, then swap it in}}.	ai-mastery::m06 method
+monk-mode's weak cipher is acceptable because {{c1::the threat is tampering, not secrecy — the HMAC does the real work}}.	ai-mastery::m06 security
+HMAC (preview) = {{c1::a keyed signature — without the key, no valid stamp}}.	ai-mastery::m06 crypto
+Partner code stored as a PBKDF2 hash because {{c1::verifiable but not recoverable}}.	ai-mastery::m06 crypto
+The TODO-grep lesson: {{c1::read grep results before believing them}} — psoc's 0 real, monk-mode's 13 false positives.	ai-mastery::m06 method
+Every dig ends by {{c1::explaining one REAL audit finding in your own code}}.	ai-mastery::m06 method

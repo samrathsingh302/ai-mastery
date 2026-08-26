@@ -1,0 +1,34 @@
+# Module 03 — CS50P accelerated. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+A variable is {{c1::a name stuck on a value}} — reassigning {{c2::moves the label, not the contents}}.	ai-mastery::m03 python
+Starter types: text {{c1::str "text"}} · whole {{c2::int 42}} · decimal {{c3::float 12.5}}.	ai-mastery::m03 python
+Python: "2" + "2" → {{c1::"22"}} — + on strings {{c2::glues}}.	ai-mastery::m03 python
+return {{c1::hands a value to the caller}}; print {{c2::only shows pixels}}.	ai-mastery::m03 python
+Parameter = {{c1::placeholder name in the def}}; argument = {{c2::value passed in the call}}.	ai-mastery::m03 python
+input() always returns {{c1::a str}} — {{c2::convert before arithmetic}}.	ai-mastery::m03 python
+= {{c1::assigns}}; == {{c2::compares}}.	ai-mastery::m03 python
+if/elif chains run {{c1::the FIRST true branch only}} — {{c2::narrowest test first}}.	ai-mastery::m03 python
+An indented block is owned by {{c1::the if/for/while/def line above it}} — indentation IS the syntax.	ai-mastery::m03 python
+for = {{c1::for each thing in a collection}}; while = {{c2::until this stops being true}}.	ai-mastery::m03 python
+Accumulator pattern: {{c1::start it}} · {{c2::visit each item}} · {{c3::fold it in}} · {{c4::return it}}.	ai-mastery::m03 python
+First list index: {{c1::0}}; items[len(items)] → {{c2::IndexError}}.	ai-mastery::m03 python
+Read a traceback {{c1::bottom-up}} — last line = {{c2::what went wrong}}.	ai-mastery::m03 python
+Never bare except: — {{c1::it swallows EVERY alarm}}; catch {{c2::the specific exception}}.	ai-mastery::m03 python
+Retry-until-valid idiom: {{c1::while True + try/break + except ValueError}}.	ai-mastery::m03 python
+sys.argv[0] = {{c1::the script's own name}}; first real arg = {{c2::sys.argv[1]}}.	ai-mastery::m03 python
+Fastest laboratory you own: {{c1::the REPL}}.	ai-mastery::m03 python
+A good unit test: {{c1::fails when behaviour breaks}} · {{c2::tests boundaries (0/empty/negative)}} · {{c3::name says what it guards}}.	ai-mastery::m03 python
+You can't assert on print because {{c1::print returns None}} — write functions that {{c2::RETURN}}.	ai-mastery::m03 python
+Safe file reading: {{c1::with open(path) as f:}} — {{c2::closes even on error}}.	ai-mastery::m03 python
+Open mode "w" {{c1::REPLACES contents}}; "a" {{c2::appends}}.	ai-mastery::m03 python
+Phantom \n bug: file lines keep newlines — {{c1::.strip() before comparing}}.	ai-mastery::m03 python
+Count-dict idiom: {{c1::counts[key] = counts.get(key, 0) + 1}}	ai-mastery::m03 python
+Regex kit: digit {{c1::\d}} · word-char {{c2::\w}} · one-or-more {{c3::+}} · optional {{c4::?}} · one-of {{c5::[abc]}} · capture {{c6::()}}	ai-mastery::m03 python
+Raw strings for regex: {{c1::r"..." stops Python eating backslashes}}.	ai-mastery::m03 python
+dd/mm/yyyy regex: {{c1::r"\d{2}/\d{2}/\d{4}"}} with re.findall.	ai-mastery::m03 python
+Class = {{c1::cookie cutter}}; object = {{c2::the cookie}}.	ai-mastery::m03 python
+self = {{c1::the object being operated on}}, passed {{c2::automatically}}.	ai-mastery::m03 python
+@property makes a method {{c1::readable like an attribute — no parentheses}}.	ai-mastery::m03 python
+__str__ controls {{c1::what print(obj) shows}}.	ai-mastery::m03 python
+List comprehension (squares of evens): {{c1::[x*x for x in nums if x % 2 == 0]}}	ai-mastery::m03 python
+Sort dict items by value desc, ties alphabetical: {{c1::sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))}}	ai-mastery::m03 python
+De-duplicate a list: {{c1::set(items)}}; need order: {{c2::sorted(set(items))}}.	ai-mastery::m03 python

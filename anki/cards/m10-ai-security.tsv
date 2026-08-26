@@ -1,0 +1,21 @@
+# Module 10 — AI security taster. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+Prompt injection = {{c1::data the model reads gets obeyed as instructions}} — all tokens, no trust label.	ai-mastery::m10 security
+Direct injection is {{c1::typed by the user}}; indirect is {{c2::planted in content the agent reads}} — the dangerous one for agents: {{c3::indirect}}.	ai-mastery::m10 security
+Five injection families: {{c1::direct override}} · {{c2::role-play framing}} · {{c3::encoding tricks}} · {{c4::output-channel abuse}} · {{c5::indirect (planted)}}.	ai-mastery::m10 security
+Lethal trifecta (Willison): {{c1::private data}} + {{c2::untrusted content}} + {{c3::external comms}}.	ai-mastery::m10 security
+Prompt hardening can't fix the trifecta because {{c1::the model can't distinguish injected instructions from data — the mixing IS the vulnerability}}.	ai-mastery::m10 security
+OWASP LLM01 = {{c1::prompt injection}}.	ai-mastery::m10 security
+OWASP LLM02 = {{c1::sensitive information disclosure}}.	ai-mastery::m10 security
+OWASP LLM03 = {{c1::supply chain (models, packages, installed skills/agents)}}.	ai-mastery::m10 security
+OWASP LLM05 = {{c1::improper output handling — output executed without review}}.	ai-mastery::m10 security
+OWASP LLM06 = {{c1::excessive agency — capability beyond the task's contract}}.	ai-mastery::m10 security
+OWASP LLM07 = {{c1::system prompt leakage}} — assume CLAUDE.md is extractable.	ai-mastery::m10 security
+OWASP LLM09 = {{c1::misinformation — confident wrong output acted upon}}.	ai-mastery::m10 security
+OWASP LLM10 = {{c1::unbounded consumption — runaway loops, cost burn}}.	ai-mastery::m10 security
+Defences that survive a smart attacker: {{c1::capability narrowing}} · {{c2::human gates on irreversible acts}} — both architectural.	ai-mastery::m10 security
+Input/output filters are speed bumps because {{c1::paraphrase and encoding defeat them — they judge strings, not intent}}.	ai-mastery::m10 security
+The estate's own excessive-agency finding: {{c1::ClaudeBridgeWorker pushed the WHOLE repo every ~5 min}} (ledger 108).	ai-mastery::m10 security
+bypassPermissions removes {{c1::the last human gate}} — dominant risks become {{c2::LLM05/LLM06}}.	ai-mastery::m10 security
+The classic untrusted-content leg: {{c1::email — anyone who can email you can place text in context}}.	ai-mastery::m10 security
+Threat-model question set: {{c1::what could go wrong}} · {{c2::who could cause it}} · {{c3::what stops it today}} · {{c4::cheapest control that helps}}.	ai-mastery::m10 security
+A control you'd never tolerate is {{c1::not a control — it's a wish}}.	ai-mastery::m10 security

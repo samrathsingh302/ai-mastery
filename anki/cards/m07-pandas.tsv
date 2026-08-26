@@ -1,0 +1,18 @@
+# Module 07 — data taster (Hevy). Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+A venv = {{c1::a private Python + packages inside the project folder}} — delete the folder, it's gone.	ai-mastery::m07 python
+venv commands: {{c1::py -m venv .venv}} · {{c2::.venv\Scripts\activate}} · {{c3::pip install THINGS}}	ai-mastery::m07 python
+DataFrame = {{c1::a table}}; Series = {{c2::one typed, labelled column}}.	ai-mastery::m07 pandas
+Reflex after every load: {{c1::df.head()}} · {{c2::df.shape}} · {{c3::df.dtypes}} · {{c4::df.describe()}}	ai-mastery::m07 pandas
+Tidy data = {{c1::one row per observation}} — every question becomes filter/group over rows.	ai-mastery::m07 pandas
+Almost never loop in pandas — operate {{c1::column-at-a-time}}: df["volume"] = df["weight_kg"] * df["reps"]	ai-mastery::m07 pandas
+Date strings → real datetimes: {{c1::df["date"] = pd.to_datetime(df["date"])}}	ai-mastery::m07 pandas
+Split-apply-combine: {{c1::df.groupby("exercise")["volume"].sum()}}	ai-mastery::m07 pandas
+Filter rows for one exercise: {{c1::df[df["exercise"] == "Bench Press (Barbell)"]}} — a boolean mask.	ai-mastery::m07 pandas
+Sort a groupby result descending: {{c1::.sort_values(ascending=False)}}	ai-mastery::m07 pandas
+ISO week key from dates: {{c1::df["date"].dt.isocalendar()}} → year + zero-padded week.	ai-mastery::m07 pandas
+Epley est-1RM: {{c1::weight × (1 + reps/30)}} — per set, take the max.	ai-mastery::m07 pandas
+Plateau detection: {{c1::series.rolling(4).max()}} flat for weeks.	ai-mastery::m07 pandas
+Minimum matplotlib: {{c1::series.plot(kind="bar")}} · {{c2::plt.tight_layout()}} · {{c3::plt.savefig("name.png")}}	ai-mastery::m07 pandas
+Copy the data file before analysing: {{c1::read-only law}} + {{c2::a re-run on the copy = reproducibility check}}.	ai-mastery::m07 method
+"Warm-ups in volume?" is {{c1::a tidying DECISION — either answer fine, must be written down}}.	ai-mastery::m07 method
+Module 07 in four words: {{c1::data → honest sentence → decision}}.	ai-mastery::m07 method

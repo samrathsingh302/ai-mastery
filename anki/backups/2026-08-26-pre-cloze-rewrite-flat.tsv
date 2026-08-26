@@ -1,0 +1,296 @@
+﻿1786395468220	module-01	What is an LLM, in one sentence?	A model whose one trick is predicting the next token of text, grown from internet-scale data — not a database, not a mind.
+1786395468222	module-01	What is a token?	The chunk-of-text unit (word/part-word/punctuation → ID number) that models actually read and write — never letters.
+1786395468224	module-01	Why are LLMs bad at counting letters in a word?	They see tokens (chunks), not letters — the letters are hidden inside the bricks.
+1786395468226	module-01	Parameters/weights are…	The millions–billions of learned numbers that ARE the model ("a mixing desk with a billion sliders").
+1786395468228	module-01	Training vs inference?	Training = tuning the parameters on data (slow, expensive). Inference = using the tuned model to generate (every chat).
+1786395468230	module-01	What does pretraining produce?	A BASE model — an internet-document simulator that continues text; it doesn't answer, it continues.
+1786395468232	module-01	The "lossy zip" intuition is…	Parameters compress the internet lossily: near-exact recall of oft-repeated text, vague recollection of everything else.
+1786395468234	module-01	What turns a base model into an assistant?	Supervised fine-tuning (SFT): training on labeller-written ideal conversations until it imitates the ideal helpful assistant.
+1786395468236	module-01	When you chat with an assistant model you are really talking to…	A statistical simulation of a helpful human labeller following guidelines.
+1786395468238	module-01	Why do LLMs hallucinate?	Confident-answer style (from SFT) applied where the weights hold only vague recollection — likelihood fills the gap, no concept of truth.
+1786395468240	module-01	Two patches for hallucination?	Train "I don't know" on probed blind spots; tool use/retrieval that pastes real sources into the context.
+1786395468242	module-01	Context window vs weights?	Context = working memory (open book on the desk, reliable). Weights = vague recollection (things half-remembered from school).
+1786395468244	module-01	Why does "think step by step" work mechanically?	Compute per emitted token is fixed and shallow; spreading reasoning over many tokens buys more total computation.
+1786395468246	module-01	What is jagged intelligence?	Swiss-cheese capability: PhD-level on some tasks, failing 9.11-vs-9.9 on others — so calibrate trust per task, never per model.
+1786395468248	module-01	Where does RL-with-verification work best and why?	Maths and code — answers can be checked automatically, giving a reliable reward signal at scale.
+1786395468250	module-01	What did DeepSeek-R1 demonstrate?	RL alone can make a model discover its own longer, self-correcting chains of thought ("aha" moments nobody wrote).
+1786395468252	module-01	Why is AlphaGo's move 37 relevant to LLMs?	Imitation caps you at human level; RL against the real goal can exceed it — the hope behind reasoning models.
+1786395468254	module-01	What is RLHF, in one sentence?	RL for uncheckable domains: humans compare outputs → a reward model learns their preferences → the model is optimised to please it, briefly.
+1786395468256	module-01	Why is RLHF run only briefly?	The reward model is a gameable simulation of preference — over-optimise and you get adversarial junk it loves and humans hate.
+1786395468258	module-01	The mechanical root of sycophancy?	Models are optimised to be PREFERRED, and agreeing with a confident user tends to be preferred — preferred ≠ true.
+1786395468260	module-01	Kernighan's Law and its consequence for AI code?	Debugging is twice as hard as writing — so code at the edge of your comprehension is undebuggable by you; never ship what you couldn't write.
+1786395468262	module-01	What is vibe coding and when is it rational?	Prompting AI for code without really reading it; rational for prototypes/small scope in stacks you could write yourself — comprehension is the safety line.
+1786395468264	module-01	Three principles behind "vibe coding that doesn't suck"?	Feed the model current true context; let it see real errors; wire automatic verification around it.
+1786395468266	module-01	What is MCP (plain words)?	Model Context Protocol — a standard plug connecting an AI tool to outside systems (docs, errors, infra) so it works from live truth.
+1786395468268	module-01	What is an API (plain words)?	A programme-to-programme doorway: your code sends a request, the service sends back an answer.
+1786395468270	module-01	What is RAG (plain words)?	Retrieval-augmented generation: fetch relevant documents first, paste them into the context, answer open-book.
+1786395468272	module-01	What is an agent (plain words)?	An LLM given tools and a loop so it can act (search, run code, edit files), not just answer.
+1786395468274	module-01	What is an eval (plain words)?	Written-down tests for AI behaviour: fixed tasks + a scoring method, so changes get measured, not vibed.
+1786395468276	module-01	Ebbelaar's six AI-engineer stages?	Foundations (Python/Git/API) → system design → production backends → RAG → monitoring & evals → deployment.
+1786395468278	module-01	The canon's two house laws?	"There is no ChatGPT in the interview" and "never let AI write code you couldn't write yourself."
+1786395468280	module-02	The illusion of knowing is…	Feeling you could do what you only watched being done — AI's default failure mode for learners.
+1786395468282	module-02	The single best-evidenced study technique the contract enforces?	Active recall — answering from memory (quizzes, explain-backs) instead of re-reading.
+1786395468284	module-02	Spaced repetition in one sentence?	Review just before you'd forget, at stretching intervals — each success pushes the next review further out.
+1786395468286	module-02	What does FSRS do?	Learns YOUR forgetting curve and schedules each card's next review — no hand-tuning.
+1786395468288	module-02	Your three fixed Anki numbers?	Desired retention 0.90 · 10 new cards/day · emergency backlog cap 20 reviews + bulk-suspend.
+1786395468290	module-02	The Anki pipeline law?	AI drafts, YOU curate, only then import — unreviewed AI decks kill retention and the deck.
+1786395468292	module-02	The wall rule?	30+ minutes of genuine struggle before Claude may even hint — walls are the curriculum.
+1786395468294	module-02	The dojo, in one sentence?	20 daily minutes hunting planted bugs with the root-cause method — the interview muscle, built in reps.
+1786395468296	module-02	Dojo level-up rule?	Three clean days (all bugs found in time) → level up; a brutal day means stay, never drop.
+1786395468298	module-02	The three L0 bug classes from ex01 that recur in real code?	Swallowed error branches · unverified side-effects before destructive ops · wrong filter predicate.
+1786395468300	module-02	The restart ritual after a broken streak?	ONE 20-minute dojo — never restart with the hardest item; never two zero-days in a row.
+1786395468302	module-02	Why does the journal only track numbers and instruments?	Feelings don't grade — sims, scores and tallies do (imposter panic is answered with data).
+1786395468304	module-02	The weekly outage test question?	"If Anthropic went down for a week, what % of my productivity survives?" — the number must trend up.
+1786395468306	module-02	When is Claude banned entirely?	Struggle reps, the 20% AI-free quota, and the first 30 minutes of any wall.
+1786395468308	module-02	Tutor contract rule 1?	Never show a full solution — concepts + a DIFFERENT example, then I do mine.
+1786395468310	module-02	What makes 20 min/day beat 2h/week for the dojo?	Spacing applies to skills: short daily reps under mild pressure build pattern recognition.
+1786395468312	module-03	A variable is…	A name stuck on a value ("a labelled jar") — reassigning moves the label, not the contents.
+1786395468314	module-03	The three starter types and their literals?	str "text" · int 42 · float 12.5
+1786395468316	module-03	"2" + "2" equals…	"22" — + on strings glues text; convert with int() first if you meant maths.
+1786395468318	module-03	return vs print?	return hands a value back to the caller (usable, testable); print only shows pixels to a human.
+1786395468320	module-03	Parameter vs argument?	Parameter = placeholder name in the def; argument = actual value passed in the call.
+1786395468322	module-03	What does input() always give you?	A str — even if the user typed a number. Convert before arithmetic.
+1786395468324	module-03	= vs ==?	= assigns (sticks the label); == compares (asks a True/False question).
+1786395468326	module-03	Why does branch order matter in if/elif chains?	Python runs the FIRST true branch and skips the rest — narrowest/highest test goes first.
+1786395468328	module-03	What owns the indented block?	The if/for/while/def line above it — indentation IS the syntax; four spaces.
+1786395468330	module-03	for vs while, in one line each?	for = "for each thing in a collection"; while = "keep going until this stops being true".
+1786395468332	module-03	The accumulator pattern's four steps?	Start an accumulator · visit each item · fold it in · return the result.
+1786395468334	module-03	First index of a Python list?	0 — items[0]; len(items) counts; items[len(items)] is an IndexError.
+1786395468336	module-03	How do you read a traceback?	Bottom-up: last line = what went wrong; lines above = where it happened.
+1786395468338	module-03	Why never bare `except:`?	It swallows EVERY alarm — including the typo you needed to hear. Catch the specific exception.
+1786395468340	module-03	The retry-until-valid idiom?	while True: + try: return/break on success + except ValueError: ask again.
+1786395468342	module-03	What is sys.argv[0]?	The script's own name — your first real argument is sys.argv[1].
+1786395468344	module-03	The fastest laboratory you own?	The REPL: run `python` alone, experiment one line at a time, exit().
+1786395468346	module-03	What makes a unit test GOOD (3 things)?	It fails when behaviour breaks · it tests boundaries (0/empty/negative) · its name says what it guards.
+1786395468348	module-03	Why can't you assert on print?	print returns None — structure logic in functions that RETURN, then assert on the value.
+1786395468350	module-03	The safe file-reading idiom?	with open(path) as f: — closes the file for you, even when errors happen.
+1786395468352	module-03	"w" vs "a" mode?	"w" REPLACES the file's contents; "a" appends. Know which you meant before you run it.
+1786395468354	module-03	The phantom \n bug?	Lines read from files keep their newline — .strip() (or .rstrip("\n")) before comparing.
+1786395468356	module-03	Build-a-count dict idiom?	counts[key] = counts.get(key, 0) + 1
+1786395468358	module-03	Regex survival kit (6 pieces)?	\d digit · \w word-char · + one-or-more · ? optional · [abc] one-of · () capture group
+1786395468360	module-03	Why raw strings for regex?	r"\d+" stops Python eating backslashes before the regex engine sees them.
+1786395468362	module-03	Regex for every dd/mm/yyyy date?	r"\d{2}/\d{2}/\d{4}" with re.findall
+1786395468364	module-03	Class vs object?	Class = cookie cutter (blueprint); object/instance = the cookie. "hi".upper() is a method on a str object.
+1786395468366	module-03	What is self?	The object being operated on — Python passes it to methods automatically.
+1786395468368	module-03	@property does what?	Makes a method readable like an attribute: w.volume, no parentheses.
+1786395468370	module-03	__str__ controls what?	What print(obj) and str(obj) show — the human face of your object.
+1786395468372	module-03	A list comprehension is…	A loop that builds a list in one line: [x*x for x in nums if x % 2 == 0]
+1786395468374	module-03	Sort a dict's items by value, descending, ties alphabetical?	sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))
+1786395468376	module-03	De-duplicate a list in one call?	set(items) — order not guaranteed; sorted(set(items)) if you need order.
+1786395468378	module-04	The four safety laws for file automation?	Dry-run first · quarantine never delete · practise in a sandbox · idempotent (safe to run twice).
+1786395468380	module-04	Idempotent means…	Running it twice changes nothing the second time — check before acting.
+1786395468382	module-04	Join paths in pathlib?	With / — repo / "PROGRESS.md"; never glue path strings with +.
+1786395468384	module-04	.glob vs .rglob?	glob = this folder only; rglob = recursive, the whole tree below.
+1786395468386	module-04	Copy with timestamps / move / zip a folder?	shutil.copy2 · shutil.move · shutil.make_archive(name, "zip", folder)
+1786395468388	module-04	Why collect list(p.iterdir()) before moving files?	Never mutate a folder while iterating it — plan first, then act (the dry-run principle as code).
+1786395468390	module-04	Name-collision idiom?	stem-1.suffix, stem-2.suffix… until free (unique_name).
+1786395468392	module-04	re.compile buys you…	A named, reusable, once-built pattern — and a home for the regex comment.
+1786395468394	module-04	Named group syntax + read-back?	(?P<year>\d{4}) → m.group("year")
+1786395468396	module-04	Match [[wiki-links]] safely?	r"\[\[([^\]]+)\]\]" — negated class beats greedy .* inside brackets.
+1786395468398	module-04	csv.DictReader gives you…	Each row as a dict keyed by the header line — values ALWAYS strings; convert before maths.
+1786395468400	module-04	JSON in one sentence?	Text format for nested dicts/lists/strings/numbers — the lingua franca of APIs and exports.
+1786395468402	module-04	json.loads vs json.dumps?	loads: text → Python objects; dumps: objects → text (indent=2 for humans).
+1786395468404	module-04	Two Windows CSV/file gotchas?	encoding="utf-8" on open; newline="" when WRITING csv (else blank lines).
+1786395468406	module-04	subprocess.run's argument law?	Pass a LIST of args, never a glued shell string — string-gluing is how injection bugs are born.
+1786395468408	module-04	Where do subprocess results live?	r.returncode (0 = success) · r.stdout · r.stderr (capture_output=True, text=True).
+1786395468410	module-04	What is Task Scheduler, demystified?	A trigger + an action + a working directory — your Claude-CLI-AutoUpdate task is just that.
+1786395468412	module-04	Inspect a scheduled task from the shell?	schtasks /query /tn "<name>" /v /fo LIST
+1786395468414	module-05	A commit is…	A snapshot of ALL files + parent pointer(s) + message — a full photo, never a diff.
+1786395468416	module-05	A branch is…	A movable sticky note on ONE commit — creating one copies nothing.
+1786395468418	module-05	HEAD is…	Where you're standing — usually on a branch's sticky note; committing moves that note forward.
+1786395468420	module-05	The staging area / index is…	The loading dock: you place exactly what the next snapshot will contain (git add).
+1786395468422	module-05	git diff vs git diff --staged?	Working tree vs index · index vs last commit (read --staged before every commit).
+1786395468424	module-05	What makes a merge commit special?	TWO parents — it ties two histories together.
+1786395468426	module-05	When does merge fast-forward instead?	When the target branch never diverged — git just slides the sticky note forward; no new commit.
+1786395468428	module-05	What does rebase actually do?	REPLAYS your commits as new snapshots on top of the target — straight line, new IDs, originals abandoned (reflog keeps them).
+1786395468430	module-05	The iron rebase rule?	Never rebase commits others already have — rewriting a shared graph breaks everyone downstream.
+1786395468432	module-05	Undo a PUSHED bad commit?	git revert <hash> — adds an anti-commit; rewrites nothing; always safe.
+1786395468434	module-05	Undo tools that REWRITE history (local-only)?	reset · rebase · commit --amend — fine while private, forbidden once shared.
+1786395468436	module-05	"Everything's broken, I'm lost" — first command?	git reflog — the journal of everywhere HEAD has been (~90 days); reset --hard to a good hash.
+1786395468438	module-05	Staged the wrong file?	git restore --staged <file>
+1786395468440	module-05	fetch vs pull?	fetch = update your copy of the remote's graph, touch nothing of yours; pull = fetch + merge (or rebase) into your branch.
+1786395468442	module-05	Why do dev/brain/~/.claude have NO remotes?	Estate law: doctrine/life material never leaves the machine — pre-push guards enforce it; OneDrive is their carrier.
+1786395468444	module-05	Why do dev/brain keep .git OUTSIDE OneDrive?	Syncing thousands of tiny hash files corrupts/slows — files sync via OneDrive, history lives in C:\Users\samra\.gitdirs\.
+1786395468446	module-05	What ate the atlas merge commit on 04/08/2026?	An every-5-min `pull --rebase` (bridge worker) replayed the branch linearly mid-merge — rebase doing its exact job at the wrong moment (ledger 108).
+1786395468448	module-05	The one command to read a repo's shape?	git log --oneline --graph --all
+1786395468450	module-05	git -C <path> does what?	Runs git as if standing in <path> — how sessions operate many repos without cd.
+1786395468452	module-05	git stash is for…	Parking half-done work to get a clean tree — and stash pop to get it back (don't forget it exists).
+1786395468454	module-06	The six archaeology passes, in order?	Signs (README/claims) · map · doors (entry points) · one vertical slice · crown jewels · verdict (tests+audit).
+1786395468456	module-06	Why trace ONE vertical slice instead of skimming folders?	One true end-to-end trace teaches the architecture; ten skimmed folders teach nothing testable.
+1786395468458	module-06	What is an entry point?	Where execution starts: main functions, route roots, service starts, scheduled tasks — most repos have more than you expect.
+1786395468460	module-06	psoc-portal: what does every request hit first?	app/src/proxy.ts — 31-line Next.js middleware auth gate, before any route.
+1786395468462	module-06	What is a server action (and its trust rule)?	A function forms call that runs on the server — and it re-checks auth/validation because the browser is never trusted.
+1786395468464	module-06	What is a migration?	A numbered SQL file changing the DB's shape — the sequence is the schema's version history (psoc has 45).
+1786395468466	module-06	Server component vs client component?	Runs on the server, ships HTML vs runs in the browser, handles interaction.
+1786395468468	module-06	What is a Windows service?	A background program the OS runs from boot, no window, as a system account — monk-mode's enforcer is one.
+1786395468470	module-06	Why is monk-mode's watchdog a separate program?	A killed process can't resurrect itself — recovery must live OUTSIDE the thing being killed.
+1786395468472	module-06	monk-mode's 10-second tick, in order?	Read config → verify HMAC → classify heartbeat → Hold/Lift → re-apply hosts block + app kills.
+1786395468474	module-06	Fail-closed means…	On any doubt or verification failure, choose the SAFE state — monk-mode keeps blocking; a fire door that fails locked-open.
+1786395468476	module-06	The atomic-write pattern (AtomicHosts)?	Write a temp file completely, then swap it in — no half-written file can ever exist.
+1786395468478	module-06	Why is monk-mode's weak cipher acceptable?	The threat is tampering, not secrecy — the HMAC stamp over every protected field is the real defence (edit anything, stamp breaks, block holds).
+1786395468480	module-06	What is an HMAC, in one sentence (preview)?	A keyed signature over data: without the key you can't forge a valid stamp for modified content (full treatment: module 14).
+1786395468482	module-06	Why store the partner code as a PBKDF2 hash?	Verifiable but not recoverable: salted, deliberately-slow one-way hash — the file never contains anything reversible.
+1786395468484	module-06	What did the TODO greps teach (both repos)?	Read grep results before believing them: psoc's 0 was real discipline; monk-mode's "13" were placeholder-text false positives.
+1786395468486	module-06	The read-the-audit exercise is…	Ending every dig by explaining one REAL audit finding in your own code — real findings beat synthetic exercises.
+1786395468488	module-07	A virtual environment is…	A private Python + packages inside the project folder — projects can't break each other; delete the folder, it's gone.
+1786395468490	module-07	The three venv commands?	py -m venv .venv · .venv\Scripts\activate · pip install <things>
+1786395468492	module-07	A DataFrame is… a Series is…	A table · one typed, labelled column of it.
+1786395468494	module-07	The pandas reflex after every load?	df.head() · df.shape · df.dtypes · df.describe() — inspect before trusting.
+1786395468496	module-07	Tidy data means…	One row per observation (one row per SET here) — every question becomes filter/group over rows.
+1786395468498	module-07	Why almost never loop in pandas?	You operate column-at-a-time: df["volume"] = df["weight_kg"] * df["reps"] multiplies whole columns.
+1786395468500	module-07	Convert ISO date strings to real datetimes?	df["date"] = pd.to_datetime(df["date"])
+1786395468502	module-07	Split-apply-combine is…	Split rows into groups → apply a function per group → combine results: df.groupby("exercise")["volume"].sum()
+1786395468504	module-07	Filter rows for one exercise?	A boolean mask: df[df["exercise"] == "Bench Press (Barbell)"]
+1786395468506	module-07	Sort a groupby result descending?	.sort_values(ascending=False)
+1786395468508	module-07	ISO week key from a date column?	df["date"].dt.isocalendar() → year + "-W" + zero-padded week
+1786395468510	module-07	The Epley est-1RM formula?	weight × (1 + reps/30) — computed per set, take the max.
+1786395468512	module-07	Detect a plateau with pandas?	Rolling window: series.rolling(4).max() flat for weeks = plateau.
+1786395468514	module-07	Minimum viable matplotlib?	series.plot(kind="bar", title=...) · plt.tight_layout() · plt.savefig("name.png")
+1786395468516	module-07	Why copy the data file before analysing?	Read-only law on live repos — and a fresh copy re-run proving same results is your reproducibility check.
+1786395468518	module-07	"Warm-ups in volume?" is what kind of question?	A tidying DECISION — either answer is fine, but it must be written down.
+1786395468520	module-07	The point of the whole module in 4 words?	Data → honest sentence → decision.
+1786395468522	module-08	The page-load journey in one line?	URL → DNS → TCP → TLS → HTTP request → (edge → gate → origin) → response → render, repeated per asset.
+1786395468524	module-08	URL anatomy?	scheme://host/path?query — protocol · machine-by-name · thing-there · options.
+1786395468526	module-08	What does DNS do?	Names → numeric IP addresses (the phone book); nslookup does it by hand.
+1786395468528	module-08	Whose IPs answer for www.leedspunjabisociety.com?	Cloudflare's (104.21.x/172.67.x/2606:4700::) — the edge, not the Vercel origin.
+1786395468530	module-08	TCP in one sentence?	A reliable, ordered two-way pipe to a numbered port (443 for HTTPS) — a phone call, not a postcard.
+1786395468532	module-08	TLS gives you which two things?	Secrecy (encryption) + identity (certificate vouched by a trusted authority).
+1786395468534	module-08	What does HSTS commit a browser to?	HTTPS-only for max-age seconds (2 years on your site; preload = baked into browsers).
+1786395468536	module-08	The status families?	2xx worked · 3xx go elsewhere · 4xx you erred · 5xx server erred.
+1786395468538	module-08	307/308 vs 301/302 — the 7/8 promise?	The method won't change on the redirect (a POST stays a POST).
+1786395468540	module-08	Your site's two real redirects and why they differ?	vercel.app → 308 permanent (address moved for good) · /dashboard logged-out → 307 temporary (log in and it serves again).
+1786395468542	module-08	What is the Age header the tell of?	A cache served you: seconds the copy sat on the edge shelf — origin never woke.
+1786395468544	module-08	HEAD (-I) returns…	Headers only, no body — the polite probe.
+1786395468546	module-08	The session cookie's three protective flags?	HttpOnly (scripts can't read it) · Secure (HTTPS only) · SameSite (other sites can't ride it).
+1786395468548	module-08	Why re-check auth AFTER the proxy gate?	Gates filter traffic; forged requests skip gates — the check beside the data is the one they can't skip.
+1786395468550	module-08	What is a CDN?	Cache servers near users answering for the origin — vending machines stocked from one warehouse.
+1786395468552	module-08	Your site's serving chain?	Cloudflare (DNS + edge cache) in front of Vercel (Next.js origin).
+1786395468554	module-08	Which one header revealed the backend?	CSP's connect-src: *.supabase.co (+ its live websocket wss://).
+1786395468556	module-08	X-Frame-Options: DENY defends against…	Clickjacking — nobody may iframe the site (CSP frame-ancestors 'none' is the modern twin).
+1786395468558	module-08	curl flags: -I · -L · -v?	HEAD headers-only · follow redirects · narrate the whole conversation.
+1786395468560	module-08	Docs said vercel.app, the wire said the custom domain — the lesson?	Trust the wire over the docs; docs drift, evidence doesn't.
+1786395468562	module-09	An eval's three irreducible parts?	Fixed tasks + a scoring method + the discipline not to peek (blindness).
+1786395468564	module-09	The two scoring families?	Programmatic (a checker decides: exact/tests/regex) and rubric (a human grades against written criteria, blind).
+1786395468566	module-09	Why must rubric grading be blind?	You WILL favour the model you expect to win — shuffling + anonymising is the only honest fix.
+1786395468568	module-09	Four properties of a good eval task?	Representative · one skill per task · verifiable · crisply stated (a wrong answer can't blame the prompt).
+1786395468570	module-09	What is contamination?	The answer exists as memorised text (famous puzzles) — the task measures recall of the internet, not capability.
+1786395468572	module-09	Why is n=1 an anecdote?	Models are stochastic — one run's single-task differences are noise; patterns across task FAMILIES are the signal.
+1786395468574	module-09	What does a per-family subtotal reveal that the total hides?	The capability profile — a model can win code and lose writing (jagged intelligence, measured).
+1786395468576	module-09	"Model X felt smarter" — the engineering translation?	No measurement occurred. Run the harness.
+1786395468578	module-09	The fixture story worth remembering (9–9 dead heat)?	Equal totals, opposite profiles: A followed output contracts exactly; B explained better but ignored instructions — which one you want depends on the JOB.
+1786395468580	module-09	What made fixture-B fail four programmatic tasks?	Instruction-following: extra prose around a correct answer still fails an exact-match contract ("reply with ONLY…" means only).
+1786395468582	module-09	Why "reply with ONLY the number" in task prompts?	The output contract makes programmatic checking possible — eval design and prompt design are the same skill.
+1786395468584	module-09	What would make your harness lie to you (4 ways)?	Contaminated tasks · leading/ambiguous prompts · unblinded grading · reading n=1 noise as signal.
+1786395468586	module-09	Criteria vs vibes — the test?	A stranger applying your criteria reaches your score ±0; "is it good?" fails that instantly.
+1786395468588	module-09	Where does this module scale to in the plan?	Tier 3's 20-task harness → Tier 4's agent-with-evals and RAG-with-evals — same method, bigger surface.
+1786395468590	module-10	Prompt injection, in one sentence?	Text the model reads as DATA gets obeyed as INSTRUCTIONS — because everything in the context is just tokens with no trust label.
+1786395468592	module-10	Direct vs indirect injection?	Typed by the user vs planted in a document/email/web page/repo file the agent reads — indirect is the dangerous one for agents.
+1786395468594	module-10	The five injection families?	Direct override · role-play framing · encoding tricks · output-channel abuse · indirect (planted content).
+1786395468596	module-10	The lethal trifecta (Willison, 16/06/2025)?	Private data + untrusted content + external comms — all three means one poisoned document can exfiltrate.
+1786395468598	module-10	Why can't prompt hardening fix the trifecta?	The model cannot reliably distinguish injected instructions from data; the mixing IS the vulnerability.
+1786395468600	module-10	LLM01?	Prompt injection.
+1786395468602	module-10	LLM02?	Sensitive information disclosure.
+1786395468604	module-10	LLM03?	Supply chain (models, packages, and the skills/agents you install).
+1786395468606	module-10	LLM05?	Improper output handling — model output executed without review.
+1786395468608	module-10	LLM06?	Excessive agency — capability beyond the task's contract.
+1786395468610	module-10	LLM07?	System prompt leakage — assume CLAUDE.md and skills are extractable.
+1786395468612	module-10	LLM09?	Misinformation — confident wrong output acted upon.
+1786395468614	module-10	LLM10?	Unbounded consumption — runaway loops, quota/cost burn.
+1786395468616	module-10	Which two defences survive a smart attacker?	Capability narrowing and human gates on irreversible acts — both architectural, not prompting.
+1786395468618	module-10	Why are input/output filters only speed bumps?	Paraphrase and encoding defeat them; they judge strings, not intent.
+1786395468620	module-10	Your estate's own excessive-agency finding?	ClaudeBridgeWorker pushes the WHOLE repo every ~5 min though its contract is machines/context/ — flattened a merge commit, made "don't push" unenforceable (ledger 108).
+1786395468622	module-10	What does bypassPermissions remove?	The last human gate between model output and the machine — which makes LLM05/LLM06 the dominant risks in this estate.
+1786395468624	module-10	Which connector is the classic untrusted-content leg?	Email (Gmail): anyone who can email you can place text in a session's context.
+1786395468626	module-10	The threat-model question set (4 parts)?	What could go wrong · who could cause it · what stops it today · cheapest control that would actually help.
+1786395468628	module-10	A control you'd never tolerate is…	Not a control — it's a wish. (Honesty column in the per-asset table.)
+1786395468630	module-11	What does one neuron compute?	squash(w1*x1 + w2*x2 + ... + bias) — a weighted vote with a personal bias, then a squash.
+1786395468632	module-11	Weight vs bias?	How much an input matters to this neuron vs the neuron's built-in eagerness; both learned numbers.
+1786395468634	module-11	Why do activation functions exist?	Without them a stack of layers collapses to one straight-line function — depth would buy nothing.
+1786395468636	module-11	ReLU in one line?	max(0, x) — a one-way valve: negatives become 0, positives pass through.
+1786395468638	module-11	What is a dead ReLU?	A neuron outputting 0 for every input: no gradient flows back through it, so it stops learning entirely.
+1786395468640	module-11	Loss / cost is…	One number saying how wrong this prediction was — the only thing optimisation pushes down.
+1786395468642	module-11	Gradient descent, in one analogy?	Foggy hillside: feel which way is downhill, take a small step, repeat.
+1786395468644	module-11	Learning rate too big / too small?	Leaping over the valley and bouncing / crawling forever. Most "training didn't work" starts here.
+1786395468646	module-11	Backpropagation is…	Efficient blame-assignment: start at the output, pass responsibility backwards layer by layer (the chain rule, applied repeatedly).
+1786395468648	module-11	Backprop vs gradient descent?	Backprop computes the gradients (bookkeeping); gradient descent uses them to step. Different jobs.
+1786395468650	module-11	An embedding is…	A token turned into a vector positioning it in a learned "meaning space" — nearby vectors, related meanings.
+1786395468652	module-11	Why add positional information?	Otherwise the model sees a bag of words: "dog bites man" and "man bites dog" would be identical.
+1786395468654	module-11	Q, K, V in one line each?	Query = what I'm looking for · Key = what I offer · Value = what I hand over if picked.
+1786395468656	module-11	The attention recipe (4 steps)?	Score Q·K for every token → divide by √d → softmax into weights → weighted average of the V vectors.
+1786395468658	module-11	Why divide by √d?	Long vectors make dot products huge; softmax of huge scores becomes a hard max and gradients vanish. Scaling keeps it soft and trainable.
+1786395468660	module-11	What is causal masking and why?	Future tokens get score −∞ (weight 0) — a generating model must predict the next token WITHOUT seeing it, or it learns to cheat.
+1786395468662	module-11	Multi-head attention?	Many attention operations in parallel with different learned projections, concatenated and mixed — several readers of one sentence, pooling notes.
+1786395468664	module-11	What do the MLP layers do (3B1B ch.7)?	Attention MOVES information between tokens; the MLPs store and retrieve facts — about two-thirds of the parameters.
+1786395468666	module-11	Superposition?	More concepts than neurons: each concept is a DIRECTION in the space, and directions overlap — so a single neuron rarely means one clean thing.
+1786395468668	module-11	The full stack, in order?	Tokens → embeddings + position → [attention → MLP] ×N layers → unembedding → softmax → sample → repeat.
+1786395468670	module-11	Temperature does what?	Divides logits before softmax: low = sharper/repeatable, high = flatter/more surprising. It changes wandering, not knowledge.
+1786395468672	module-11	Greedy decoding's failure mode?	Always taking the top token — loops, blandness, and it hides the model's uncertainty from you.
+1786395468674	module-11	"Models need tokens to think" — mechanically?	Each generated token is one full pass through the whole stack; more tokens = more total computation spent.
+1786395468676	module-11	Why does context beat weights for accuracy?	Context arrives via attention over the exact tokens present; weights are the lossy, vague-recollection store (module 01's law, now mechanical).
+1786395468678	module-12	What does AI-free actually forbid?	Claude, autocomplete/Copilot, AI search summaries, concept chats, pasting errors in. Docs, your own notes, help(), the REPL and paper are allowed.
+1786395468680	module-12	The unassisted wall protocol (5 steps)?	Re-read the error bottom-up · reproduce in the smallest snippet · inspect real values · one written hypothesis at a time · 45 min no progress = log it and return tomorrow.
+1786395468682	module-12	The honesty clause?	Log every breach with what and how long — a quantified breach is data; a hidden one corrupts your baseline forever.
+1786395468684	module-12	Why grade BEFORE showing anyone?	Grading first forces criteria; grading after invites rationalising whatever you happened to build.
+1786395468686	module-12	What makes a test worth having?	It would CATCH a real break — prove it by breaking the code on purpose and watching the test fail.
+1786395468688	module-12	Why must errors exit non-zero?	Exit codes are how other programs (and future you, in scripts) detect failure — a traceback is not an interface.
+1786395468690	module-12	The exit test, and its pass mark?	A cold 30-minute interview sim: projects + Python + how LLMs work + judgement. 9+/12 to proceed with momentum.
+1786395468692	module-12	What does a low sim score mean?	The fast track found your gaps — which is its job. Misses become drills and cards; re-sit in a fortnight. The trend is the instrument.
+1786395468694	module-12	The outage test question?	"If Anthropic vanished for a week, what % of my productivity survives?" — recorded with a date, must trend up.
+1786395468696	module-12	Why build a tool you'll actually use?	A tool you don't use taught you syntax; a tool you use teaches you design — you meet your own decisions again after three days.
+1786395468698	module-12	What is the most valuable artefact of this module?	A wall you crossed alone — more valuable than the finished tool.
+1786395468700	module-13	Shell sentence structure?	command --flags arguments — verb, adverbs, objects. `ls -la /etc` = "list, long and all, /etc".
+1786395468702	module-13	Where's the dictionary?	man <command> · <command> --help · help <builtin>. Reading it beats guessing — that's the skill.
+1786395468704	module-13	pwd / cd - / cd ~ ?	Where am I · back to the previous directory · home.
+1786395468706	module-13	What does `tail -f` do and when?	Follows a growing file live — the command you'll use most on real logs.
+1786395468708	module-13	. / .. / ~ / - ?	Here · parent · home · previous directory.
+1786395468710	module-13	Globbing: * ? ** ?	Any characters · exactly one character · any depth (modern shells).
+1786395468712	module-13	What does a pipe | do?	Sends one command's output into the next command's input — a conveyor of small single-purpose machines.
+1786395468714	module-13	What does 2>&1 mean?	Send stderr (2) wherever stdout (1) currently goes — so pipes and log files capture errors too.
+1786395468716	module-13	Why must sort come before uniq -c?	uniq only collapses ADJACENT duplicates; it has no memory of earlier lines. Unsorted input silently gives wrong counts.
+1786395468718	module-13	sort -rn does what?	Sorts numerically (-n) and reversed (-r) — biggest first.
+1786395468720	module-13	find vs grep — which question does each answer?	find = "which FILES?" (name/type/time/size/permissions) · grep = "which LINES?" (content).
+1786395468722	module-13	grep flags: -r -n -i -l -c -v ?	recursive · line numbers · case-insensitive · filenames only · counts · invert the match.
+1786395468724	module-13	What does xargs do?	Feeds a list of items into another command: find . -name '*.log' | xargs wc -l
+1786395468726	module-13	Read -rw-r--r-- aloud.	Type, then owner rw-, group r--, others r-- → only the owner can write.
+1786395468728	module-13	chmod 600 secret.txt means?	Owner read+write; group and others nothing.
+1786395468730	module-13	Why does `cat -oddly-named` fail, and the two fixes?	It looks like flags. Use `cat ./-oddly-named` or `cat -- -oddly-named`.
+1786395468732	module-13	SSH in one sentence?	An encrypted remote terminal — you type here, it runs there. ssh user@host -p PORT.
+1786395468734	module-13	What is the first-connect fingerprint prompt for?	The server proving its identity/continuity — accept once, and be suspicious if it ever changes unexpectedly.
+1786395468736	module-13	Bandit's connection line?	ssh bandit0@bandit.labs.overthewire.org -p 2220 (level-0 password: bandit0)
+1786395468738	module-13	The house rule for Bandit?	No walkthroughs — 30 minutes of struggle, then man pages, then concept-only hints. Every walkthrough read is a rep not done.
+1786395468740	module-13	bash vs PowerShell, three differences?	ls/cat/grep vs Get-ChildItem/Get-Content/Select-String · $VAR vs $env:VAR · /dev/null vs $null.
+1786395468742	module-13	"Labs are the curriculum" means?	Cyber videos are on-ramps; hands-on labs (Bandit, PortSwigger, DVWA) are where competence actually forms.
+1786536408906	module-14	Three properties of a hash function?	One-way (can't reverse) · deterministic (same in, same out — so you can VERIFY) · collision-resistant (two inputs, one fingerprint is infeasible).
+1786536408908	module-14	What is the avalanche effect?	One changed letter rewrites the whole digest. sha256("hello") = 2cf24dba… but sha256("hellp") = fdd7585e… — nothing survives.
+1786536408910	module-14	Hashing vs encryption — and why passwords are HASHED?	Encryption is reversible by design (someone holds the key); hashing is not reversible at all. A password system never needs to READ it back, only to check it — so "we encrypt passwords" is sloppy language or a real bug.
+1786536408912	module-14	What is a salt, and what does it defeat?	Random data mixed in before hashing, stored alongside the result. It defeats rainbow tables: one precomputed chart can no longer crack everybody at once.
+1786536408914	module-14	What is a rainbow table?	A precomputed fingerprint→input lookup. It works because an unsalted hash of the same input is the same for everyone — a salt makes each search independent.
+1786536408916	module-14	monk-mode's salt: size, scope, and its own stated reason?	16 bytes, FRESH PER CODE, from a CSPRNG. Its comment: "The per-code salt makes each block's offline search independent and rainbow-tables useless."
+1786536408918	module-14	What is a KDF and why is it deliberately slow?	A key derivation function: a slow, salted hash for secrets humans handle. SHA-256 does billions/sec on a GPU — for a guessable code, fast is the ATTACKER's friend.
+1786536408920	module-14	monk-mode's KDF, exactly?	PBKDF2-HMAC-SHA256 · 600,000 iterations · 16-byte salt · 32-byte output. All three pinned by unit tests so a retune is "one loud edit".
+1786536408922	module-14	The 600,000-iteration asymmetry, in numbers?	≈0.39 s on this machine. You pay it ONCE per code check; the attacker pays it PER GUESS. Against a 10-char code from a 32-symbol alphabet that is the whole defence.
+1786536408924	module-14	What does a MAC add over a plain hash?	A key. Anyone can hash anything, so a bare hash proves nothing against an attacker who can recompute it. A MAC is a wax seal whose stamp only you own — anyone can see it, nobody else can forge it.
+1786536408926	module-14	What is HMAC?	The standard construction for building a MAC out of a hash function. HMAC-SHA256 = a keyed signature built on SHA-256.
+1786536408928	module-14	monk-mode's ComputeConfigMac, in one line?	HMAC-SHA256 over the canonical string's Unicode (UTF-16LE) bytes, Base64-encoded, keyed with a 32-byte per-block random key.
+1786536408930	module-14	The encoding trap?	The same text HMAC'd as UTF-16LE and as UTF-8 gives COMPLETELY different MACs. .NET's Encoding.Unicode means UTF-16LE, not UTF-8 — cross-language reimplementations die here.
+1786536408932	module-14	What is canonicalisation?	Turning data into ONE exact string before signing it — same fields, same order, same formatting, every time. No canonical form, no meaningful signature.
+1786536408934	module-14	monk-mode's canonical shape?	`Name=value` one per line, `\n`-terminated, in a FIXED order, built from the DECRYPTED values so it's byte-identical whoever writes it.
+1786536408936	module-14	Why must every protected field be inside the canonical?	A field OUTSIDE the canonical is a field an attacker may freely edit — the MAC still verifies. Coverage is the protection.
+1786536408938	module-14	The AllSessionKill example — what would omitting it allow?	Flipping an armed all-session block back to session-0-only, then running a blocked app in a second logged-in session. Inside the canonical, that edit fails the MAC instead.
+1786536408940	module-14	Why is gluing fields (`"Until=" + u + "Committed=" + c`) forgeable?	A value can contain the separator and swallow its neighbour, so two DIFFERENT field-sets produce the SAME string — and therefore the same valid MAC. One MAC, two meanings.
+1786536408942	module-14	The general law of §5?	Sign a form that can only be read one way. Ambiguity in the signed representation is a hole no matter how strong the cipher is.
+1786536408944	module-14	What is a timing side-channel?	Learning a secret from how LONG an operation takes, without ever seeing it. `==` stops at the first differing byte, so a closer guess is rejected fractionally slower — repeat and recover the MAC byte by byte.
+1786536408946	module-14	The constant-time fix, both languages?	.NET: CryptographicOperations.FixedTimeEquals over the raw bytes. Python: hmac.compare_digest. Always compare everything; never exit early.
+1786536408948	module-14	Fail-closed vs fail-open?	Fail-closed = if the check breaks, DENY (a blocker must). Fail-open = if the check breaks, allow — how convenience wins and security dies.
+1786536408950	module-14	What does ConfigMacIsValid do on a blank/malformed/non-Base64 MAC?	Returns False, never throws. Any verification failure leaves the block STANDING — the safe state is chosen on doubt, always.
+1786536408952	module-14	What is DPAPI machine scope protecting here, and what doesn't it protect against?	Windows encrypts the 32-byte HMAC key so only THIS machine can decrypt it. It's a safe bolted to the building — no use against someone who has the building.
+1786536408954	module-14	Why is Simple3Des documented-weak-by-design and still a correct decision?	Because the threat is TAMPERING, not secrecy. Confidentiality of a file the user already owns buys almost nothing; the HMAC layer above does the real work.
+1786536408956	module-14	The design law of module 14?	Name your threat model, then spend your strength where the threat is. Crypto misused as decoration is worse than none — it buys false confidence.
+1787770828062		What does "2" + 2 do in Python?	TypeError — number-meets-text always errors. + adds (both numbers) or glues (both strings); it never mixes.
+1787770828066		What does a function return if no return statement ever runs?	None — every call hands back something; no return hit → None. (print instead of return is the classic cause.)
+1787770828069		return vs print?	return hands a value back (usable, storable, testable); print only paints pixels. The print version returns None.
+1787770828072		Phrase for "string contains at least one digit"?	any(ch.isdigit() for ch in pw) — pw.isdigit() asks "is the WHOLE string digits?", the wrong question.
+1787770828075		What does any(...) take and give back?	Takes a stream of booleans, gives one: True if at least one is True. Without it you have many answers and no verdict.
+1787770828078		Which branch of an if/elif chain runs?	The FIRST true one, top to bottom — the rest are skipped even if also true. Narrowest/highest test first.
+1787770828081		2 + 2.5 → ?	4.5, a float — numbers mix freely (int gets promoted); only number-meets-TEXT errors.
+1787770828084		Fix is right but the checker still fails — first check?	Is the file SAVED? The checker runs what's on disk. VS Code: ● on the tab = unsaved.

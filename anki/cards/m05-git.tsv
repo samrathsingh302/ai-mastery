@@ -1,0 +1,21 @@
+# Module 05 — git properly. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
+A commit = {{c1::snapshot of ALL files + parent pointer(s) + message}} — never {{c2::a diff}}.	ai-mastery::m05 git
+A branch = {{c1::a movable sticky note on ONE commit}} — creating one copies nothing.	ai-mastery::m05 git
+HEAD = {{c1::where you're standing}} — committing moves the branch note forward.	ai-mastery::m05 git
+Staging area/index = {{c1::the loading dock: exactly what the next snapshot contains}}.	ai-mastery::m05 git
+git diff = {{c1::working tree vs index}}; --staged = {{c2::index vs last commit}}.	ai-mastery::m05 git
+A merge commit has {{c1::TWO parents}}.	ai-mastery::m05 git
+Fast-forward happens when {{c1::the target never diverged}} — note slides, no new commit.	ai-mastery::m05 git
+Rebase {{c1::REPLAYS commits as new snapshots on the target}} — {{c2::new IDs; originals live in reflog}}.	ai-mastery::m05 git
+Iron rebase rule: never rebase {{c1::commits others already have}}.	ai-mastery::m05 git
+Undo a PUSHED bad commit: {{c1::git revert HASH}} — always safe.	ai-mastery::m05 git
+History-REWRITING undo tools (local-only): {{c1::reset}} · {{c2::rebase}} · {{c3::commit --amend}}.	ai-mastery::m05 git
+Lost and broken — first command: {{c1::git reflog}} (~90 days of everywhere HEAD has been).	ai-mastery::m05 git
+Staged the wrong file: {{c1::git restore --staged FILE}}	ai-mastery::m05 git
+fetch = {{c1::update your copy of the remote, touch nothing}}; pull = {{c2::fetch + merge/rebase}}.	ai-mastery::m05 git
+dev/brain/~/.claude have NO remotes because {{c1::doctrine never leaves the machine (estate law)}}.	ai-mastery::m05 git
+dev/brain keep .git OUTSIDE OneDrive because {{c1::syncing thousands of hash files corrupts/slows}}.	ai-mastery::m05 git
+The 04/08 atlas incident: {{c1::an every-5-min pull --rebase replayed the branch mid-merge}} (ledger 108).	ai-mastery::m05 git
+Read a repo's shape: {{c1::git log --oneline --graph --all}}	ai-mastery::m05 git
+git -C PATH = {{c1::run git as if standing in PATH}}.	ai-mastery::m05 git
+git stash {{c1::parks half-done work}}; get it back: {{c2::git stash pop}}.	ai-mastery::m05 git
