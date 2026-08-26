@@ -1,34 +1,34 @@
-# Module 03 — CS50P accelerated. Format: Question¶{{c1::answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
-In Python, what is a variable?¶{{c1::A name stuck on a value — reassigning moves the label, not the contents}}	"A labelled jar."	ai-mastery::m03 python
-What are Python's three starter types and their literals?¶Text {{c1::str "text"}} · whole number {{c1::int 42}} · decimal {{c1::float 12.5}}		ai-mastery::m03 python
-In Python, what does "2" + "2" evaluate to?¶{{c1::"22" — + on strings glues text}}	Convert with int() first if you meant maths.	ai-mastery::m03 python
-In Python, what is the difference between return and print?¶return {{c1::hands a value to the caller}}; print {{c1::only shows pixels to a human}}	Returned values are usable and testable; printed ones are gone.	ai-mastery::m03 python
-What is a parameter vs an argument?¶Parameter = {{c1::the placeholder name in the def}}; argument = {{c1::the actual value passed in the call}}		ai-mastery::m03 python
-In Python, what type does input() always return?¶{{c1::str — even if the user typed a number}}	Convert before arithmetic.	ai-mastery::m03 python
-In Python, what is = vs ==?¶= {{c1::assigns}}; == {{c1::compares}}	Sticks the label vs asks a True/False question.	ai-mastery::m03 python
-Which branch of a Python if/elif chain runs?¶{{c1::The FIRST true one only — the rest are skipped}}	So the narrowest/highest test goes first.	ai-mastery::m03 python
-In Python, what owns an indented block?¶{{c1::The if/for/while/def line above it}}	Indentation IS the syntax; four spaces.	ai-mastery::m03 python
-In Python, when do you use for vs while?¶for = {{c1::for each thing in a collection}}; while = {{c1::keep going until this stops being true}}		ai-mastery::m03 python
-What are the four steps of the accumulator pattern?¶{{c1::Start the accumulator}} · {{c1::visit each item}} · {{c1::fold it in}} · {{c1::return the result}}		ai-mastery::m03 python
-What is the first index of a Python list, and what does items[len(items)] raise?¶{{c1::0}} · {{c1::IndexError}}	len(items) counts; the last valid index is len(items)-1.	ai-mastery::m03 python
-How do you read a Python traceback?¶{{c1::Bottom-up — the last line is what went wrong}}	The lines above are where it happened.	ai-mastery::m03 python
-Why never write a bare except: in Python?¶{{c1::It swallows EVERY alarm — catch the specific exception}}	Including the typo you needed to hear.	ai-mastery::m03 python
-What is the Python retry-until-valid input idiom?¶{{c1::while True + try/break on success + except ValueError: ask again}}		ai-mastery::m03 python
-In Python, what is sys.argv[0]?¶{{c1::The script's own name — the first real argument is sys.argv[1]}}		ai-mastery::m03 python
-What is the fastest Python laboratory you own?¶{{c1::The REPL}}	Run python alone, experiment one line at a time, exit().	ai-mastery::m03 python
-What three things make a unit test GOOD?¶{{c1::It fails when behaviour breaks}} · {{c1::it tests boundaries}} · {{c1::its name says what it guards}}	Boundaries: 0, empty, negative.	ai-mastery::m03 python
-Why can't you assert on print in a test?¶{{c1::print returns None — structure logic in functions that RETURN}}	Then assert on the returned value.	ai-mastery::m03 python
-What is the safe file-reading idiom in Python?¶{{c1::with open(path) as f:}}	Closes the file for you, even when errors happen.	ai-mastery::m03 python
-In Python's open(), what do modes "w" and "a" do?¶"w" {{c1::REPLACES the file's contents}}; "a" {{c1::appends}}	Know which you meant BEFORE you run it.	ai-mastery::m03 python
-What is the phantom \n bug when reading files?¶{{c1::Lines keep their newline — .strip() before comparing}}	Or .rstrip("\n") to keep leading spaces.	ai-mastery::m03 python
-What is the count-dict idiom using a plain dict and .get (no imports)?¶{{c1::counts[key] = counts.get(key, 0) + 1}}		ai-mastery::m03 python
-In regex, what match a digit, a word-char, one-or-more, optional, one-of-these, a capture group?¶{{c1::\d}} · {{c1::\w}} · {{c1::+}} · {{c1::?}} · {{c1::[abc]}} · {{c1::()}}		ai-mastery::m03 python
-Why use raw strings for Python regex?¶{{c1::r"..." stops Python eating backslashes before the regex engine sees them}}		ai-mastery::m03 python
-What regex matches every dd/mm/yyyy date?¶{{c1::r"\d{2}/\d{2}/\d{4}"}}	Use with re.findall to pull all dates from text.	ai-mastery::m03 python
-In OOP, what is a class vs an object?¶Class = {{c1::the cookie cutter (blueprint)}}; object = {{c1::the cookie (instance)}}	"hi".upper() is a method on a str object.	ai-mastery::m03 python
-In Python, what is self?¶{{c1::The object being operated on — passed to methods automatically}}		ai-mastery::m03 python
-In Python, what does @property do?¶{{c1::Makes a method readable like an attribute — no parentheses}}	e.g. w.volume instead of w.volume().	ai-mastery::m03 python
-In Python, what does __str__ control?¶{{c1::What print(obj) and str(obj) show}}	The human face of your object.	ai-mastery::m03 python
-Write a Python list comprehension for the squares of the even numbers in nums:¶{{c1::[x*x for x in nums if x % 2 == 0]}}	A loop that builds a list in one line.	ai-mastery::m03 python
-In Python, sort a dict's items by value descending, ties alphabetical:¶{{c1::sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))}}	Negate the value for descending; the tuple breaks ties.	ai-mastery::m03 python
-De-duplicate a Python list in one call — order-free, then deduped AND sorted:¶{{c1::set(items)}} · {{c1::sorted(set(items))}}	Keep ORIGINAL order instead: list(dict.fromkeys(items)).	ai-mastery::m03 python
+# Module 03 — CS50P accelerated. Format: Question¶{{c1::complete answer}}<TAB>tags. Back Extra stays empty. Card law: anki/CARD-RULES.md
+In Python, what is a variable?¶{{c1::A name stuck on a value ("a labelled jar") — reassigning moves the label, not the contents}}	ai-mastery::m03 python
+What are Python's three starter types and their literals?¶Text {{c1::str "text"}} · whole number {{c1::int 42}} · decimal {{c1::float 12.5}}	ai-mastery::m03 python
+In Python, what does "2" + "2" evaluate to?¶{{c1::"22" — + on strings glues text; convert with int() first if you meant maths}}	ai-mastery::m03 python
+In Python, what is the difference between return and print?¶return {{c1::hands a value to the caller — usable, storable, testable}}; print {{c1::only shows pixels to a human}}	ai-mastery::m03 python
+What is a parameter vs an argument?¶Parameter = {{c1::the placeholder name in the def}}; argument = {{c1::the actual value passed in the call}}	ai-mastery::m03 python
+In Python, what type does input() always return?¶{{c1::str — even if the user typed a number; convert before arithmetic}}	ai-mastery::m03 python
+In Python, what is = vs ==?¶= {{c1::assigns (sticks the label)}}; == {{c1::compares (asks a True/False question)}}	ai-mastery::m03 python
+Which branch of a Python if/elif chain runs?¶{{c1::The FIRST true one only, the rest are skipped — so the narrowest/highest test goes first}}	ai-mastery::m03 python
+In Python, what owns an indented block?¶{{c1::The if/for/while/def line above it — indentation IS the syntax; four spaces}}	ai-mastery::m03 python
+In Python, when do you use for vs while?¶for = {{c1::for each thing in a collection}}; while = {{c1::keep going until this stops being true}}	ai-mastery::m03 python
+What are the four steps of the accumulator pattern?¶{{c1::Start the accumulator}} · {{c1::visit each item}} · {{c1::fold it in}} · {{c1::return the result}}	ai-mastery::m03 python
+What is the first index of a Python list, and what does items[len(items)] raise?¶{{c1::0}} · {{c1::IndexError — the last valid index is len(items)-1}}	ai-mastery::m03 python
+How do you read a Python traceback?¶{{c1::Bottom-up — the last line is what went wrong, the lines above are where}}	ai-mastery::m03 python
+Why never write a bare except: in Python?¶{{c1::It swallows EVERY alarm, including the typo you needed to hear — catch the specific exception}}	ai-mastery::m03 python
+What is the Python retry-until-valid input idiom?¶{{c1::while True + try/break on success + except ValueError: ask again}}	ai-mastery::m03 python
+In Python, what is sys.argv[0]?¶{{c1::The script's own name — the first real argument is sys.argv[1]}}	ai-mastery::m03 python
+What is the fastest Python laboratory you own?¶{{c1::The REPL — run python alone, experiment one line at a time, exit()}}	ai-mastery::m03 python
+What three things make a unit test GOOD?¶{{c1::It fails when behaviour breaks}} · {{c1::it tests boundaries (0/empty/negative)}} · {{c1::its name says what it guards}}	ai-mastery::m03 python
+Why can't you assert on print in a test?¶{{c1::print returns None — structure logic in functions that RETURN, then assert on the value}}	ai-mastery::m03 python
+What is the safe file-reading idiom in Python?¶{{c1::with open(path) as f: — closes the file for you, even when errors happen}}	ai-mastery::m03 python
+In Python's open(), what do modes "w" and "a" do?¶"w" {{c1::REPLACES the file's contents}}; "a" {{c1::appends}}	ai-mastery::m03 python
+What is the phantom \n bug when reading files?¶{{c1::Lines keep their newline — .strip() (or .rstrip("\n")) before comparing}}	ai-mastery::m03 python
+What is the count-dict idiom using a plain dict and .get (no imports)?¶{{c1::counts[key] = counts.get(key, 0) + 1}}	ai-mastery::m03 python
+In regex, what match a digit, a word-char, one-or-more, optional, one-of-these, a capture group?¶{{c1::\d}} · {{c1::\w}} · {{c1::+}} · {{c1::?}} · {{c1::[abc]}} · {{c1::()}}	ai-mastery::m03 python
+Why use raw strings for Python regex?¶{{c1::r"..." stops Python eating backslashes before the regex engine sees them}}	ai-mastery::m03 python
+What regex matches every dd/mm/yyyy date?¶{{c1::r"\d{2}/\d{2}/\d{4}" — with re.findall to pull them all}}	ai-mastery::m03 python
+In OOP, what is a class vs an object?¶Class = {{c1::the cookie cutter (blueprint)}}; object = {{c1::the cookie (instance) — "hi".upper() is a method on a str object}}	ai-mastery::m03 python
+In Python, what is self?¶{{c1::The object being operated on — passed to methods automatically}}	ai-mastery::m03 python
+In Python, what does @property do?¶{{c1::Makes a method readable like an attribute — w.volume, no parentheses}}	ai-mastery::m03 python
+In Python, what does __str__ control?¶{{c1::What print(obj) and str(obj) show — the human face of your object}}	ai-mastery::m03 python
+Write a Python list comprehension for the squares of the even numbers in nums:¶{{c1::[x*x for x in nums if x % 2 == 0]}}	ai-mastery::m03 python
+In Python, sort a dict's items by value descending, ties alphabetical:¶{{c1::sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))}}	ai-mastery::m03 python
+De-duplicate a Python list in one call — order-free, then deduped AND sorted:¶{{c1::set(items)}} · {{c1::sorted(set(items))}}	ai-mastery::m03 python
