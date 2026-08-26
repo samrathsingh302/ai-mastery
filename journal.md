@@ -6,14 +6,16 @@
 
 ## Baseline (fill on day one)
 
-- Date started: __ /__ /2026
-- Baseline outage score (from module 01's barbell audit): ____%
-- The two biggest crutches it found: ______ · ______
-- First conversion target (crutch → leverage) and its module number: ______
+- Date started: 26/08/2026
+- Baseline outage score (from module 01's barbell audit): n/a — module 01 retired with honour (CAREER.md §7F) before the audit ran; first real outage score due Sunday 30/08's weekly block
+- The two biggest crutches it found: n/a (see above) — self-declared day-one baseline: cannot write Python unaided · cannot explain own shipped repos
+- First conversion target (crutch → leverage) and its module number: Python unaided → module 03 (Gate 1, started today)
 
 ## Daily lines (template — copy, fill, append)
 
 `dd/mm — module NN · what I built/learned in ≤10 words · struggle: what+mins · AI-free? Y/N · misses→cards: N`
+
+26/08 — module 03 · rungs 0–1: types, functions, conditionals; ex00+ex01 green (16/16) · struggle: any()/methods-on-whole-string ~20min + unsaved-file trap · AI-free? N · misses→cards: 8 · quiz 9/10
 
 ## Weekly block (Sundays — template)
 
