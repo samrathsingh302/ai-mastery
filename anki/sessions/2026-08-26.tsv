@@ -1,0 +1,9 @@
+# Session misses — 26/08/2026, module 03 rungs 0–1 (imported by tools/anki_import.py)
+What does "2" + 2 do in Python?	TypeError — number-meets-text always errors. + adds (both numbers) or glues (both strings); it never mixes.
+What does a function return if no return statement ever runs?	None — every call hands back something; no return hit → None. (print instead of return is the classic cause.)
+return vs print?	return hands a value back (usable, storable, testable); print only paints pixels. The print version returns None.
+Phrase for "string contains at least one digit"?	any(ch.isdigit() for ch in pw) — pw.isdigit() asks "is the WHOLE string digits?", the wrong question.
+What does any(...) take and give back?	Takes a stream of booleans, gives one: True if at least one is True. Without it you have many answers and no verdict.
+Which branch of an if/elif chain runs?	The FIRST true one, top to bottom — the rest are skipped even if also true. Narrowest/highest test first.
+2 + 2.5 → ?	4.5, a float — numbers mix freely (int gets promoted); only number-meets-TEXT errors.
+Fix is right but the checker still fails — first check?	Is the file SAVED? The checker runs what's on disk. VS Code: ● on the tab = unsaved.
