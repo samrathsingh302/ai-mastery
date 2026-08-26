@@ -13,13 +13,18 @@
    `What is a token? {{c1::the chunk-of-text unit models read and write}}`
 2. **Never repeat the question in the answer.** `What is X? X is Y` is banned — the cloze
    holds `Y` alone. Reading time is review time.
-3. **Multi-part answer = multiple clozes.** "Three properties of a hash?
-   {{c1::one-way}} · {{c2::deterministic}} · {{c3::collision-resistant}}" — each review
-   shows the others as context, one easy blank at a time.
+3. **Multi-part answer = multiple {{c1::…}} blanks — NEVER c2/c3 (his law, 26/08/2026:
+   "never ever use c2, it doesn't work").** All blanks share the number c1, so they hide
+   together on ONE card: question → recall every part → flip once, like a Q→A card.
+   "Three properties of a hash? {{c1::one-way}} · {{c1::deterministic}} ·
+   {{c1::collision-resistant}}". The importer hard-fails any c2+.
 4. **Too big → split into more notes.** One idea per note. If a card teaches two things,
    it is two cards.
 5. **No filler words.** Every word costs reading time at every future review. Cut
-   parentheticals, hedges, and second explanations; keep one memorable hook at most.
+   parentheticals, hedges, and second explanations from the question and answer.
+   **Extra context/further info goes in the Cloze type's Back Extra field** (his rule,
+   26/08/2026) — it shows only on the answer side: hooks, analogies, examples, the why,
+   alternatives, source refs. This is also where answer-leaking examples belong.
 6. **The question must STAND ON ITS OWN (his correction, 26/08/2026).** A random person with
    the knowledge must be able to answer from the visible text alone — name the domain and the
    subject explicitly, phrase it as a real question or a complete sentence. `"2" + 2 → ?`
@@ -45,14 +50,15 @@ Run each drafted card through all seven, in character as the knowledgeable stran
 2. **Cue the family**: when legitimate alternatives exist, the question names the intended
    family — "using a plain dict and .get (no imports)", "(restore family)", "deduped AND
    sorted". The cue closes the alternatives WITHOUT leaking the answer.
-3. **Enumerations**: one cloze per element, and the COUNT named in the visible text
-   ("What are the FOUR steps of…") so the reviewer knows when the recital is complete.
-   Never a multi-step pipeline or list inside one blob cloze.
+3. **Enumerations**: each element its own {{c1::…}} blank (all hidden together — c1 only),
+   and the COUNT named in the visible text ("What are the FOUR steps of…") so the reviewer
+   knows when the recital is complete. Never a whole pipeline inside one blob cloze.
 4. **No open lists**: "name three differences/examples of X" with no canonical set is
    banned — there are always dozens. Split into specific single-fact cards instead.
 5. **No answer leakage**: examples, contrasts, or restatements that give the answer away
-   must sit INSIDE the cloze, not visible ("dog bites man = man bites dog" was the answer;
-   sha256("hello")/("hellp") was the answer). Visible context orients; it never answers.
+   go in the Back Extra field, never in the visible text ("dog bites man = man bites dog"
+   was the answer; sha256("hello")/("hellp") was the answer). Visible context orients;
+   it never answers — and Extra rewards the flip with the richer story.
 6. **Dedup before import**: check the fact isn't already carded (module drill files first —
    a session miss-card restating an existing drill card is deleted, the drill card is
    enough; the importer only catches EXACT text duplicates, so this check is manual).
@@ -93,7 +99,8 @@ Run each drafted card through all seven, in character as the knowledgeable stran
 ## Mechanics (this repo)
 
 - Source of truth: `anki/cards/mNN-<slug>.tsv` (module drills) + `anki/sessions/YYYY-MM-DD.tsv`
-  (per-session miss cards). Format: `Text<TAB>tags` — tags space-separated, cloze markup in Text.
+  (per-session miss cards). Format: `Text<TAB>Extra<TAB>tags` (Extra may be omitted:
+  `Text<TAB>tags`) — tags space-separated and always LAST, cloze markup ({{c1::…}} only) in Text.
 - Import: `python tools/anki_import.py <file> --deck "AI Mastery::NN <name>"` (AnkiConnect;
   cloze model; duplicate-safe on Text).
 - Tags: `ai-mastery::mNN` per module + ONE topic tag (`python` `git` `web` `shell` `crypto`

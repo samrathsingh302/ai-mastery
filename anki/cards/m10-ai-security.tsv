@@ -1,21 +1,21 @@
-# Module 10 — AI security taster. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-What is prompt injection, in one sentence? {{c1::Text the model reads as DATA gets obeyed as INSTRUCTIONS}} — everything in context is just tokens, no trust label.	ai-mastery::m10 security
-What is direct vs indirect prompt injection? Direct = {{c1::typed by the user}}; indirect = {{c2::planted in content the agent reads}} — the dangerous one for agents: {{c3::indirect}}.	ai-mastery::m10 security
-What are the five prompt-injection families? {{c1::Direct override}} · {{c2::role-play framing}} · {{c3::encoding tricks}} · {{c4::output-channel abuse}} · {{c5::indirect (planted content)}}.	ai-mastery::m10 security
-What is Willison's lethal trifecta? {{c1::Private data}} + {{c2::untrusted content}} + {{c3::external comms}} — all three means one poisoned document can exfiltrate.	ai-mastery::m10 security
-Why can't prompt hardening fix the lethal trifecta? {{c1::The model can't reliably distinguish injected instructions from data — the mixing IS the vulnerability}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM01? {{c1::Prompt injection}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM02? {{c1::Sensitive information disclosure}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM03? {{c1::Supply chain — models, packages, and the skills/agents you install}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM05? {{c1::Improper output handling — model output executed without review}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM06? {{c1::Excessive agency — capability beyond the task's contract}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM07? {{c1::System prompt leakage}} — assume CLAUDE.md and skills are extractable.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM09? {{c1::Misinformation — confident wrong output acted upon}}.	ai-mastery::m10 security
-In the OWASP LLM Top 10, what is LLM10? {{c1::Unbounded consumption — runaway loops, quota/cost burn}}.	ai-mastery::m10 security
-Which two LLM defences survive a smart attacker? {{c1::Capability narrowing}} · {{c2::human gates on irreversible acts}} — both architectural, not prompting.	ai-mastery::m10 security
-Why are input/output filters only speed bumps? {{c1::Paraphrase and encoding defeat them — they judge strings, not intent}}.	ai-mastery::m10 security
-What was your estate's own excessive-agency finding? {{c1::ClaudeBridgeWorker pushed the WHOLE repo every ~5 min though its contract was machines/context/}} (ledger 108).	ai-mastery::m10 security
-What does bypassPermissions remove, and what becomes the dominant risk? {{c1::The last human gate between model output and the machine}} — making {{c2::LLM05/LLM06}} dominant.	ai-mastery::m10 security
-Which connector is the classic untrusted-content leg? {{c1::Email — anyone who can email you can place text in a session's context}}.	ai-mastery::m10 security
-What is the threat-model question set? {{c1::What could go wrong}} · {{c2::who could cause it}} · {{c3::what stops it today}} · {{c4::cheapest control that would actually help}}.	ai-mastery::m10 security
-A control you'd never tolerate is what? {{c1::Not a control — it's a wish}} (the honesty column).	ai-mastery::m10 security
+# Module 10 — AI security taster. Format: Text<TAB>Extra<TAB>tags (Extra optional). Card law: anki/CARD-RULES.md
+What is prompt injection, in one sentence? {{c1::Text the model reads as DATA gets obeyed as INSTRUCTIONS}}.	Everything in context is just tokens — no trust label exists.	ai-mastery::m10 security
+What is direct vs indirect prompt injection? Direct = {{c1::typed by the user}}; indirect = {{c1::planted in content the agent reads}} — the dangerous one for agents: {{c1::indirect}}.	Planted in a document, email, web page, or repo file.	ai-mastery::m10 security
+What are the five prompt-injection families? {{c1::Direct override}} · {{c1::role-play framing}} · {{c1::encoding tricks}} · {{c1::output-channel abuse}} · {{c1::indirect (planted content)}}.		ai-mastery::m10 security
+What is Willison's lethal trifecta? {{c1::Private data}} + {{c1::untrusted content}} + {{c1::external comms}}.	All three present = one poisoned document can exfiltrate (16/06/2025).	ai-mastery::m10 security
+Why can't prompt hardening fix the lethal trifecta? {{c1::The model can't reliably distinguish injected instructions from data}}.	The mixing IS the vulnerability.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM01? {{c1::Prompt injection}}.		ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM02? {{c1::Sensitive information disclosure}}.		ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM03? {{c1::Supply chain}}.	Models, packages, and the skills/agents you install.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM05? {{c1::Improper output handling}}.	Model output executed without review.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM06? {{c1::Excessive agency}}.	Capability beyond the task's contract.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM07? {{c1::System prompt leakage}}.	Assume CLAUDE.md and skills are extractable.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM09? {{c1::Misinformation}}.	Confident wrong output acted upon.	ai-mastery::m10 security
+In the OWASP LLM Top 10, what is LLM10? {{c1::Unbounded consumption}}.	Runaway loops, quota/cost burn.	ai-mastery::m10 security
+Which two LLM defences survive a smart attacker? {{c1::Capability narrowing}} · {{c1::human gates on irreversible acts}}.	Both architectural, not prompting.	ai-mastery::m10 security
+Why are input/output filters only speed bumps? {{c1::Paraphrase and encoding defeat them}}.	They judge strings, not intent.	ai-mastery::m10 security
+What was your estate's own excessive-agency finding? {{c1::ClaudeBridgeWorker pushed the WHOLE repo every ~5 min though its contract was machines/context/}}.	Flattened a merge commit; made "don't push" unenforceable (ledger 108).	ai-mastery::m10 security
+What does bypassPermissions remove, and what becomes the dominant risk? {{c1::The last human gate between model output and the machine}} — making {{c1::LLM05/LLM06}} dominant.		ai-mastery::m10 security
+Which connector is the classic untrusted-content leg? {{c1::Email}}.	Anyone who can email you can place text in a session's context.	ai-mastery::m10 security
+What is the threat-model question set? {{c1::What could go wrong}} · {{c1::who could cause it}} · {{c1::what stops it today}} · {{c1::cheapest control that would actually help}}.		ai-mastery::m10 security
+A control you'd never tolerate is what? {{c1::Not a control — it's a wish}}.	The honesty column in the per-asset table.	ai-mastery::m10 security

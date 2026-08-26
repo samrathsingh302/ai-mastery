@@ -1,7 +1,7 @@
-# Session misses 26/08/2026 — module 03 rungs 0–1. Rewritten to CARD-RULES.md (incl. the stand-alone-question rule).
-In Python, what does "2" + 2 do? {{c1::TypeError}} — + adds or glues, it never {{c2::mixes number and text}}.	session::2026-08-26 python
-In Python, what does a function return if no return statement ever runs? {{c1::None}} — print-instead-of-return is the classic cause.	session::2026-08-26 python
-In Python, how do you check a string contains at least one digit? {{c1::any(ch.isdigit() for ch in pw)}} — pw.isdigit() asks {{c2::"is the WHOLE string digits?", the wrong question}}.	session::2026-08-26 python
-In Python, what does any(...) take and give back? Takes {{c1::a stream of booleans}}, gives {{c2::one: True if at least one is True}}.	session::2026-08-26 python
-In Python, what does 2 + 2.5 evaluate to? {{c1::4.5, a float}} — numbers mix freely; only {{c2::number-meets-TEXT}} errors.	session::2026-08-26 python
-Your fix is right but the checker still fails — what is the first thing to check? {{c1::Is the file SAVED? (VS Code: ● on the tab)}} — the checker runs what's on disk.	session::2026-08-26 python
+# Session misses 26/08/2026 — module 03 rungs 0–1. Format: Text<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
+In Python, what does "2" + 2 do? {{c1::TypeError}}.	+ adds (both numbers) or glues (both strings) — it never mixes number and text.	session::2026-08-26 python
+In Python, what does a function return if no return statement ever runs? {{c1::None}}.	Print-instead-of-return is the classic cause.	session::2026-08-26 python
+In Python, how do you check a string contains at least one digit? {{c1::any(ch.isdigit() for ch in pw)}}	pw.isdigit() asks "is the WHOLE string digits?" — the wrong question.	session::2026-08-26 python
+In Python, what does any(...) take and give back? Takes {{c1::a stream of booleans}}, gives {{c1::one: True if at least one is True}}.	Without it you have many answers and no verdict.	session::2026-08-26 python
+In Python, what does 2 + 2.5 evaluate to? {{c1::4.5, a float}}.	Numbers mix freely (int gets promoted); only number-meets-TEXT errors.	session::2026-08-26 python
+Your fix is right but the checker still fails — what is the first thing to check? {{c1::Is the file SAVED?}}	The checker runs what's on disk. VS Code: ● on the tab = unsaved.	session::2026-08-26 python
