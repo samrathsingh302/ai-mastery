@@ -1,6 +1,9 @@
-# CARD-RULES.md — read this BEFORE drafting any Anki card
+# CARD-RULES.md — Samrath's own card-making reference
 
-> Samrath's instruction (26/08/2026): every card-making session reviews this document first.
+> OWNERSHIP RULING (26/08/2026 evening, final): **Samrath makes ALL his own Anki cards;
+> Claude sessions NEVER make, draft, or import cards.** Sessions end with card NOTES
+> (facts worth carding + recommended count) in chat and `anki/notes/`; this document is
+> the style reference SAMRATH uses when turning those notes into cards.
 > Sources: SuperMemo's Twenty Rules (supermemo.com/en/blog/twenty-rules-of-formulating-knowledge)
 > + Andy Matuschak's prompt-writing guide (andymatuschak.org/prompts) + Samrath's own rules.
 > Reddit r/Anki was unreachable from the session that built this (26/08/2026); these two are
