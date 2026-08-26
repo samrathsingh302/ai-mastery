@@ -1,15 +1,15 @@
-# Module 09 — eval harness mini. Format: Text<TAB>Extra<TAB>tags (Extra optional). Card law: anki/CARD-RULES.md
-What are an eval's three irreducible parts? {{c1::Fixed tasks}} + {{c1::a scoring method}} + {{c1::blindness}}.	Blindness = the discipline not to peek.	ai-mastery::m09 evals
-What are the two eval scoring families? {{c1::Programmatic — a checker decides}} · {{c1::rubric — a human grades blind against written criteria}}.	Programmatic: exact-match, tests, regex.	ai-mastery::m09 evals
-Why must rubric grading be blind? {{c1::You WILL favour the model you expect to win}}.	Shuffling + anonymising is the only honest fix.	ai-mastery::m09 evals
-What are the four properties of a good eval task? {{c1::Representative}} · {{c1::one skill per task}} · {{c1::verifiable}} · {{c1::crisply stated}}.	Crisply stated = a wrong answer can't blame the prompt.	ai-mastery::m09 evals
-What is contamination in an eval? {{c1::The answer exists as memorised text}}.	Famous puzzles measure recall of the internet, not capability.	ai-mastery::m09 evals
-Why is n=1 an anecdote when evaluating models? {{c1::Models are stochastic — single runs are noise}}.	Patterns across task FAMILIES are the signal.	ai-mastery::m09 evals
-What does a per-family subtotal reveal that the total hides? {{c1::The capability profile}}.	A model can win code and lose writing — jagged intelligence, measured.	ai-mastery::m09 evals
-"Model X felt smarter" — what is the engineering translation? {{c1::No measurement occurred. Run the harness}}.		ai-mastery::m09 evals
-In module 09's 9–9 dead-heat fixture, what was the lesson? Equal totals with {{c1::OPPOSITE profiles}} — which model you want depends on {{c1::the JOB}}.	A followed output contracts exactly; B explained better but ignored instructions.	ai-mastery::m09 evals
-Why did fixture-B fail four programmatic tasks despite correct answers? {{c1::Extra prose around a correct answer still fails an exact-match contract}}.	"Reply with ONLY…" means only.	ai-mastery::m09 evals
-Why write "reply with ONLY the number" in eval prompts? {{c1::The output contract makes programmatic checking possible}}.	Eval design and prompt design are the same skill.	ai-mastery::m09 evals
-What four things would make an eval harness lie to you? {{c1::Contaminated tasks}} · {{c1::leading/ambiguous prompts}} · {{c1::unblinded grading}} · {{c1::reading n=1 noise as signal}}.		ai-mastery::m09 evals
-What is the criteria-vs-vibes test? {{c1::A stranger applying your criteria reaches your score}}.	"Is it good?" fails that instantly.	ai-mastery::m09 evals
-Module 09's eval method reapplies unchanged to which two bigger surfaces? {{c1::Agents}} · {{c1::RAG}}.	Same method, bigger surface (Tier 3–4 of the plan).	ai-mastery::m09 evals
+# Module 09 — eval harness mini. Format: Question¶{{c1::answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
+What are an eval's three irreducible parts?¶{{c1::Fixed tasks}} + {{c1::a scoring method}} + {{c1::blindness}}	Blindness = the discipline not to peek.	ai-mastery::m09 evals
+What are the two eval scoring families?¶{{c1::Programmatic — a checker decides}} · {{c1::rubric — a human grades blind against written criteria}}	Programmatic: exact-match, tests, regex.	ai-mastery::m09 evals
+Why must rubric grading be blind?¶{{c1::You WILL favour the model you expect to win}}	Shuffling + anonymising is the only honest fix.	ai-mastery::m09 evals
+What are the four properties of a good eval task?¶{{c1::Representative}} · {{c1::one skill per task}} · {{c1::verifiable}} · {{c1::crisply stated}}	Crisply stated = a wrong answer can't blame the prompt.	ai-mastery::m09 evals
+What is contamination in an eval?¶{{c1::The answer exists as memorised text}}	Famous puzzles measure recall of the internet, not capability.	ai-mastery::m09 evals
+Why is n=1 an anecdote when evaluating models?¶{{c1::Models are stochastic — single runs are noise}}	Patterns across task FAMILIES are the signal.	ai-mastery::m09 evals
+What does a per-family subtotal reveal that the total hides?¶{{c1::The capability profile}}	A model can win code and lose writing — jagged intelligence, measured.	ai-mastery::m09 evals
+"Model X felt smarter" — what is the engineering translation?¶{{c1::No measurement occurred. Run the harness}}		ai-mastery::m09 evals
+In module 09's 9–9 dead-heat fixture, what was the lesson?¶{{c1::Equal totals with OPPOSITE profiles — which model you want depends on the JOB}}	A followed output contracts exactly; B explained better but ignored instructions.	ai-mastery::m09 evals
+Why did fixture-B fail four programmatic tasks despite correct answers?¶{{c1::Extra prose around a correct answer still fails an exact-match contract}}	"Reply with ONLY…" means only.	ai-mastery::m09 evals
+Why write "reply with ONLY the number" in eval prompts?¶{{c1::The output contract makes programmatic checking possible}}	Eval design and prompt design are the same skill.	ai-mastery::m09 evals
+What four things would make an eval harness lie to you?¶{{c1::Contaminated tasks}} · {{c1::leading/ambiguous prompts}} · {{c1::unblinded grading}} · {{c1::reading n=1 noise as signal}}		ai-mastery::m09 evals
+What is the criteria-vs-vibes test?¶{{c1::A stranger applying your criteria reaches your score}}	"Is it good?" fails that instantly.	ai-mastery::m09 evals
+Module 09's eval method reapplies unchanged to which two bigger surfaces?¶{{c1::Agents}} · {{c1::RAG}}	Same method, bigger surface (Tier 3–4 of the plan).	ai-mastery::m09 evals

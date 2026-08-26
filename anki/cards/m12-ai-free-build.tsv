@@ -1,12 +1,12 @@
-# Module 12 — first AI-free build. Format: Text<TAB>Extra<TAB>tags (Extra optional). Card law: anki/CARD-RULES.md
+# Module 12 — first AI-free build. Format: Question¶{{c1::answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
 # NB: the outage-test card lives in m02 only (duplicate dropped in the 26/08 cloze rewrite).
-What five things does AI-free forbid? {{c1::Claude}} · {{c1::autocomplete/Copilot}} · {{c1::AI search summaries}} · {{c1::concept chats}} · {{c1::pasting errors in}}.	Allowed: docs, your own notes, help(), the REPL, paper.	ai-mastery::m12 method
-What are the five steps of the unassisted wall protocol? {{c1::Re-read the error bottom-up}} · {{c1::reproduce in the smallest snippet}} · {{c1::inspect real values}} · {{c1::one written hypothesis at a time}} · {{c1::45 min no progress = log it, return tomorrow}}.		ai-mastery::m12 method
-What is the honesty clause for AI-free work? {{c1::Log every breach — what and how long}}.	A quantified breach is data; a hidden one corrupts your baseline forever.	ai-mastery::m12 method
-Why grade your build BEFORE showing anyone? {{c1::Grading first forces criteria}}.	Grading after invites rationalising whatever you built.	ai-mastery::m12 method
-What makes a test worth having, and how do you prove it? {{c1::It would CATCH a real break}} — prove it by {{c1::breaking the code on purpose and watching it fail}}.		ai-mastery::m12 python
-Why must errors exit non-zero? {{c1::Exit codes are how other programs detect failure}}.	A traceback is not an interface.	ai-mastery::m12 python
-What is the fast-track exit test, and its pass mark? {{c1::A cold 30-minute interview sim}}, pass = {{c1::9+/12}}.	Projects + Python + how LLMs work + judgement, scored 0–2 each.	ai-mastery::m12 method
-What does a low interview-sim score mean? {{c1::The gaps were found — misses become drills and cards; re-sit in a fortnight}}.	The trend is the instrument, not the single score.	ai-mastery::m12 method
-Why build a tool you'll actually use? A tool you don't use taught {{c1::syntax}}; a tool you use teaches {{c1::design}}.	You meet your own decisions again after three days.	ai-mastery::m12 method
-What is module 12's most valuable artefact? {{c1::A wall you crossed alone}}.	Worth more than the finished tool.	ai-mastery::m12 method
+What five things does AI-free forbid?¶{{c1::Claude}} · {{c1::autocomplete/Copilot}} · {{c1::AI search summaries}} · {{c1::concept chats}} · {{c1::pasting errors in}}	Allowed: docs, your own notes, help(), the REPL, paper.	ai-mastery::m12 method
+What are the five steps of the unassisted wall protocol?¶{{c1::Re-read the error bottom-up}} · {{c1::reproduce in the smallest snippet}} · {{c1::inspect real values}} · {{c1::one written hypothesis at a time}} · {{c1::45 min no progress = log it, return tomorrow}}		ai-mastery::m12 method
+What is the honesty clause for AI-free work?¶{{c1::Log every breach — what and how long}}	A quantified breach is data; a hidden one corrupts your baseline forever.	ai-mastery::m12 method
+Why grade your build BEFORE showing anyone?¶{{c1::Grading first forces criteria}}	Grading after invites rationalising whatever you built.	ai-mastery::m12 method
+What makes a test worth having, and how do you prove it?¶{{c1::It would CATCH a real break}} — proven by {{c1::breaking the code on purpose and watching it fail}}		ai-mastery::m12 python
+Why must errors exit non-zero?¶{{c1::Exit codes are how other programs detect failure}}	A traceback is not an interface.	ai-mastery::m12 python
+What is the fast-track exit test, and its pass mark?¶{{c1::A cold 30-minute interview sim}} — pass = {{c1::9+/12}}	Projects + Python + how LLMs work + judgement, scored 0–2 each.	ai-mastery::m12 method
+What does a low interview-sim score mean?¶{{c1::The gaps were found — misses become drills and cards; re-sit in a fortnight}}	The trend is the instrument, not the single score.	ai-mastery::m12 method
+Why build a tool you'll actually use?¶{{c1::A tool you don't use taught syntax; a tool you use teaches design}}	You meet your own decisions again after three days.	ai-mastery::m12 method
+What is module 12's most valuable artefact?¶{{c1::A wall you crossed alone}}	Worth more than the finished tool.	ai-mastery::m12 method

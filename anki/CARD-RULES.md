@@ -8,9 +8,13 @@
 
 ## Samrath's format law (overrides everything below on conflict)
 
-1. **Cloze for ALL cards.** Note type = Anki's built-in **Cloze** (default formatting, no
-   custom CSS). The question/context stays VISIBLE; the answer is the cloze.
-   `What is a token? {{c1::the chunk-of-text unit models read and write}}`
+1. **Cloze for ALL cards, question and answer on SEPARATE lines (his layout law,
+   26/08/2026).** Note type = Anki's built-in **Cloze** (default formatting, no custom
+   CSS). Line 1 = the question, fully visible, holding NO blanks and no answer fragments.
+   Line 2 = the answer, fully inside {{c1::…}} blanks — only scaffold labels/separators
+   ("Training = …", "·", "→") may sit outside a blank. In the tsv the line break is the
+   `¶` character (the importer turns it into a real line break and enforces the shape):
+   `What is a token, in LLMs?¶{{c1::The chunk-of-text unit models read and write}}`
 2. **Never repeat the question in the answer.** `What is X? X is Y` is banned — the cloze
    holds `Y` alone. Reading time is review time.
 3. **Multi-part answer = multiple {{c1::…}} blanks — NEVER c2/c3 (his law, 26/08/2026:
@@ -99,8 +103,9 @@ Run each drafted card through all seven, in character as the knowledgeable stran
 ## Mechanics (this repo)
 
 - Source of truth: `anki/cards/mNN-<slug>.tsv` (module drills) + `anki/sessions/YYYY-MM-DD.tsv`
-  (per-session miss cards). Format: `Text<TAB>Extra<TAB>tags` (Extra may be omitted:
-  `Text<TAB>tags`) — tags space-separated and always LAST, cloze markup ({{c1::…}} only) in Text.
+  (per-session miss cards). Format: `Question¶{{c1::answer}}<TAB>Extra<TAB>tags` (Extra may
+  be omitted: `Text<TAB>tags`) — tags space-separated and always LAST, cloze markup
+  ({{c1::…}} only) after the ¶, never before it.
 - Import: `python tools/anki_import.py <file> --deck "AI Mastery::NN <name>"` (AnkiConnect;
   cloze model; duplicate-safe on Text).
 - Tags: `ai-mastery::mNN` per module + ONE topic tag (`python` `git` `web` `shell` `crypto`

@@ -1,19 +1,19 @@
-# Module 04 — automate the boring stuff. Format: Text<TAB>Extra<TAB>tags (Extra optional). Card law: anki/CARD-RULES.md
-What are the four safety laws for file automation? {{c1::Dry-run first}} · {{c1::quarantine, never delete}} · {{c1::practise in a sandbox}} · {{c1::idempotent}}.		ai-mastery::m04 automation
-What does idempotent mean? {{c1::Running it twice changes nothing the second time}}.	Check before acting.	ai-mastery::m04 automation
-How do you join paths in pathlib? {{c1::With the / operator: repo / "PROGRESS.md"}}.	Never glue path strings with +.	ai-mastery::m04 python
-In pathlib, what is .glob vs .rglob? glob = {{c1::this folder only}}; rglob = {{c1::recursive, the whole tree below}}.		ai-mastery::m04 python
-Which shutil calls copy-with-timestamps, move, and zip a folder? {{c1::shutil.copy2}} · {{c1::shutil.move}} · {{c1::shutil.make_archive(name, "zip", folder)}}		ai-mastery::m04 python
-Why collect list(p.iterdir()) BEFORE moving files? {{c1::Never mutate a folder while iterating it}}.	Plan first, then act — the dry-run principle as code.	ai-mastery::m04 automation
-What is the file name-collision idiom? {{c1::stem-1.suffix, stem-2.suffix… until a name is free}}.		ai-mastery::m04 python
-What does re.compile buy you? {{c1::A named, reusable, once-built pattern}}.	And a home for the regex comment.	ai-mastery::m04 python
-What is the regex named-group syntax, and how do you read it back? {{c1::(?P<year>\d{4})}} → {{c1::m.group("year")}}		ai-mastery::m04 python
-What regex matches [[wiki-links]] safely? {{c1::r"\[\[([^\]]+)\]\]"}}	A negated class beats greedy .* inside brackets.	ai-mastery::m04 python
-What does csv.DictReader give you? Each row as {{c1::a dict keyed by the header line}}; values are ALWAYS {{c1::strings}}.	Convert before maths.	ai-mastery::m04 python
-What is JSON, in one sentence? {{c1::A text format for nested dicts/lists/strings/numbers}}.	The lingua franca of APIs and exports.	ai-mastery::m04 python
-What do json.loads and json.dumps do? loads = {{c1::text → Python objects}}; dumps = {{c1::objects → text}}.	indent=2 for humans.	ai-mastery::m04 python
-What are the two Windows CSV/file gotchas in Python? {{c1::encoding="utf-8" on open}} · {{c1::newline="" when WRITING csv}}.	Without newline="" you get blank lines between rows.	ai-mastery::m04 python
-What is subprocess.run's argument law? {{c1::Pass a LIST of args, never a glued shell string}}.	String-gluing is how injection bugs are born.	ai-mastery::m04 security
-Where do subprocess.run results live? {{c1::r.returncode (0 = success)}} · {{c1::r.stdout}} · {{c1::r.stderr}}.	With capture_output=True, text=True.	ai-mastery::m04 python
-What is a Windows Task Scheduler task, demystified? {{c1::A trigger + an action + a working directory}}.	Your Claude-CLI-AutoUpdate task is just that.	ai-mastery::m04 automation
-How do you inspect a Windows scheduled task from the shell? {{c1::schtasks /query /tn "NAME" /v /fo LIST}}		ai-mastery::m04 shell
+# Module 04 — automate the boring stuff. Format: Question¶{{c1::answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
+What are the four safety laws for file automation?¶{{c1::Dry-run first}} · {{c1::quarantine, never delete}} · {{c1::practise in a sandbox}} · {{c1::idempotent}}		ai-mastery::m04 automation
+What does idempotent mean?¶{{c1::Running it twice changes nothing the second time}}	Check before acting.	ai-mastery::m04 automation
+How do you join paths in pathlib?¶{{c1::With the / operator: repo / "PROGRESS.md"}}	Never glue path strings with +.	ai-mastery::m04 python
+In pathlib, what is .glob vs .rglob?¶glob = {{c1::this folder only}}; rglob = {{c1::recursive, the whole tree below}}		ai-mastery::m04 python
+Which shutil calls copy-with-timestamps, move, and zip a folder?¶{{c1::shutil.copy2}} · {{c1::shutil.move}} · {{c1::shutil.make_archive(name, "zip", folder)}}		ai-mastery::m04 python
+Why collect list(p.iterdir()) BEFORE moving files?¶{{c1::Never mutate a folder while iterating it}}	Plan first, then act — the dry-run principle as code.	ai-mastery::m04 automation
+What is the file name-collision idiom?¶{{c1::stem-1.suffix, stem-2.suffix… until a name is free}}		ai-mastery::m04 python
+What does re.compile buy you?¶{{c1::A named, reusable, once-built pattern}}	And a home for the regex comment.	ai-mastery::m04 python
+What is the regex named-group syntax, and how do you read it back?¶{{c1::(?P<year>\d{4})}} → {{c1::m.group("year")}}		ai-mastery::m04 python
+What regex matches [[wiki-links]] safely?¶{{c1::r"\[\[([^\]]+)\]\]"}}	A negated class beats greedy .* inside brackets.	ai-mastery::m04 python
+What does csv.DictReader give you?¶{{c1::Each row as a dict keyed by the header line — values ALWAYS strings}}	Convert before maths.	ai-mastery::m04 python
+What is JSON, in one sentence?¶{{c1::A text format for nested dicts/lists/strings/numbers}}	The lingua franca of APIs and exports.	ai-mastery::m04 python
+What do json.loads and json.dumps do?¶loads = {{c1::text → Python objects}}; dumps = {{c1::objects → text}}	indent=2 for humans.	ai-mastery::m04 python
+What are the two Windows CSV/file gotchas in Python?¶{{c1::encoding="utf-8" on open}} · {{c1::newline="" when WRITING csv}}	Without newline="" you get blank lines between rows.	ai-mastery::m04 python
+What is subprocess.run's argument law?¶{{c1::Pass a LIST of args, never a glued shell string}}	String-gluing is how injection bugs are born.	ai-mastery::m04 security
+Where do subprocess.run results live?¶{{c1::r.returncode (0 = success)}} · {{c1::r.stdout}} · {{c1::r.stderr}}	With capture_output=True, text=True.	ai-mastery::m04 python
+What is a Windows Task Scheduler task, demystified?¶{{c1::A trigger + an action + a working directory}}	Your Claude-CLI-AutoUpdate task is just that.	ai-mastery::m04 automation
+How do you inspect a Windows scheduled task from the shell?¶{{c1::schtasks /query /tn "NAME" /v /fo LIST}}		ai-mastery::m04 shell

@@ -1,31 +1,31 @@
-# Module 01 — video canon. Format: Text<TAB>Extra<TAB>tags (Extra optional). Card law: anki/CARD-RULES.md
-What is an LLM, in one sentence? {{c1::A next-token predictor}} grown from internet-scale text.	Not a database, not a mind — its one trick is predicting the next token.	ai-mastery::m01 ml
-What is a token, in LLMs? {{c1::The chunk-of-text unit models read and write}} — never letters.	Words/part-words/punctuation, each mapped to an ID number.	ai-mastery::m01 ml
-Why are LLMs bad at counting letters in a word? {{c1::They see tokens, not letters}}.	The letters are hidden inside the bricks.	ai-mastery::m01 ml
-What are an LLM's parameters/weights? {{c1::The learned numbers that ARE the model}}.	"A mixing desk with a billion sliders."	ai-mastery::m01 ml
-In ML, what is training vs inference? Training = {{c1::tuning the parameters}}; inference = {{c1::using the tuned model to generate}}.	Training is slow and expensive, done once; inference is every chat.	ai-mastery::m01 ml
-What does LLM pretraining produce? A {{c1::BASE model}}, which {{c1::continues text rather than answering}}.	An internet-document simulator.	ai-mastery::m01 ml
-What is the "lossy zip" intuition about LLM parameters? They {{c1::compress the internet lossily}}.	Near-exact recall of oft-repeated text; vague recollection of everything else.	ai-mastery::m01 ml
-What turns a base model into an assistant? {{c1::Supervised fine-tuning (SFT)}} on {{c1::labeller-written ideal conversations}}.	Trained until it imitates the ideal helpful assistant.	ai-mastery::m01 ml
-When you chat with an assistant LLM, what are you really talking to? {{c1::A statistical simulation of a helpful labeller}}.	A simulation of a human following labelling guidelines.	ai-mastery::m01 ml
-Why do LLMs hallucinate? {{c1::Confident SFT style applied where the weights hold only vague recollection}}.	Likelihood fills the gap — the model has no concept of truth.	ai-mastery::m01 ml
-What are the two patches for LLM hallucination? {{c1::Train "I don't know" on probed blind spots}} · {{c1::tools/retrieval pasting real sources into context}}.		ai-mastery::m01 ml
-In an LLM, what is the context window vs the weights? Context = {{c1::working memory, reliable}}; weights = {{c1::vague recollection}}.	Open book on the desk vs things half-remembered from school.	ai-mastery::m01 ml
-Why does "think step by step" work, mechanically? {{c1::Compute per emitted token is fixed — more tokens buy more total computation}}.	The reasoning is spread over many tokens, each a full pass.	ai-mastery::m01 ml
-What is jagged intelligence? {{c1::PhD-level on some tasks, failing trivial ones}} — so calibrate trust {{c1::per task}}.	Swiss-cheese capability: the 9.11-vs-9.9 failure next to PhD maths.	ai-mastery::m01 ml
-Where does RL-with-verification work best, and why? {{c1::Maths and code}}, because {{c1::auto-checkable answers give a reliable reward signal at scale}}.		ai-mastery::m01 ml
-What did DeepSeek-R1 demonstrate? {{c1::RL alone can discover longer, self-correcting chains of thought}}.	"Aha" moments nobody wrote appeared in its reasoning.	ai-mastery::m01 ml
-Why is AlphaGo's move 37 relevant to LLMs? {{c1::Imitation caps at human level; RL against the real goal can exceed it}}.	The hope behind reasoning models.	ai-mastery::m01 ml
-What is RLHF? Humans compare outputs → {{c1::a reward model learns their preferences}} → the model is optimised {{c1::to please it, briefly}}.	RL for uncheckable domains (writing, helpfulness) where no verifier exists.	ai-mastery::m01 ml
-Why is RLHF run only briefly? {{c1::The reward model is a gameable simulation}}.	Over-optimise it and you get adversarial junk it loves and humans hate.	ai-mastery::m01 ml
-What is the mechanical root of LLM sycophancy? Models are optimised to be {{c1::PREFERRED}}, and {{c1::preferred ≠ true}}.	Agreeing with a confident user tends to be preferred.	ai-mastery::m01 ml
-What is Kernighan's Law, and its consequence for AI code? Debugging is {{c1::twice as hard as writing}} → {{c1::never ship code you couldn't write yourself}}.	Code at the edge of your comprehension is undebuggable by you.	ai-mastery::m01 method
-When is vibe coding rational? {{c1::Prototypes/small scope in stacks you could write yourself}}.	Comprehension is the safety line.	ai-mastery::m01 method
-What are the three principles of vibe coding that doesn't suck? {{c1::Feed current true context}} · {{c1::let it see real errors}} · {{c1::wire automatic verification around it}}.		ai-mastery::m01 method
-What is MCP, in plain words? {{c1::A standard plug connecting an AI tool to outside systems}}.	Model Context Protocol — docs, errors, infra reached as live truth.	ai-mastery::m01 ml
-What is an API, in plain words? {{c1::A programme-to-programme doorway: request in, answer back}}.		ai-mastery::m01 ml
-What is RAG, in plain words? {{c1::Fetch relevant documents, paste them into context, answer open-book}}.	Retrieval-augmented generation.	ai-mastery::m01 ml
-What is an AI agent, in plain words? {{c1::An LLM with tools and a loop so it can act}}.	Search, run code, edit files — not just answer.	ai-mastery::m01 ml
-What is an eval, in plain words? {{c1::Fixed tasks + a scoring method}}.	Written-down tests for AI behaviour — changes get measured, not vibed.	ai-mastery::m01 evals
-What are Ebbelaar's six AI-engineer stages? {{c1::Foundations}} → {{c1::system design}} → {{c1::production backends}} → {{c1::RAG}} → {{c1::monitoring & evals}} → {{c1::deployment}}.	Foundations = Python/Git/API.	ai-mastery::m01 ml
-What are the canon's two house laws? {{c1::No ChatGPT in the interview}} · {{c1::never let AI write code you couldn't write}}.		ai-mastery::m01 method
+# Module 01 — video canon. Format: Question¶{{c1::answer}}<TAB>Extra<TAB>tags. Card law: anki/CARD-RULES.md
+What is an LLM, in one sentence?¶{{c1::A next-token predictor grown from internet-scale text}}	Not a database, not a mind — its one trick is predicting the next token.	ai-mastery::m01 ml
+What is a token, in LLMs?¶{{c1::The chunk-of-text unit models read and write — never letters}}	Words/part-words/punctuation, each mapped to an ID number.	ai-mastery::m01 ml
+Why are LLMs bad at counting letters in a word?¶{{c1::They see tokens, not letters}}	The letters are hidden inside the bricks.	ai-mastery::m01 ml
+What are an LLM's parameters/weights?¶{{c1::The learned numbers that ARE the model}}	"A mixing desk with a billion sliders."	ai-mastery::m01 ml
+In ML, what is training vs inference?¶Training = {{c1::tuning the parameters}}; inference = {{c1::using the tuned model to generate}}	Training is slow and expensive, done once; inference is every chat.	ai-mastery::m01 ml
+What does LLM pretraining produce?¶{{c1::A BASE model — it continues text rather than answering}}	An internet-document simulator.	ai-mastery::m01 ml
+What is the "lossy zip" intuition about LLM parameters?¶{{c1::They compress the internet lossily}}	Near-exact recall of oft-repeated text; vague recollection of everything else.	ai-mastery::m01 ml
+What turns a base model into an assistant?¶{{c1::Supervised fine-tuning (SFT) on labeller-written ideal conversations}}	Trained until it imitates the ideal helpful assistant.	ai-mastery::m01 ml
+When you chat with an assistant LLM, what are you really talking to?¶{{c1::A statistical simulation of a helpful labeller}}	A simulation of a human following labelling guidelines.	ai-mastery::m01 ml
+Why do LLMs hallucinate?¶{{c1::Confident SFT style applied where the weights hold only vague recollection}}	Likelihood fills the gap — the model has no concept of truth.	ai-mastery::m01 ml
+What are the two patches for LLM hallucination?¶{{c1::Train "I don't know" on probed blind spots}} · {{c1::tools/retrieval pasting real sources into context}}		ai-mastery::m01 ml
+In an LLM, what is the context window vs the weights?¶Context = {{c1::working memory, reliable}}; weights = {{c1::vague recollection}}	Open book on the desk vs things half-remembered from school.	ai-mastery::m01 ml
+Why does "think step by step" work, mechanically?¶{{c1::Compute per emitted token is fixed — more tokens buy more total computation}}	The reasoning is spread over many tokens, each a full pass.	ai-mastery::m01 ml
+What is jagged intelligence?¶{{c1::PhD-level on some tasks, failing trivial ones — calibrate trust per task}}	Swiss-cheese capability: the 9.11-vs-9.9 failure next to PhD maths.	ai-mastery::m01 ml
+Where does RL-with-verification work best, and why?¶{{c1::Maths and code — auto-checkable answers give a reliable reward signal at scale}}		ai-mastery::m01 ml
+What did DeepSeek-R1 demonstrate?¶{{c1::RL alone can discover longer, self-correcting chains of thought}}	"Aha" moments nobody wrote appeared in its reasoning.	ai-mastery::m01 ml
+Why is AlphaGo's move 37 relevant to LLMs?¶{{c1::Imitation caps at human level; RL against the real goal can exceed it}}	The hope behind reasoning models.	ai-mastery::m01 ml
+What is RLHF?¶{{c1::Humans compare outputs → a reward model learns their preferences → the model is optimised to please it, briefly}}	RL for uncheckable domains (writing, helpfulness) where no verifier exists.	ai-mastery::m01 ml
+Why is RLHF run only briefly?¶{{c1::The reward model is a gameable simulation}}	Over-optimise it and you get adversarial junk it loves and humans hate.	ai-mastery::m01 ml
+What is the mechanical root of LLM sycophancy?¶{{c1::Models are optimised to be PREFERRED — and preferred ≠ true}}	Agreeing with a confident user tends to be preferred.	ai-mastery::m01 ml
+What is Kernighan's Law, and its consequence for AI code?¶{{c1::Debugging is twice as hard as writing}} → {{c1::never ship code you couldn't write yourself}}	Code at the edge of your comprehension is undebuggable by you.	ai-mastery::m01 method
+When is vibe coding rational?¶{{c1::Prototypes/small scope in stacks you could write yourself}}	Comprehension is the safety line.	ai-mastery::m01 method
+What are the three principles of vibe coding that doesn't suck?¶{{c1::Feed current true context}} · {{c1::let it see real errors}} · {{c1::wire automatic verification around it}}		ai-mastery::m01 method
+What is MCP, in plain words?¶{{c1::A standard plug connecting an AI tool to outside systems}}	Model Context Protocol — docs, errors, infra reached as live truth.	ai-mastery::m01 ml
+What is an API, in plain words?¶{{c1::A programme-to-programme doorway: request in, answer back}}		ai-mastery::m01 ml
+What is RAG, in plain words?¶{{c1::Fetch relevant documents, paste them into context, answer open-book}}	Retrieval-augmented generation.	ai-mastery::m01 ml
+What is an AI agent, in plain words?¶{{c1::An LLM with tools and a loop so it can act}}	Search, run code, edit files — not just answer.	ai-mastery::m01 ml
+What is an eval, in plain words?¶{{c1::Fixed tasks + a scoring method}}	Written-down tests for AI behaviour — changes get measured, not vibed.	ai-mastery::m01 evals
+What are Ebbelaar's six AI-engineer stages?¶{{c1::Foundations}} → {{c1::system design}} → {{c1::production backends}} → {{c1::RAG}} → {{c1::monitoring & evals}} → {{c1::deployment}}	Foundations = Python/Git/API.	ai-mastery::m01 ml
+What are the canon's two house laws?¶{{c1::No ChatGPT in the interview}} · {{c1::never let AI write code you couldn't write}}		ai-mastery::m01 method

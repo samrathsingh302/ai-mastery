@@ -68,7 +68,14 @@ def parse_cards(path: pathlib.Path) -> list[tuple[str, str, list[str]]]:
             sys.exit(f"{path.name}:{n}: no cloze marker — every card is cloze, see anki/CARD-RULES.md")
         if NON_C1_RE.search(text):
             sys.exit(f"{path.name}:{n}: c2+/c3+ cloze found — ONLY c1 is allowed (Samrath's law, see anki/CARD-RULES.md)")
-        cards.append((escape(text), escape(extra), tags))
+        # Samrath's layout law (26/08/2026): question line, then ¶, then the clozed answer
+        # line — the ¶ becomes a line break, and every cloze must sit AFTER it.
+        if "¶" not in text:
+            sys.exit(f"{path.name}:{n}: no ¶ — format is Question¶{{{{c1::answer}}}}, see anki/CARD-RULES.md")
+        if CLOZE_RE.search(text.split("¶", 1)[0]):
+            sys.exit(f"{path.name}:{n}: cloze before the ¶ — the question line must hold no blanks")
+        text = escape(text).replace("¶", "<br>")
+        cards.append((text, escape(extra), tags))
     if not cards:
         sys.exit(f"{path.name}: no cards found")
     return cards
