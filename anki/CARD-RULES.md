@@ -27,6 +27,37 @@
    is a fragment; `What are the four steps of the attention recipe?` is a question.
    Minimum-information compresses the ANSWER, never the question's context. Think before
    making each card: read the visible text cold and ask "could a stranger answer this?"
+7. **ONE correct answer per blank (his rule, 26/08/2026).** Given the visible text, a
+   stranger with unlimited knowledge must converge on EXACTLY the clozed answer (synonyms
+   fine) — never on a different, equally-correct one. Multiple answers are allowed only
+   when the card is deliberately multi-part AND the visible text says so.
+
+## The pre-import checklist (added 26/08/2026 after the red-team pass — apply to EVERY card
+## BEFORE import; this checklist IS the review, so no post-hoc red-team should be needed)
+
+Run each drafted card through all seven, in character as the knowledgeable stranger:
+
+1. **Stranger test**: reading only the visible text — is exactly the clozed answer the one
+   I'd give? If an alternative is equally right, the question is broken (fix via check 2).
+   Real catches from 26/08: "de-duplicate a list" (set() vs dict.fromkeys() — the visible
+   "need order" actually pointed at the answer the card marked wrong); "count-dict idiom"
+   (Counter and defaultdict equally canonical); "unstage a file" (restore vs reset HEAD).
+2. **Cue the family**: when legitimate alternatives exist, the question names the intended
+   family — "using a plain dict and .get (no imports)", "(restore family)", "deduped AND
+   sorted". The cue closes the alternatives WITHOUT leaking the answer.
+3. **Enumerations**: one cloze per element, and the COUNT named in the visible text
+   ("What are the FOUR steps of…") so the reviewer knows when the recital is complete.
+   Never a multi-step pipeline or list inside one blob cloze.
+4. **No open lists**: "name three differences/examples of X" with no canonical set is
+   banned — there are always dozens. Split into specific single-fact cards instead.
+5. **No answer leakage**: examples, contrasts, or restatements that give the answer away
+   must sit INSIDE the cloze, not visible ("dog bites man = man bites dog" was the answer;
+   sha256("hello")/("hellp") was the answer). Visible context orients; it never answers.
+6. **Dedup before import**: check the fact isn't already carded (module drill files first —
+   a session miss-card restating an existing drill card is deleted, the drill card is
+   enough; the importer only catches EXACT text duplicates, so this check is manual).
+7. **Read it rendered**: fields are HTML — the importer escapes & < > automatically, but
+   still sanity-check any card with symbols/code that it will display as intended.
 
 ## The Twenty Rules, distilled to what we actually apply
 
