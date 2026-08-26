@@ -1,21 +1,21 @@
 # Module 05 — git properly. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-A commit = {{c1::snapshot of ALL files + parent pointer(s) + message}} — never {{c2::a diff}}.	ai-mastery::m05 git
-A branch = {{c1::a movable sticky note on ONE commit}} — creating one copies nothing.	ai-mastery::m05 git
-HEAD = {{c1::where you're standing}} — committing moves the branch note forward.	ai-mastery::m05 git
-Staging area/index = {{c1::the loading dock: exactly what the next snapshot contains}}.	ai-mastery::m05 git
-git diff = {{c1::working tree vs index}}; --staged = {{c2::index vs last commit}}.	ai-mastery::m05 git
-A merge commit has {{c1::TWO parents}}.	ai-mastery::m05 git
-Fast-forward happens when {{c1::the target never diverged}} — note slides, no new commit.	ai-mastery::m05 git
-Rebase {{c1::REPLAYS commits as new snapshots on the target}} — {{c2::new IDs; originals live in reflog}}.	ai-mastery::m05 git
-Iron rebase rule: never rebase {{c1::commits others already have}}.	ai-mastery::m05 git
-Undo a PUSHED bad commit: {{c1::git revert HASH}} — always safe.	ai-mastery::m05 git
-History-REWRITING undo tools (local-only): {{c1::reset}} · {{c2::rebase}} · {{c3::commit --amend}}.	ai-mastery::m05 git
-Lost and broken — first command: {{c1::git reflog}} (~90 days of everywhere HEAD has been).	ai-mastery::m05 git
-Staged the wrong file: {{c1::git restore --staged FILE}}	ai-mastery::m05 git
-fetch = {{c1::update your copy of the remote, touch nothing}}; pull = {{c2::fetch + merge/rebase}}.	ai-mastery::m05 git
-dev/brain/~/.claude have NO remotes because {{c1::doctrine never leaves the machine (estate law)}}.	ai-mastery::m05 git
-dev/brain keep .git OUTSIDE OneDrive because {{c1::syncing thousands of hash files corrupts/slows}}.	ai-mastery::m05 git
-The 04/08 atlas incident: {{c1::an every-5-min pull --rebase replayed the branch mid-merge}} (ledger 108).	ai-mastery::m05 git
-Read a repo's shape: {{c1::git log --oneline --graph --all}}	ai-mastery::m05 git
-git -C PATH = {{c1::run git as if standing in PATH}}.	ai-mastery::m05 git
-git stash {{c1::parks half-done work}}; get it back: {{c2::git stash pop}}.	ai-mastery::m05 git
+What is a git commit? {{c1::A snapshot of ALL files + parent pointer(s) + message}} — never {{c2::a diff}}.	ai-mastery::m05 git
+What is a git branch? {{c1::A movable sticky note on ONE commit}} — creating one copies nothing.	ai-mastery::m05 git
+What is HEAD in git? {{c1::Where you're standing}} — committing moves that branch's note forward.	ai-mastery::m05 git
+What is git's staging area (index)? {{c1::The loading dock: exactly what the next snapshot will contain}} (git add).	ai-mastery::m05 git
+What do git diff and git diff --staged compare? {{c1::Working tree vs index}} · {{c2::index vs last commit}} — read --staged before every commit.	ai-mastery::m05 git
+What makes a merge commit special? {{c1::TWO parents — it ties two histories together}}.	ai-mastery::m05 git
+When does git merge fast-forward instead of merging? {{c1::When the target branch never diverged}} — the note slides forward, no new commit.	ai-mastery::m05 git
+What does git rebase actually do? {{c1::REPLAYS your commits as new snapshots on top of the target}} — {{c2::new IDs; the originals live on in reflog}}.	ai-mastery::m05 git
+What is the iron rebase rule? {{c1::Never rebase commits others already have}} — rewriting a shared graph breaks everyone downstream.	ai-mastery::m05 git
+How do you undo a PUSHED bad commit? {{c1::git revert HASH}} — adds an anti-commit, rewrites nothing, always safe.	ai-mastery::m05 git
+Which git undo tools REWRITE history (so are local-only)? {{c1::reset}} · {{c2::rebase}} · {{c3::commit --amend}}.	ai-mastery::m05 git
+Git: everything's broken and you're lost — what is the first command? {{c1::git reflog}} — everywhere HEAD has been (~90 days).	ai-mastery::m05 git
+Git: you staged the wrong file — how do you unstage it? {{c1::git restore --staged FILE}}	ai-mastery::m05 git
+What is git fetch vs git pull? fetch = {{c1::update your copy of the remote's graph, touch nothing of yours}}; pull = {{c2::fetch + merge (or rebase) into your branch}}.	ai-mastery::m05 git
+Why do dev/brain/~/.claude have NO git remotes? {{c1::Estate law: doctrine/life material never leaves the machine}} — pre-push guards enforce it.	ai-mastery::m05 git
+Why do the dev/brain repos keep .git OUTSIDE OneDrive? {{c1::Syncing thousands of tiny hash files corrupts/slows}} — files sync, history lives in .gitdirs.	ai-mastery::m05 git
+What ate the atlas merge commit on 04/08/2026? {{c1::An every-5-min pull --rebase replayed the branch linearly mid-merge}} (ledger 108).	ai-mastery::m05 git
+What one command reads a repo's whole shape? {{c1::git log --oneline --graph --all}}	ai-mastery::m05 git
+What does git -C PATH do? {{c1::Runs git as if standing in PATH}} — how sessions operate many repos without cd.	ai-mastery::m05 git
+What is git stash for? {{c1::Parking half-done work to get a clean tree}}; get it back with {{c2::git stash pop}}.	ai-mastery::m05 git

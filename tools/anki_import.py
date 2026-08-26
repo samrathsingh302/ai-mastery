@@ -51,6 +51,9 @@ def parse_cards(path: pathlib.Path) -> list[tuple[str, list[str]]]:
             sys.exit(f"{path.name}:{n}: empty card text")
         if not CLOZE_RE.search(text):
             sys.exit(f"{path.name}:{n}: no cloze marker — every card is cloze, see anki/CARD-RULES.md")
+        # Anki renders fields as HTML: unescaped < > eat content like (?P<year>...) or 2>&1.
+        # Cards are plain text by law, so escape everything; cloze braces are unaffected.
+        text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         cards.append((text, tags.split()))
     if not cards:
         sys.exit(f"{path.name}: no cards found")

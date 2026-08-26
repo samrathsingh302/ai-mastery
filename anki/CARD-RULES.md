@@ -20,6 +20,13 @@
    it is two cards.
 5. **No filler words.** Every word costs reading time at every future review. Cut
    parentheticals, hedges, and second explanations; keep one memorable hook at most.
+6. **The question must STAND ON ITS OWN (his correction, 26/08/2026).** A random person with
+   the knowledge must be able to answer from the visible text alone — name the domain and the
+   subject explicitly, phrase it as a real question or a complete sentence. `"2" + 2 → ?`
+   means nothing; `In Python, what does "2" + 2 evaluate to?` stands. `Attention recipe:`
+   is a fragment; `What are the four steps of the attention recipe?` is a question.
+   Minimum-information compresses the ANSWER, never the question's context. Think before
+   making each card: read the visible text cold and ask "could a stranger answer this?"
 
 ## The Twenty Rules, distilled to what we actually apply
 

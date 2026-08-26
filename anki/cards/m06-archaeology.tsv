@@ -1,18 +1,18 @@
 # Module 06 — repo archaeology. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-Archaeology passes, in order: {{c1::signs}} · {{c2::map}} · {{c3::doors}} · {{c4::one vertical slice}} · {{c5::crown jewels}} · {{c6::verdict}}.	ai-mastery::m06 method
-One vertical slice beats skimming because {{c1::one true end-to-end trace teaches the architecture}}.	ai-mastery::m06 method
-Entry point = {{c1::where execution starts}} — mains, routes, service starts, scheduled tasks.	ai-mastery::m06 method
-psoc-portal: every request first hits {{c1::app/src/proxy.ts — the middleware auth gate}}.	ai-mastery::m06 web
-A server action {{c1::runs on the server from a form call}} and {{c2::re-checks auth — the browser is never trusted}}.	ai-mastery::m06 web
-A migration = {{c1::a numbered SQL file changing the DB's shape}} — the sequence is the schema's history.	ai-mastery::m06 web
-Server component {{c1::runs on the server, ships HTML}}; client component {{c2::runs in the browser, handles interaction}}.	ai-mastery::m06 web
-A Windows service = {{c1::a background program the OS runs from boot, no window}}.	ai-mastery::m06 method
-monk-mode's watchdog is a separate program because {{c1::a killed process can't resurrect itself}}.	ai-mastery::m06 security
-monk-mode's 10-second tick: {{c1::read config}} → {{c2::verify HMAC}} → {{c3::classify heartbeat}} → {{c4::Hold/Lift}} → {{c5::re-apply block + kills}}.	ai-mastery::m06 security
-Fail-closed = {{c1::on any doubt, choose the SAFE state}} — monk-mode keeps blocking.	ai-mastery::m06 security
-Atomic-write pattern: {{c1::write a temp file completely, then swap it in}}.	ai-mastery::m06 method
-monk-mode's weak cipher is acceptable because {{c1::the threat is tampering, not secrecy — the HMAC does the real work}}.	ai-mastery::m06 security
-HMAC (preview) = {{c1::a keyed signature — without the key, no valid stamp}}.	ai-mastery::m06 crypto
-Partner code stored as a PBKDF2 hash because {{c1::verifiable but not recoverable}}.	ai-mastery::m06 crypto
-The TODO-grep lesson: {{c1::read grep results before believing them}} — psoc's 0 real, monk-mode's 13 false positives.	ai-mastery::m06 method
-Every dig ends by {{c1::explaining one REAL audit finding in your own code}}.	ai-mastery::m06 method
+What are the six repo-archaeology passes, in order? {{c1::Signs (README/claims)}} · {{c2::map}} · {{c3::doors (entry points)}} · {{c4::one vertical slice}} · {{c5::crown jewels}} · {{c6::verdict}}.	ai-mastery::m06 method
+Why trace ONE vertical slice instead of skimming folders? {{c1::One true end-to-end trace teaches the architecture}}; ten skimmed folders teach nothing testable.	ai-mastery::m06 method
+What is an entry point in a codebase? {{c1::Where execution starts}} — mains, route roots, service starts, scheduled tasks.	ai-mastery::m06 method
+In psoc-portal, what does every request hit first? {{c1::app/src/proxy.ts — the 31-line middleware auth gate}}, before any route.	ai-mastery::m06 web
+What is a server action (Next.js), and its trust rule? {{c1::A function forms call that runs on the server}}; it {{c2::re-checks auth because the browser is never trusted}}.	ai-mastery::m06 web
+What is a database migration? {{c1::A numbered SQL file changing the DB's shape}} — the sequence is the schema's version history.	ai-mastery::m06 web
+What is a server component vs a client component? {{c1::Runs on the server, ships HTML}} vs {{c2::runs in the browser, handles interaction}}.	ai-mastery::m06 web
+What is a Windows service? {{c1::A background program the OS runs from boot, no window, as a system account}}.	ai-mastery::m06 method
+Why is monk-mode's watchdog a separate program? {{c1::A killed process can't resurrect itself}} — recovery must live OUTSIDE the thing being killed.	ai-mastery::m06 security
+What is monk-mode's 10-second tick, in order? {{c1::Read config}} → {{c2::verify HMAC}} → {{c3::classify heartbeat}} → {{c4::Hold/Lift}} → {{c5::re-apply hosts block + app kills}}.	ai-mastery::m06 security
+What does fail-closed mean? {{c1::On any doubt or verification failure, choose the SAFE state}} — monk-mode keeps blocking.	ai-mastery::m06 security
+What is the atomic-write pattern (AtomicHosts)? {{c1::Write a temp file completely, then swap it in}} — no half-written file can ever exist.	ai-mastery::m06 method
+Why is monk-mode's weak cipher acceptable? {{c1::The threat is tampering, not secrecy — the HMAC stamp does the real work}}.	ai-mastery::m06 security
+What is an HMAC, in one sentence? {{c1::A keyed signature over data — without the key you can't forge a valid stamp}}.	ai-mastery::m06 crypto
+Why does monk-mode store the partner code as a PBKDF2 hash? {{c1::Verifiable but not recoverable}} — the file never contains anything reversible.	ai-mastery::m06 crypto
+What did the TODO greps across psoc and monk-mode teach? {{c1::Read grep results before believing them}} — psoc's 0 was real discipline; monk-mode's 13 were false positives.	ai-mastery::m06 method
+How does every archaeology dig end? {{c1::Explaining one REAL audit finding in your own code}} — real findings beat synthetic exercises.	ai-mastery::m06 method

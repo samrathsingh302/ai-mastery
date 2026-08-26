@@ -1,15 +1,15 @@
 # Module 09 — eval harness mini. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-An eval's three parts: {{c1::fixed tasks}} + {{c2::a scoring method}} + {{c3::blindness}}.	ai-mastery::m09 evals
-Scoring families: {{c1::programmatic — a checker decides}} · {{c2::rubric — a blind human grades}}.	ai-mastery::m09 evals
-Rubric grading must be blind because {{c1::you WILL favour the model you expect to win}}.	ai-mastery::m09 evals
-A good eval task is: {{c1::representative}} · {{c2::one skill}} · {{c3::verifiable}} · {{c4::crisply stated}}.	ai-mastery::m09 evals
-Contamination = {{c1::the answer exists as memorised text}} — measures recall, not capability.	ai-mastery::m09 evals
-n=1 is an anecdote because {{c1::models are stochastic — single runs are noise; task-family patterns are signal}}.	ai-mastery::m09 evals
-Per-family subtotals reveal {{c1::the capability profile the total hides}}.	ai-mastery::m09 evals
-"Model X felt smarter" translates to {{c1::no measurement occurred — run the harness}}.	ai-mastery::m09 evals
-The 9–9 dead heat lesson: equal totals, {{c1::opposite profiles}} — the winner depends on {{c2::the JOB}}.	ai-mastery::m09 evals
-Fixture-B failed programmatic tasks because {{c1::extra prose around a correct answer fails exact-match}}.	ai-mastery::m09 evals
-"Reply with ONLY the number" exists because {{c1::output contracts make programmatic checking possible}}.	ai-mastery::m09 evals
-Four ways a harness lies: {{c1::contaminated tasks}} · {{c2::leading prompts}} · {{c3::unblinded grading}} · {{c4::n=1 noise}}.	ai-mastery::m09 evals
-Criteria-vs-vibes test: {{c1::a stranger applying your criteria reaches your score}}.	ai-mastery::m09 evals
-Module 09's method scales to {{c1::bigger harnesses — agents and RAG with evals}}.	ai-mastery::m09 evals
+What are an eval's three irreducible parts? {{c1::Fixed tasks}} + {{c2::a scoring method}} + {{c3::blindness (the discipline not to peek)}}.	ai-mastery::m09 evals
+What are the two eval scoring families? {{c1::Programmatic — a checker decides}} · {{c2::rubric — a human grades blind against written criteria}}.	ai-mastery::m09 evals
+Why must rubric grading be blind? {{c1::You WILL favour the model you expect to win}} — shuffling + anonymising is the only honest fix.	ai-mastery::m09 evals
+What are the four properties of a good eval task? {{c1::Representative}} · {{c2::one skill per task}} · {{c3::verifiable}} · {{c4::crisply stated}}.	ai-mastery::m09 evals
+What is contamination in an eval? {{c1::The answer exists as memorised text}} — it measures recall of the internet, not capability.	ai-mastery::m09 evals
+Why is n=1 an anecdote when evaluating models? {{c1::Models are stochastic — single runs are noise}}; patterns across {{c2::task FAMILIES}} are the signal.	ai-mastery::m09 evals
+What does a per-family subtotal reveal that the total hides? {{c1::The capability profile}} — a model can win code and lose writing.	ai-mastery::m09 evals
+"Model X felt smarter" — what is the engineering translation? {{c1::No measurement occurred. Run the harness}}.	ai-mastery::m09 evals
+In module 09's 9–9 dead-heat fixture, what was the lesson? Equal totals with {{c1::OPPOSITE profiles}} — which model you want depends on {{c2::the JOB}}.	ai-mastery::m09 evals
+Why did fixture-B fail four programmatic tasks despite correct answers? {{c1::Extra prose around a correct answer still fails an exact-match contract}}.	ai-mastery::m09 evals
+Why write "reply with ONLY the number" in eval prompts? {{c1::The output contract makes programmatic checking possible}} — eval design IS prompt design.	ai-mastery::m09 evals
+What four things would make an eval harness lie to you? {{c1::Contaminated tasks}} · {{c2::leading/ambiguous prompts}} · {{c3::unblinded grading}} · {{c4::reading n=1 noise as signal}}.	ai-mastery::m09 evals
+What is the criteria-vs-vibes test? {{c1::A stranger applying your criteria reaches your score}} — "is it good?" fails instantly.	ai-mastery::m09 evals
+Where does module 09's method scale to? {{c1::Bigger harnesses — agents and RAG with evals, same method, bigger surface}}.	ai-mastery::m09 evals

@@ -1,17 +1,17 @@
 # Module 02 — tutor setup. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-Illusion of knowing: feeling you could do {{c1::what you only watched}}.	ai-mastery::m02 method
-Best-evidenced study technique: {{c1::active recall}} — answering from memory.	ai-mastery::m02 method
-Spaced repetition: review {{c1::just before you'd forget}}, at {{c2::stretching intervals}}.	ai-mastery::m02 method
-FSRS {{c1::learns YOUR forgetting curve and schedules each card}}.	ai-mastery::m02 method
-Anki numbers: retention {{c1::0.90}} · {{c2::10}} new/day · backlog cap {{c3::20 reviews + bulk-suspend}}.	ai-mastery::m02 method
-Anki pipeline (law amended 26/08/2026): {{c1::sessions draft AND import; Samrath reviews and vetoes}}.	ai-mastery::m02 method
-Wall rule: {{c1::30+ min genuine struggle}} before any hint.	ai-mastery::m02 method
-The dojo: {{c1::20 daily minutes hunting planted bugs}}.	ai-mastery::m02 method
-Dojo level-up: {{c1::three clean days}} → up; brutal day = {{c2::stay, never drop}}.	ai-mastery::m02 method
-L0 bug classes: {{c1::swallowed error branches}} · {{c2::unverified side-effects before destructive ops}} · {{c3::wrong filter predicate}}.	ai-mastery::m02 method
-Broken-streak restart: {{c1::ONE 20-minute dojo}}; never {{c2::two zero-days in a row}}.	ai-mastery::m02 method
-Journal tracks numbers because {{c1::feelings don't grade — data answers panic}}.	ai-mastery::m02 method
-Weekly outage test: {{c1::"If Anthropic went down a week, what % of my productivity survives?"}} — must trend up.	ai-mastery::m02 method
-Claude banned during: {{c1::struggle reps}} · {{c2::20% AI-free quota}} · {{c3::first 30 min of a wall}}.	ai-mastery::m02 method
-Tutor contract rule 1: {{c1::never show a full solution}} — concepts + a different example.	ai-mastery::m02 method
-20 min/day beats 2h/week because {{c1::spacing applies to skills}}.	ai-mastery::m02 method
+What is the illusion of knowing? Feeling you could do {{c1::what you only watched being done}}.	ai-mastery::m02 method
+What is the single best-evidenced study technique? {{c1::Active recall — answering from memory}}.	ai-mastery::m02 method
+How does spaced repetition schedule reviews? {{c1::Just before you'd forget}}, at {{c2::stretching intervals}}.	ai-mastery::m02 method
+What does Anki's FSRS algorithm do? {{c1::Learns YOUR forgetting curve and schedules each card's next review}}.	ai-mastery::m02 method
+What are your three fixed Anki numbers? Retention {{c1::0.90}} · {{c2::10}} new cards/day · backlog cap {{c3::20 reviews + bulk-suspend}}.	ai-mastery::m02 method
+What is the Anki pipeline law (amended 26/08/2026)? {{c1::Sessions draft AND import; Samrath reviews and vetoes}}.	ai-mastery::m02 method
+What is the wall rule? {{c1::30+ minutes of genuine struggle}} before Claude may even hint.	ai-mastery::m02 method
+What is the dojo, in one sentence? {{c1::20 daily minutes hunting planted bugs}} — the interview muscle, built in reps.	ai-mastery::m02 method
+What is the dojo level-up rule? {{c1::Three clean days}} → level up; a brutal day means {{c2::stay, never drop}}.	ai-mastery::m02 method
+What are the three L0 dojo bug classes that recur in real code? {{c1::Swallowed error branches}} · {{c2::unverified side-effects before destructive ops}} · {{c3::wrong filter predicate}}.	ai-mastery::m02 method
+What is the restart ritual after a broken streak? {{c1::ONE 20-minute dojo}}; never {{c2::two zero-days in a row}}.	ai-mastery::m02 method
+Why does the study journal track only numbers and instruments? {{c1::Feelings don't grade — data answers imposter panic}}.	ai-mastery::m02 method
+What is the weekly outage-test question? {{c1::"If Anthropic went down for a week, what % of my productivity survives?"}} — the number must trend up.	ai-mastery::m02 method
+When is Claude banned entirely? {{c1::Struggle reps}} · {{c2::the 20% AI-free quota}} · {{c3::the first 30 minutes of any wall}}.	ai-mastery::m02 method
+What is tutor contract rule 1? {{c1::Never show a full solution}} — concepts + a different example, then I do mine.	ai-mastery::m02 method
+Why does 20 min/day beat 2 h/week for the dojo? {{c1::Spacing applies to skills — short daily reps build pattern recognition}}.	ai-mastery::m02 method
