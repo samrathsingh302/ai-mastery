@@ -11,7 +11,7 @@ What is the iron rebase rule? {{c1::Never rebase commits others already have}} �
 How do you undo a PUSHED bad commit? {{c1::git revert HASH}} — adds an anti-commit, rewrites nothing, always safe.	ai-mastery::m05 git
 Which git undo tools REWRITE history (so are local-only)? {{c1::reset}} · {{c2::rebase}} · {{c3::commit --amend}}.	ai-mastery::m05 git
 Git: everything's broken and you're lost — what is the first command? {{c1::git reflog}} — everywhere HEAD has been (~90 days).	ai-mastery::m05 git
-Git: you staged the wrong file — how do you unstage it? {{c1::git restore --staged FILE}}	ai-mastery::m05 git
+Git: you staged the wrong file — how do you unstage it (restore family)? {{c1::git restore --staged FILE}}	ai-mastery::m05 git
 What is git fetch vs git pull? fetch = {{c1::update your copy of the remote's graph, touch nothing of yours}}; pull = {{c2::fetch + merge (or rebase) into your branch}}.	ai-mastery::m05 git
 Why do dev/brain/~/.claude have NO git remotes? {{c1::Estate law: doctrine/life material never leaves the machine}} — pre-push guards enforce it.	ai-mastery::m05 git
 Why do the dev/brain repos keep .git OUTSIDE OneDrive? {{c1::Syncing thousands of tiny hash files corrupts/slows}} — files sync, history lives in .gitdirs.	ai-mastery::m05 git

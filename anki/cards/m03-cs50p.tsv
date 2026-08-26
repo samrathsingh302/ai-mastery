@@ -21,7 +21,7 @@ Why can't you assert on print in a test? {{c1::print returns None}} — structur
 What is the safe file-reading idiom in Python? {{c1::with open(path) as f:}} — {{c2::closes the file even when errors happen}}.	ai-mastery::m03 python
 In Python's open(), what do modes "w" and "a" do? "w" {{c1::REPLACES the file's contents}}; "a" {{c2::appends}}.	ai-mastery::m03 python
 What is the phantom \n bug when reading files? Lines keep their newline — {{c1::.strip() before comparing}}.	ai-mastery::m03 python
-What is the Python build-a-count-dict idiom? {{c1::counts[key] = counts.get(key, 0) + 1}}	ai-mastery::m03 python
+What is the count-dict idiom using a plain dict and .get (no imports)? {{c1::counts[key] = counts.get(key, 0) + 1}}	ai-mastery::m03 python
 In regex, what matches: a digit {{c1::\d}} · a word-char {{c2::\w}} · one-or-more {{c3::+}} · optional {{c4::?}} · one-of-these {{c5::[abc]}} · a capture group {{c6::()}}	ai-mastery::m03 python
 Why use raw strings for Python regex? {{c1::r"..." stops Python eating backslashes before the regex engine sees them}}.	ai-mastery::m03 python
 What regex matches every dd/mm/yyyy date? {{c1::r"\d{2}/\d{2}/\d{4}"}} with re.findall.	ai-mastery::m03 python
@@ -31,4 +31,4 @@ In Python, what does @property do? Makes a method {{c1::readable like an attribu
 In Python, what does __str__ control? {{c1::What print(obj) and str(obj) show}} — the human face of the object.	ai-mastery::m03 python
 Write a Python list comprehension for the squares of the even numbers in nums: {{c1::[x*x for x in nums if x % 2 == 0]}}	ai-mastery::m03 python
 In Python, sort a dict's items by value descending, ties alphabetical: {{c1::sorted(d.items(), key=lambda kv: (-kv[1], kv[0]))}}	ai-mastery::m03 python
-De-duplicate a Python list in one call: {{c1::set(items)}} — order not guaranteed; need order: {{c2::sorted(set(items))}}.	ai-mastery::m03 python
+De-duplicate a Python list in one call: {{c1::set(items)}} — order not guaranteed; deduped AND sorted: {{c2::sorted(set(items))}}.	ai-mastery::m03 python

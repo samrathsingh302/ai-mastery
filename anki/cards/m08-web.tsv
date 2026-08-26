@@ -1,5 +1,5 @@
 # Module 08 — how the web works. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
-What is the page-load journey, in order? {{c1::URL → DNS → TCP → TLS → HTTP request → edge/gate/origin → response → render}} — repeated per asset.	ai-mastery::m08 web
+What is the page-load journey, in order? {{c1::URL}} → {{c2::DNS}} → {{c3::TCP}} → {{c4::TLS}} → {{c5::HTTP request}} → {{c6::edge/gate/origin}} → {{c7::response}} → {{c8::render}} — repeated per asset.	ai-mastery::m08 web
 What is the anatomy of a URL? {{c1::scheme://host/path?query}} — protocol · machine-by-name · thing-there · options.	ai-mastery::m08 web
 What does DNS do? {{c1::Turns names into numeric IP addresses (the phone book)}}; by hand: {{c2::nslookup}}.	ai-mastery::m08 web
 Whose IPs answer for www.leedspunjabisociety.com? {{c1::Cloudflare's — the edge, not the Vercel origin}}.	ai-mastery::m08 web

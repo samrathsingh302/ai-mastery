@@ -12,4 +12,4 @@ Why did fixture-B fail four programmatic tasks despite correct answers? {{c1::Ex
 Why write "reply with ONLY the number" in eval prompts? {{c1::The output contract makes programmatic checking possible}} — eval design IS prompt design.	ai-mastery::m09 evals
 What four things would make an eval harness lie to you? {{c1::Contaminated tasks}} · {{c2::leading/ambiguous prompts}} · {{c3::unblinded grading}} · {{c4::reading n=1 noise as signal}}.	ai-mastery::m09 evals
 What is the criteria-vs-vibes test? {{c1::A stranger applying your criteria reaches your score}} — "is it good?" fails instantly.	ai-mastery::m09 evals
-Where does module 09's method scale to? {{c1::Bigger harnesses — agents and RAG with evals, same method, bigger surface}}.	ai-mastery::m09 evals
+Module 09's eval method reapplies unchanged to which two bigger surfaces? {{c1::Agents}} · {{c2::RAG}} — same method, bigger surface.	ai-mastery::m09 evals

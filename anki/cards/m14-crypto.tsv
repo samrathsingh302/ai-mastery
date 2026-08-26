@@ -1,6 +1,6 @@
 # Module 14 — crypto on monk-mode. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
 What are the three properties of a hash function? {{c1::One-way}} · {{c2::deterministic (same in, same out)}} · {{c3::collision-resistant}}.	ai-mastery::m14 crypto
-What is the avalanche effect in hashing? {{c1::One changed letter rewrites the whole digest}} — sha256("hello") vs sha256("hellp") share nothing.	ai-mastery::m14 crypto
+What is the avalanche effect in hashing? {{c1::One changed input letter rewrites the whole digest — sha256("hello") vs sha256("hellp") share nothing}}.	ai-mastery::m14 crypto
 Why are passwords HASHED rather than encrypted? {{c1::The system only ever needs to CHECK, never read back}} — encryption is reversible by design.	ai-mastery::m14 crypto
 What is a salt, and what does it defeat? {{c1::Random data mixed in before hashing, stored alongside}}; defeats {{c2::rainbow tables}}.	ai-mastery::m14 crypto
 What is a rainbow table, and why does it work at all? {{c1::A precomputed fingerprint→input lookup}} — works because {{c2::unsalted hashes of the same input are identical for everyone}}.	ai-mastery::m14 crypto

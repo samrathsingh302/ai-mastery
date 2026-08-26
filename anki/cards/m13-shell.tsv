@@ -19,5 +19,7 @@ What is SSH, in one sentence? {{c1::An encrypted remote terminal — you type he
 What is SSH's first-connect fingerprint prompt for? {{c1::The server proving its identity/continuity}} — be suspicious if {{c2::it ever changes unexpectedly}}.	ai-mastery::m13 security
 What is the Bandit connection line? {{c1::ssh bandit0@bandit.labs.overthewire.org -p 2220}} (level-0 password: bandit0).	ai-mastery::m13 shell
 What is the house rule for Bandit? {{c1::No walkthroughs — 30 min struggle, then man pages, then concept-only hints}}; every walkthrough read is a rep not done.	ai-mastery::m13 method
-What are three bash vs PowerShell differences? {{c1::ls/cat/grep vs Get-ChildItem/Get-Content/Select-String}} · {{c2::$VAR vs $env:VAR}} · {{c3::/dev/null vs $null}}.	ai-mastery::m13 shell
+Shell translation: bash's ls / cat / grep in PowerShell are {{c1::Get-ChildItem · Get-Content · Select-String}}.	ai-mastery::m13 shell
+Shell translation: bash reads an env var as $VAR; PowerShell reads it as {{c1::$env:VAR}}.	ai-mastery::m13 shell
+Shell translation: bash's /dev/null in PowerShell is {{c1::$null}}.	ai-mastery::m13 shell
 What does "labs are the curriculum" mean? {{c1::Cyber videos are on-ramps; hands-on labs (Bandit, PortSwigger, DVWA) are where competence forms}}.	ai-mastery::m13 method

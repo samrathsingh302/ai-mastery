@@ -1,6 +1,6 @@
 # Module 12 — first AI-free build. Format: Text<TAB>tags. Card law: anki/CARD-RULES.md
 # NB: the outage-test card lives in m02 only (duplicate dropped in the 26/08 cloze rewrite).
-What does AI-free actually forbid, and allow? Forbids {{c1::Claude, autocomplete, AI search, concept chats, pasting errors in}}; allows {{c2::docs, your own notes, help(), the REPL, paper}}.	ai-mastery::m12 method
+What five things does AI-free forbid? {{c1::Claude}} · {{c2::autocomplete/Copilot}} · {{c3::AI search summaries}} · {{c4::concept chats}} · {{c5::pasting errors in}} — allowed: docs, own notes, help(), the REPL, paper.	ai-mastery::m12 method
 What are the five steps of the unassisted wall protocol? {{c1::Re-read the error bottom-up}} · {{c2::reproduce in the smallest snippet}} · {{c3::inspect real values}} · {{c4::one written hypothesis at a time}} · {{c5::45 min no progress = log it, return tomorrow}}.	ai-mastery::m12 method
 What is the honesty clause for AI-free work? {{c1::Log every breach — what and how long}}; a hidden breach corrupts your baseline forever.	ai-mastery::m12 method
 Why grade your build BEFORE showing anyone? {{c1::Grading first forces criteria}}; grading after invites rationalising whatever you built.	ai-mastery::m12 method
