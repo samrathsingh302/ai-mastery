@@ -27,3 +27,4 @@ Win of the week:
 Wall of the week (and what cracked it):
 Next week's single priority:
 ```
+- 27/08/2026 — NeetCode #1 Contains Duplicate passed (own [] trace); first 10 Anki cards written in my own words; rung 2 loops taught, ex02 pending. Miss: called [] an empty set.
