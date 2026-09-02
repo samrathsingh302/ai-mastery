@@ -1,0 +1,919 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-02",
+  "targets": [
+    {
+      "id": "palantir-fde",
+      "employer": "Palantir",
+      "scheme": "Forward Deployed Software Engineer, New Grad - UK Government",
+      "limb": "london",
+      "location": "London (hybrid, 25-50% travel)",
+      "url": "https://jobs.lever.co/palantir/b4aa51a2-bc43-4d67-bf55-12db7feefb3a",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "yes",
+      "salary": null,
+      "priority": 1,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "OPEN, read in-browser 02/09/2026: 'Must be graduating in 2027 or before'; 'Security clearance or the ability to obtain a clearance'; CV as PDF + application questions; offer decision within 2 weeks of a written offer. Fire on the Mon 07/09 lock.",
+      "sources": [
+        "https://jobs.lever.co/palantir/b4aa51a2-bc43-4d67-bf55-12db7feefb3a"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "goldman-sachs",
+      "employer": "Goldman Sachs",
+      "scheme": "2027 New Analyst Programme (Engineering), EMEA",
+      "limb": "london",
+      "location": "London",
+      "url": "https://www.goldmansachs.com/careers/students/programs-and-internships/emea/new-analyst-programme",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "yes",
+      "salary": null,
+      "priority": 2,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "OPEN, read in-browser 02/09/2026: 'full-time programme for final year undergraduate and graduate students', 'Programme Start Date: Summer 2027', applications via the Students Application Page from 15 August. Pick the Engineering division in the application; timelines vary by business, so treat as rolling and apply early.",
+      "sources": [
+        "https://www.goldmansachs.com/careers/students/programs-and-internships/emea/new-analyst-programme"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "optiver",
+      "employer": "Optiver",
+      "scheme": "Graduate Software Engineer, London",
+      "limb": "london",
+      "location": "London",
+      "url": "https://optiver.com/join-us/jobs/technology/london/graduate-software-engineer",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "yes",
+      "salary": null,
+      "priority": 3,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "OPEN, researcher WebFetch 02/09/2026, quoted: 'Graduating between August 2024 and August 2027, max 3 years experience'; 8-month re-apply cooldown. Quant ticket 1 of 2 (cap J).",
+      "sources": [
+        "https://optiver.com/join-us/jobs/technology/london/graduate-software-engineer"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "palantir-swe",
+      "employer": "Palantir",
+      "scheme": "Software Engineer, New Grad (London); also FDE New Grad - Commercial and SWE New Grad - Infrastructure",
+      "limb": "london",
+      "location": "London (hybrid)",
+      "url": "https://jobs.lever.co/palantir",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 4,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Board read in-browser 02/09/2026 lists four London new-grad engineering postings: SWE New Grad; SWE New Grad - Infrastructure; FDE New Grad - Commercial; FDE New Grad - UK Government. The non-Gov postings' eligibility line was not opened; check it reads '2027 or before' too. Second Palantir ticket; the UK Gov one goes first.",
+      "sources": [
+        "https://jobs.lever.co/palantir"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "jane-street",
+      "employer": "Jane Street",
+      "scheme": "Software Engineer (London), evergreen new-grad-friendly listing",
+      "limb": "london",
+      "location": "London",
+      "url": "https://www.janestreet.com/join-jane-street/position/4274814002",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 5,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Researcher WebFetch 02/09/2026: live listing, 'always hiring', no new-grad label or 2027 text. Quant ticket 2 of 2 (cap J). Citadel dropped: secondary-source only.",
+      "sources": [
+        "https://www.janestreet.com/join-jane-street/position/4274814002"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "lloyds-banking-group",
+      "employer": "Lloyds Banking Group",
+      "scheme": "Technology Engineering Graduate Scheme (alt: Data Science and AI Graduate Scheme)",
+      "limb": "north",
+      "location": "Leeds / Halifax / Manchester (all on the locations list)",
+      "url": "https://www.lloydsbankinggrouptalent.com/our-opportunities/graduates/",
+      "opens": "2026-09-10",
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 6,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Read in-browser 02/09/2026: 'New schemes coming 10th September'; scheme list includes Technology Engineering and Data Science and AI; Leeds, Halifax and Manchester are listed locations. Best-evidenced North row. Apply the day it opens.",
+      "sources": [
+        "https://www.lloydsbankinggrouptalent.com/our-opportunities/graduates/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "revolut",
+      "employer": "Revolut",
+      "scheme": "Graduate Programme 2027 - Software Engineer",
+      "limb": "london",
+      "location": "London",
+      "url": "https://www.revolut.com/careers/",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "yes",
+      "salary": null,
+      "priority": 7,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported only: researcher found a posting titled 'Graduate Programme 2027 - Software Engineer' (body not fetched). Open the careers site, find the posting, confirm eligibility, then set verified.",
+      "sources": [
+        "https://www.revolut.com/careers/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "stripe",
+      "employer": "Stripe",
+      "scheme": "Software Engineer, New Grad (London)",
+      "limb": "london",
+      "location": "London",
+      "url": "https://stripe.com/jobs/search?query=new+grad",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 8,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported only: a secondary source says 'degree by summer 2027'. Verify on stripe.com/jobs before drafting.",
+      "sources": [
+        "https://stripe.com/careers/apply/software-engineer-new-grad/8157838"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "bae-systems",
+      "employer": "BAE Systems",
+      "scheme": "Graduate Cyber Security Service (clearance lane)",
+      "limb": "clearance",
+      "location": "UK, multiple sites (check the listing)",
+      "url": "https://careers.baesystems.com/locations/uk/graduates",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": "GBP 34,000 + GBP 2,000 welcome payment + optional 20% salary advance (graduate page)",
+      "priority": 9,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Graduate page read in-browser 02/09/2026: salary confirmed; 'many roles require National Security Vetting ... typically 5 to 10 years of continuous UK residency'. The cyber-scheme listing itself was NOT found live (careers search 404'd); researcher reports an April 2027 start and min 2:2 (secondary). Open 'Search and apply' on the graduate page and confirm the scheme is posted.",
+      "sources": [
+        "https://careers.baesystems.com/locations/uk/graduates"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "accenture",
+      "employer": "Accenture",
+      "scheme": "Software Engineering Graduate Programme (Leeds), first-come-first-served",
+      "limb": "consulting",
+      "location": "Leeds (Manchester alternative)",
+      "url": "https://www.accenture.com/gb-en/careers/jobsearch?jk=graduate&sb=1",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 10,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 0 results for \"Software Engineering Graduate\"; only 5-6 Early Career roles live, none SWE. Researcher found a posting title 'Leeds Software Engineering Graduate Programme 2026-2027' (Sept 2026 to Aug 2027 intake, FCFS). The 2027-start posting is not live yet: set an alert; it fills when it opens.",
+      "sources": [
+        "https://www.accenture.com/gb-en/careers/jobsearch?jk=graduate&sb=1"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "barclays",
+      "employer": "Barclays",
+      "scheme": "Graduate Programme - Technology (Developer)",
+      "limb": "north",
+      "location": "Glasgow / Knutsford / Northampton reported; confirm on the listing",
+      "url": "https://search.jobs.barclays/early-careers",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 11,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Early-careers page read in-browser 02/09/2026 (generic, no dates). Reported: 2027 intake open, rolling, since early Sept 2026. Northern site not primary-confirmed.",
+      "sources": [
+        "https://search.jobs.barclays/early-careers"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "gchq",
+      "employer": "GCHQ",
+      "scheme": "Cyber Specialist Development Programme (and any Software Engineering / Technologist graduate posting)",
+      "limb": "clearance",
+      "location": "Manchester (Heron House) / Cheltenham",
+      "url": "https://www.gchq.gov.uk/collection/working-at-gchq/technical-roles",
+      "opens": null,
+      "closes": "rolling",
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 12,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Primary page read in-browser 02/09/2026: NO dates either way; 'Sign up for job alerts ... as soon as they are posted on our vacancy page' is the only mechanism (ledger 298 item 1). Researcher: a differently named 'Cyber Practitioner Development Programme' is reported with a Jan 2027 start at Samlesbury; do not conflate. Vetting takes months: apply the day a posting appears.",
+      "sources": [
+        "https://www.gchq.gov.uk/collection/working-at-gchq/technical-roles",
+        "https://www.gchq.gov.uk/collection/working-at-gchq"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "pwc-leeds",
+      "employer": "PwC",
+      "scheme": "Technology and AI graduate programme (Leeds)",
+      "limb": "consulting",
+      "location": "Leeds",
+      "url": "https://www.pwc.co.uk/careers/early-careers.html",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 13,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Primary pages 403'd to the researcher and rendered only an events stub in-browser; reported: Leeds-titled Technology and AI listing, Sept 2027 start. Confirm on the PwC job search.",
+      "sources": [
+        "https://www.pwc.co.uk/careers/early-careers.html"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "hsbc-sheffield",
+      "employer": "HSBC",
+      "scheme": "Technology Graduate Programme",
+      "limb": "north",
+      "location": "Sheffield (reported)",
+      "url": "https://www.hsbc.com/careers/students-and-graduates/graduate-programmes",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 14,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported only: March/July 2027 windows; Sheffield from third parties. Verify on the HSBC page.",
+      "sources": [
+        "https://www.hsbc.com/careers/students-and-graduates/graduate-programmes"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "google",
+      "employer": "Google",
+      "scheme": "Software Engineer, Early Career (London)",
+      "limb": "london",
+      "location": "London",
+      "url": "https://www.google.com/about/careers/applications/jobs/results/?location=London%2C%20UK&q=%22early%20career%22",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 15,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: the only London early-career SWE listing is the PhD one; the 2027 new-grad posting is NOT up yet. Turn on the job alert for this search.",
+      "sources": [
+        "https://www.google.com/about/careers/applications/jobs/results/?location=London%2C%20UK&q=%22early%20career%22"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "amazon-london",
+      "employer": "Amazon",
+      "scheme": "Software Development Engineer - Graduate (UK)",
+      "limb": "london",
+      "location": "London (no northern SDE grad route found)",
+      "url": "https://www.amazon.jobs/en/search?base_query=software+development+engineer+graduate&loc_query=United+Kingdom&country=GBR",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 16,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 'Sorry, there are no jobs that meet your criteria' for SDE graduate in the UK; the university page has no UK specifics. Alert + weekly re-check; rolling once posted.",
+      "sources": [
+        "https://www.amazon.jobs/content/en/career-programs/university/sde"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "microsoft",
+      "employer": "Microsoft",
+      "scheme": "Graduate Software Engineer (UK) / Aspire",
+      "limb": "london",
+      "location": "London / Reading",
+      "url": "https://apply.careers.microsoft.com/careers?query=graduate%20software%20engineer%20United%20Kingdom",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 17,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 7 UK results, all senior or MTS; no graduate SWE posting live. The Aspire page 404s. Alert.",
+      "sources": [
+        "https://apply.careers.microsoft.com/careers?query=graduate%20software%20engineer%20United%20Kingdom"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "meta",
+      "employer": "Meta",
+      "scheme": "Software Engineer, University Grad (London)",
+      "limb": "london",
+      "location": "London",
+      "url": "https://www.metacareers.com/jobsearch/?offices[0]=London%2C%20UK&q=software%20engineer%20university%20grad",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 18,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 'There are currently no open roles matching your search'. Alert via Career Profile.",
+      "sources": [
+        "https://www.metacareers.com/jobsearch/?offices[0]=London%2C%20UK&q=software%20engineer%20university%20grad"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "bloomberg",
+      "employer": "Bloomberg",
+      "scheme": "Software Engineer - 2027 New Grad (London)",
+      "limb": "london",
+      "location": "London",
+      "url": "https://bloomberg.avature.net/careers/SearchJobs/%22Software%20Engineer%22%202027",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 19,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 'No jobs found' for Software Engineer 2027. Entry-level SWE roles are team-agnostic per the student process page. Alert.",
+      "sources": [
+        "https://bloomberg.avature.net/careers/SearchJobs/%22Software%20Engineer%22%202027",
+        "https://www.bloomberg.com/company/careers/application-process/engineering-student/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "jpmorgan",
+      "employer": "JPMorgan Chase",
+      "scheme": "Software Engineer Program - Full-Time 2027 (UK)",
+      "limb": "london",
+      "location": "London / Glasgow / Bournemouth",
+      "url": "https://www.jpmorganchase.com/careers/explore-opportunities/programs/software-engineer-fulltime",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 20,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Researcher WebFetch 02/09/2026: UK is NOT listed as an open location on the SEP page; the 26/08 'TBC' stands. Watch.",
+      "sources": [
+        "https://www.jpmorganchase.com/careers/explore-opportunities/programs/software-engineer-fulltime"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "sky-leeds",
+      "employer": "Sky",
+      "scheme": "Software Engineering graduate (Leeds tech hub) - NOT LIVE; Data graduate is the live technical stream",
+      "limb": "north",
+      "location": "Leeds (Whitehall)",
+      "url": "https://careers.sky.com/earlycareers/graduates",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 21,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: graduate streams listed are Business, Creative, Data, Finance; no Technology or Software stream. Re-check mid-Sept; the Data graduate programme is the fallback.",
+      "sources": [
+        "https://careers.sky.com/earlycareers/graduates"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "sky-betting-gaming",
+      "employer": "Flutter UK&I (Sky Betting & Gaming)",
+      "scheme": "Technology Graduate Programme (Leeds)",
+      "limb": "north",
+      "location": "Leeds (4 Wellington Place)",
+      "url": "https://careers.flutteruki.com/early-careers/graduates/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 22,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "Researcher WebFetch 02/09/2026: page says 'applications now closed', undated. Watch for the 2027 reopen.",
+      "sources": [
+        "https://careers.flutteruki.com/early-careers/graduates/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "dwp-digital",
+      "employer": "DWP Digital",
+      "scheme": "University Leavers Engineering Programme (Leeds, Quarry House)",
+      "limb": "north",
+      "location": "Leeds",
+      "url": "https://careers.dwp.gov.uk/our-teams/dwp-digital-engineering/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 23,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported: 2026 round closed 05/03/2026; no 2027 date on the primary page. Watch Civil Service Jobs.",
+      "sources": [
+        "https://careers.dwp.gov.uk/our-teams/dwp-digital-engineering/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "bank-of-england",
+      "employer": "Bank of England",
+      "scheme": "Graduate Development Programme (Technology), Leeds hub",
+      "limb": "north",
+      "location": "Leeds",
+      "url": "https://www.bankofengland.co.uk/careers/future-talent",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 24,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 'our 2026 recruitment round has closed. We will update our programme pages in autumn 2026, ahead of the 2027 recruitment round'. Re-check in October.",
+      "sources": [
+        "https://www.bankofengland.co.uk/careers/future-talent"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "auto-trader",
+      "employer": "Auto Trader",
+      "scheme": "Graduate Software Developer (Manchester)",
+      "limb": "north",
+      "location": "Manchester",
+      "url": "https://careers.autotrader.co.uk/early-careers",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 25,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Researcher: location and structure verified, dates generic ('opens Sept, starts Oct' pattern). Re-check mid-Sept.",
+      "sources": [
+        "https://careers.autotrader.co.uk/early-careers"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "arm",
+      "employer": "Arm",
+      "scheme": "Graduate Software Engineer (UK: Manchester / Cambridge)",
+      "limb": "north",
+      "location": "Manchester (reported) / Cambridge",
+      "url": "https://careers.arm.com/graduates",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 26,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: graduate page generic ('degree by the start of your program'); UK is an alert location; no live UK grad SWE listing shown. Set the alert.",
+      "sources": [
+        "https://careers.arm.com/graduates"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "natwest-group",
+      "employer": "NatWest Group",
+      "scheme": "Software Engineering Graduate Programme",
+      "limb": "north",
+      "location": "Edinburgh / Manchester / London (northern site unconfirmed)",
+      "url": "https://jobs.natwestgroup.com/pages/early-talent",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 27,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: the job search for graduate software engineer returns India roles only; no UK graduate SWE posting live. Campus events Sept to Oct. Deprioritised.",
+      "sources": [
+        "https://jobs.natwestgroup.com/pages/early-talent",
+        "https://jobs.natwestgroup.com/search/jobs?q=graduate%20software%20engineer"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "bbc",
+      "employer": "BBC",
+      "scheme": "Software Engineering Graduate Scheme (Salford)",
+      "limb": "north",
+      "location": "Salford (reported)",
+      "url": "https://careers.bbc.co.uk/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 28,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported only (2026 cohort seen; no primary fetch). Verify.",
+      "sources": [
+        "https://careers.bbc.co.uk/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "ncc-group",
+      "employer": "NCC Group",
+      "scheme": "NINJA graduate programme (Manchester)",
+      "limb": "clearance",
+      "location": "Manchester",
+      "url": "https://www.nccgroup.com/uk/careers/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 29,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported: two intakes (Mar/Sep); site unreachable to the researcher; nothing found for 2027. Verify.",
+      "sources": [
+        "https://www.nccgroup.com/uk/careers/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "dstl",
+      "employer": "Dstl",
+      "scheme": "Graduate Programme (via Civil Service Jobs)",
+      "limb": "clearance",
+      "location": "Porton Down / Portsdown West",
+      "url": "https://www.civilservicejobs.service.gov.uk/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 30,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Reported: 'launching Autumn 2026', Civil Service Jobs Oct to Nov. Clearance-lane alternate.",
+      "sources": [
+        "https://www.civilservicejobs.service.gov.uk/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "kpmg-leeds",
+      "employer": "KPMG",
+      "scheme": "Technology Engineering graduate programme",
+      "limb": "consulting",
+      "location": "Leeds (not confirmed as a selectable location)",
+      "url": "https://www.kpmgcareers.co.uk/graduate/technology-engineering/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 31,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: 'Sign up to hear first when we open'; 2027 applications not open. Leeds not confirmed.",
+      "sources": [
+        "https://www.kpmgcareers.co.uk/graduate/technology-engineering/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "ey-leeds",
+      "employer": "EY",
+      "scheme": "Technology graduate programme (Consulting)",
+      "limb": "consulting",
+      "location": "Leeds (office verified; scheme-in-Leeds not confirmed)",
+      "url": "https://www.ey.com/en_uk/careers/students",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 32,
+      "status": "verified",
+      "status_date": "2026-09-02",
+      "notes": "In-browser 02/09/2026: '2026 Applications are now closed ... be notified when we reopen for applications later this year'. Join the talent community.",
+      "sources": [
+        "https://www.ey.com/en_uk/careers/students"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "verified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "deloitte-leeds",
+      "employer": "Deloitte",
+      "scheme": "Technology graduate programme",
+      "limb": "consulting",
+      "location": "Leeds (only the vacation scheme is Leeds-proven)",
+      "url": "https://www.deloitte.com/uk/en/careers/early-careers.html",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 33,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Programme pages 404'd in-browser; reported 'now open' from low-quality sources. Verify.",
+      "sources": [
+        "https://www.deloitte.com/uk/en/careers/early-careers.html"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "cgi-bjss",
+      "employer": "CGI (formerly BJSS)",
+      "scheme": "Graduate programme (Leeds); BJSS was acquired by CGI, completed 24/02/2025",
+      "limb": "north",
+      "location": "Leeds",
+      "url": "https://www.cgi.com/uk/en-gb/careers/students-and-graduates",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "unclear",
+      "salary": null,
+      "priority": 34,
+      "status": "unverified",
+      "status_date": "2026-09-02",
+      "notes": "Researcher verified the acquisition (bjss.com redirects to cgi.com). Apply via CGI's own graduate route; not yet verified.",
+      "sources": [
+        "https://www.cgi.com/uk/en-gb/careers/students-and-graduates"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "unverified",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    },
+    {
+      "id": "jet2",
+      "employer": "Jet2",
+      "scheme": "Graduate technology scheme: NONE LIVE",
+      "limb": "north",
+      "location": "Leeds",
+      "url": "https://www.jet2careers.com/emerging-talent-careers/graduates-placements/",
+      "opens": null,
+      "closes": null,
+      "eligibility_2027": "no",
+      "salary": null,
+      "priority": 35,
+      "status": "closed",
+      "status_date": "2026-09-02",
+      "notes": "Researcher WebFetch 02/09/2026: only a Finance graduate scheme and the pilot programme exist. Kept for the record; re-check at Christmas.",
+      "sources": [
+        "https://www.jet2careers.com/emerging-talent-careers/graduates-placements/"
+      ],
+      "log": [
+        {
+          "date": "2026-09-02",
+          "status": "closed",
+          "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        }
+      ]
+    }
+  ]
+}

@@ -3,3 +3,6 @@ __pycache__/
 videos/
 # subagent working memory — machine-local, not course content
 .claude/agent-memory/
+
+# PyCharm project metadata (surfaced 01/09/2026, tasks.md VAULT-1)
+.idea/
