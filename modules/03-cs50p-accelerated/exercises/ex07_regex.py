@@ -11,6 +11,6 @@ def find_dates(text):
 
 def extract_usernames(text):
     """Return the username part (before the @) of every email-shaped token in text.
-    extract_usernames("mail samrath@leeds.ac.uk or admin@psoc.org") -> ["samrath", "admin"]
+    extract_usernames("mail student@example.edu or admin@psoc.org") -> ["samrath", "admin"]
     (Email-shaped: word-chars/dots before @, word-chars/dots after — keep it simple.)"""
     raise NotImplementedError("your code here")

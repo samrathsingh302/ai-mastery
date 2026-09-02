@@ -27,7 +27,7 @@ never logs in, never submits, never emails.
 
 ## Where things live
 
-`targets.json` is the source of truth; `drafts/` is tracked in git on purpose.
+`targets.json` is the source of truth; `drafts/` is GITIGNORED since 02/09/2026 (the repo is public; drafts hold personal narrative — keep them local or in OneDrive).
 The fact base (`FACTS.md`), the master CV (`CV.md`) and the generated `TARGETS.md`
 live in `C:\Users\samra\OneDrive\dev\repos\ai-mastery\career\`.
 

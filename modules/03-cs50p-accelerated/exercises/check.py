@@ -112,7 +112,7 @@ TESTS = {
     "ex07_regex": [simple("find_dates", ("due 07/08/2026, resat 12/09/2026",),
                           ["07/08/2026", "12/09/2026"]),
                    simple("find_dates", ("no dates here",), []),
-                   simple("extract_usernames", ("mail samrath@leeds.ac.uk or admin@psoc.org",),
+                   simple("extract_usernames", ("mail student@example.edu or admin@psoc.org",),
                           ["samrath", "admin"])],
     "ex08_oop": [t_ex08],
     "ex09_etcetera": [simple("top_n", ({"amy": 9, "bo": 9, "cy": 7}, 2),
