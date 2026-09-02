@@ -15,7 +15,7 @@ ends with drafted files and a list of human steps.
 ## Procedure
 
 1. **Resolve the id.** `python career/apply.py list` (add `--limb` to narrow).
-   Match what Samrath said to an `id`. If two could match (Amazon has two rows),
+   Match what Samrath said to an `id`. If two could match (Palantir has two rows: `palantir-fde`, `palantir-swe`),
    ask which one — do not pick for him.
 2. **Create or reuse the draft folder.** If `career/drafts/<id>/` does not exist,
    run `python career/apply.py draft <id>`. If it does exist, reuse it; only pass
@@ -37,7 +37,7 @@ ends with drafted files and a list of human steps.
    "co-founder", no 2028 graduation, no unearned certs, no "150+ members access
    the portal", no unaided authorship of AI-built code). If the JD asks for
    something FACTS.md does not evidence, do **not** invent it: write it under
-   `## Gaps — Samrath decides` in `answers-<id>.md`, one line per gap, with what
+   `## Gaps - Samrath decides` in `answers-<id>.md`, one line per gap, with what
    would close it.
 6. **No AI tells.** British English, dd/mm/yyyy, no em-dashes. Banned:
    delve, leverage, tapestry, testament, seamless, robust, passionate about,
@@ -52,6 +52,6 @@ Finish by printing the exact human steps left, in order:
 1. Open `<url>` and start the application.
 2. Export `cv-<id>.md` to `cv-<id>.pdf` and upload it.
 3. Paste each answer from `answers-<id>.md` (and `cover-<id>.md` if present).
-4. Resolve anything under `## Gaps — Samrath decides` before submitting.
+4. Resolve anything under `## Gaps - Samrath decides` before submitting.
 5. Submit.
 6. Run `python career/apply.py status <id> submitted --note "submitted dd/mm/yyyy"`.

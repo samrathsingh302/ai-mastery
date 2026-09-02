@@ -166,13 +166,13 @@
       "location": "London",
       "url": "https://www.revolut.com/careers/",
       "opens": null,
-      "closes": "rolling",
+      "closes": null,
       "eligibility_2027": "yes",
       "salary": null,
       "priority": 7,
       "status": "unverified",
       "status_date": "2026-09-02",
-      "notes": "Reported only: researcher found a posting titled 'Graduate Programme 2027 - Software Engineer' (body not fetched). Open the careers site, find the posting, confirm eligibility, then set verified.",
+      "notes": "Reported only: researcher found a posting titled 'Graduate Programme 2027 - Software Engineer' (body not fetched). Open the careers site, find the posting, confirm eligibility, then set verified. closes left null: no posting/date to justify 'rolling' (verifier 02/09).",
       "sources": [
         "https://www.revolut.com/careers/"
       ],
@@ -192,13 +192,13 @@
       "location": "London",
       "url": "https://stripe.com/jobs/search?query=new+grad",
       "opens": null,
-      "closes": "rolling",
+      "closes": null,
       "eligibility_2027": "unclear",
       "salary": null,
       "priority": 8,
       "status": "unverified",
       "status_date": "2026-09-02",
-      "notes": "Reported only: a secondary source says 'degree by summer 2027'. Verify on stripe.com/jobs before drafting.",
+      "notes": "Reported only: a secondary source says 'degree by summer 2027'. Verify on stripe.com/jobs before drafting. closes left null: no posting/date to justify 'rolling' (verifier 02/09).",
       "sources": [
         "https://stripe.com/careers/apply/software-engineer-new-grad/8157838"
       ],
@@ -244,13 +244,13 @@
       "location": "Leeds (Manchester alternative)",
       "url": "https://www.accenture.com/gb-en/careers/jobsearch?jk=graduate&sb=1",
       "opens": null,
-      "closes": "rolling",
+      "closes": null,
       "eligibility_2027": "unclear",
       "salary": null,
       "priority": 10,
       "status": "verified",
       "status_date": "2026-09-02",
-      "notes": "In-browser 02/09/2026: 0 results for \"Software Engineering Graduate\"; only 5-6 Early Career roles live, none SWE. Researcher found a posting title 'Leeds Software Engineering Graduate Programme 2026-2027' (Sept 2026 to Aug 2027 intake, FCFS). The 2027-start posting is not live yet: set an alert; it fills when it opens.",
+      "notes": "In-browser 02/09/2026: 0 results for \"Software Engineering Graduate\"; only 5-6 Early Career roles live, none SWE. Researcher found a posting title 'Leeds Software Engineering Graduate Programme 2026-2027' (Sept 2026 to Aug 2027 intake, FCFS). The 2027-start posting is not live yet: set an alert; it fills when it opens. closes left null: no posting/date to justify 'rolling' (verifier 02/09).",
       "sources": [
         "https://www.accenture.com/gb-en/careers/jobsearch?jk=graduate&sb=1"
       ],
@@ -296,13 +296,13 @@
       "location": "Manchester (Heron House) / Cheltenham",
       "url": "https://www.gchq.gov.uk/collection/working-at-gchq/technical-roles",
       "opens": null,
-      "closes": "rolling",
+      "closes": null,
       "eligibility_2027": "unclear",
       "salary": null,
       "priority": 12,
       "status": "verified",
       "status_date": "2026-09-02",
-      "notes": "Primary page read in-browser 02/09/2026: NO dates either way; 'Sign up for job alerts ... as soon as they are posted on our vacancy page' is the only mechanism (ledger 298 item 1). Researcher: a differently named 'Cyber Practitioner Development Programme' is reported with a Jan 2027 start at Samlesbury; do not conflate. Vetting takes months: apply the day a posting appears.",
+      "notes": "Primary page read in-browser 02/09/2026: NO dates either way; 'Sign up for job alerts ... as soon as they are posted on our vacancy page' is the only mechanism (ledger 298 item 1). Researcher: a differently named 'Cyber Practitioner Development Programme' is reported with a Jan 2027 start at Samlesbury; do not conflate. Vetting takes months: apply the day a posting appears. closes left null: no posting/date to justify 'rolling' (verifier 02/09).",
       "sources": [
         "https://www.gchq.gov.uk/collection/working-at-gchq/technical-roles",
         "https://www.gchq.gov.uk/collection/working-at-gchq"

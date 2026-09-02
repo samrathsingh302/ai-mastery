@@ -315,9 +315,7 @@ def main() -> int:
 
     docx_path = build_docx(cv, out / "CV.docx")
     html_path = build_html(cv, out / "CV.html")
-    pdf_path = out / "CV.pdf"
-    if pdf_path.exists():
-        pdf_path.unlink()
+    pdf_path = out / "CV.pdf"  # not pre-deleted: if both producers fail the last good PDF survives
 
     pages = pdf_via_word(docx_path, pdf_path)
     producer = "word"

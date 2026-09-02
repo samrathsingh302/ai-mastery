@@ -94,7 +94,7 @@ def drafts_dir(path):
 
 def parse_iso(value):
     """Return a date, or None if the value is not an ISO date string."""
-    if not isinstance(value, str):
+    if not isinstance(value, str) or not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
         return None
     try:
         return date.fromisoformat(value)
@@ -137,7 +137,7 @@ def due_rows(data, days, today=None):
                 rolling.append(t)
             continue
         d = parse_iso(closes)
-        if d and today <= d <= horizon:
+        if d and today <= d <= horizon and t.get("status") in OPEN_STATUSES:
             dated.append((d, t))
     dated.sort(key=lambda pair: (pair[0], pair[1].get("priority") or 0))
     return [t for _, t in dated] + by_priority(rolling)
@@ -267,8 +267,9 @@ def cmd_draft(args):
         cv=CV,
     )
     (folder / "brief.md").write_text(brief, encoding="utf-8", newline="\n")
-    save({"id": t["id"], "created": date.today().isoformat(), "files": []},
-         folder / "tracking.json")
+    tracking = folder / "tracking.json"
+    if not tracking.exists():  # --force rewrites the brief, never the record of files made
+        save({"id": t["id"], "created": date.today().isoformat(), "files": []}, tracking)
     print("draft folder: {0}".format(folder))
     print("next: open {0}, paste the JD, then follow its drafting prompt"
           .format(folder / "brief.md"))
