@@ -28,3 +28,4 @@ Wall of the week (and what cracked it):
 Next week's single priority:
 ```
 - 27/08/2026 — NeetCode #1 Contains Duplicate passed (own [] trace); first 10 Anki cards written in my own words; rung 2 loops taught, ex02 pending. Miss: called [] an empty set.
+- 08/09/2026 - module 03 rung 2 RE-ANCHOR only; ex02 still unwritten. Traced his own contains_duplicate correctly (incl. why the final 1 is never appended), but could not name the fold-in step or tell the early-exit return from the accumulator return - the tutor had graded on jargon it had not re-taught, corrected mid-session. Two worked examples given (sum + count). Struggle: ~10 min, wall was vocabulary not logic. AI-free? N. misses to cards: 3. Session closed early to hand the desk to the Fable brain.
