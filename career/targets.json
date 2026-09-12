@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-09-02",
+  "updated": "2026-09-12",
   "targets": [
     {
       "id": "palantir-fde",
@@ -14,8 +14,8 @@
       "eligibility_2027": "yes",
       "salary": null,
       "priority": 1,
-      "status": "verified",
-      "status_date": "2026-09-02",
+      "status": "draft-ready",
+      "status_date": "2026-09-12",
       "notes": "OPEN, read in-browser 02/09/2026: 'Must be graduating in 2027 or before'; 'Security clearance or the ability to obtain a clearance'; CV as PDF + application questions; offer decision within 2 weeks of a written offer. Fire on the Mon 07/09 lock.",
       "sources": [
         "https://jobs.lever.co/palantir/b4aa51a2-bc43-4d67-bf55-12db7feefb3a"
@@ -25,6 +25,11 @@
           "date": "2026-09-02",
           "status": "verified",
           "note": "02/09/2026 verification pass (three researchers + in-browser sweep)"
+        },
+        {
+          "date": "2026-09-12",
+          "status": "draft-ready",
+          "note": "12/09/2026 12:55 career desk seat: all Lever fields + 3 essays + additional-info drafted in drafts/palantir-fde/answers-palantir-fde.md; 5 gaps for Samrath"
         }
       ]
     },
