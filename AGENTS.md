@@ -17,5 +17,6 @@ complete the turn, no approval pauses
 
 ## Claude-only
 
+- The step 0.5 Sonnet `researcher` spawn is Claude-only: under Codex, skip it and say so.
 - Notion journal tick is MCP-bound: give a one-line reminder and never attempt it under Codex.
 - WhatsApp is MCP-bound: give a one-line reminder and never attempt it under Codex.
