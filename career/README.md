@@ -1,36 +1,26 @@
-# career/ — the 2027 graduate-application scaffold
+# career: moved
 
-The 25–30-application barbell from `CAREER.md` §6B/§7C, as data plus a CLI.
-**Submission is always Samrath's.** This tooling verifies, drafts and tracks; it
-never logs in, never submits, never emails.
+Moved 16/09/2026 to `C:\Users\samra\repos\job-engine\career\` by chain `20260916-f-career` (T2 copied, T5 retired the
+originals). AI-Mastery is the LEARNING engine only; applications, the tracker and the pipeline live in job-engine, and
+the CV engine is `repos\cv-editor`.
 
-## The loop
+| Was here | Is now |
+|---|---|
+| `career/apply.py` | `C:\Users\samra\repos\job-engine\career\apply.py` |
+| `career/build_cv.py` | `C:\Users\samra\repos\job-engine\career\build_cv.py` |
+| `career/targets.json` | `C:\Users\samra\repos\job-engine\career\targets.json` |
+| `career/tests/` | `C:\Users\samra\repos\job-engine\career\tests\` |
+| `career/drafts/` | `C:\Users\samra\repos\job-engine\career\drafts\` (moved, not copied; gitignored there too) |
+| `.claude/skills/apply-draft/` | `C:\Users\samra\repos\job-engine\.claude\skills\apply-draft\` |
+| `FACTS.md`, `CV.*`, `TARGETS.md`, `research/` (vault) | `C:\Users\samra\OneDrive\dev\life\career\` (T3) |
 
-1. Verify the window (opens/closes/eligibility/salary) → record it in `targets.json`
-   with its `sources`, then `status <id> verified`.
-2. `python career/apply.py draft <id>` → creates `career/drafts/<id>/brief.md`.
-3. Paste the live JD and the application questions into that brief, then run its
-   `## Drafting prompt` in a Claude session (or use the `/apply-draft` skill).
-   Out come `cv-<id>.md`, `answers-<id>.md`, and `cover-<id>.md` if asked for.
-4. Samrath opens the employer URL and submits.
-5. `python career/apply.py status <id> submitted --note "..."` — and again at each
-   later stage (`online-test`, `interview`, `assessment-centre`, `offer`, `rejected`).
+`career/apply.py` here is a shim: it forwards to job-engine's `apply.py` with `sys.argv` untouched, so
+`cd repos\ai-mastery; python career/apply.py validate` still works and operates on job-engine's `targets.json`.
+Run the real thing from its home:
 
-## Commands
-
-    python career/apply.py list [--limb london|north|clearance|consulting] [--status S]
-    python career/apply.py due [--days 30]
-    python career/apply.py draft <id> [--force]
-    python career/apply.py status <id> <new-status> [--note TEXT]
-    python career/apply.py render [--out PATH]     # rewrites TARGETS.md
+    cd C:\Users\samra\repos\job-engine
     python career/apply.py validate
 
-## Where things live
-
-`targets.json` is the source of truth; `drafts/` is GITIGNORED since 02/09/2026 (the repo is public; drafts hold personal narrative — keep them local or in OneDrive).
-The fact base (`FACTS.md`), the master CV (`CV.md`) and the generated `TARGETS.md`
-live in `C:\Users\samra\OneDrive\dev\repos\ai-mastery\career\`.
-
-## Tests
-
-    python -m unittest discover -s career/tests -t career
+Who Samrath is and what he wants: `C:\Users\samra\OneDrive\dev\life\career\CAREER.md`.
+Chain 20260915-a's re-plan evidence stays in the vault at
+`C:\Users\samra\OneDrive\dev\repos\ai-mastery\career\replan-2026-09-16\`.
