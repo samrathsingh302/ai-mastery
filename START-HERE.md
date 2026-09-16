@@ -1,5 +1,9 @@
 # START HERE — the zero-decision onboarding (open this every study day)
 
+> **From 16/09/2026: open `C:\Users\samra\repos\ai-mastery\sheets\README.md` — today's sheet is the day.**
+> The sheet in `C:\Users\samra\repos\ai-mastery\sheets\` carries the day's items, their exact paths,
+> their check commands and their done-when; the loop below is the floor underneath it (CAREER.md §7K).
+
 > The plan promised "beginning takes zero decisions". This file is that promise. It tells you
 > exactly what to do the first day and every day after. Nothing here requires choosing.
 > Current position on the ladder: **see PROGRESS.md** (first unticked box = your current module).
