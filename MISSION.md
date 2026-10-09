@@ -1,4 +1,5 @@
 # MISSION — the overnight AI-tutor factory (written 04/08/2026 by the estate session, Samrath asleep)
+> **Historical (09/10/2026).** The 04/08/2026 factory brief; the 14 modules it built are in `modules\`. The live front door is `START-HERE.md`.
 
 You are a fresh Fable 5 session at MAX effort (Samrath's explicit one-night exception to the
 effort law, granted 04/08/2026 via pop-up). Your job: turn the AI Mastery Plan into

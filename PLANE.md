@@ -1,4 +1,5 @@
 # ✈️ PLANE.md — the offline study guide
+> **Historical (09/10/2026).** The 10/08/2026 offline flight guide; still accurate for running the modules without internet, except that module 14 now has `drills.md`. The live front door is `START-HERE.md`.
 
 > Verified working with **no internet**, 10/08/2026, before your flight.
 > Read this one file. Don't go hunting through the other thirteen.

@@ -1,50 +1,48 @@
-# START HERE — the zero-decision onboarding (open this every study day)
+# START HERE — the front door (Uni v3, from 09/10/2026)
 
-> **From 16/09/2026: open `C:\Users\samra\repos\ai-mastery\sheets\README.md` — today's sheet is the day.**
-> The sheet in `C:\Users\samra\repos\ai-mastery\sheets\` carries the day's items, their exact paths,
-> their check commands and their done-when; the loop below is the floor underneath it (CAREER.md §7K).
+> **The day lives on the Notion Uni page → Today.** Open it, do the top item. This repo does not plan
+> your day any more; it holds the Python material, the checkers, your cards and your journal.
+> The study system is `C:\Users\samra\OneDrive\dev\life\uni\UNI.md` §8 (floor, slots, 01/11 check).
 
-> The plan promised "beginning takes zero decisions". This file is that promise. It tells you
-> exactly what to do the first day and every day after. Nothing here requires choosing.
-> Current position on the ladder: **see PROGRESS.md** (first unticked box = your current module).
+## The floor, every day
 
-## Day one (once, ~45 min)
+Anki queue + **one green check**. A green check is a checker, autograder or Gradescope result that
+says pass, produced by code you typed. The day counts once the file is open and the checker has run.
+Never miss twice.
 
-1. Open `modules/02-tutor-setup/TEACH.md` and do its **Setup checklist** top to bottom
-   (toolchain verify → Anki install [ledger item 105] → first deck → cockpit bookmark).
-2. Read `modules/02-tutor-setup/tutor-contract.md` once, out loud. This is the contract that
-   makes Claude a tutor instead of an answer machine.
-3. Open `journal.md`, fill in the **baseline block** (2 min).
-4. Do your first dojo: `modules/02-tutor-setup/dojo.md`, 20 minutes, timer on
-   (`modules/02-tutor-setup/interactive/study-cockpit.html` runs it for you).
-5. Done. Tomorrow, start the daily loop below.
+## The one rule that governs Claude here
 
-## Every study day (the loop)
+**You type first.** The tutor window (`/study-session`) is on call only: it prints one line and waits.
+It answers only a pasted attempt or a pasted red checker line, never a question asked before any code
+exists. Five sessions between 27/08 and 12/09 explained one exercise five times and produced zero
+typed lines; the answer to that exercise is printed in the module's own notes. Explanation was never
+the missing piece. `TUTOR-CONTRACT.md` rule 12 is the law.
 
-| When | What | Time |
-|------|------|------|
-| First | **Anki** — clear today's queue (cap: 10 new/day; emergency backlog rule in module 02) | 10 min |
-| Then | **Dojo** — `dojo.md` protocol, difficulty auto-scales | 20 min |
-| Main | **Current module** — open the first unticked module in PROGRESS.md, continue where its TEACH.md checkpoint left you. Study sessions with Claude start by pasting the tutor contract (or `/study-session` once installed — ledger 107) | 1–2h blocks |
-| End | **Close the session**: 5-question no-notes quiz (tutor asks), 3–8 Anki cards drafted → YOU curate → import, one journal line | 10 min |
+## Where each lane is driven from (decided 09/10/2026, research in the 09/10 handoff)
 
-Lanes (from the plan, Part 6b): the module queue above is lane A. Videos/reading = lane B on
-alternate days. Anki + dojo = lane C, every day, even zero-days. Cyber labs + breadth maps =
-lane D, 1–2×/week, must feel like play. Never two heavy-code lanes at once.
+| Lane | Driver (its grader decides) | This repo's part |
+|---|---|---|
+| Python basics | **Today:** transcribe the loop printed at `modules\03-cs50p-accelerated\TEACH.md` lines 112–116 into `modules\03-cs50p-accelerated\exercises\ex02_loops.py`, then `python modules\03-cs50p-accelerated\exercises\check.py ex02` from `C:\Users\samra\repos\ai-mastery`; then write the second function yourself. **After that:** MOOC.fi Python Programming 2026, in the browser, https://programming-26.mooc.fi/part-1/1-getting-started | module 03/04 exercises + `check.py` as extra reps |
+| Java (COMP5911M) | MOOC.fi Java Programming I parts 1–7, VS Code + TestMyCode, https://java-programming.mooc.fi/part-1/1-starting-programming — it is frozen on Java 11/JUnit 4, so from ~week 3 JUnit 5 and refactoring under tests come from Exercism Java (https://exercism.org/tracks/java) and the Gilded Rose kata (https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main/Java) in IntelliJ | none |
+| KRR (COMP5450M) | the module's own Gradescope formatives A/B/C with Prover9 (Minerva → COMP5450M → Formative Exercises); Prolog from Learn Prolog Now interactive, https://lpn.swi-prolog.org/ (SWISH embedded, no install); SWI-Prolog: `winget install -e --id SWI-Prolog.SWI-Prolog` | none |
+| Data Science (COMP5122M) | the module's own Practical 1 (Titanic CSV, 15 pandas questions) and its notebooks; Kaggle Learn Pandas https://www.kaggle.com/learn/pandas for graded reps | module 07 (your Hevy data) as a later project |
+| Coding tests | HackerRank 3-Month Preparation Kit, week 1 first (every target employer tests on HackerRank), https://www.hackerrank.com/interview/preparation-kits/three-month-preparation-kit; NeetCode 150 once loops are routine, `neetcode\` holds your solutions | `neetcode\` |
+| Group Project (COMP5530M) | Minerva brief; scoping document due 11/12/2026, LaTeX via tectonic | none |
 
-## Weekly (Sunday, 15 min)
+## Close (when a session was used)
 
-1. Journal: the **outage test** — "if Anthropic vanished this week, what % of my productivity
-   survives?" One number + one sentence. It must trend up.
-2. Check the 20% AI-free quota (journal tally). Short? Next block is AI-free (the plan's
-   audit-stocked issue lists are zero-setup AI-free work).
-3. Anki hygiene: reviews piling past 20/day → bulk-suspend guilt-free, prune bad cards.
+Your own Anki cards typed in the terminal (`anki\CARD-RULES.md`), one line in `journal.md`, commit.
+Sunday: score the v3 gate on the Notion Uni page (28 days, ≥24 with a green check).
 
-## The rules that are always on
+## Standing rules
 
-- **30+ minutes of genuine struggle before Claude may even hint** (walls are the curriculum).
-- **Never let AI write code you couldn't write yourself.** Tutor explains, quizzes, grades —
-  never solves your learning work.
-- **There is no ChatGPT in the interview.** Interview-you and real-you must be the same person.
-- Stuck >3 sessions → journal it, switch lanes 48h, return via a teach-me-the-map session.
-- Motivation dip → the restart ritual is ONE 20-min dojo, never the hardest item.
+- 30 minutes of genuine struggle before a hint; never let AI write code you could not write yourself.
+- There is no ChatGPT in the interview.
+- Motivation dip → the restart is one two-minute item, never the hardest one.
+
+## History
+
+`PROGRESS.md` is the build record of the 14 modules (04–12/08/2026). `MISSION.md`, `PLAN-MASTER.md`,
+`PLAN-v3-notion-export.md` and `PLANE.md` are the factory's and the flight's artefacts, kept as record.
+`sheets\` is the 16–22/09 self-serve week, kept as record. The 09/10/2026 handoff in
+`C:\Users\samra\OneDrive\dev\repos\ai-mastery\handoffs\` carries the research behind this page.

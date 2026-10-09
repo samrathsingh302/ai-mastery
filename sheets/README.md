@@ -1,5 +1,7 @@
 # The daily sheets — how they work
 
+> **Historical from 09/10/2026.** These seven sheets are the 16–22/09 self-serve week, kept as the record of it (no item on them was done). The day now lives on the Notion Uni page → Today (`C:\Users\samra\OneDrive\dev\life\uni\UNI.md` §8); the front door is `C:\Users\samra\repos\ai-mastery\START-HERE.md`. `check_sheets.py` still runs and still guards only these files.
+
 From 16/09/2026 the week runs from a sheet per day, not from a session. The law is ten lines:
 
 1. **Open today's file** in this folder — `sheets\<yyyy-mm-dd>-<ddd>.md`. That file is the day.

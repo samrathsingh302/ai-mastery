@@ -1,4 +1,5 @@
 # PLAN-MASTER — the numbered master order the module factory follows
+> **Historical (09/10/2026).** The factory's build order, completed through step 14 on 12/08/2026. It no longer sets any daily loop; the live front door is `START-HERE.md`.
 
 > Provenance: produced 04/08/2026 by step 0 (red-team) of MISSION.md, from `PLAN-v3-notion-export.md`
 > (Notion page `3b104e06-5e70-8193-8ae7-fc35a5c28b64` stays canonical and UNEDITED — Samrath decides

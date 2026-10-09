@@ -1,4 +1,5 @@
 # AI Mastery Plan v3 — Notion export (verbatim)
+> **Historical (09/10/2026).** The 04/08/2026 Notion snapshot the factory built from. Not a plan of record; the live front door is `START-HERE.md`.
 
 > Provenance: fetched 04/08/2026 ~00:00 from Notion page `3b104e06-5e70-8193-8ae7-fc35a5c28b64`
 > ("AI Mastery Plan v3 — the complete, researched, zero-decisions-left curriculum",
