@@ -22,11 +22,12 @@ Only these files/sections: `C:\Users\samra\repos\ai-mastery\TUTOR-CONTRACT.md` (
 
 ## Task
 1. Read `C:\Users\samra\repos\ai-mastery\TUTOR-CONTRACT.md` and run it in **on-call** mode (step 1).
-2. Run `python modules\03-cs50p-accelerated\exercises\check.py` from `C:\Users\samra\repos\ai-mastery` yourself and take the FIRST `TODO  exNN_<name>: not written yet` line as `<exNN>`; its file is `C:\Users\samra\repos\ai-mastery\modules\03-cs50p-accelerated\exercises\<exNN>.py`.
+2. Run `python modules\03-cs50p-accelerated\exercises\check.py` from `C:\Users\samra\repos\ai-mastery` yourself and take the FIRST `TODO  exNN_<name>: not written yet` line as `<exNN>` — or, when there is no TODO line, the FIRST `FAIL  exNN_<name>:` line (the rule the launcher used to open the file); its file is `C:\Users\samra\repos\ai-mastery\modules\03-cs50p-accelerated\exercises\<exNN>.py`.
 3. Your first message is exactly two lines and nothing else:
    - line 1, the on-call sentence from `TUTOR-CONTRACT.md` step 1, verbatim: `On call. Paste your attempt or the red checker line — nothing else gets an answer.`
    - line 2: `<absolute path of that file> is open — type line 1 now, then paste it or the red line from: cd C:\Users\samra\repos\ai-mastery && python modules\03-cs50p-accelerated\exercises\check.py <exNN>`
-   - When `check.py` prints no TODO line (the ladder is complete), line 2 instead names MOOC.fi Python Programming 2026 Part 1 per `START-HERE.md`: `Ladder complete — open https://programming-26.mooc.fi/part-1/1-getting-started, type line 1 of the next exercise now, then paste it.`
+   - When `check.py` prints `Ladder complete.` (no TODO and no FAIL line), line 2 instead names MOOC.fi Python Programming 2026 Part 1 per `START-HERE.md`: `Ladder complete — open https://programming-26.mooc.fi/part-1/1-getting-started, type line 1 of the next exercise now, then paste it.`
+   - When `check.py` prints neither a TODO/FAIL line nor `Ladder complete.` (a traceback — usually an exercise that does not import), line 2 instead is: `check.py stops with an error — paste its last red line from: cd C:\Users\samra\repos\ai-mastery && python modules\03-cs50p-accelerated\exercises\check.py`
 4. Then silence. Answer only a pasted attempt or a pasted red line, one wall at a time. Contract rule 12 binds: he types first.
 5. When he says he is done, run the closing ritual (step 3) unprompted, write the session handoff, then close with `node C:\Users\samra\tools\seat-exit.js --handoff <that handoff>`.
 
