@@ -18,7 +18,7 @@ Taught in `C:\Users\samra\repos\ai-mastery\modules\06-repo-archaeology\TEACH.md`
 **See it:** `cd C:\Users\samra\repos\monk-mode` then `git grep -n "Function ClassifyHeartbeat"` — read what it returns when `macValid` is `False`.
 
 ### HMAC (preview)
-**Like you're 5:** A wax seal only you can press, because only you have the stamp. If anyone changes even one letter of the letter, the seal no longer matches, and everyone can tell it was tampered with.
+**Like you're 5:** A wax seal only you can press, because only you have the stamp. If anyone changes even one letter of the letter, the seal no longer matches, and anyone who holds the same stamp can tell it was tampered with.
 **The real words:** A keyed signature over data: no key, no valid stamp for modified content; full treatment in module 14. → [06 dig 2](../modules/06-repo-archaeology/TEACH.md)
 **See it:** In `python`: `import hmac, hashlib` then `hmac.new(b"key", b"block x.com", hashlib.sha256).hexdigest()[:12]`, then again with `b"block y.com"` — one letter changed, a totally different stamp.
 
