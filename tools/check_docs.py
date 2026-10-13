@@ -217,10 +217,9 @@ def main(argv):
         rng = parse_range(rest[1])
         if rng is None:
             return usage(f"bad range '{rest[1]}' (want two-digit AA-BB, AA <= BB)")
-        t, targets = eli5(*rng, sem1)
-        if not targets:
+        if not any(rng[0] <= int(d[:2]) <= rng[1] for d in module_dirs()):
             return usage(f"range {rest[1]} matches no modules\\ directory")
-        parts = [t]
+        parts = [eli5(*rng, sem1)[0]]
     elif mode == "all" and not rest:
         parts = [how_it_works(), eli5(1, 14, True)[0], readme_links()]
     else:
