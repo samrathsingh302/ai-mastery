@@ -46,3 +46,7 @@ Sunday: score the v3 gate on the Notion Uni page (28 days, ≥24 with a green ch
 `PLAN-v3-notion-export.md` and `PLANE.md` are the factory's and the flight's artefacts, kept as record.
 `sheets\` is the 16–22/09 self-serve week, kept as record. The 09/10/2026 handoff in
 `C:\Users\samra\OneDrive\dev\repos\ai-mastery\handoffs\` carries the research behind this page.
+
+- `HOW-IT-WORKS.md` — how the day and the repo work, and the whole learning map. `eli5\` — every
+  taught word explained like you're 5: open an entry when a word blocks a line you are typing, never
+  instead of typing it.
