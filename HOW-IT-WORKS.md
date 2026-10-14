@@ -153,6 +153,7 @@ One block per module.
 - Each module's folder is under `C:\Users\samra\repos\ai-mastery\modules\`.
 - The "teaches" line is read from the opening of its `TEACH.md`.
 - The ELI5 file sits in `eli5\` inside the repo.
+- What to learn and do so the target CV comes true, and which slot each piece goes in: `C:\Users\samra\OneDrive\dev\repos\ai-mastery\TARGET-CV-PLAN.md`.
 
 ### Module 01
 
