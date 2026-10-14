@@ -10,7 +10,7 @@ Module 11, taught in `C:\Users\samra\repos\ai-mastery\modules\11-nn-transformers
 ---
 
 ### Activation function
-**Like you're 5:** A dimmer switch that can't go below off or above full. Each little brain cell in the machine passes its total through one of these. Without that squash, stacking a hundred layers of cells would be no cleverer than one layer.
+**Like you're 5:** A dimmer switch that can't go below off; some kinds also stop at full. Each little brain cell in the machine passes its total through one of these. Without that squash, stacking a hundred layers of cells would be no cleverer than one layer.
 
 **The real words:** The squash (ReLU: `max(0, x)`; sigmoid: 0…1) that stops stacked layers collapsing into one straight line. → [11 A1](../modules/11-nn-transformers-intuition/TEACH.md)
 

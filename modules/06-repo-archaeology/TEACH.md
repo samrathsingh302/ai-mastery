@@ -8,6 +8,11 @@
 > on this very machine.)
 > **The endgame:** "You can explain every project you've shipped, cold, in an interview."
 > These two digs are the first half of that sentence.
+> **Drift (re-checked 14/10/2026):** the file:line numbers below are the 04/08 snapshot, and
+> both repos have moved on. psoc-portal `2e88e3d`: 72 migrations, not 45; `actions.ts` is 769
+> lines and `addTask()` is at `:107`, not `:101`. monk-mode `35f08ab`: `ClassifyHeartbeat`
+> is at `Service1.vb:2649`, not `:1338`. Find each hop by its name with `git grep -n`, then
+> read the line — the numbers are a starting guess, the names are the map.
 
 ## Part 1 — The method (works on any repo, forever)
 

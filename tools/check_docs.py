@@ -155,6 +155,15 @@ def check_entries(t, rel, text):
     return headings
 
 
+def first_divergence(heads, terms):
+    for i, (h, w) in enumerate(zip(heads, terms)):
+        if h != w:
+            return f"entry {i + 1} is '{h}', expected '{w}'"
+    if len(heads) > len(terms):
+        return f"extra heading '{heads[len(terms)]}'"
+    return f"missing '{terms[len(heads)]}'" if len(heads) < len(terms) else "none"
+
+
 def eli5(lo, hi, sem1):
     t = Tally("eli5")
     gloss = glossary_terms()
@@ -170,6 +179,8 @@ def eli5(lo, hi, sem1):
         all_heads += heads
         for term in terms:
             t.check(term in heads, "term", f"{term} is not a '### ' heading in {rel}")
+        if text is not None:
+            t.check(heads == terms, "order", f"{rel} headings are not exactly the term list in its order: {first_divergence(heads, terms)}")
     dupes = sorted({h for h in all_heads if all_heads.count(h) > 1})
     t.check(not dupes, "repeat", f"headings repeat: {dupes}")
     return t, targets

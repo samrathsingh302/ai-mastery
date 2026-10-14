@@ -77,11 +77,15 @@ wax seal whose stamp only you own — anyone can see the seal, nobody else can f
 Before you can sign data, you must turn it into **one exact string** — the same fields, in
 the same order, formatted the same way, every time. That's **canonicalisation**.
 
-`BuildCanonical()` takes 15 fields and emits them one per line as `Name=value\n`, in a fixed
-order. Two design decisions hide in that:
+`BuildCanonical()` takes 11 parameters and emits them one per line as `Name=value\n`, in a
+fixed order; its last parameter is the slot block, where `BuildSlotCanonical()` emits exactly
+16 lines per block slot (re-checked 14/10/2026 at monk-mode `35f08ab`,
+`MonkMode/ConfigIntegrity.vb:261` and `:279`; the 04/08 version took 15 flat fields). Two
+design decisions hide in that:
 
-1. **Every protected field is inside** — Until, HighWater, CoolOffUntil, ProcessList,
-   CustomSites, PartnerSalt/Hash/UnlockedAt, Committed, schedule fields, AllSessionKill.
+1. **Every protected field is inside** — HighWater, SlotCount, the guard and schedule
+   fields, and per slot Until, Sites, Apps, UrlPatterns, AllSession, CoolOffUntil,
+   PartnerSalt/Hash/UnlockedAt, Committed.
    A field *outside* the canonical is a field an attacker may freely edit. The file's own
    comment on `AllSessionKill` spells out the attack that would enable if it were omitted:
    flip an armed all-session block back to session-0-only and run a blocked app in a second
@@ -141,8 +145,8 @@ and why a deliberately weak cipher can be a correct decision when the threat is 
 
 ## Sources (read live from the repo, 04/08/2026)
 
-- `C:\Users\samra\repos\monk-mode\MonkMode\ConfigIntegrity.vb` — `BuildCanonical` (15 fields,
-  `Name=value\n`), `ComputeConfigMac` (HMAC-SHA256 over Unicode bytes → Base64),
+- `C:\Users\samra\repos\monk-mode\MonkMode\ConfigIntegrity.vb` — `BuildCanonical` (11 parameters
+  plus 16 lines per slot via `BuildSlotCanonical`, `Name=value\n`; re-checked 14/10/2026), `ComputeConfigMac` (HMAC-SHA256 over Unicode bytes → Base64),
   `ConfigMacIsValid` (FixedTimeEquals, returns False never throws), PD3 constants
   (`PartnerKdfIterations = 600000`, `PartnerSaltBytes = 16`, `PartnerHashBytes = 32`),
   `PartnerCodeAlphabet` (32 chars, Crockford-style), DPAPI protect/unprotect.
